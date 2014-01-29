@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+ <codes>
+    <codeCout>
+        <nom>CS</nom>
+        <libellé>consultation au cabinet</libellé>
+        <cout>23.0</cout>
+    </codeCout>
+    <codeCout>
+        <nom>CSC</nom>
+        <libellé>consultation cardiologie</libellé><!-- ceci est le libellé --> 
+        <cout>45.73</cout>
+    </codeCout>
+    <codeCout>
+        <nom>FP</nom>
+        <libellé>forfait pediatrique</libellé>
+        <cout>5.0</cout>
+    </codeCout>
+    <codeCout>
+        <nom>KC</nom>
+        <libellé>actes de chirurgie et de specialite</libellé>
+        <cout>2.09</cout>
+    </codeCout>
+    <codeCout>
+        <nom>KE</nom>
+        <libellé>actes d'echographie, de doppler</libellé>
+        <cout>1.89</cout>
+    </codeCout>
+    <codeCout>
+        <nom>K</nom>
+        <libellé>autres actes de specialite</libellé>
+        <cout>1.92</cout>
+    </codeCout>
+    <codeCout>
+        <nom>KFA</nom>
+        <libellé>forfait A</libellé>
+        <cout>30.49</cout>
+    </codeCout>
+    <codeCout>
+        <nom>KFB</nom>
+        <libellé>forfait B</libellé>
+        <cout>60.98</cout>
+    </codeCout>
+    <codeCout>
+        <nom>ORT</nom>
+        <libellé>orthodontie</libellé>
+        <cout>2.15</cout>
+    </codeCout>
+    <codeCout>
+        <nom>PRO</nom>
+        <libellé>prothese dentaire</libellé>
+        <cout>2.15</cout>
+    </codeCout>
+  </codes>
