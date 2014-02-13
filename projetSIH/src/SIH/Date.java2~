@@ -1,0 +1,73 @@
+package SIH;
+
+
+// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+// #[regen=yes,id=DCE.2CAF514F-54A4-C6A2-E022-9FA5DB6E537E]
+// </editor-fold> 
+public class Date {
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.464E1913-6ED6-3C1B-5947-BC3857D7851D]
+    // </editor-fold> 
+    private int annee;
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.0E89D8A7-9D9F-E0F9-FE45-E0358A567E43]
+    // </editor-fold> 
+    private int mois;
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.3E305776-E6EF-08F3-F0B0-AA9D9F452582]
+    // </editor-fold> 
+    private int jour;
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.DFF8AA20-9D48-5929-07E0-212FED1A4199]
+    // </editor-fold> 
+    public Date () {
+    }
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,regenBody=yes,id=DCE.54B460C6-AC3B-3E5D-63BC-A7D37D026AB9]
+    // </editor-fold> 
+    public int getAnnee () {
+        return annee;
+    }
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,regenBody=yes,id=DCE.64EE229C-7137-89FD-FDE2-7C6E601056BD]
+    // </editor-fold> 
+    public void setAnnee (int val) {
+        this.annee = val;
+    }
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,regenBody=yes,id=DCE.0DECBFAC-C682-2A54-7200-50B5F9735F88]
+    // </editor-fold> 
+    public int getJour () {
+        return jour;
+    }
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,regenBody=yes,id=DCE.25380BE7-5F37-797A-3FFC-6CB3276CD10F]
+    // </editor-fold> 
+    public void setJour (int val) {
+        this.jour = val;
+    }
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,regenBody=yes,id=DCE.EC7918FF-9CFF-C04F-7B9A-B072F0975B40]
+    // </editor-fold> 
+    public int getMois () {
+        return mois;
+    }
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,regenBody=yes,id=DCE.326ACF4E-62F4-542E-1D69-431282ECE339]
+    // </editor-fold> 
+    public void setMois (int val) {
+        this.mois = val;
+    }
+
+}
+
