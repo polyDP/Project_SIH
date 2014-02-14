@@ -5,18 +5,20 @@ package SIH;
 // #[regen=yes,id=DCE.1DDE8BFD-C3EE-60DB-31E7-A438174C7702]
 // </editor-fold> 
 public class MedecinPH extends PersonnelMedical {
+    private Services services;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.3C59CF4B-46AD-791D-5CB4-E08C44CD21A5]
     // </editor-fold> 
-    public MedecinPH () {
+    public MedecinPH (int id, String motDePasse, String nom,String prenom, String metier) {
+        super(id,motDePasse,nom,prenom,metier);
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.37FFD308-491E-FD2C-0BB2-5CAAAB93ECAC]
     // </editor-fold> 
     public String getNom () {
-        return null;
+        return super.getNom();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -29,7 +31,7 @@ public class MedecinPH extends PersonnelMedical {
     // #[regen=yes,id=DCE.8FC0C348-E255-18DD-307B-90794E3D405F]
     // </editor-fold> 
     public int getId () {
-        return 0;
+       return super.getId();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -42,7 +44,7 @@ public class MedecinPH extends PersonnelMedical {
     // #[regen=yes,id=DCE.7F75BE02-426F-1DE6-6763-3DF8EBF939FD]
     // </editor-fold> 
     public String getLogin () {
-        return null;
+        return super.getLogin();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -55,14 +57,20 @@ public class MedecinPH extends PersonnelMedical {
     // #[regen=yes,id=DCE.AF427A56-C13A-565B-9C15-5F07A4D6B504]
     // </editor-fold> 
     public Services getServices () {
-        return null;
+        return services;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F09CB15D-E4BD-F97E-C3C7-2C08C1DF0A04]
     // </editor-fold> 
     public void setServices (Services val) {
+        this.services = val;
     }
-
+public String getPrenom () {
+        return super.getPrenom();
+    }
+ 
+    public void setPrenom (String val) {
+    }
 }
 
