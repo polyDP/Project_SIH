@@ -19,14 +19,16 @@ public class PersonnelMedical extends Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.63548C80-246B-FB49-7A9D-A1DE6EB18685]
     // </editor-fold> 
-    public PersonnelMedical () {
+    public PersonnelMedical (int id, String motDePasse, String nom, String metier,String prenom) {
+        super(id,motDePasse,nom,prenom);
+        this.metier = metier; 
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.9C2888FF-EF67-ED91-73E4-F7265FFF961C]
     // </editor-fold> 
     public String getNom () {
-        return null;
+       return super.getNom();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -39,7 +41,7 @@ public class PersonnelMedical extends Personnel {
     // #[regen=yes,id=DCE.16472579-E309-1237-50AE-83550560F167]
     // </editor-fold> 
     public int getId () {
-        return 0;
+        return super.getId();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -52,7 +54,7 @@ public class PersonnelMedical extends Personnel {
     // #[regen=yes,id=DCE.A9FBFCAF-6294-265B-745D-9B4FD2EC8892]
     // </editor-fold> 
     public String getLogin () {
-        return null;
+        return super.getLogin();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -87,6 +89,12 @@ public class PersonnelMedical extends Personnel {
     // </editor-fold> 
     public void setMetier (String val) {
         this.metier = val;
+    }
+    public String getPrenom () {
+        return super.getPrenom();
+    }
+ 
+    public void setPrenom (String val) {
     }
 
 }

@@ -9,14 +9,16 @@ public class Administratif extends Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.2618785F-BBF9-4555-9F92-BA78131A7BAA]
     // </editor-fold> 
-    public Administratif () {
+    public Administratif (int id, String motDePasse, String nom,String prenom) {
+        super(id, motDePasse,nom,prenom);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.34B79D4C-E548-4935-7BCF-70D7236E071F]
     // </editor-fold> 
     public String getNom () {
-        return null;
+       return super.getNom();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -29,7 +31,7 @@ public class Administratif extends Personnel {
     // #[regen=yes,id=DCE.F9AACC7A-88B3-F5BC-640D-9FB02EBDD508]
     // </editor-fold> 
     public int getId () {
-        return 0;
+        return super.getId();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -42,7 +44,7 @@ public class Administratif extends Personnel {
     // #[regen=yes,id=DCE.AC4A18AA-4556-C7B4-1EA8-49D901742856]
     // </editor-fold> 
     public String getLogin () {
-        return null;
+        return super.getLogin();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
