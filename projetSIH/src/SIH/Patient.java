@@ -20,7 +20,7 @@ public class Patient {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.825148C0-B5EE-8536-B8B9-42D8600E8A4D]
     // </editor-fold> 
-    private int id;
+    private String id;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.497DCF02-1673-E4BD-2BB1-D3608F38FA6B]
@@ -75,7 +75,21 @@ public class Patient {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.057BF4F0-7F86-3D07-A63A-107C5971146E]
     // </editor-fold> 
-    public Patient () {
+    public Patient (String nom, String prenom, String telephone, String nomMedecinTraitant, String allergies, String regimeAlimentaire, String sexe, Date mDate, Date mDateNaissance, Maladie mMaladie, Lits localisation) {
+        this.nom=nom;
+        this.prenom = prenom;
+        this.id = id;
+        this.telephone = telephone;
+        this.nomMedecinTraitant = nomMedecinTraitant;
+        this.allergies = allergies;
+        this.regimeAlimentaire = nomMedecinTraitant;
+        this.sexe=sexe;
+        this.mDate = mDate;
+        this.mDateNaissance = mDateNaissance;
+        this.mMaladie=mMaladie;
+        this.localisation = localisation;
+        this.id=mDate.getAnnee2();
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -95,14 +109,14 @@ public class Patient {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.7FF3BB32-69F7-99EA-3988-977C31D4A674]
     // </editor-fold> 
-    public int getId () {
+    public String getId () {
         return id;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.862CED97-8BAC-E34C-17D2-3C59533F8FED]
     // </editor-fold> 
-    public void setId (int val) {
+    public void setId (String val) {
         this.id = val;
     }
 
@@ -258,6 +272,12 @@ public class Patient {
     // </editor-fold> 
     public void setTelephone (String val) {
         this.telephone = val;
+    }
+    
+    public String IPP(){
+        String IPP = getDate().getAnnee2();
+        IPP = IPP + "0000000";
+        return IPP;
     }
 
 }

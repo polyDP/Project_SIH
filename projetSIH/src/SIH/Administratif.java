@@ -9,8 +9,8 @@ public class Administratif extends Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.2618785F-BBF9-4555-9F92-BA78131A7BAA]
     // </editor-fold> 
-    public Administratif (int id, String motDePasse, String nom,String prenom) {
-        super(id, motDePasse,nom,prenom);
+    public Administratif (String id, String motDePasse, String nom, String prenom) {
+        super(id, motDePasse, nom, prenom);
         
     }
 
@@ -30,14 +30,14 @@ public class Administratif extends Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F9AACC7A-88B3-F5BC-640D-9FB02EBDD508]
     // </editor-fold> 
-    public int getId () {
+    public String getId () {
         return super.getId();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.9079FF6C-A42F-40D8-C43B-92189FBDB951]
     // </editor-fold> 
-    public void setId (int val) {
+    public void setId (String val) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

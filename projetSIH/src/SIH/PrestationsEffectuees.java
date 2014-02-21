@@ -19,7 +19,9 @@ public class PrestationsEffectuees {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D8AD8367-CCDA-72B8-787F-47674A7EB81E]
     // </editor-fold> 
-    public PrestationsEffectuees () {
+    public PrestationsEffectuees (Date mDate, Prestations mPrestation) {
+        this.mDate = mDate;
+        this.mPrestations = mPrestation;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

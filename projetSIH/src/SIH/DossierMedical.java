@@ -36,6 +36,7 @@ public abstract class DossierMedical {
     // #[regen=yes,id=DCE.5C0D6D31-C347-FCD0-2119-CC614AD97892]
     // </editor-fold> 
     public DossierMedical () {
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

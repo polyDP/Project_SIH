@@ -24,7 +24,8 @@ public class DossierMedicalClinique extends DossierMedical {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.E1BF6123-15BD-131D-3D85-E5E10DF91508]
     // </editor-fold> 
-    public DossierMedicalClinique () {
+    public DossierMedicalClinique (Patient p, Services s) {
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

@@ -9,7 +9,7 @@ public class Dim extends Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.CD13D599-7E15-1CC8-62CA-355485E3DEC4]
     // </editor-fold> 
-    public Dim (int id, String motDePasse, String nom, String prenom) {
+    public Dim (String id, String motDePasse, String nom, String prenom) {
         super(id,motDePasse,nom,prenom);
     }
 
@@ -29,14 +29,14 @@ public class Dim extends Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.57176B5D-E718-80C0-181F-484BBDB1387B]
     // </editor-fold> 
-    public int getId () {
+    public String getId () {
         return super.getId();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.8EB32677-7091-B466-8B02-6EA82F7858B2]
     // </editor-fold> 
-    public void setId (int val) {
+    public void setId (String val) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

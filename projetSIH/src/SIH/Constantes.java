@@ -29,7 +29,11 @@ public class Constantes {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.8AF6EEA5-3FAB-3ADD-7261-297189E5CF14]
     // </editor-fold> 
-    public Constantes () {
+    public Constantes (Patient p) {
+        this.taille = taille;
+        this.poids = poids;
+        this.tension = tension;
+        this.glycemie = glycemie;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

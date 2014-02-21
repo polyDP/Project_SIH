@@ -10,8 +10,9 @@ public class Infirmiere extends PersonnelMedical {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.6A14D205-9A1E-E6C4-C4DD-FC389F131394]
     // </editor-fold> 
-    public Infirmiere (int id, String motDePasse,String nom,String prenom, String metier) {
+    public Infirmiere (String id, String motDePasse,String nom,String prenom, String metier, Services service) {
         super(id,motDePasse,nom,prenom,metier);
+        this.services=services;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -30,14 +31,14 @@ public class Infirmiere extends PersonnelMedical {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.6E2EFF78-8907-0345-E42F-5165FA0E15D7]
     // </editor-fold> 
-    public int getId () {
+    public String getId () {
         return super.getId();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.41D17D9E-7304-6B51-5326-2474AE4999F4]
     // </editor-fold> 
-    public void setId (int val) {
+    public void setId (String val) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

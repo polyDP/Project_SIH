@@ -19,7 +19,7 @@ public class DMAnesthesie extends DossierMedical {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.146140C0-515C-82B5-41EB-F6D583E1F878]
     // </editor-fold> 
-    public DMAnesthesie () {
+    public DMAnesthesie (Patient p, Services s) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

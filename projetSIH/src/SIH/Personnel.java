@@ -14,7 +14,7 @@ public abstract class Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.18609497-3178-F556-D0A8-9EC268235FBE]
     // </editor-fold> 
-    private int id;
+    private String id;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.339FF0D7-056C-D686-142C-3EDC2056D7E2]
@@ -26,7 +26,7 @@ public abstract class Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.FE942F7E-6F9C-B783-910F-2682FAAB5394]
     // </editor-fold> 
-    public Personnel (int id, String motDePasse, String nom, String prenom) {
+    public Personnel (String id, String motDePasse, String nom, String prenom) {
         this.id=id;
         this.motDePasse=motDePasse;
         this.nom=nom;
@@ -36,14 +36,14 @@ public abstract class Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.EAEBC3A3-38D7-0213-869F-3A8543266127]
     // </editor-fold> 
-    public int getId () {
+    public String getId () {
         return id;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.D806A19C-33F4-16BE-0267-7D33FC12ACEC]
     // </editor-fold> 
-    public void setId (int val) {
+    public void setId (String val) {
         this.id = val;
     }
 

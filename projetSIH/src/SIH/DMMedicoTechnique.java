@@ -9,7 +9,7 @@ public class DMMedicoTechnique extends DossierMedical {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.07768EB2-B78D-690F-37BD-C26719A6C0E9]
     // </editor-fold> 
-    public DMMedicoTechnique () {
+    public DMMedicoTechnique (Patient p, Services s) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

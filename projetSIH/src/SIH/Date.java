@@ -9,28 +9,31 @@ public class Date {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.464E1913-6ED6-3C1B-5947-BC3857D7851D]
     // </editor-fold> 
-    private int annee;
+    private long annee;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0E89D8A7-9D9F-E0F9-FE45-E0358A567E43]
     // </editor-fold> 
-    private int mois;
+    private long mois;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.3E305776-E6EF-08F3-F0B0-AA9D9F452582]
     // </editor-fold> 
-    private int jour;
+    private long jour;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.DFF8AA20-9D48-5929-07E0-212FED1A4199]
     // </editor-fold> 
-    public Date () {
+    public Date (long jour, long mois, long annee) {
+        this.annee=annee;
+        this.mois = mois;
+        this.jour = jour;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.54B460C6-AC3B-3E5D-63BC-A7D37D026AB9]
     // </editor-fold> 
-    public int getAnnee () {
+    public long getAnnee () {
         return annee;
     }
 
@@ -44,7 +47,7 @@ public class Date {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.0DECBFAC-C682-2A54-7200-50B5F9735F88]
     // </editor-fold> 
-    public int getJour () {
+    public long getJour () {
         return jour;
     }
 
@@ -58,7 +61,7 @@ public class Date {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.EC7918FF-9CFF-C04F-7B9A-B072F0975B40]
     // </editor-fold> 
-    public int getMois () {
+    public long getMois () {
         return mois;
     }
 
@@ -67,6 +70,16 @@ public class Date {
     // </editor-fold> 
     public void setMois (int val) {
         this.mois = val;
+    }
+    
+    public String toString(){
+        return jour+"/"+mois+"/"+annee;
+    }
+    
+    public String getAnnee2(){
+        String annee2 = String.valueOf(annee);
+        annee2 = annee2.substring(2);
+        return annee2;
     }
 
 }

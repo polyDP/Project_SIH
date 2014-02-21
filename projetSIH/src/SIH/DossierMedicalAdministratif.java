@@ -10,7 +10,7 @@ public class DossierMedicalAdministratif {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.8AD8CDEB-FE6E-6065-4A65-E383844673A0]
     // </editor-fold> 
-    private Patient mPatients;
+    private Patient patients;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.A10E2CC6-9C9B-2AE2-7CA0-18D703482500]
@@ -25,7 +25,7 @@ public class DossierMedicalAdministratif {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.4B359980-11EA-BB4A-C3FF-A3026FE4D35D]
     // </editor-fold> 
-    private MedecinPH mMedecinPH;
+    private MedecinPH medecinPH;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.D4B2D652-F2FE-F027-6A30-6C4682280AA9]
@@ -45,7 +45,9 @@ public class DossierMedicalAdministratif {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F95856C4-B092-31B1-A413-E0234FD2BF05]
     // </editor-fold> 
-    public DossierMedicalAdministratif () {
+    public DossierMedicalAdministratif (Patient p, MedecinPH m) {
+        this.patients = p;
+        this.medecinPH = m;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -94,14 +96,14 @@ public class DossierMedicalAdministratif {
     // #[regen=yes,regenBody=yes,id=DCE.A5BC3C8A-48B8-B95A-173C-81B281118AD2]
     // </editor-fold> 
     public MedecinPH getMedecinPH () {
-        return mMedecinPH;
+        return medecinPH;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.FF79214C-B2D8-70BC-5445-5845C107B3E4]
     // </editor-fold> 
     public void setMedecinPH (MedecinPH val) {
-        this.mMedecinPH = val;
+        this.medecinPH = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -143,14 +145,14 @@ public class DossierMedicalAdministratif {
     // #[regen=yes,regenBody=yes,id=DCE.F70DD985-D6AB-3EB4-7D69-DD880B2A5C0F]
     // </editor-fold> 
     public Patient getPatients () {
-        return mPatients;
+        return patients;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.AECCBD94-A1D5-559D-E43A-2CA987DA3440]
     // </editor-fold> 
     public void setPatients (Patient val) {
-        this.mPatients = val;
+        this.patients = val;
     }
 
 }

@@ -19,7 +19,9 @@ public class LettreSortie {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.4E92D643-5FD5-3C2E-2668-1447F6C4DFE5]
     // </editor-fold> 
-    public LettreSortie () {
+    public LettreSortie (MedecinPH m, String lettre) {
+        this.mDossierMedical = m;
+        this.lettre=lettre;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

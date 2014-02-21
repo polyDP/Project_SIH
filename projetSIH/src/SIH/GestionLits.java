@@ -15,7 +15,7 @@ public class GestionLits {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.C705E0D4-A90D-AF37-8C1B-7596774C3938]
     // </editor-fold> 
-    public GestionLits () {
+    public GestionLits (Services s) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

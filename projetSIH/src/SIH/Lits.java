@@ -24,7 +24,13 @@ public class Lits {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F236F082-73BF-D0C9-CAD4-EC50B8BF3164]
     // </editor-fold> 
-    public Lits () {
+    public Lits (Services s) {
+        this.mServices =s;
+    }
+    
+    public Lits (Services s, Patient p){
+        this.mPatients = p;
+        this.mServices =s;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
