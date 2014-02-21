@@ -60,7 +60,7 @@ public class Patient {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.2F1217D3-CFA1-F84F-21EE-C9ABF7E75311]
     // </editor-fold> 
-    private ArrayList<PrestationsEffectuees> mPrestationsEffectuees;
+    private ArrayList<PrestationsEffectuees> prestationsEffectuees;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.33A16E70-B9C0-20B6-5FC3-89D83B4A4966]
@@ -180,14 +180,15 @@ public class Patient {
     // #[regen=yes,regenBody=yes,id=DCE.02C87013-1C8E-88A5-29F2-100299630378]
     // </editor-fold> 
     public ArrayList<PrestationsEffectuees> getPrestationsEffectuees () {
-        return mPrestationsEffectuees;
+        return prestationsEffectuees;
     }
+    
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.662AD0EF-9497-2EE3-DD5B-C0E02E297FF7]
     // </editor-fold> 
     public void setPrestationsEffectuees (ArrayList<PrestationsEffectuees> val) {
-        this.mPrestationsEffectuees = val;
+        this.prestationsEffectuees = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -279,6 +280,9 @@ public class Patient {
         IPP = IPP + "0000000";
         return IPP;
     }
+   public String toString(){
+       return nom +" "+ prenom;
+   }
 
 }
 
