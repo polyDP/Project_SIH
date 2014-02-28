@@ -85,10 +85,10 @@ public class Accueil_logiciel extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel3.setText("Mot de passe");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ludivine\\Dropbox\\SIH\\Images\\Logo_Asclepios.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo_Asclepios.png"))); // NOI18N
         jLabel4.setText("jLabel4");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ludivine\\Dropbox\\SIH\\Images\\Princetone_plainsboro.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Princetone_plainsboro.png"))); // NOI18N
         jLabel5.setText("jLabel5");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
