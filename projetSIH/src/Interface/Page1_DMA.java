@@ -61,7 +61,7 @@ public class Page1_DMA extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ludivine\\Dropbox\\SIH\\Images\\Logo_Asclepios.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo_Asclepios.png"))); // NOI18N
         jLabel2.setText("jLabel2");
 
         jLabel1.setText("utilisateur code");
