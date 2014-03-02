@@ -139,7 +139,7 @@ public class Patient_existant_donnee_perso_dma extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
-        jLabel5.setText("Nouveau Patient");
+        jLabel5.setText("Données du patient");
         jPanel7.add(jLabel5);
 
         jPanel6.add(jPanel7, java.awt.BorderLayout.PAGE_START);

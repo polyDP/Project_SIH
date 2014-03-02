@@ -10,12 +10,12 @@ package Interface;
  *
  * @author Ludivine
  */
-public class Premiere_page_dma extends javax.swing.JFrame {
+public class Resultats_Anesthesie extends javax.swing.JFrame {
 
     /**
-     * Creates new form Premiere_page_dma
+     * Creates new form Creation_patient_dma
      */
-    public Premiere_page_dma() {
+    public Resultats_Anesthesie() {
         initComponents();
     }
 
@@ -35,13 +35,17 @@ public class Premiere_page_dma extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -53,7 +57,7 @@ public class Premiere_page_dma extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Première page du DMA");
+        setTitle("Résultats");
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -61,25 +65,26 @@ public class Premiere_page_dma extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setBackground(new java.awt.Color(153, 204, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo_Asclepios.png"))); // NOI18N
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel2.add(jLabel1, java.awt.BorderLayout.CENTER);
+        jPanel2.add(jLabel1, java.awt.BorderLayout.PAGE_END);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.LINE_END);
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 255));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setBackground(new java.awt.Color(153, 204, 255));
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("identifiant");
-        jPanel3.add(jLabel2, java.awt.BorderLayout.CENTER);
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel2.setText("Identifiant");
+        jPanel3.add(jLabel2, java.awt.BorderLayout.EAST);
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
         jPanel4.setBackground(new java.awt.Color(153, 204, 255));
+
+        jButton1.setBackground(new java.awt.Color(153, 204, 255));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jButton1.setText("Valider");
+        jPanel4.add(jButton1);
 
         jButton2.setBackground(new java.awt.Color(153, 204, 255));
         jButton2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -91,48 +96,62 @@ public class Premiere_page_dma extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(153, 204, 255));
         jPanel5.setLayout(new java.awt.BorderLayout());
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Princetone_plainsboro.png"))); // NOI18N
+        jPanel5.add(jLabel3, java.awt.BorderLayout.PAGE_END);
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Patient");
+        jPanel5.add(jLabel4, java.awt.BorderLayout.PAGE_START);
+
+        jPanel1.add(jPanel5, java.awt.BorderLayout.LINE_START);
+
         jPanel6.setBackground(new java.awt.Color(153, 204, 255));
         jPanel6.setLayout(new java.awt.BorderLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Princetone_plainsboro.png"))); // NOI18N
-        jPanel6.add(jLabel3, java.awt.BorderLayout.PAGE_END);
-
-        jPanel5.add(jPanel6, java.awt.BorderLayout.LINE_START);
-
         jPanel7.setBackground(new java.awt.Color(153, 204, 255));
 
-        jButton1.setBackground(new java.awt.Color(153, 204, 255));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton1.setText("Création d'un patient");
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel5.setText("Résultats");
+        jLabel5.setToolTipText("");
+        jPanel7.add(jLabel5);
+
+        jPanel6.add(jPanel7, java.awt.BorderLayout.PAGE_START);
+
+        jPanel9.setBackground(new java.awt.Color(153, 204, 255));
 
         jButton3.setBackground(new java.awt.Color(153, 204, 255));
-        jButton3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton3.setText("Rechercher un patient");
+        jButton3.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jButton3.setText("Imagerie");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(195, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(196, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        jButton4.setBackground(new java.awt.Color(153, 204, 255));
+        jButton4.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jButton4.setText("Biologie");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap(175, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
-        jPanel5.add(jPanel7, java.awt.BorderLayout.CENTER);
+        jPanel6.add(jPanel9, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(jPanel5, java.awt.BorderLayout.CENTER);
+        jPanel1.add(jPanel6, java.awt.BorderLayout.CENTER);
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -156,11 +175,6 @@ public class Premiere_page_dma extends javax.swing.JFrame {
         jMenu3.setText("Paramètres");
 
         jMenuItem4.setText("Changer le mot de passe");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
         jMenu3.add(jMenuItem4);
 
         jMenuBar1.add(jMenu3);
@@ -184,10 +198,6 @@ public class Premiere_page_dma extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -205,20 +215,20 @@ public class Premiere_page_dma extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Premiere_page_dma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Resultats_Anesthesie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Premiere_page_dma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Resultats_Anesthesie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Premiere_page_dma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Resultats_Anesthesie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Premiere_page_dma.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Resultats_Anesthesie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Premiere_page_dma().setVisible(true);
+                new Resultats_Anesthesie().setVisible(true);
             }
         });
     }
@@ -227,9 +237,12 @@ public class Premiere_page_dma extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -246,6 +259,7 @@ public class Premiere_page_dma extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
