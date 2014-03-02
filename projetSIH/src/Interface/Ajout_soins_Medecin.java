@@ -122,10 +122,10 @@ public class Ajout_soins_Medecin extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel4.setText("Choisir un soin");
+        jLabel4.setText("Choisir un soin:");
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel6.setText("Diagnostic: ");
+        jLabel6.setText("Valeur: ");
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
