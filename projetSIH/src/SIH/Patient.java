@@ -50,12 +50,12 @@ public class Patient {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.87877E4F-1673-5C59-434D-6BAFEA7858BF]
     // </editor-fold> 
-    private Date mDate;
+    private Date date;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.7F7151D7-D1AA-201C-7389-1D7022A5337D]
     // </editor-fold> 
-    private Date mDateNaissance;
+    private Date dateNaissance;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.2F1217D3-CFA1-F84F-21EE-C9ABF7E75311]
@@ -72,23 +72,23 @@ public class Patient {
     // </editor-fold> 
     private Lits localisation;
 
+    private MedecinPH pHResponsable;
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.057BF4F0-7F86-3D07-A63A-107C5971146E]
     // </editor-fold> 
-    public Patient (String nom, String prenom, String telephone, String nomMedecinTraitant, String allergies, String regimeAlimentaire, String sexe, Date mDate, Date mDateNaissance, Maladie mMaladie, Lits localisation) {
+    public Patient (String nom, String prenom, String telephone, String nomMedecinTraitant, String allergies, String regimeAlimentaire, String sexe, Date dateJour, Date dateNaissance, Lits lit) {
         this.nom=nom;
         this.prenom = prenom;
-        this.id = id;
         this.telephone = telephone;
         this.nomMedecinTraitant = nomMedecinTraitant;
         this.allergies = allergies;
-        this.regimeAlimentaire = nomMedecinTraitant;
+        this.regimeAlimentaire = regimeAlimentaire;
         this.sexe=sexe;
-        this.mDate = mDate;
-        this.mDateNaissance = mDateNaissance;
-        this.mMaladie=mMaladie;
-        this.localisation = localisation;
-        this.id=mDate.getAnnee2();
+        this.date = dateJour;
+        this.dateNaissance = dateNaissance;
+        this.id=date.getAnnee2();
+        this.localisation = lit;
         
     }
 
@@ -138,28 +138,28 @@ public class Patient {
     // #[regen=yes,regenBody=yes,id=DCE.6AF9DA82-4F23-852D-8242-24DA7CC330D1]
     // </editor-fold> 
     public Date getDate () {
-        return mDate;
+        return date;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.04AB8DF0-BDA9-01D9-6081-C426EC1DBB2A]
     // </editor-fold> 
     public void setDate (Date val) {
-        this.mDate = val;
+        this.date = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.CD9B4C7C-4867-37EE-07FF-98A8D8BBFA29]
     // </editor-fold> 
     public Date getDateNaissance () {
-        return mDateNaissance;
+        return dateNaissance;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.E52B9E8A-1612-9BAB-BA4E-53B67C14BF3A]
     // </editor-fold> 
     public void setDateNaissance (Date val) {
-        this.mDateNaissance = val;
+        this.dateNaissance = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -283,6 +283,16 @@ public class Patient {
    public String toString(){
        return nom +" "+ prenom;
    }
+
+    
+    public MedecinPH getPHResponsable() {
+        return pHResponsable;
+    }
+
+    
+    public void setPHResponsable(MedecinPH pHResponsable) {
+        this.pHResponsable = pHResponsable;
+    }
 
 }
 

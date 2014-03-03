@@ -9,7 +9,7 @@ public class LettreSortie {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.AD7B3796-BDC3-71C4-6171-3B8560526389]
     // </editor-fold> 
-    private String lettre;
+    private String message;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.1691919E-1021-0B76-4F38-C72DDBED41F5]
@@ -19,23 +19,23 @@ public class LettreSortie {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.4E92D643-5FD5-3C2E-2668-1447F6C4DFE5]
     // </editor-fold> 
-    public LettreSortie (MedecinPH m, String lettre) {
+    public LettreSortie (MedecinPH m, String message) {
         this.mDossierMedical = m;
-        this.lettre=lettre;
+        this.message=message;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.73C1DC18-DBF9-2BF6-5AAD-8729BEDC5BE4]
     // </editor-fold> 
-    public String getLettre () {
-        return lettre;
+    public String getMessage () {
+        return message;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.B5B4A892-0DD0-8711-F226-D4DE273FF1CD]
     // </editor-fold> 
-    public void setLettre (String val) {
-        this.lettre = val;
+    public void setMessage (String val) {
+        this.message = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

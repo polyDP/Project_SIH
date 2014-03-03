@@ -10,7 +10,7 @@ public class MedecinPH extends PersonnelMedical {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.3C59CF4B-46AD-791D-5CB4-E08C44CD21A5]
     // </editor-fold> 
-    public MedecinPH (String id, String motDePasse, String nom,String prenom, String metier, Services services) {
+    public MedecinPH (String id, String motDePasse, String nom, String prenom, String metier, Services services) {
         super(id,motDePasse,nom,prenom,metier);
         this.services=services;
     }
@@ -72,6 +72,10 @@ public String getPrenom () {
     }
  
     public void setPrenom (String val) {
+    }
+    
+    public String toString(){
+        return super.getNom() +" "+ super.getPrenom()+ " "+getMetier()+" " +services;
     }
 }
 

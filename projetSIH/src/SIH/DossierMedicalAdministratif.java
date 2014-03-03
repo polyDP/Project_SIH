@@ -39,6 +39,8 @@ public class DossierMedicalAdministratif {
 
     private boolean archivage;
 
+    private Services service;
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F95856C4-B092-31B1-A413-E0234FD2BF05]
     // </editor-fold> 
@@ -144,6 +146,20 @@ public class DossierMedicalAdministratif {
      */
     public void setArchivage(boolean archivage) {
         this.archivage = archivage;
+    }
+
+    /**
+     * @return the service
+     */
+    public Services getService() {
+        return service;
+    }
+
+    /**
+     * @param service the service to set
+     */
+    public void setService(Services service) {
+        this.service = service;
     }
 
 }

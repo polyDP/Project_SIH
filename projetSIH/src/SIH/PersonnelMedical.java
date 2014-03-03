@@ -19,7 +19,7 @@ public class PersonnelMedical extends Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.63548C80-246B-FB49-7A9D-A1DE6EB18685]
     // </editor-fold> 
-    public PersonnelMedical (String id, String motDePasse, String nom, String metier,String prenom) {
+    public PersonnelMedical (String id, String motDePasse, String nom, String prenom ,String metier) {
         super(id,motDePasse,nom,prenom);
         this.metier = metier; 
     }
