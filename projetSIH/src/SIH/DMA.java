@@ -38,14 +38,16 @@ public class DMA {
         System.out.println("from Dossier Medical administratif prenom patient : " + dosMedAdm1.getPatients().getPrenom());
         System.out.println("from Dossier Medical administratif telephone patient : " + dosMedAdm1.getPatients().getTelephone());
         System.out.println("from Dossier Medical administratif medecin traitant: " + dosMedAdm1.getPatients().getNomMedecinTraitant());
-        System.out.println("from Dossier Medical administratif liste patients : " + dosMedAdm1.getPatients().getSexe());
+        System.out.println("from Dossier Medical administratif sexe patient : " + dosMedAdm1.getPatients().getSexe());
+        System.out.println("from Dossier Medical administratif antecedents : " + dosMedAdm1.getPatients().afficheAntecedants(pat1));
+        
 
         if (dosMedAdm1.getPatients().getPrestationsEffectuees() != null) {
             for (int i = 0; i < dosMedAdm1.getPatients().getPrestationsEffectuees().size(); i++) {
                 System.out.println("from Dossier Medical administratif prestations effectuees : " + dosMedAdm1.getPatients().getPrestationsEffectuees().get(i).affichage()); // affichage des prestations effectuees pour le patient 1 et le medecin1
             }
         } else {
-            System.out.println("le patient n'a pas d'antécédants");
+            System.out.println("le patient n'a pas d'anciennes prestations");
         }
 
         if (dosMedAdm1.getLettreSortie() != null) {
@@ -69,6 +71,18 @@ public class DMA {
 
         dosMedAdm1.getPatients().setPHResponsable(med1);
         System.out.println("from dossier Medical administratif PH responsable : " + dosMedAdm1.getMedecinPH().toString());
+        
+        System.out.println("from Dossier Medical Administratif Antecedent patient : \n" + pat1.afficheAntecedants(pat1));
+        
+        Date dateMal1 = new Date (21,02,2014);         //date maladie patient 1
+        Maladie malPat1 = new Maladie("diarhée aigue", "Gastro Entérite Aigue",dateMal1); // creation de la maladie du patient1
+        
+        pat1.setMaladie(malPat1);
+        
+        System.out.println("from Dossier Medical Administratif RECAPITULATIF patient : \n" + pat1.affichagePatient());
+        
+        
+         
     }
 
 }

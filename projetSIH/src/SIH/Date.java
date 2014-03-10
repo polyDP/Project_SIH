@@ -1,6 +1,5 @@
 package SIH;
 
-
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.2CAF514F-54A4-C6A2-E022-9FA5DB6E537E]
 // </editor-fold> 
@@ -24,8 +23,8 @@ public class Date {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.DFF8AA20-9D48-5929-07E0-212FED1A4199]
     // </editor-fold> 
-    public Date (long jour, long mois, long annee) {
-        this.annee=annee;
+    public Date(long jour, long mois, long annee) {
+        this.annee = annee;
         this.mois = mois;
         this.jour = jour;
     }
@@ -33,54 +32,53 @@ public class Date {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.54B460C6-AC3B-3E5D-63BC-A7D37D026AB9]
     // </editor-fold> 
-    public long getAnnee () {
+    public long getAnnee() {
         return annee;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.64EE229C-7137-89FD-FDE2-7C6E601056BD]
     // </editor-fold> 
-    public void setAnnee (int val) {
+    public void setAnnee(int val) {
         this.annee = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.0DECBFAC-C682-2A54-7200-50B5F9735F88]
     // </editor-fold> 
-    public long getJour () {
+    public long getJour() {
         return jour;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.25380BE7-5F37-797A-3FFC-6CB3276CD10F]
     // </editor-fold> 
-    public void setJour (int val) {
+    public void setJour(int val) {
         this.jour = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.EC7918FF-9CFF-C04F-7B9A-B072F0975B40]
     // </editor-fold> 
-    public long getMois () {
+    public long getMois() {
         return mois;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.326ACF4E-62F4-542E-1D69-431282ECE339]
     // </editor-fold> 
-    public void setMois (int val) {
+    public void setMois(long val) {
         this.mois = val;
     }
-    
-    public String toString(){
-        return jour+"/"+mois+"/"+annee;
+
+    public String toString() {
+        return jour + "/" + mois + "/" + annee;
     }
-    
-    public String getAnnee2(){
+
+    public String getAnnee2() {
         String annee2 = String.valueOf(annee);
         annee2 = annee2.substring(2);
         return annee2;
     }
 
 }
-

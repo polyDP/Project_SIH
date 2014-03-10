@@ -1,61 +1,75 @@
 package SIH;
 
+import java.util.ArrayList;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.8255732C-17AF-FC37-BD60-73613F520DD6]
 // </editor-fold> 
 public class Dim extends Personnel {
 
+    ArrayList<MedecinPH> medecin;
+
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.CD13D599-7E15-1CC8-62CA-355485E3DEC4]
     // </editor-fold> 
-    public Dim (String id, String motDePasse, String nom, String prenom) {
-        super(id,motDePasse,nom,prenom);
+    public Dim(String id, String motDePasse, String nom, String prenom) {
+        super(id, motDePasse, nom, prenom);
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.63EC43CB-20BA-6C2A-BA4A-D82094BE354B]
     // </editor-fold> 
-    public String getNom () {
+    public String getNom() {
         return super.getNom();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.75E140C9-D956-501C-A3FB-4F7C84C4B488]
     // </editor-fold> 
-    public void setNom (String val) {
+    public void setNom(String val) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.57176B5D-E718-80C0-181F-484BBDB1387B]
     // </editor-fold> 
-    public String getId () {
+    public String getId() {
         return super.getId();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.8EB32677-7091-B466-8B02-6EA82F7858B2]
     // </editor-fold> 
-    public void setId (String val) {
+    public void setId(String val) {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.389B87EA-2EA8-979E-1163-5648D58AE930]
     // </editor-fold> 
-    public String getLogin () {
+    public String getLogin() {
         return super.getLogin();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F8D515EA-8767-3DEC-5371-685AAD03D17E]
     // </editor-fold> 
-    public void setLogin (String val) {
+    public void setLogin(String val) {
     }
-public String getPrenom () {
+
+    public String getPrenom() {
         return super.getPrenom();
     }
- 
-    public void setPrenom (String val) {
-    }
-}
 
+    public void setPrenom(String val) {
+    }
+
+    public ArrayList<MedecinPH> affficheMedecins() {
+        return medecin;
+        //va chercher dans la base de données le nombre de médecins de l'hopital
+
+    }
+
+    //public ... afficheLogs(){
+    
+   //}
+    
+}

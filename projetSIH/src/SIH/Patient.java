@@ -74,6 +74,8 @@ public class Patient {
 
     private MedecinPH pHResponsable;
     
+    private ArrayList<Maladie> antecedents;
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.057BF4F0-7F86-3D07-A63A-107C5971146E]
     // </editor-fold> 
@@ -294,5 +296,40 @@ public class Patient {
         this.pHResponsable = pHResponsable;
     }
 
+    public String affichagePatient(){
+        String aff = null;
+        aff = " nom patient : " + nom + "\n";
+        aff = aff + " prenom patient : " + prenom + "\n";
+        aff = aff + " sexe patient : " + sexe + "\n";
+        aff = aff + " numero telephone patient : " + telephone + "\n";
+        aff = aff + " nom medecin traitant : " + nomMedecinTraitant + "\n";
+        aff = aff + " maladie patient : " + this.getMaladie().toString() + "\n";
+        aff = aff + " antecedents patient : " + this.afficheAntecedants(this);
+        return aff;
+        
+    }
+    
+    public String afficheAntecedants(Patient p){
+        antecedents = new ArrayList<>();
+        String antecedent = " ";
+        
+        // va chercher dans la base de données les antecedants du patient sous forme de maladie
+       // if (base de données non vide)
+        Date d = new Date(1992,05,21);
+        Maladie m = new Maladie("ceci","cela",d);
+
+        antecedents.add(m);
+        
+        for(int i = 0; i< antecedents.size();i++){
+            antecedent = antecedent + "date : " + antecedents.get(i).getDateMaladie().toString() + " motif : " +antecedents.get(i).getMotifHospitalisation() + ", Diagnostique : " + antecedents.get(i).getDiagnostique();  
+        }
+        return antecedent;
+        
+        //else {
+                //return "le patient n'a pas d'antécédents"
+                //}
+    }
+    
+    
 }
 

@@ -17,21 +17,16 @@ public class Maladie {
     // #[regen=yes,id=DCE.D88BF484-7B91-17AD-546C-71914FCAC502]
     // </editor-fold> 
     private String diagnostique;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.CB2A5D7C-351E-DFA0-AB71-6E95306838E8]
-    // </editor-fold> 
-    private ArrayList<String> antecedents;
+    
+    private Date dateMaladie;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.8A1BFEFE-B057-2A39-6474-96DFFF3490FD]
     // </editor-fold> 
-    public Maladie (String motifHospitalisation, String diagnostique,ArrayList<String> antecedents ) {
+    public Maladie (String motifHospitalisation, String diagnostique, Date dateMaladie) {
         this.motifHospitalisation = motifHospitalisation;
         this.diagnostique = diagnostique;
-        this.antecedents = antecedents;
-       
-        
+        this.dateMaladie = dateMaladie;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -62,21 +57,24 @@ public class Maladie {
         this.motifHospitalisation = val;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.E4ACC813-30F3-62B2-3C53-98F2262227D0]
-    // </editor-fold> 
-    public ArrayList<String> getAntecedents () {
-        return antecedents;
+    /**
+     * @return the dateMaladie
+     */
+    public Date getDateMaladie() {
+        return dateMaladie;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.A187CA8E-1F80-879A-2831-3A740F2F637F]
-    // </editor-fold> 
-    public void setAntecedents (ArrayList<String> val) {
-        this.antecedents = val;
+    /**
+     * @param dateMaladie the dateMaladie to set
+     */
+    public void setDateMaladie(Date dateMaladie) {
+        this.dateMaladie = dateMaladie;
     }
-
    
+    public String toString(){
+        return "Date : " + dateMaladie + " Motif : " + motifHospitalisation + " Diagnostique : " + diagnostique;
+    }
+
     
 }
 

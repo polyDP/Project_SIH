@@ -27,6 +27,7 @@ public class Test {
         //------------------------------Patients------------------------------//
         //--------------------------------------------------------------------//
         Date dateAdmPat1 = new Date(21, 02, 2014);     // date admission patient 1
+        Date dateMal1 = new Date (21,02,2014);         //date maladie patient 1
         Date dateNaisPat1 = new Date(15, 02, 1990);    // date naisssance patient1
         Date datePrest1Pat1 = new Date(20, 03, 2014);   // date prestation 1 patient1
         Date datePrest2Pat1 = new Date(22, 03, 2014);   // date prestation 2 patient1
@@ -41,14 +42,17 @@ public class Test {
 
         Patient pat1 = new Patient("Robin", "Eudes", "0655889977", "Labat Paul, medecine generale", "Rodolphe", "vegetarien", "Homme", dateAdmPat1, dateNaisPat1,litPat1); // creation du patient
         
-        ArrayList<String> antecedents; // va chercher dans la base de données si le patient a eu des antécédents
-        antecedents = new ArrayList<String>();
-        antecedents.add("Apendicectomie"); //ici creation d'un antecedant pour le test
+        //ArrayList<String> antecedents; // va chercher dans la base de données si le patient a eu des antécédents
+        //antecedents = new ArrayList<String>();
+       // antecedents.add("Apendicectomie"); //ici creation d'un antecedant pour le test
 
-        Maladie malPat1 = new Maladie("diarhée aigue", "Gastro Entérite Aigue", antecedents); // creation de la maladie du patient1
-        antecedents.add(malPat1.getDiagnostique()); // ajout automatique de la maladie aux antécédents du patient.
+        Maladie malPat1 = new Maladie("diarhée aigue", "Gastro Entérite Aigue",dateMal1); // creation de la maladie du patient1
+        //antecedents.add(malPat1.getDiagnostique()); // ajout automatique de la maladie aux antécédents du patient.
         
         pat1.setMaladie(malPat1);
+        
+        System.out.println("affichage : \n" + pat1.affichagePatient());
+        System.out.println("affichage 2 : " + pat1.afficheAntecedants(pat1));
         
         ArrayList<PrestationsEffectuees> listPresEffPat1;
         listPresEffPat1 = new ArrayList<PrestationsEffectuees>(); // si premiere admission du patient création d'une liste vide de prestations effectuées
@@ -97,7 +101,7 @@ public class Test {
         System.out.println("from patient date de naissance : " + pat1.getDateNaissance().toString());
         System.out.println("from patient localisation du patient : " + pat1.getLocalisation().getServices());
         System.out.println("from patient Diagnotique de la maladie : " + pat1.getMaladie().getDiagnostique());
-        System.out.println("from patient antecedants du patient : " + pat1.getMaladie().getAntecedents());
+        System.out.println("from patient antecedants du patient : " + pat1.afficheAntecedants(pat1));
         System.out.println("from patient motif hospitalisation "+pat1.getMaladie().getMotifHospitalisation());
         System.out.println("from patient IPP : pas encore implemente " + pat1.IPP());     
         System.out.println("from patient numero telephone : " + pat1.getTelephone());
@@ -145,6 +149,9 @@ public class Test {
         dMC.setConstantes(listeConstantes);
         
         
+        //----------------------- pour le DIM -----------------------------
+        Dim dim1 = new Dim("id","motPasse","nom","prenom");
+        dim1.affficheMedecins();
         
         
     }
