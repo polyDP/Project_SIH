@@ -7,8 +7,10 @@ package Interface;
 
 import SIH.Adresse;
 import SIH.Date;
+import SIH.Patient;
 import java.util.Calendar;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,22 +21,6 @@ public class Creation_patient_dma extends javax.swing.JFrame {
     /**
      * Creates new form Creation_patient_dma
      */
-    private String nom;
-    private String prenom;
-    private String telephone;
-    private Date dateNaissance;
-    private Date DateJour;
-    private Adresse adresse;
-    private long jour;
-    private long mois;
-    private long annee;
-    private String numero;
-    private String rue;
-    private String codePostal;
-    private String ville;
-    private String medecinTraitant;
-    private String sexe;
-
     public Creation_patient_dma() {
         initComponents();
     }
@@ -75,7 +61,6 @@ public class Creation_patient_dma extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox();
         jComboBox3 = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
@@ -85,6 +70,7 @@ public class Creation_patient_dma extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -200,6 +186,11 @@ public class Creation_patient_dma extends javax.swing.JFrame {
         jLabel7.setText("Prénom: ");
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel8.setText("Date de Naissance:");
@@ -230,13 +221,6 @@ public class Creation_patient_dma extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel9.setText("N° de téléphone:");
-
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##########"))));
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel10.setText("Adresse:");
@@ -290,6 +274,12 @@ public class Creation_patient_dma extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("identifiant du patient");
 
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -318,19 +308,19 @@ public class Creation_patient_dma extends javax.swing.JFrame {
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jFormattedTextField1)
                     .addComponent(jTextField2)
                     .addComponent(jTextField1)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField6)
                     .addComponent(jTextField7)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField8))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13))
@@ -352,10 +342,10 @@ public class Creation_patient_dma extends javax.swing.JFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -369,7 +359,7 @@ public class Creation_patient_dma extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         jPanel6.add(jPanel8, java.awt.BorderLayout.CENTER);
@@ -497,13 +487,8 @@ public class Creation_patient_dma extends javax.swing.JFrame {
         System.out.println(annee);
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        telephone = jFormattedTextField1.getText();
-        System.out.println(telephone);
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
-
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        
+
         numero = jTextField3.getText();
         System.out.println(numero);
     }//GEN-LAST:event_jTextField3ActionPerformed
@@ -529,6 +514,98 @@ public class Creation_patient_dma extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        sexe = jRadioButton2.getLabel();
+        nom = jTextField1.getText();
+        prenom = jTextField2.getText();
+        jour = Long.parseLong(jComboBox1.getItemAt(jComboBox1.getSelectedIndex()).toString());
+        String valMois = (jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
+        switch (valMois) {
+            case "Janvier":
+                mois = 01;
+                break;
+
+            case "Fevrier":
+                mois = 02;
+                break;
+
+            case "Mars":
+                mois = 03;
+                break;
+
+            case "Avril":
+                mois = 04;
+                break;
+
+            case "Mai":
+                mois = 05;
+                break;
+
+            case "Juin":
+                mois = 06;
+                break;
+
+            case "Juillet":
+                mois = 07;
+                break;
+
+            case "Aout":
+                mois = 8;
+                break;
+
+            case "Septembre":
+                mois = 9;
+                break;
+
+            case "Octobre":
+                mois = 10;
+                break;
+
+            case "Novembre":
+                mois = 11;
+                break;
+
+            case "Decembre":
+                mois = 12;
+                break;
+        }
+        annee = Long.parseLong(jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
+
+        Date dateNaissance = new Date(jour, mois, annee);
+
+        float num;
+        Boolean chiffre = true;
+
+        try {
+            num = Float.valueOf(jTextField8.getText());
+
+        } catch (Exception e) {
+
+            chiffre = false;
+        }
+
+        if (jTextField8.getText().length() == 0) {
+            JOptionPane.showMessageDialog(jPanel1, "pas de numero de telephone entre", "erreur", JOptionPane.WARNING_MESSAGE);
+
+        } else if (jTextField8.getText().length() != 10) {
+            JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone doit contenir 10 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+
+        } else if (chiffre == false) {
+            JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+
+            telephone = jTextField8.getText();
+        }
+        numero = jTextField3.getText();
+        rue = jTextField4.getText();
+        codePostal = jTextField5.getText();
+        ville = jTextField6.getText();
+
+        Adresse adressePatient = new Adresse(numero, rue, codePostal, ville);
+
+        medecinTraitant = jTextField7.getText();
+
         Locale locale = Locale.getDefault();
         Calendar cal = Calendar.getInstance(locale);
         long day;
@@ -536,14 +613,18 @@ public class Creation_patient_dma extends javax.swing.JFrame {
         long year;
         day = cal.get(Calendar.DAY_OF_MONTH);
         month = cal.get(Calendar.MONTH);
-        month = month+1;
+        month = month + 1;
         year = cal.get(Calendar.YEAR);
         Date dateJour = new Date(day, month, year);
-        System.out.println(dateJour);
 
-        Date dateNaissance = new Date(jour, mois, annee);
+        patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
 
-        //Patient patient = new Patient(nom,prenom,telephone,medecinTraitant,"allergies : a implementer","regime alimentaire : a implementer",sexe,dateJour,dateNaissance,lit);
+        System.out.println(patient.affichagePatient());
+        
+        this.dispose();
+        Creation_sejour_nouveauPatient_DMA csnPDMA = new Creation_sejour_nouveauPatient_DMA(patient);
+        csnPDMA.setVisible(true);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -552,22 +633,54 @@ public class Creation_patient_dma extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
-        if(jTextField3.getText().equals("N°"))
-            {
-                jTextField3.setText("");
-                repaint();
-                revalidate();
-            }
+        if (jTextField3.getText().equals("N°")) {
+            jTextField3.setText("");
+            repaint();
+            revalidate();
+        }
     }//GEN-LAST:event_jTextField3MouseClicked
 
     private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
-       if(jTextField3.getText().equals(""))
-            {
-                jTextField3.setText("N°");
-                repaint();
-                revalidate();
-            }
+        if (jTextField3.getText().equals("")) {
+            jTextField3.setText("N°");
+            repaint();
+            revalidate();
+        }
     }//GEN-LAST:event_jPanel8MouseClicked
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        float num;
+        Boolean chiffre = true;
+
+        try {
+            num = Float.valueOf(jTextField8.getText());
+
+        } catch (Exception e) {
+
+            chiffre = false;
+        }
+
+        if (jTextField8.getText().length() == 0) {
+            JOptionPane.showMessageDialog(jPanel1, "pas de numero de telephone entre", "erreur", JOptionPane.WARNING_MESSAGE);
+
+        } else if (jTextField8.getText().length() != 10) {
+            JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone doit contenir 10 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+
+        } else if (chiffre == false) {
+            JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+
+            telephone = jTextField8.getText();
+        }
+
+        System.out.println(telephone);
+
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        prenom = jTextField2.getText();
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -605,13 +718,29 @@ public class Creation_patient_dma extends javax.swing.JFrame {
         });
     }
 
+    private String nom;
+    private String prenom;
+    private String telephone;
+    private Date dateNaissance;
+    private Date DateJour;
+    private Adresse adresse;
+    private long jour;
+    private long mois;
+    private long annee;
+    private String numero;
+    private String rue;
+    private String codePostal;
+    private String ville;
+    private String medecinTraitant;
+    private String sexe;
+    private Patient patient;
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -652,5 +781,6 @@ public class Creation_patient_dma extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }
