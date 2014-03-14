@@ -8,8 +8,6 @@ package Interface;
 import SIH.Adresse;
 import SIH.Date;
 import SIH.Patient;
-import java.util.Calendar;
-import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -606,16 +604,7 @@ public class Creation_patient_dma extends javax.swing.JFrame {
 
         medecinTraitant = jTextField7.getText();
 
-        Locale locale = Locale.getDefault();
-        Calendar cal = Calendar.getInstance(locale);
-        long day;
-        long month;
-        long year;
-        day = cal.get(Calendar.DAY_OF_MONTH);
-        month = cal.get(Calendar.MONTH);
-        month = month + 1;
-        year = cal.get(Calendar.YEAR);
-        Date dateJour = new Date(day, month, year);
+        
 
         patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
 

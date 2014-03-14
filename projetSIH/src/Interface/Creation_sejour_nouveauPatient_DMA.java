@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Interface;
 
+import SIH.Date;
 import SIH.Patient;
 import SIH.Services;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -21,15 +23,24 @@ public class Creation_sejour_nouveauPatient_DMA extends javax.swing.JFrame {
     /**
      * Creates new form Creation_sejour_DMA
      */
-    
     Patient patient;
-    
+    int day;
+    int month;
+    int year;
+
     /**
      *
      * @param patient
      */
     public Creation_sejour_nouveauPatient_DMA(Patient p) {
         this.patient = p;
+        Locale locale = Locale.getDefault();
+        Calendar cal = Calendar.getInstance(locale);
+
+        day = cal.get(Calendar.DAY_OF_MONTH) - 1;
+        month = cal.get(Calendar.MONTH);
+        year = cal.get(Calendar.YEAR) - 2014;
+        Date dateJour = new Date(day, month, year);
         initComponents();
     }
 
@@ -147,12 +158,15 @@ public class Creation_sejour_nouveauPatient_DMA extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        jComboBox1.setSelectedIndex(day);
 
         jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janvier", "Février", "Mars ", "Avril", "Mai", "Juin", "Juillet ", "Août", "Septembre", "Octobre", "Novembre ", "Décembre " }));
+        jComboBox2.setSelectedIndex(month);
 
         jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
+        jComboBox3.setSelectedIndex(year);
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel7.setText("N° de séjour:");
@@ -191,16 +205,16 @@ public class Creation_sejour_nouveauPatient_DMA extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
                     .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,7 +224,7 @@ public class Creation_sejour_nouveauPatient_DMA extends javax.swing.JFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 97, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
@@ -226,7 +240,7 @@ public class Creation_sejour_nouveauPatient_DMA extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         jPanel6.add(jPanel8, java.awt.BorderLayout.CENTER);
@@ -268,11 +282,11 @@ public class Creation_sejour_nouveauPatient_DMA extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
 
         pack();
@@ -308,16 +322,15 @@ public class Creation_sejour_nouveauPatient_DMA extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             Patient patient;
-           
+
             public void run() {
                 new Creation_sejour_nouveauPatient_DMA(patient).setVisible(true);
-                
-               
+
             }
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

@@ -1,6 +1,10 @@
 package SIH;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+
+import java.util.Calendar;
+import java.util.Locale;
+
 // #[regen=yes,id=DCE.2CAF514F-54A4-C6A2-E022-9FA5DB6E537E]
 // </editor-fold> 
 public class Date {
@@ -19,6 +23,7 @@ public class Date {
     // #[regen=yes,id=DCE.3E305776-E6EF-08F3-F0B0-AA9D9F452582]
     // </editor-fold> 
     private long jour;
+    
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.DFF8AA20-9D48-5929-07E0-212FED1A4199]
@@ -28,6 +33,7 @@ public class Date {
         this.mois = mois;
         this.jour = jour;
     }
+    
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.54B460C6-AC3B-3E5D-63BC-A7D37D026AB9]
