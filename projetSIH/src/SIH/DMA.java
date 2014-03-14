@@ -24,8 +24,10 @@ public class DMA {
         Date dateNaisPat1 = new Date(15, 02, 1990);    // date naisssance patient1
         Services servPat1 = Services.medecine;
         Lits litPat1 = new Lits(servPat1); // ajout d'un lit pour la patient1
+        
+        Adresse adressePat1 = new Adresse("numero","rue","codepostal","ville");
 
-        Patient pat1 = new Patient("Robin", "Eudes", "0655889977", "Labat Paul, medecine generale", "Rodolphe", "vegetarien", "Homme", dateAdmPat1, dateNaisPat1, litPat1); // creation du patient
+        Patient pat1 = new Patient("Robin", "Eudes", "0655889977", "Labat Paul, medecine generale", "Homme", dateNaisPat1 ,adressePat1); // creation du patient
 
         DossierMedicalAdministratif dosMedAdm1 = new DossierMedicalAdministratif(pat1, med1); // a la création du patient, creation du dossier medical administratif
 

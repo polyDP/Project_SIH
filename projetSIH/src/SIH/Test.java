@@ -39,12 +39,12 @@ public class Test {
         GestionLits gestLit = new GestionLits(servPat1); // ajout d'une gestion des Lits ?
 
         litPat1.setGestionLits(gestLit); // mise en place de la gestion des lits pour le patient1
-
-        Patient pat1 = new Patient("Robin", "Eudes", "0655889977", "Labat Paul, medecine generale", "Rodolphe", "vegetarien", "Homme", dateAdmPat1, dateNaisPat1,litPat1); // creation du patient
+        Adresse adressePat1 = new Adresse("numero","rue","codepostal","ville");
+        Patient pat1 = new Patient("Robin", "Eudes", "0655889977", "Labat Paul, medecine generale", "Homme", dateNaisPat1, adressePat1); // creation du patient
         
-        //ArrayList<String> antecedents; // va chercher dans la base de données si le patient a eu des antécédents
-        //antecedents = new ArrayList<String>();
-       // antecedents.add("Apendicectomie"); //ici creation d'un antecedant pour le test
+        ArrayList<String> antecedents; // va chercher dans la base de données si le patient a eu des antécédents
+        antecedents = new ArrayList<String>();
+        antecedents.add("Apendicectomie"); //ici creation d'un antecedant pour le test
 
         Maladie malPat1 = new Maladie("diarhée aigue", "Gastro Entérite Aigue",dateMal1); // creation de la maladie du patient1
         //antecedents.add(malPat1.getDiagnostique()); // ajout automatique de la maladie aux antécédents du patient.
@@ -135,18 +135,18 @@ public class Test {
         //--------------------Dossier Medical-------------------//
         //--------------------------------------------------------------------//
         
-        DMMedicoTechnique dMMT = new DMMedicoTechnique(pat1,servMed1);  // a la création du patient, creation du dossier medical medicoTech
-        DMAnesthesie dMA = new DMAnesthesie(pat1,servMed1);              // a la création du patient, creation du dossier medical Adm
-        DossierMedicalClinique dMC = new DossierMedicalClinique(pat1,servMed1);  // a la création du patient, creation du dossier medical Adm
+        //DMMedicoTechnique dMMT = new DMMedicoTechnique(pat1,servMed1);  // a la création du patient, creation du dossier medical medicoTech
+        //DMAnesthesie dMA = new DMAnesthesie(pat1,servMed1);              // a la création du patient, creation du dossier medical Adm
+        //DossierMedicalClinique dMC = new DossierMedicalClinique(pat1,servMed1);  // a la création du patient, creation du dossier medical Adm
         
         String obs = "observations";
-        dMMT.setObservation(obs);
-        dMA.setObservation(obs);
-        dMC.setObservation(obs);
+        //dMMT.setObservation(obs);
+        //dMA.setObservation(obs);
+        //dMC.setObservation(obs);
         
-        dMMT.setConstantes(listeConstantes);
-        dMA.setConstantes(listeConstantes);
-        dMC.setConstantes(listeConstantes);
+        //dMMT.setConstantes(listeConstantes);
+        //dMA.setConstantes(listeConstantes);
+        //dMC.setConstantes(listeConstantes);
         
         
         //----------------------- pour le DIM -----------------------------
