@@ -203,6 +203,14 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel5.setText("Tension (en cmHg) :");
         jLabel5.setToolTipText("");
         jPanel13.add(jLabel5);
+
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField3.setText("../..");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
         jPanel13.add(jTextField3);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -589,6 +597,10 @@ public class A32_Medecin extends javax.swing.JFrame {
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField12ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
      * @param args the command line arguments
