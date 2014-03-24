@@ -56,7 +56,7 @@ public class A41_Infirmier extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Première page du DMA");
+        setTitle("Première page infirmier");
         setBackground(new java.awt.Color(153, 204, 255));
         setExtendedState(10);
         setMinimumSize(new java.awt.Dimension(800, 600));

@@ -102,7 +102,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Première page du DMA");
+        setTitle("DM patient PH");
         setBackground(new java.awt.Color(153, 204, 255));
         setExtendedState(10);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -197,6 +197,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel2.setText("Taille (en centimètres) :");
         jLabel2.setToolTipText("");
         jPanel13.add(jLabel2);
+
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel13.add(jTextField2);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -216,21 +218,29 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Poids (en grammes) :");
         jPanel13.add(jLabel3);
+
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel13.add(jTextField1);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Glycémie (g/L) :");
         jPanel13.add(jLabel7);
+
+        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel13.add(jTextField6);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Température (en°C) :");
         jPanel13.add(jLabel6);
+
+        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel13.add(jTextField4);
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Autres :");
         jPanel13.add(jLabel8);
+
+        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel13.add(jTextField5);
 
         jPanel5.add(jPanel13);
@@ -388,6 +398,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Observations", jPanel7);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
