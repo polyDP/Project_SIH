@@ -34,11 +34,10 @@ public class Test {
 
         Services servPat1 = Services.medecine;
 
-        Lits litPat1 = new Lits(servPat1); // ajout d'un lit pour la patient1
+       
+               
 
-        GestionLits gestLit = new GestionLits(servPat1); // ajout d'une gestion des Lits ?
-
-        litPat1.setGestionLits(gestLit); // mise en place de la gestion des lits pour le patient1
+        //litPat1.setGestionLit(gestLit); // mise en place de la gestion des lits pour le patient1
         Adresse adressePat1 = new Adresse("numero","rue","codepostal","ville");
         Patient pat1 = new Patient("Robin", "Eudes", "0655889977", "Labat Paul, medecine generale", "Homme", dateNaisPat1, adressePat1); // creation du patient
         
@@ -56,6 +55,24 @@ public class Test {
         
         ArrayList<PrestationsEffectuees> listPresEffPat1;
         listPresEffPat1 = new ArrayList<PrestationsEffectuees>(); // si premiere admission du patient création d'une liste vide de prestations effectuées
+        
+        GestionLits gestLit = new GestionLits(servInf1); // ajout d'une gestion des Lits ?
+         Lit litPat1 = new Lit(350,"P"); // ajout d'un lit pour la patient1
+         
+        pat1.setLocalisation(litPat1);
+
+        gestLit.ajouterPatient(pat1);
+       System.out.println(gestLit.afficherLits());
+       
+       GestionLits gestLit1 = new GestionLits(servMed1); // ajout d'une gestion des Lits ?
+         Lit litPat2 = new Lit(500,"P"); // ajout d'un lit pour la patient1
+         
+        pat1.setLocalisation(litPat2);
+
+        gestLit1.ajouterPatient(pat1);
+       System.out.println(gestLit1.afficherLits());
+        
+        
 
         //--------------------------------------------------------------------//
         // ajoute des constantes par l'infirmiere
@@ -99,11 +116,11 @@ public class Test {
         
         System.out.println("from patient nom + prenom  : " + pat1.getNom()+pat1.getPrenom());
         System.out.println("from patient date de naissance : " + pat1.getDateNaissance().toString());
-        System.out.println("from patient localisation du patient : " + pat1.getLocalisation().getServices());
+//        System.out.println("from patient localisation du patient : " + pat1.getLocalisation().getServices());
         System.out.println("from patient Diagnotique de la maladie : " + pat1.getMaladie().getDiagnostique());
         System.out.println("from patient antecedants du patient : " + pat1.afficheAntecedants(pat1));
         System.out.println("from patient motif hospitalisation "+pat1.getMaladie().getMotifHospitalisation());
-        System.out.println("from patient IPP : pas encore implemente " + pat1.IPP());     
+//        System.out.println("from patient IPP : pas encore implemente " + pat1.IPP());     
         System.out.println("from patient numero telephone : " + pat1.getTelephone());
         System.out.println("from patient regime alimentaire : " + pat1.getRegimeAlimentaire());
         System.out.println("from patient medecin traitant : "+ pat1.getNomMedecinTraitant());

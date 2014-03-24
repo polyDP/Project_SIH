@@ -23,7 +23,7 @@ public class DMA {
         Date dateAdmPat1 = new Date(21, 02, 2014);     // date admission patient 1
         Date dateNaisPat1 = new Date(15, 02, 1990);    // date naisssance patient1
         Services servPat1 = Services.medecine;
-        Lits litPat1 = new Lits(servPat1); // ajout d'un lit pour la patient1
+        //Lits litPat1 = new Lits(servPat1); // ajout d'un lit pour la patient1
         
         Adresse adressePat1 = new Adresse("numero","rue","codepostal","ville");
 
@@ -33,7 +33,7 @@ public class DMA {
 
         GestionLits gestLit = new GestionLits(servPat1); // ajout d'une gestion des Lits ?
 
-        litPat1.setGestionLits(gestLit); // mise en place de la gestion des lits pour le patient1
+       // litPat1.setGestionLits(gestLit); // mise en place de la gestion des lits pour le patient1
 
         //-------------------------------------------------RECHERCHE DU PATIENT---------------------------------------------
         System.out.println("from Dossier Medical administratif nom patient : " + dosMedAdm1.getPatients().getNom());
@@ -62,14 +62,16 @@ public class DMA {
         dosMedAdm1.setDate(dateAdmPat1);
         System.out.println("from dossier Medical administratif date entree service : " + dosMedAdm1.getDate());
 
-        dosMedAdm1.setNumSejour(10);
-        System.out.println("from dossier Medical administratif num séjour : " + dosMedAdm1.getNumSejour());
+       dosMedAdm1.setNumSejour(10);
+       System.out.println("from dossier Medical administratif num séjour : " + dosMedAdm1.getNumSejour());
 
         dosMedAdm1.getPatients().getLocalisation().setServices(servPat1);
         System.out.println("from dossier Medical administratif service patient : " + dosMedAdm1.getPatients().getLocalisation().getServices());
 
-        dosMedAdm1.getPatients().getLocalisation().setGestionLits(gestLit);
-        System.out.println("from dossier Medical administratif : " + dosMedAdm1.getPatients().getLocalisation().getGestionLits().getLits());
+        
+        // bug gestion des lits, a tout faire
+        //dosMedAdm1.getPatients().getLocalisation().setGestionLits(gestLit);
+        //System.out.println("from dossier Medical administratif : " + dosMedAdm1.getPatients().getLocalisation().getGestionLits().getLits().get(0).getGestionLits().getLits().get(0));
 
         dosMedAdm1.getPatients().setPHResponsable(med1);
         System.out.println("from dossier Medical administratif PH responsable : " + dosMedAdm1.getMedecinPH().toString());

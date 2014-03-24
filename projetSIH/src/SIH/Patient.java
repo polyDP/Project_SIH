@@ -70,7 +70,7 @@ public class Patient {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.22F9C283-A0F1-9ED5-EC85-870408E0F52A]
     // </editor-fold> 
-   private Lits localisation;
+   private Lit localisation;
 
     private MedecinPH pHResponsable;
     
@@ -123,14 +123,14 @@ public class Patient {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.269C8905-8F26-58A0-C2E9-70980A679458]
     // </editor-fold> 
-    public Lits getLocalisation () {
+    public Lit getLocalisation () {
         return localisation;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.A39D5CD6-7498-0CE5-2585-CF4C1000E417]
     // </editor-fold> 
-    public void setLocalisation (Lits val) {
+    public void setLocalisation (Lit val) {
         this.localisation = val;
     }
 
@@ -321,11 +321,14 @@ public class Patient {
         for(int i = 0; i< antecedents.size();i++){
             antecedent = antecedent + "date : " + antecedents.get(i).getDateMaladie().toString() + " motif : " +antecedents.get(i).getMotifHospitalisation() + ", Diagnostique : " + antecedents.get(i).getDiagnostique();  
         }
+        if (!antecedent.isEmpty()){
         return antecedent;
+        } else {
+            return " le patient n'a pas d'antecedents";
+        }
         
-        //else {
-                //return "le patient n'a pas d'antécédents"
-                //}
+        
+        
     }
     
     
