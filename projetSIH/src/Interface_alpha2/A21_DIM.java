@@ -78,7 +78,6 @@ public class A21_DIM extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 204, 255));
         setExtendedState(10);
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new java.awt.BorderLayout());
@@ -103,6 +102,11 @@ public class A21_DIM extends javax.swing.JFrame {
         jButton1.setText("Retour");
         jButton1.setToolTipText("");
         jPanel2.add(jButton1);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -361,7 +365,11 @@ public class A21_DIM extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        A0_Accueil fenetre2 = new A0_Accueil();
+    fenetre2.show();
+    this.dispose();
+}  
     /**
      * @param args the command line arguments
      */

@@ -101,6 +101,11 @@ public class A52_MedicoTechnique extends javax.swing.JFrame {
         jButton1.setText("Retour");
         jButton1.setToolTipText("");
         jPanel2.add(jButton1);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -283,7 +288,11 @@ public class A52_MedicoTechnique extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        A51_MedicoTechnique fenetre51 = new A51_MedicoTechnique();
+    fenetre51.show();
+    this.dispose();
+}
     /**
      * @param args the command line arguments
      */

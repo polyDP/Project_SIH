@@ -167,6 +167,11 @@ public class A0_Accueil extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Sortie");
         jPanel10.add(jButton3);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jPanel4.add(jPanel10, java.awt.BorderLayout.CENTER);
 
@@ -225,7 +230,9 @@ public class A0_Accueil extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
+private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    this.dispose();
+}
     /**
      * @param args the command line arguments
      */

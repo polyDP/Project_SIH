@@ -129,6 +129,11 @@ public class A42_Infirmier extends javax.swing.JFrame {
         jButton1.setText("Retour");
         jButton1.setToolTipText("");
         jPanel2.add(jButton1);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -534,7 +539,11 @@ public class A42_Infirmier extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
-
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        A41_Infirmier fenetre41 = new A41_Infirmier();
+    fenetre41.show();
+    this.dispose();
+}
     /**
      * @param args the command line arguments
      */

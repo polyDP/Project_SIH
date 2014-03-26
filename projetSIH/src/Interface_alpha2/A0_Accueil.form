@@ -286,6 +286,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Sortie"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jButton3.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        jButton3ActionPerformed(evt);&#xa;    }&#xa;});"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>

@@ -86,11 +86,21 @@ public class A51_MedicoTechnique extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Ok");
         jPanel2.add(jButton2);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Retour");
         jButton1.setToolTipText("");
         jPanel2.add(jButton1);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -247,7 +257,16 @@ public class A51_MedicoTechnique extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        A0_Accueil fenetre5 = new A0_Accueil();
+    fenetre5.show();
+    this.dispose();
+}
+private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        A52_MedicoTechnique fenetre51 = new A52_MedicoTechnique();
+    fenetre51.show();
+    this.dispose();
+}
     /**
      * @param args the command line arguments
      */
