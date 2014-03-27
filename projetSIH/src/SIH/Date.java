@@ -2,6 +2,7 @@ package SIH;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 
+import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -78,13 +79,55 @@ public class Date {
     }
 
     public String toString() {
-        return jour + "/" + mois + "/" + annee;
+        return this.formatJourString() + "/" + this.formatMoisString() + "/" + this.formatAnneeString();
     }
 
-    public String getAnnee2() {
+    public String formatAnneeString2digit() {
         String annee2 = String.valueOf(annee);
         annee2 = annee2.substring(2);
+        
+        final int nbDigits = 2;
+        NumberFormat nbf = NumberFormat.getNumberInstance();
+        nbf.setMinimumIntegerDigits(nbDigits);
+        nbf.setGroupingUsed(false);
+        nbf.setMaximumIntegerDigits(nbDigits);
+        annee2 = nbf.format(annee);
         return annee2;
+    }
+    
+    public String formatAnneeString() {
+        String annee2 = String.valueOf(annee);
+ 
+        final int nbDigits = 4;
+        NumberFormat nbf = NumberFormat.getNumberInstance();
+        nbf.setMinimumIntegerDigits(nbDigits);
+        nbf.setGroupingUsed(false);
+        nbf.setMaximumIntegerDigits(nbDigits);
+        annee2 = nbf.format(annee);
+        return annee2;
+    }
+    
+    public String formatMoisString() {
+        String mois2 = String.valueOf(mois);
+        
+        final int nbDigits = 2;
+        NumberFormat nbf = NumberFormat.getNumberInstance();
+        nbf.setMinimumIntegerDigits(nbDigits);
+        nbf.setGroupingUsed(false);
+        nbf.setMaximumIntegerDigits(nbDigits);
+        mois2 = nbf.format(mois);
+        return mois2;
+    }
+    public String formatJourString() {
+        String jour2 = String.valueOf(jour);
+        
+        final int nbDigits = 2;
+        NumberFormat nbf = NumberFormat.getNumberInstance();
+        nbf.setMinimumIntegerDigits(nbDigits);
+        nbf.setGroupingUsed(false);
+        nbf.setMaximumIntegerDigits(nbDigits);
+        jour2 = nbf.format(mois);
+        return jour2;
     }
 
 }

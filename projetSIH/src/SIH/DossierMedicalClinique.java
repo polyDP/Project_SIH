@@ -20,11 +20,14 @@ public class DossierMedicalClinique extends DossierMedical {
     // #[regen=yes,id=DCE.E8FF729A-14C3-D916-F992-4D12C6E96F9B]
     // </editor-fold> 
     private LettreSortie mLettreSortie;
+    
+    private NumeroSejour numSej;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.E1BF6123-15BD-131D-3D85-E5E10DF91508]
     // </editor-fold> 
     public DossierMedicalClinique (Patient p, Services s) {
+        
         
     }
 

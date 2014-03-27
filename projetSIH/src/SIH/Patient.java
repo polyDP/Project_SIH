@@ -18,11 +18,6 @@ public class Patient {
     private String prenom;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.825148C0-B5EE-8536-B8B9-42D8600E8A4D]
-    // </editor-fold> 
-    private String id;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.497DCF02-1673-E4BD-2BB1-D3608F38FA6B]
     // </editor-fold> 
     private String telephone;
@@ -78,6 +73,8 @@ public class Patient {
     
     private Adresse adresse;
     
+    private IPP ipp;
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.057BF4F0-7F86-3D07-A63A-107C5971146E]
     // </editor-fold> 
@@ -106,19 +103,7 @@ public class Patient {
         this.allergies = val;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.7FF3BB32-69F7-99EA-3988-977C31D4A674]
-    // </editor-fold> 
-    public String getId () {
-        return id;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.862CED97-8BAC-E34C-17D2-3C59533F8FED]
-    // </editor-fold> 
-    public void setId (String val) {
-        this.id = val;
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.269C8905-8F26-58A0-C2E9-70980A679458]
@@ -208,7 +193,7 @@ public class Patient {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.BC3A5789-BB6A-A6F7-7870-B8A261A20469]
     // </editor-fold> 
-    public String getNomMedecinTraitant () {
+    public String getNomMedecinTraitant() {
         return nomMedecinTraitant;
     }
 
@@ -275,11 +260,6 @@ public class Patient {
         this.telephone = val;
     }
     
-    public String IPP(){
-        String IPP = getDateAdmission().getAnnee2();
-        IPP = IPP + "0000000";
-        return IPP;
-    }
    public String toString(){
        return nom +" "+ prenom;
    }
@@ -329,6 +309,34 @@ public class Patient {
         
         
         
+    }
+
+    /**
+     * @return the adresse
+     */
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    /**
+     * @param adresse the adresse to set
+     */
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    /**
+     * @return the ipp
+     */
+    public IPP getIpp() {
+        return ipp;
+    }
+
+    /**
+     * @param ipp the ipp to set
+     */
+    public void setIpp(IPP ipp) {
+        this.ipp = ipp;
     }
     
     

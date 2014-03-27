@@ -171,6 +171,23 @@ public class Test {
         dim1.affficheMedecins();
         
         
+        Date dateSejour = new Date(2,3,2013);
+        NumeroSejour numSej = new NumeroSejour(dateSejour);
+        System.out.println(numSej.getCompteur());
+        System.out.println(numSej.getNumero());
+        System.out.println(numSej.getDate());
+        numSej.incrementerCompteur();
+        System.out.println(numSej.getNumeroSejour());
+        
+        System.out.println(numSej.getCompteur());
+        System.out.println(numSej.getNumero());
+        System.out.println(numSej.getDate());
+        System.out.println(numSej.getNumeroSejour());
+        
+        IPP ipp = new IPP(dateSejour);
+        System.out.println(ipp.getIpp());
+        ipp.incrementerCompteur();
+        System.out.println(ipp.getIpp());
     }
 
 }

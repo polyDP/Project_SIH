@@ -80,8 +80,5 @@ public class Adresse {
         this.ville = ville;
     }
     
-    public String toString(){
-    return numero + rue + codePostal + ville;
-}
     
 }
