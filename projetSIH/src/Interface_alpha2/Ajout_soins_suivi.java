@@ -6,6 +6,11 @@
 
 package Interface_alpha2;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ludivine
@@ -17,6 +22,17 @@ public class Ajout_soins_suivi extends javax.swing.JFrame {
      */
     public Ajout_soins_suivi() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+this.addWindowListener( new WindowAdapter()
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				JFrame frame = (JFrame)e.getSource();
+				
+					frame.dispose();
+				}
+				
+			});
     }
 
     /**
@@ -41,6 +57,9 @@ public class Ajout_soins_suivi extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ajout d'un soin");
@@ -51,7 +70,7 @@ public class Ajout_soins_suivi extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(205, 205, 205));
         jPanel13.setMinimumSize(new java.awt.Dimension(400, 300));
         jPanel13.setPreferredSize(new java.awt.Dimension(400, 300));
-        jPanel13.setLayout(new java.awt.GridLayout(3, 4, 0, 70));
+        jPanel13.setLayout(new java.awt.GridLayout(4, 4, 0, 70));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Taille (en cm) :");
@@ -104,6 +123,39 @@ public class Ajout_soins_suivi extends javax.swing.JFrame {
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel13.add(jTextField5);
 
+        jPanel1.setBackground(new java.awt.Color(205, 205, 205));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 22, Short.MAX_VALUE)
+        );
+
+        jPanel13.add(jPanel1);
+
+        jButton1.setBackground(new java.awt.Color(205, 205, 205));
+        jButton1.setText("Ok");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(jButton1);
+
+        jButton2.setBackground(new java.awt.Color(205, 205, 205));
+        jButton2.setText("Retour");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(jButton2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,6 +177,14 @@ public class Ajout_soins_suivi extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+this.dispose();        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +222,8 @@ public class Ajout_soins_suivi extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -169,6 +231,7 @@ public class Ajout_soins_suivi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

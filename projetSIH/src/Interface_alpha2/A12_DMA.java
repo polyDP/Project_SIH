@@ -8,9 +8,13 @@ package Interface_alpha2;
 
 import SIH.Date;
 import SIH.Patient;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Calendar;
 import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -32,6 +36,24 @@ public class A12_DMA extends javax.swing.JFrame {
         year = cal.get(Calendar.YEAR) - 2014;
         Date dateJour = new Date(day, month, year);
         initComponents();
+         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+this.addWindowListener( new WindowAdapter()
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				JFrame frame = (JFrame)e.getSource();
+				int result = JOptionPane.showConfirmDialog(
+						null,
+						"Etes-vous sûr de vouloir quitter Asclépios ?",
+						"Quitter",
+						JOptionPane.YES_NO_OPTION);
+				if (result == JOptionPane.YES_OPTION){
+					
+					System.exit(0);
+				}
+				
+			}
+		});
     }
 
     /**
@@ -102,9 +124,12 @@ public class A12_DMA extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Entree/sortie patient ");
         setBackground(new java.awt.Color(153, 204, 255));
+        setBounds(new java.awt.Rectangle(200, 100, 0, 0));
         setExtendedState(10);
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new java.awt.BorderLayout());
@@ -144,6 +169,11 @@ public class A12_DMA extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Fermeture dossier");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3);
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
@@ -158,15 +188,17 @@ public class A12_DMA extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 623, Short.MAX_VALUE)
+            .addGap(0, 591, Short.MAX_VALUE)
         );
 
         jPanel8.add(jPanel3, java.awt.BorderLayout.LINE_END);
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(700, 532));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setPreferredSize(new java.awt.Dimension(591, 527));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("IPP:");
@@ -246,7 +278,7 @@ public class A12_DMA extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(201, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
@@ -280,7 +312,7 @@ public class A12_DMA extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel28))
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Données patient", jPanel5);
@@ -309,11 +341,11 @@ public class A12_DMA extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(175, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Historique", jPanel4);
@@ -378,7 +410,7 @@ public class A12_DMA extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(189, 189, 189)
+                .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -396,7 +428,7 @@ public class A12_DMA extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(jLabel18))
-                .addGap(52, 52, 52)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel19)
                 .addGap(53, 53, 53))
         );
@@ -409,9 +441,16 @@ public class A12_DMA extends javax.swing.JFrame {
 
         jMenu1.setText("Fichier");
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Déconnecter");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Imprimer");
         jMenu1.add(jMenuItem2);
 
@@ -419,6 +458,7 @@ public class A12_DMA extends javax.swing.JFrame {
 
         jMenu2.setText("Edition");
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Tout sélectionner");
         jMenu2.add(jMenuItem3);
 
@@ -426,6 +466,7 @@ public class A12_DMA extends javax.swing.JFrame {
 
         jMenu3.setText("Paramètres");
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setText("Changer le mot de passe");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -456,11 +497,26 @@ public class A12_DMA extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+        Changer_mdp mdp = new Changer_mdp();
+        mdp.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir fermer le dossier?", "Confirmer",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (response == JOptionPane.YES_OPTION) {
+    
+    }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+A0_Accueil a0 = new A0_Accueil();
+a0.setVisible(true);
+this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         A11_DMA fenetre = new A11_DMA();
-    fenetre.show();
+    fenetre.setVisible(true);
     this.dispose();
 }  
     /**

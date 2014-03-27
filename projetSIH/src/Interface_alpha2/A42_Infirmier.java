@@ -6,6 +6,11 @@
 
 package Interface_alpha2;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -18,6 +23,24 @@ public class A42_Infirmier extends javax.swing.JFrame {
      */
     public A42_Infirmier() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+this.addWindowListener( new WindowAdapter()
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				JFrame frame = (JFrame)e.getSource();
+				int result = JOptionPane.showConfirmDialog(
+						null,
+						"Etes-vous sûr de vouloir quitter Asclépios, Avez-vous tout enregistré ?",
+						"Quitter",
+						JOptionPane.YES_NO_OPTION);
+				if (result == JOptionPane.YES_OPTION){
+					
+					System.exit(0);
+				}
+				
+			}
+		});
     }
 
     /**
@@ -71,17 +94,42 @@ public class A42_Infirmier extends javax.swing.JFrame {
         jTextField11 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jPanel17 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -95,10 +143,15 @@ public class A42_Infirmier extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DM patient Infirmier");
         setBackground(new java.awt.Color(153, 204, 255));
+        setBounds(new java.awt.Rectangle(200, 100, 0, 0));
         setExtendedState(10);
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setPreferredSize(new java.awt.Dimension(500, 500));
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
@@ -147,16 +200,20 @@ public class A42_Infirmier extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 654, Short.MAX_VALUE)
+            .addGap(0, 532, Short.MAX_VALUE)
         );
 
         jPanel8.add(jPanel3, java.awt.BorderLayout.LINE_END);
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(0, 0));
+        jTabbedPane1.setName(""); // NOI18N
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(500, 400));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setEnabled(false);
+        jPanel4.setPreferredSize(new java.awt.Dimension(500, 400));
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -168,21 +225,22 @@ public class A42_Infirmier extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(213, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Données Patient", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setPreferredSize(new java.awt.Dimension(500, 400));
         jPanel5.setLayout(new java.awt.GridLayout(3, 0));
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
@@ -253,7 +311,7 @@ public class A42_Infirmier extends javax.swing.JFrame {
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap(146, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -263,12 +321,12 @@ public class A42_Infirmier extends javax.swing.JFrame {
                     .addComponent(jTextField7)
                     .addComponent(jTextField10)
                     .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -280,7 +338,7 @@ public class A42_Infirmier extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel14);
@@ -309,7 +367,7 @@ public class A42_Infirmier extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(146, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -319,12 +377,12 @@ public class A42_Infirmier extends javax.swing.JFrame {
                     .addComponent(jTextField12)
                     .addComponent(jTextField11)
                     .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -336,19 +394,229 @@ public class A42_Infirmier extends javax.swing.JFrame {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel15);
 
         jTabbedPane1.addTab("Visite d'arrivée", jPanel5);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setMinimumSize(new java.awt.Dimension(200, 300));
+        jPanel10.setName(""); // NOI18N
+        jPanel10.setOpaque(false);
+        jPanel10.setPreferredSize(new java.awt.Dimension(500, 400));
+        jPanel10.setLayout(new java.awt.GridLayout(15, 0));
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        jLabel16.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Heures");
+        jLabel16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel16);
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Ajouter un soin");
+        jLabel17.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel17);
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Minuit - 2 heures");
+        jLabel18.setToolTipText("");
+        jLabel18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel18);
+
+        jLabel19.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel19);
+
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("2 heures - 4 heures");
+        jLabel20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel20);
+
+        jLabel21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel21MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel21);
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("4 heures - 6 heures");
+        jLabel22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel22);
+
+        jLabel23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel23MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel23);
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("6 heures - 8 heures");
+        jLabel24.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel24);
+
+        jLabel25.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel25MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel25);
+
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setText("8 heures - 10 heures");
+        jLabel26.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel26);
+
+        jLabel27.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel27);
+
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("10 heures - 12 heures");
+        jLabel32.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel32);
+
+        jLabel34.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel34MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel34);
+
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("12 heures - 14 heures");
+        jLabel28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel28);
+
+        jLabel38.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel38MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel38);
+
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("14 heures - 16 heures");
+        jLabel37.setToolTipText("");
+        jLabel37.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel37);
+
+        jLabel39.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel39MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel39);
+
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("16 heures - 18 heures");
+        jLabel33.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel33);
+
+        jLabel43.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel43.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel43MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel43);
+
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel42.setText("18 heures - 20 heures");
+        jLabel42.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel42);
+
+        jLabel40.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel40MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel40);
+
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("20 heures - 22 heures");
+        jLabel35.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel35);
+
+        jLabel41.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel41MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel41);
+
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel36.setText("22 heures - Minuit");
+        jLabel36.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel36);
+
+        jLabel29.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel29MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel29);
+
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 35, Short.MAX_VALUE)
+        );
+
+        jPanel10.add(jPanel17);
+
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 35, Short.MAX_VALUE)
+        );
+
+        jPanel10.add(jPanel18);
+
+        jButton5.setText("Jour précédent");
+        jPanel10.add(jButton5);
+
+        jButton6.setText("Jour suivant");
+        jPanel10.add(jButton6);
+
+        jTabbedPane1.addTab("Suivi", jPanel10);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Imagerie");
@@ -357,120 +625,43 @@ public class A42_Infirmier extends javax.swing.JFrame {
         jButton4.setText("Biologie");
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Accès au âtient pour le service médicotechnique :");
+        jLabel15.setText("Accès au patient pour le service médicotechnique :");
+
+        jLabel30.setText("jLabel30");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(154, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabel15)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Prescriptions", jPanel6);
-
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setMinimumSize(new java.awt.Dimension(200, 300));
-        jPanel10.setName(""); // NOI18N
-        jPanel10.setPreferredSize(new java.awt.Dimension(679, 769));
-
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"0H - 2H", null},
-                {"2H - 4H", null},
-                {"4H - 6H", null},
-                {"6H - 8H", null},
-                {"8H - 10H", null},
-                {"10H - 12H", null},
-                {"12H - 14H", null},
-                {"14H - 16H", null},
-                {"16H - 18H", null},
-                {"18H - 20H", null},
-                {"20H - 22H", null},
-                {"22H - 0H", null}
-            },
-            new String [] {
-                "Heures", "Soins"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
-        jTable1.setPreferredSize(new java.awt.Dimension(150, 600));
-        jTable1.setRowHeight(50);
-        jScrollPane3.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(0);
-        }
-
-        jButton5.setText("Jour précédent");
-        jButton5.setToolTipText("");
-
-        jButton6.setText("Jour suivant");
-        jButton6.setToolTipText("");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Suivi", jPanel10);
 
         jPanel8.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
@@ -478,9 +669,16 @@ public class A42_Infirmier extends javax.swing.JFrame {
 
         jMenu1.setText("Fichier");
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Déconnecter");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Imprimer");
         jMenu1.add(jMenuItem2);
 
@@ -488,6 +686,7 @@ public class A42_Infirmier extends javax.swing.JFrame {
 
         jMenu2.setText("Edition");
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Tout sélectionner");
         jMenu2.add(jMenuItem3);
 
@@ -495,6 +694,7 @@ public class A42_Infirmier extends javax.swing.JFrame {
 
         jMenu3.setText("Paramètres");
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setText("Changer le mot de passe");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -518,14 +718,15 @@ public class A42_Infirmier extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+         Changer_mdp mdp = new Changer_mdp();
+        mdp.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
@@ -536,13 +737,79 @@ public class A42_Infirmier extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
+    }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+       Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
+    }//GEN-LAST:event_jLabel21MouseClicked
+
+    private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
+         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
+    }//GEN-LAST:event_jLabel23MouseClicked
+
+    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);       
+    }//GEN-LAST:event_jLabel25MouseClicked
+
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel34MouseClicked
+
+    private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel38MouseClicked
+
+    private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel39MouseClicked
+
+    private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel43MouseClicked
+
+    private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel40MouseClicked
+
+    private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel41MouseClicked
+
+    private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel29MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+A0_Accueil a0 = new A0_Accueil();
+a0.setVisible(true);
+this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         A41_Infirmier fenetre41 = new A41_Infirmier();
-    fenetre41.show();
-    this.dispose();
+    int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (response == JOptionPane.YES_OPTION) {
+     fenetre41.setVisible(true);
+        this.dispose();
+    }
 }
     /**
      * @param args the command line arguments
@@ -594,9 +861,36 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -616,6 +910,8 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -624,12 +920,8 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;

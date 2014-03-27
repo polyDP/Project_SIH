@@ -49,8 +49,10 @@ public class A0_Accueil extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("accueil");
-        setLocationByPlatform(true);
+        setBounds(new java.awt.Rectangle(200, 100, 0, 0));
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));

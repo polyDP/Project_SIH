@@ -6,6 +6,11 @@
 
 package Interface_alpha2;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -18,6 +23,24 @@ public class A21_DIM extends javax.swing.JFrame {
      */
     public A21_DIM() {
         initComponents();
+          setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+this.addWindowListener( new WindowAdapter()
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				JFrame frame = (JFrame)e.getSource();
+				int result = JOptionPane.showConfirmDialog(
+						null,
+						"Etes-vous sûr de vouloir quitter Asclépios ?",
+						"Quitter",
+						JOptionPane.YES_NO_OPTION);
+				if (result == JOptionPane.YES_OPTION){
+					
+					System.exit(0);
+				}
+				
+			}
+		});
     }
 
     /**
@@ -76,8 +99,12 @@ public class A21_DIM extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DIM");
         setBackground(new java.awt.Color(153, 204, 255));
+        setBounds(new java.awt.Rectangle(200, 100, 0, 0));
         setExtendedState(10);
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new java.awt.BorderLayout());
@@ -99,7 +126,7 @@ public class A21_DIM extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Retour");
+        jButton1.setText("Déconnexion");
         jButton1.setToolTipText("");
         jPanel2.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -127,9 +154,11 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(700, 532));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setEnabled(false);
+        jPanel4.setPreferredSize(new java.awt.Dimension(591, 527));
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -316,9 +345,16 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jMenu1.setText("Fichier");
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Déconnecter");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Imprimer");
         jMenu1.add(jMenuItem2);
 
@@ -326,6 +362,7 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jMenu2.setText("Edition");
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Tout sélectionner");
         jMenu2.add(jMenuItem3);
 
@@ -333,6 +370,7 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jMenu3.setText("Paramètres");
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setText("Changer le mot de passe");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -363,12 +401,23 @@ public class A21_DIM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+       Changer_mdp mdp = new Changer_mdp();
+        mdp.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+A0_Accueil a0 = new A0_Accueil();
+a0.setVisible(true);
+this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         A0_Accueil fenetre2 = new A0_Accueil();
-    fenetre2.show();
-    this.dispose();
+      int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (response == JOptionPane.YES_OPTION) {
+     fenetre2.setVisible(true);
+        this.dispose();
+    }
 }  
     /**
      * @param args the command line arguments

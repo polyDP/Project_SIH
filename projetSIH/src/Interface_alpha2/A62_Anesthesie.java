@@ -6,6 +6,11 @@
 
 package Interface_alpha2;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -18,6 +23,24 @@ public class A62_Anesthesie extends javax.swing.JFrame {
      */
     public A62_Anesthesie() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener( new WindowAdapter()
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				JFrame frame = (JFrame)e.getSource();
+				int result = JOptionPane.showConfirmDialog(
+						null,
+						"Etes-vous sûr de vouloir quitter Asclépios ?",
+						"Quitter",
+						JOptionPane.YES_NO_OPTION);
+				if (result == JOptionPane.YES_OPTION){
+					
+					System.exit(0);
+				}
+				
+			}
+		});
     }
 
     /**
@@ -82,9 +105,12 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DM patient Anesthésie");
         setBackground(new java.awt.Color(153, 204, 255));
+        setBounds(new java.awt.Rectangle(200, 100, 0, 0));
         setExtendedState(10);
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new java.awt.BorderLayout());
@@ -142,9 +168,11 @@ public class A62_Anesthesie extends javax.swing.JFrame {
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(700, 532));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new java.awt.GridLayout(3, 0));
+        jPanel5.setPreferredSize(new java.awt.Dimension(591, 527));
+        jPanel5.setLayout(new java.awt.GridLayout(2, 0));
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -180,7 +208,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -192,7 +220,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel14);
@@ -231,7 +259,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -243,7 +271,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel15);
@@ -269,9 +297,9 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(211, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Prescriptions", jPanel6);
@@ -335,13 +363,13 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Résultats", jPanel11);
@@ -364,9 +392,9 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap(177, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Compte rendu", jPanel12);
@@ -377,16 +405,29 @@ public class A62_Anesthesie extends javax.swing.JFrame {
 
         jMenu1.setText("Fichier");
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Déconnecter");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Imprimer");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edition");
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Tout sélectionner");
         jMenu2.add(jMenuItem3);
 
@@ -394,6 +435,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
 
         jMenu3.setText("Paramètres");
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setText("Changer le mot de passe");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -424,7 +466,8 @@ public class A62_Anesthesie extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+     Changer_mdp mdp = new Changer_mdp();
+        mdp.setVisible(true);    // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
@@ -438,10 +481,24 @@ public class A62_Anesthesie extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+A0_Accueil a0 = new A0_Accueil();
+a0.setVisible(true);
+this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         A61_Anesthesie fenetre6 = new A61_Anesthesie();
-    fenetre6.show();
-    this.dispose();
+      int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (response == JOptionPane.YES_OPTION) {
+     fenetre6.setVisible(true);
+        this.dispose();
+    }
 }
     /**
      * @param args the command line arguments

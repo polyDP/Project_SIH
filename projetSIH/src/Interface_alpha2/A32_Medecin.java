@@ -6,6 +6,11 @@
 
 package Interface_alpha2;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -18,6 +23,24 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     public A32_Medecin() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+this.addWindowListener( new WindowAdapter()
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				JFrame frame = (JFrame)e.getSource();
+				int result = JOptionPane.showConfirmDialog(
+						null,
+						"Etes-vous sûr de vouloir quitter Asclépios, Avez-vous tout enregistré ?",
+						"Quitter",
+						JOptionPane.YES_NO_OPTION);
+				if (result == JOptionPane.YES_OPTION){
+					
+					System.exit(0);
+				}
+				
+			}
+		});
     }
 
     /**
@@ -78,10 +101,36 @@ public class A32_Medecin extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
         jPanel10 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jPanel17 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
@@ -106,9 +155,11 @@ public class A32_Medecin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DM patient PH");
         setBackground(new java.awt.Color(153, 204, 255));
+        setBounds(new java.awt.Rectangle(200, 100, 0, 0));
         setExtendedState(10);
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new java.awt.BorderLayout());
@@ -159,16 +210,18 @@ public class A32_Medecin extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 623, Short.MAX_VALUE)
+            .addGap(0, 532, Short.MAX_VALUE)
         );
 
         jPanel8.add(jPanel3, java.awt.BorderLayout.LINE_END);
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(700, 532));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setEnabled(false);
+        jPanel4.setPreferredSize(new java.awt.Dimension(500, 400));
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -180,21 +233,22 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
+                .addContainerGap(103, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addGap(97, 97, 97))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
+                .addGap(68, 68, 68)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Données Patient", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setPreferredSize(new java.awt.Dimension(500, 400));
         jPanel5.setLayout(new java.awt.GridLayout(3, 0));
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
@@ -286,7 +340,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -298,7 +352,7 @@ public class A32_Medecin extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel14);
@@ -337,7 +391,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -349,7 +403,7 @@ public class A32_Medecin extends javax.swing.JFrame {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel15);
@@ -357,6 +411,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         jTabbedPane1.addTab("Visite d'arrivée", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setPreferredSize(new java.awt.Dimension(500, 400));
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -374,14 +429,15 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Prescriptions", jPanel6);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setPreferredSize(new java.awt.Dimension(500, 400));
 
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
@@ -392,99 +448,234 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(139, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Observations", jPanel7);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setPreferredSize(new java.awt.Dimension(500, 400));
+        jPanel10.setLayout(new java.awt.GridLayout(15, 0));
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"0H - 2H", null},
-                {"2H - 4H", null},
-                {"4H - 6H", null},
-                {"6H - 8H", null},
-                {"8H - 10H", null},
-                {"10H - 12H", null},
-                {"12H - 14H", null},
-                {"14H - 16H", null},
-                {"16H - 18H", null},
-                {"18H - 20H", null},
-                {"20H - 22H", null},
-                {"22H - 0H", null}
-            },
-            new String [] {
-                "Heures", "Soins"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true
-            };
+        jLabel16.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Heures");
+        jLabel16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel16);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        jLabel17.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Ajouter un soin");
+        jLabel17.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel17);
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Minuit - 2 heures");
+        jLabel18.setToolTipText("");
+        jLabel18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel18);
+
+        jLabel19.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
-        jTable1.setRowHeight(50);
-        jScrollPane3.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(0);
-        }
+        jPanel10.add(jLabel19);
 
-        jButton3.setText("Jour précédent");
-        jButton3.setToolTipText("");
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("2 heures - 4 heures");
+        jLabel20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel20);
 
-        jButton4.setText("Jour suivant");
-        jButton4.setToolTipText("");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+        jLabel21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel21MouseClicked(evt);
             }
         });
+        jPanel10.add(jLabel21);
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150))
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("4 heures - 6 heures");
+        jLabel22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel22);
+
+        jLabel23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel23MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel23);
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("6 heures - 8 heures");
+        jLabel24.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel24);
+
+        jLabel25.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel25MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel25);
+
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setText("8 heures - 10 heures");
+        jLabel26.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel26);
+
+        jLabel27.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel27);
+
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("10 heures - 12 heures");
+        jLabel32.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel32);
+
+        jLabel34.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel34MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel34);
+
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("12 heures - 14 heures");
+        jLabel28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel28);
+
+        jLabel38.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel38MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel38);
+
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("14 heures - 16 heures");
+        jLabel37.setToolTipText("");
+        jLabel37.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel37);
+
+        jLabel39.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel39MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel39);
+
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("16 heures - 18 heures");
+        jLabel33.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel33);
+
+        jLabel43.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel43.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel43MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel43);
+
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel42.setText("18 heures - 20 heures");
+        jLabel42.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel42);
+
+        jLabel40.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel40MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel40);
+
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("20 heures - 22 heures");
+        jLabel35.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel35);
+
+        jLabel41.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel41MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel41);
+
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel36.setText("22 heures - Minuit");
+        jLabel36.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel10.add(jLabel36);
+
+        jLabel29.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel29MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel29);
+
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 277, Short.MAX_VALUE)
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 35, Short.MAX_VALUE)
         );
+
+        jPanel10.add(jPanel17);
+
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 277, Short.MAX_VALUE)
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 35, Short.MAX_VALUE)
+        );
+
+        jPanel10.add(jPanel18);
+
+        jButton5.setText("Jour précédent");
+        jPanel10.add(jButton5);
+
+        jButton6.setText("Jour suivant");
+        jPanel10.add(jButton6);
 
         jTabbedPane1.addTab("Suivi", jPanel10);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setPreferredSize(new java.awt.Dimension(500, 400));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "résultats" }));
 
@@ -512,18 +703,19 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Résultats", jPanel11);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setPreferredSize(new java.awt.Dimension(500, 400));
 
         jTextArea5.setColumns(20);
         jTextArea5.setRows(5);
@@ -541,14 +733,15 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lettre de sortie", jPanel12);
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setPreferredSize(new java.awt.Dimension(500, 400));
 
         jTextArea6.setEditable(false);
         jTextArea6.setColumns(20);
@@ -567,9 +760,9 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Compte-rendu Anesthésie", jPanel16);
@@ -580,9 +773,16 @@ public class A32_Medecin extends javax.swing.JFrame {
 
         jMenu1.setText("Fichier");
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Déconnecter");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Imprimer");
         jMenu1.add(jMenuItem2);
 
@@ -590,6 +790,7 @@ public class A32_Medecin extends javax.swing.JFrame {
 
         jMenu2.setText("Edition");
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Tout sélectionner");
         jMenu2.add(jMenuItem3);
 
@@ -597,6 +798,7 @@ public class A32_Medecin extends javax.swing.JFrame {
 
         jMenu3.setText("Paramètres");
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setText("Changer le mot de passe");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -616,7 +818,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -627,7 +829,8 @@ public class A32_Medecin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+     Changer_mdp mdp = new Changer_mdp();
+        mdp.setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
@@ -642,16 +845,82 @@ public class A32_Medecin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         A31_Medecin fenetre31 = new A31_Medecin();
-    fenetre31.show();
-    this.dispose();
+     int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (response == JOptionPane.YES_OPTION) {
+     fenetre31.setVisible(true);
+        this.dispose();
+    }
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel21MouseClicked
+
+    private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel23MouseClicked
+
+    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel25MouseClicked
+
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel34MouseClicked
+
+    private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel38MouseClicked
+
+    private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel39MouseClicked
+
+    private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel43MouseClicked
+
+    private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel40MouseClicked
+
+    private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel41MouseClicked
+
+    private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
+ Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel29MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+A0_Accueil a0 = new A0_Accueil();
+a0.setVisible(true);
+this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
                                        
    
     /**
@@ -693,8 +962,8 @@ public class A32_Medecin extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -703,9 +972,35 @@ public class A32_Medecin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -728,6 +1023,8 @@ public class A32_Medecin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -738,13 +1035,11 @@ public class A32_Medecin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;

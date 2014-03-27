@@ -6,6 +6,10 @@
 
 package Interface_alpha2;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Ludivine
@@ -17,6 +21,17 @@ public class Changer_mdp extends javax.swing.JFrame {
      */
     public Changer_mdp() {
         initComponents();
+         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+this.addWindowListener( new WindowAdapter()
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				JFrame frame = (JFrame)e.getSource();
+				
+					frame.dispose();
+				}
+				
+			});
     }
 
     /**
@@ -30,11 +45,13 @@ public class Changer_mdp extends javax.swing.JFrame {
 
         jPanel13 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jPasswordField2 = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jPasswordField3 = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Changer le mot de passe");
@@ -44,29 +61,47 @@ public class Changer_mdp extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(205, 205, 205));
         jPanel13.setMinimumSize(new java.awt.Dimension(400, 300));
         jPanel13.setPreferredSize(new java.awt.Dimension(400, 300));
-        jPanel13.setLayout(new java.awt.GridLayout(3, 0, 50, 70));
+        jPanel13.setLayout(new java.awt.GridLayout(4, 0, 50, 70));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Mot de passe actuel :");
         jLabel2.setToolTipText("");
         jPanel13.add(jLabel2);
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel13.add(jTextField2);
+        jPasswordField1.setText("jPasswordField1");
+        jPanel13.add(jPasswordField1);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Nouveau mot de passe : ");
         jPanel13.add(jLabel1);
 
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel13.add(jTextField5);
+        jPasswordField2.setText("jPasswordField2");
+        jPanel13.add(jPasswordField2);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Confirmation du mot de passe :");
         jPanel13.add(jLabel4);
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel13.add(jTextField1);
+        jPasswordField3.setText("jPasswordField3");
+        jPanel13.add(jPasswordField3);
+
+        jButton1.setBackground(new java.awt.Color(205, 205, 205));
+        jButton1.setText("Ok");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(jButton1);
+
+        jButton2.setBackground(new java.awt.Color(205, 205, 205));
+        jButton2.setText("Retour");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(jButton2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,6 +120,14 @@ public class Changer_mdp extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       this.dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,12 +165,14 @@ public class Changer_mdp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField jPasswordField3;
     // End of variables declaration//GEN-END:variables
 }
