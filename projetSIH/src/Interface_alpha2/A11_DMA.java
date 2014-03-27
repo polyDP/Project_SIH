@@ -3,9 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Interface_alpha2;
 
+import SIH.Adresse;
+import SIH.Date;
+import SIH.Patient;
+import java.util.Calendar;
+import java.util.Locale;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +23,7 @@ public class A11_DMA extends javax.swing.JFrame {
      */
     public A11_DMA() {
         initComponents();
-       
+
     }
 
     /**
@@ -41,8 +46,6 @@ public class A11_DMA extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
@@ -141,18 +144,23 @@ public class A11_DMA extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("IPP:");
-
-        jLabel3.setText("jLabel3");
-
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Masculin");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Féminin");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nom:");
@@ -165,6 +173,11 @@ public class A11_DMA extends javax.swing.JFrame {
         jLabel7.setText("Date de Naissance: ");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -179,18 +192,104 @@ public class A11_DMA extends javax.swing.JFrame {
         jLabel10.setText("Médecin traitant: ");
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1900", "1901", "1902", "1903", "1904", "1905", "1906", "1907", "1908", "1909", "1910", "1911", "1912", "1913", "1914", "1915", "1916", "1917", "1918", "1919", "1920", "1921", "1922", "1923", "1924", "1925", "1926", "1927", "1928", "1929", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
         jComboBox4.setSelectedIndex(79);
         jComboBox4.setToolTipText("");
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTextField2.setText("N°");
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField2MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jTextField2MouseExited(evt);
+            }
+        });
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jTextField3.setText("Rue, Avenue");
+        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField3MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jTextField3MouseExited(evt);
+            }
+        });
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
 
         jTextField4.setText("Ville");
+        jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField4MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jTextField4MouseExited(evt);
+            }
+        });
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
 
         jTextField8.setText("Code postal");
+        jTextField8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField8MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jTextField8MouseExited(evt);
+            }
+        });
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -199,7 +298,6 @@ public class A11_DMA extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(117, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -207,43 +305,34 @@ public class A11_DMA extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                            .addComponent(jComboBox2, 0, 67, Short.MAX_VALUE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextField1)
+                        .addComponent(jTextField5)
+                        .addComponent(jTextField6)
+                        .addComponent(jTextField7)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jComboBox2, 0, 67, Short.MAX_VALUE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTextField1)
-                                .addComponent(jTextField5)
-                                .addComponent(jTextField6)
-                                .addComponent(jTextField7)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                                        .addComponent(jTextField2))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))))
-                            .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                                .addComponent(jTextField2))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))))
+                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(135, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(156, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2))
@@ -369,16 +458,305 @@ public class A11_DMA extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        nom = jTextField7.getText();
+        System.out.println(nom);
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        prenom = jTextField6.getText();
+        System.out.println(prenom);
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
+
+        System.out.println(jour);
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        String valMois = (jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
+        switch (valMois) {
+            case "Janvier":
+                mois = 01;
+                break;
+
+            case "Fevrier":
+                mois = 02;
+                break;
+
+            case "Mars":
+                mois = 03;
+                break;
+
+            case "Avril":
+                mois = 04;
+                break;
+
+            case "Mai":
+                mois = 05;
+                break;
+
+            case "Juin":
+                mois = 06;
+                break;
+
+            case "Juillet":
+                mois = 07;
+                break;
+
+            case "Aout":
+                mois = 8;
+                break;
+
+            case "Septembre":
+                mois = 9;
+                break;
+
+            case "Octobre":
+                mois = 10;
+                break;
+
+            case "Novembre":
+                mois = 11;
+                break;
+
+            case "Decembre":
+                mois = 12;
+                break;
+
+        }
+        System.out.println(mois);
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
+        System.out.println(annee);
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        telephone = jTextField1.getText();
+        System.out.println(telephone);
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        numero = jTextField2.getText();
+        System.out.println(numero);
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        rue = jTextField3.getText();
+        System.out.println(rue);
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        codePostal = jTextField8.getText();
+        System.out.println(codePostal);
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        ville = jTextField4.getText();
+        System.out.println(ville);
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        medecinTraitant = jTextField5.getText();
+        System.out.println(medecinTraitant);
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        sexe = jRadioButton1.getLabel();
+        System.out.println(sexe);
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        sexe = jRadioButton2.getLabel();
+        System.out.println(sexe);
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jTextField2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseExited
+        if (jTextField2.getText().equals("")) {
+            jTextField2.setText("N°");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField2MouseExited
+
+    private void jTextField3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseExited
+        if (jTextField3.getText().equals("")) {
+            jTextField3.setText("Rue, Avenue");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField3MouseExited
+
+    private void jTextField8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseExited
+       if (jTextField8.getText().equals("")) {
+            jTextField8.setText("Code postal");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField8MouseExited
+
+    private void jTextField4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseExited
+        if (jTextField4.getText().equals("")) {
+            jTextField4.setText("Ville");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField4MouseExited
+
+    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
+        if (jTextField2.getText().equals("N°")) {
+            jTextField2.setText("");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField2MouseClicked
+
+    private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
+       if (jTextField3.getText().equals("Rue, Avenue")) {
+            jTextField3.setText("");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField3MouseClicked
+
+    private void jTextField8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseClicked
+        if (jTextField8.getText().equals("Code postal")) {
+            jTextField8.setText("");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField8MouseClicked
+
+    private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
+        if (jTextField4.getText().equals("Ville")) {
+            jTextField4.setText("");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField4MouseClicked
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         A0_Accueil fenetre1 = new A0_Accueil();
-    fenetre1.show();
-    this.dispose();
-}  
-private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        A12_DMA fenetre2 = new A12_DMA();
-    fenetre2.show();
-    this.dispose();
-}
+        fenetre1.show();
+        this.dispose();
+    }
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        float num;
+        Boolean chiffre = true;
+
+        try {
+            num = Float.valueOf(jTextField1.getText());
+
+        } catch (Exception e) {
+
+            chiffre = false;
+        }
+
+        if (jTextField1.getText().length() == 0) {
+            JOptionPane.showMessageDialog(jPanel1, "pas de numero de telephone entre", "erreur", JOptionPane.WARNING_MESSAGE);
+
+        } else if (jTextField1.getText().length() != 10) {
+            JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone doit contenir 10 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+
+        } else if (chiffre == false) {
+            JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+
+            telephone = jTextField1.getText();
+
+            sexe = jRadioButton1.getLabel();
+            sexe = jRadioButton2.getLabel();
+            nom = jTextField7.getText();
+            prenom = jTextField6.getText();
+            jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
+            String valMois = (jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
+            switch (valMois) {
+                case "Janvier":
+                    mois = 01;
+                    break;
+
+                case "Fevrier":
+                    mois = 02;
+                    break;
+
+                case "Mars":
+                    mois = 03;
+                    break;
+
+                case "Avril":
+                    mois = 04;
+                    break;
+
+                case "Mai":
+                    mois = 05;
+                    break;
+
+                case "Juin":
+                    mois = 06;
+                    break;
+
+                case "Juillet":
+                    mois = 07;
+                    break;
+
+                case "Aout":
+                    mois = 8;
+                    break;
+
+                case "Septembre":
+                    mois = 9;
+                    break;
+
+                case "Octobre":
+                    mois = 10;
+                    break;
+
+                case "Novembre":
+                    mois = 11;
+                    break;
+
+                case "Decembre":
+                    mois = 12;
+                    break;
+            }
+            annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
+
+            Date dateNaissance = new Date(jour, mois, annee);
+            numero = jTextField2.getText();
+            rue = jTextField3.getText();
+            codePostal = jTextField8.getText();
+            ville = jTextField4.getText();
+
+            Adresse adressePatient = new Adresse(numero, rue, codePostal, ville);
+
+            medecinTraitant = jTextField5.getText();
+
+            Locale locale = Locale.getDefault();
+            Calendar cal = Calendar.getInstance(locale);
+            long day;
+            long month;
+            long year;
+            day = cal.get(Calendar.DAY_OF_MONTH);
+            month = cal.get(Calendar.MONTH);
+            month = month + 1;
+            year = cal.get(Calendar.YEAR);
+            Date dateJour = new Date(day, month, year);
+
+            patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
+
+            System.out.println(patient.affichagePatient());
+
+            this.dispose();
+            A12_DMA a12_dma = new A12_DMA(patient);
+            a12_dma.setVisible(true);
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -413,7 +791,19 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
             }
         });
     }
-
+    private Patient patient;
+    private String nom;
+    private String prenom;
+    private String telephone;
+    private long jour;
+    private long mois;
+    private long annee;
+    private String numero;
+    private String rue;
+    private String codePostal;
+    private String ville;
+    private String medecinTraitant;
+    private String sexe;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
@@ -424,8 +814,6 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
