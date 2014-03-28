@@ -208,9 +208,19 @@ public class A0_Accueil extends javax.swing.JFrame {
 
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setText("************");
         jPasswordField1.setMaximumSize(new java.awt.Dimension(6, 23));
         jPasswordField1.setPreferredSize(new java.awt.Dimension(6, 23));
+        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordField1MouseClicked(evt);
+            }
+        });
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jPasswordField1);
 
         jPanel1.add(jPanel6, java.awt.BorderLayout.CENTER);
@@ -232,6 +242,18 @@ public class A0_Accueil extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+        if (jPasswordField1.getText().equals("************")) {
+            jPasswordField1.setText("");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jPasswordField1MouseClicked
 private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
     this.dispose();
 }

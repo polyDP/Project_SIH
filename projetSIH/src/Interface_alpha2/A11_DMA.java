@@ -164,8 +164,18 @@ this.addWindowListener( new WindowAdapter()
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jTabbedPane1ComponentShown(evt);
+            }
+        });
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel5ComponentShown(evt);
+            }
+        });
 
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton1);
@@ -398,6 +408,11 @@ this.addWindowListener( new WindowAdapter()
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setEnabled(false);
+        jPanel4.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel4ComponentShown(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -677,6 +692,18 @@ A0_Accueil a0 = new A0_Accueil();
 a0.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jTabbedPane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane1ComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1ComponentShown
+
+    private void jPanel5ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel5ComponentShown
+       onglet = "creation patient";
+    }//GEN-LAST:event_jPanel5ComponentShown
+
+    private void jPanel4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel4ComponentShown
+        onglet="recherche patient";
+    }//GEN-LAST:event_jPanel4ComponentShown
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         A0_Accueil fenetre1 = new A0_Accueil();
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
@@ -689,6 +716,9 @@ this.dispose();
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        
+        if(onglet.contains("creation patient")){
+            
         float num;
         Boolean chiffre = true;
 
@@ -712,9 +742,13 @@ this.dispose();
         } else {
 
             telephone = jTextField1.getText();
-
-            sexe = jRadioButton1.getLabel();
+if(jRadioButton1.isSelected()){
+    sexe = jRadioButton1.getLabel();
+} else if (jRadioButton2.isSelected()){
             sexe = jRadioButton2.getLabel();
+        }
+            
+            
             nom = jTextField7.getText();
             prenom = jTextField6.getText();
             jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
@@ -800,7 +834,11 @@ this.dispose();
             a12_dma.setVisible(true);
         }
     }
-
+    else if (onglet.contains("recherche patient")){
+            System.out.println("ca marche");
+            //rechercher patient dans base de données
+    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -835,6 +873,7 @@ this.dispose();
             }
         });
     }
+    private String onglet;
     private Patient patient;
     private String nom;
     private String prenom;
