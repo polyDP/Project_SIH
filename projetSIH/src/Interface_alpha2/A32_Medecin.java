@@ -858,62 +858,74 @@ this.addWindowListener( new WindowAdapter()
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
          Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);// TODO add your handling code here:
+        fenetre.setVisible(true);
+fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel19MouseClicked
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);        // TODO add your handling code here:
+        fenetre.setVisible(true);      
+        fenetre.setTitle("Ajout d'un soin: 2 heures - 4 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);        // TODO add your handling code here:
+        fenetre.setVisible(true);   
+        fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);        // TODO add your handling code here:
+        fenetre.setVisible(true);   
+        fenetre.setTitle("Ajout d'un soin: 6 heures - 8 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel25MouseClicked
 
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);        // TODO add your handling code here:
+        fenetre.setVisible(true);   
+        fenetre.setTitle("Ajout d'un soin: 8 heures - 10 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel27MouseClicked
 
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);        // TODO add your handling code here:
+        fenetre.setVisible(true);  
+        fenetre.setTitle("Ajout d'un soin: 10 heures - 12 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel34MouseClicked
 
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);        // TODO add your handling code here:
+        fenetre.setVisible(true);   
+        fenetre.setTitle("Ajout d'un soin: 12 heures - 14 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel38MouseClicked
 
     private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);        // TODO add your handling code here:
+        fenetre.setVisible(true);  
+        fenetre.setTitle("Ajout d'un soin: 14 heures - 16 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel39MouseClicked
 
     private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);        // TODO add your handling code here:
+        fenetre.setVisible(true); 
+         fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel43MouseClicked
 
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);        // TODO add your handling code here:
+        fenetre.setVisible(true);  
+        fenetre.setTitle("Ajout d'un soin: 18 heures - 20 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel40MouseClicked
 
     private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);        // TODO add your handling code here:
+        fenetre.setVisible(true); 
+        fenetre.setTitle("Ajout d'un soin: 20 heures - 22 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel41MouseClicked
 
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);        // TODO add your handling code here:
+        fenetre.setVisible(true);  
+        fenetre.setTitle("Ajout d'un soin: 22 heures - Minuit");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel29MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
