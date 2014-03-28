@@ -238,15 +238,24 @@ public class A0_Accueil extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
         if (jPasswordField1.getText().equals("************")) {
             jPasswordField1.setText("");
@@ -254,7 +263,11 @@ public class A0_Accueil extends javax.swing.JFrame {
             revalidate();
         }
     }//GEN-LAST:event_jPasswordField1MouseClicked
-private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+/**
+ *  Permet de fermer la fenêtre et l'application dans le même geste
+ * @param evt 
+ */
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
     this.dispose();
 }
     /**

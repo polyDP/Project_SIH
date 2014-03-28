@@ -124,7 +124,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel2.add(jButton2);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Retour");
+        jButton1.setText("Sortie du dossier");
         jButton1.setToolTipText("");
         jPanel2.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -321,18 +321,29 @@ this.addWindowListener( new WindowAdapter()
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+/**
+ * changer le mot de passe
+ * @param evt 
+ */
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
        Changer_mdp mdp = new Changer_mdp();
         mdp.setVisible(true);  // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+/**
+ * déconnexion par le menu
+ * @param evt 
+ */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 A0_Accueil a0 = new A0_Accueil();
 a0.setVisible(true);
 this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+/**
+ * retour à  la page du service médicotechnique, sortie du dossier du patient
+ * @param evt 
+ */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         A51_MedicoTechnique fenetre51 = new A51_MedicoTechnique();
      int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);

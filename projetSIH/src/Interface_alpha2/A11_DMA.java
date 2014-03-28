@@ -501,28 +501,43 @@ this.addWindowListener( new WindowAdapter()
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Permet de changer le mot de passe de la personne qui est connectée.
+ * @param evt 
+ */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
         mdp.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         nom = jTextField7.getText();
         System.out.println(nom);
     }//GEN-LAST:event_jTextField7ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         prenom = jTextField6.getText();
         System.out.println(prenom);
     }//GEN-LAST:event_jTextField6ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
 
         System.out.println(jour);
     }//GEN-LAST:event_jComboBox2ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         String valMois = (jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
         switch (valMois) {
@@ -577,52 +592,82 @@ this.addWindowListener( new WindowAdapter()
         }
         System.out.println(mois);
     }//GEN-LAST:event_jComboBox3ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
         System.out.println(annee);
     }//GEN-LAST:event_jComboBox4ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         telephone = jTextField1.getText();
         System.out.println(telephone);
     }//GEN-LAST:event_jTextField1ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         numero = jTextField2.getText();
         System.out.println(numero);
     }//GEN-LAST:event_jTextField2ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         rue = jTextField3.getText();
         System.out.println(rue);
     }//GEN-LAST:event_jTextField3ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         codePostal = jTextField8.getText();
         System.out.println(codePostal);
     }//GEN-LAST:event_jTextField8ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         ville = jTextField4.getText();
         System.out.println(ville);
     }//GEN-LAST:event_jTextField4ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         medecinTraitant = jTextField5.getText();
         System.out.println(medecinTraitant);
     }//GEN-LAST:event_jTextField5ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         sexe = jRadioButton1.getLabel();
         System.out.println(sexe);
     }//GEN-LAST:event_jRadioButton1ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         sexe = jRadioButton2.getLabel();
         System.out.println(sexe);
     }//GEN-LAST:event_jRadioButton2ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseExited
         if (jTextField2.getText().equals("")) {
             jTextField2.setText("N°");
@@ -630,7 +675,10 @@ this.addWindowListener( new WindowAdapter()
             revalidate();
         }
     }//GEN-LAST:event_jTextField2MouseExited
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseExited
         if (jTextField3.getText().equals("")) {
             jTextField3.setText("Rue, Avenue");
@@ -638,7 +686,10 @@ this.addWindowListener( new WindowAdapter()
             revalidate();
         }
     }//GEN-LAST:event_jTextField3MouseExited
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseExited
        if (jTextField8.getText().equals("")) {
             jTextField8.setText("Code postal");
@@ -646,7 +697,10 @@ this.addWindowListener( new WindowAdapter()
             revalidate();
         }
     }//GEN-LAST:event_jTextField8MouseExited
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseExited
         if (jTextField4.getText().equals("")) {
             jTextField4.setText("Ville");
@@ -654,7 +708,10 @@ this.addWindowListener( new WindowAdapter()
             revalidate();
         }
     }//GEN-LAST:event_jTextField4MouseExited
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
         if (jTextField2.getText().equals("N°")) {
             jTextField2.setText("");
@@ -662,7 +719,10 @@ this.addWindowListener( new WindowAdapter()
             revalidate();
         }
     }//GEN-LAST:event_jTextField2MouseClicked
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
        if (jTextField3.getText().equals("Rue, Avenue")) {
             jTextField3.setText("");
@@ -670,7 +730,10 @@ this.addWindowListener( new WindowAdapter()
             revalidate();
         }
     }//GEN-LAST:event_jTextField3MouseClicked
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseClicked
         if (jTextField8.getText().equals("Code postal")) {
             jTextField8.setText("");
@@ -678,7 +741,10 @@ this.addWindowListener( new WindowAdapter()
             revalidate();
         }
     }//GEN-LAST:event_jTextField8MouseClicked
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
         if (jTextField4.getText().equals("Ville")) {
             jTextField4.setText("");
@@ -686,24 +752,40 @@ this.addWindowListener( new WindowAdapter()
             revalidate();
         }
     }//GEN-LAST:event_jTextField4MouseClicked
-
+/**
+ * Permet de rejoindre la fenêtre AO_Accueil par le menu (déconnecter)
+ * @param evt 
+ */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 A0_Accueil a0 = new A0_Accueil();
 a0.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTabbedPane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane1ComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane1ComponentShown
-
+/**
+ * 
+ * @param evt 
+ */
     private void jPanel5ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel5ComponentShown
        onglet = "creation patient";
     }//GEN-LAST:event_jPanel5ComponentShown
-
+/**
+ * 
+ * @param evt 
+ */
     private void jPanel4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel4ComponentShown
         onglet="recherche patient";
     }//GEN-LAST:event_jPanel4ComponentShown
+   /**
+    * Fait le lien avec la page d'accueil. Une JOptionPane apparait pour rassurer l'utilisateur
+    * @param evt 
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         A0_Accueil fenetre1 = new A0_Accueil();
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
@@ -714,7 +796,10 @@ this.dispose();
     }
         
     }
-
+/**
+ * 
+ * @param evt 
+ */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         
         if(onglet.contains("creation patient")){

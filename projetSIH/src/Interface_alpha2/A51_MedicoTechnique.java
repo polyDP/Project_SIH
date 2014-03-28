@@ -289,18 +289,28 @@ public class A51_MedicoTechnique extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * changement du mot de passe via le menu
+ * @param evt 
+ */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
        Changer_mdp mdp = new Changer_mdp();
         mdp.setVisible(true);  // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+/**
+ * déconnexion, retour vers l'accueil via le menu
+ * @param evt 
+ */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 A0_Accueil a0 = new A0_Accueil();
 a0.setVisible(true);
 this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+/**
+ * déconnexion via le bouton avec demande de confirmation
+ * @param evt 
+ */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         A0_Accueil fenetre5 = new A0_Accueil();
     int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -309,7 +319,11 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
     }
 }
-private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+/**
+ * aller à la page suivante, celle qui concerne le patient sélectionné
+ * @param evt 
+ */
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         A52_MedicoTechnique fenetre51 = new A52_MedicoTechnique();
     fenetre51.setVisible(true);
     this.dispose();

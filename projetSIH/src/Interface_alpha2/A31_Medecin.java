@@ -261,18 +261,28 @@ this.addWindowListener( new WindowAdapter()
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * changer le mot de passe à partir du menu
+ * @param evt 
+ */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
         mdp.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+/**
+ * se déconnecter, revenir à la première page grâce au menu
+ * @param evt 
+ */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 A0_Accueil a0 = new A0_Accueil();
 a0.setVisible(true);
 this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+/**
+ * retour à la page d'accueil à partir du bouton prévu à cet effet
+ * @param evt 
+ */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         A0_Accueil fenetre3 = new A0_Accueil();
       int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -281,7 +291,11 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
     }
 }  
-private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+/**
+ * Aller à la page suivante en cliquant sur le bouton de validation
+ * @param evt 
+ */
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         A32_Medecin fenetre31 = new A32_Medecin();
     fenetre31.setVisible(true);
     this.dispose();

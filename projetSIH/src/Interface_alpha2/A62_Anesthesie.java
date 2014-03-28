@@ -140,7 +140,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jPanel2.add(jButton2);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Retour");
+        jButton1.setText("Sortie du dossier");
         jButton1.setToolTipText("");
         jPanel2.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -464,34 +464,56 @@ public class A62_Anesthesie extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * changement du mot de passe via le menu
+ * @param evt 
+ */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
      Changer_mdp mdp = new Changer_mdp();
         mdp.setVisible(true);    // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField12ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
+/**
+ * déconnexion, retour à la page d'accueil via le menu
+ * @param evt 
+ */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 A0_Accueil a0 = new A0_Accueil();
 a0.setVisible(true);
 this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+/**
+ * retour à la page d'accueil de l'anesthésiste
+ * @param evt 
+ */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         A61_Anesthesie fenetre6 = new A61_Anesthesie();
       int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);

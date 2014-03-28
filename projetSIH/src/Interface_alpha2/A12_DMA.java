@@ -23,9 +23,10 @@ import javax.swing.JOptionPane;
  */
 public class A12_DMA extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Premiere_page_dma
-     */
+   /**
+    * 
+    * @param p 
+    */
     public A12_DMA(Patient p) {
         this.patient = p;
         Locale locale = Locale.getDefault();
@@ -503,12 +504,18 @@ this.addWindowListener( new WindowAdapter()
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * permet le changement de mot de passe de l'utilisateur à partir du menu
+ * @param evt 
+ */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
         mdp.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+/**
+ * permet de fermer un dossier et donc d'empêcher aux utilisateur d'accéder au patient concerné
+ * @param evt 
+ */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir fermer le dossier?", "Confirmer",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -516,17 +523,27 @@ this.addWindowListener( new WindowAdapter()
     
     }
     }//GEN-LAST:event_jButton3ActionPerformed
-
+/**
+ * retour vers la page d'accueil, déconnexion
+ * @param evt 
+ */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 A0_Accueil a0 = new A0_Accueil();
 a0.setVisible(true);
 this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
-private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+/**
+ * Permet de revenir en arrière sur la page A11_DMA
+ * @param evt 
+ */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         A11_DMA fenetre = new A11_DMA();
     fenetre.setVisible(true);
     this.dispose();
