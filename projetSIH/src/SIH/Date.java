@@ -1,7 +1,6 @@
 package SIH;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-
 import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -24,7 +23,6 @@ public class Date {
     // #[regen=yes,id=DCE.3E305776-E6EF-08F3-F0B0-AA9D9F452582]
     // </editor-fold> 
     private long jour;
-    
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.DFF8AA20-9D48-5929-07E0-212FED1A4199]
@@ -34,7 +32,6 @@ public class Date {
         this.mois = mois;
         this.jour = jour;
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.54B460C6-AC3B-3E5D-63BC-A7D37D026AB9]
@@ -85,7 +82,7 @@ public class Date {
     public String formatAnneeString2digit() {
         String annee2 = String.valueOf(annee);
         annee2 = annee2.substring(2);
-        
+
         final int nbDigits = 2;
         NumberFormat nbf = NumberFormat.getNumberInstance();
         nbf.setMinimumIntegerDigits(nbDigits);
@@ -94,10 +91,10 @@ public class Date {
         annee2 = nbf.format(annee);
         return annee2;
     }
-    
+
     public String formatAnneeString() {
         String annee2 = String.valueOf(annee);
- 
+
         final int nbDigits = 4;
         NumberFormat nbf = NumberFormat.getNumberInstance();
         nbf.setMinimumIntegerDigits(nbDigits);
@@ -106,10 +103,10 @@ public class Date {
         annee2 = nbf.format(annee);
         return annee2;
     }
-    
+
     public String formatMoisString() {
         String mois2 = String.valueOf(mois);
-        
+
         final int nbDigits = 2;
         NumberFormat nbf = NumberFormat.getNumberInstance();
         nbf.setMinimumIntegerDigits(nbDigits);
@@ -118,9 +115,10 @@ public class Date {
         mois2 = nbf.format(mois);
         return mois2;
     }
+
     public String formatJourString() {
         String jour2 = String.valueOf(jour);
-        
+
         final int nbDigits = 2;
         NumberFormat nbf = NumberFormat.getNumberInstance();
         nbf.setMinimumIntegerDigits(nbDigits);
@@ -129,5 +127,7 @@ public class Date {
         jour2 = nbf.format(mois);
         return jour2;
     }
+
+   
 
 }

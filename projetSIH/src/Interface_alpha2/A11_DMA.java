@@ -10,8 +10,6 @@ import SIH.Date;
 import SIH.Patient;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Calendar;
-import java.util.Locale;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -25,25 +23,24 @@ public class A11_DMA extends javax.swing.JFrame {
      * Creates new form Premiere_page_dma
      */
     public A11_DMA() {
+        this.date = date;
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-this.addWindowListener( new WindowAdapter()
-		{
-			public void windowClosing(WindowEvent e)
-			{
-				JFrame frame = (JFrame)e.getSource();
-				int result = JOptionPane.showConfirmDialog(
-						null,
-						"Etes-vous sûr de vouloir quitter Asclépios ?",
-						"Quitter",
-						JOptionPane.YES_NO_OPTION);
-				if (result == JOptionPane.YES_OPTION){
-					
-					System.exit(0);
-				}
-				
-			}
-		});
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                JFrame frame = (JFrame) e.getSource();
+                int result = JOptionPane.showConfirmDialog(
+                        null,
+                        "Etes-vous sûr de vouloir quitter Asclépios ?",
+                        "Quitter",
+                        JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+
+                    System.exit(0);
+                }
+
+            }
+        });
     }
 
     /**
@@ -247,47 +244,47 @@ this.addWindowListener( new WindowAdapter()
         });
 
         jTextField2.setText("N°");
-        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField2MouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jTextField2MouseExited(evt);
-            }
-        });
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-
-        jTextField3.setText("Rue, Avenue");
-        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField3MouseClicked(evt);
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jTextField3MouseExited(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
             }
         });
+
+        jTextField3.setText("Rue, Avenue");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-
-        jTextField4.setText("Ville");
-        jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField4MouseClicked(evt);
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jTextField4MouseExited(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
             }
         });
+
+        jTextField4.setText("Ville");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
+            }
+        });
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField4FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
             }
         });
 
@@ -310,17 +307,17 @@ this.addWindowListener( new WindowAdapter()
         });
 
         jTextField8.setText("Code postal");
-        jTextField8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField8MouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jTextField8MouseExited(evt);
-            }
-        });
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
+            }
+        });
+        jTextField8.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField8FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField8FocusLost(evt);
             }
         });
 
@@ -502,428 +499,304 @@ this.addWindowListener( new WindowAdapter()
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
- * Permet de changer le mot de passe de la personne qui est connectée.
- * @param evt 
- */
+     * Permet de changer le mot de passe de la personne qui est connectée.
+     *
+     * @param evt
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
         mdp.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         nom = jTextField7.getText();
         System.out.println(nom);
     }//GEN-LAST:event_jTextField7ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         prenom = jTextField6.getText();
         System.out.println(prenom);
     }//GEN-LAST:event_jTextField6ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
-
         System.out.println(jour);
     }//GEN-LAST:event_jComboBox2ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         String valMois = (jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
-        switch (valMois) {
-            case "Janvier":
-                mois = 01;
-                break;
+        System.out.println(valMois);
+        this.moisToDigit(valMois);
 
-            case "Fevrier":
-                mois = 02;
-                break;
-
-            case "Mars":
-                mois = 03;
-                break;
-
-            case "Avril":
-                mois = 04;
-                break;
-
-            case "Mai":
-                mois = 05;
-                break;
-
-            case "Juin":
-                mois = 06;
-                break;
-
-            case "Juillet":
-                mois = 07;
-                break;
-
-            case "Aout":
-                mois = 8;
-                break;
-
-            case "Septembre":
-                mois = 9;
-                break;
-
-            case "Octobre":
-                mois = 10;
-                break;
-
-            case "Novembre":
-                mois = 11;
-                break;
-
-            case "Decembre":
-                mois = 12;
-                break;
-
-        }
         System.out.println(mois);
     }//GEN-LAST:event_jComboBox3ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
         System.out.println(annee);
     }//GEN-LAST:event_jComboBox4ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         telephone = jTextField1.getText();
         System.out.println(telephone);
     }//GEN-LAST:event_jTextField1ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         numero = jTextField2.getText();
         System.out.println(numero);
+
     }//GEN-LAST:event_jTextField2ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         rue = jTextField3.getText();
         System.out.println(rue);
     }//GEN-LAST:event_jTextField3ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         codePostal = jTextField8.getText();
         System.out.println(codePostal);
     }//GEN-LAST:event_jTextField8ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         ville = jTextField4.getText();
         System.out.println(ville);
     }//GEN-LAST:event_jTextField4ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         medecinTraitant = jTextField5.getText();
         System.out.println(medecinTraitant);
     }//GEN-LAST:event_jTextField5ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         sexe = jRadioButton1.getLabel();
         System.out.println(sexe);
     }//GEN-LAST:event_jRadioButton1ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         sexe = jRadioButton2.getLabel();
         System.out.println(sexe);
     }//GEN-LAST:event_jRadioButton2ActionPerformed
-/**
- * 
- * @param evt 
- */
-    private void jTextField2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseExited
-        if (jTextField2.getText().equals("")) {
-            jTextField2.setText("N°");
-            repaint();
-            revalidate();
-        }
-    }//GEN-LAST:event_jTextField2MouseExited
-/**
- * 
- * @param evt 
- */
-    private void jTextField3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseExited
-        if (jTextField3.getText().equals("")) {
-            jTextField3.setText("Rue, Avenue");
-            repaint();
-            revalidate();
-        }
-    }//GEN-LAST:event_jTextField3MouseExited
-/**
- * 
- * @param evt 
- */
-    private void jTextField8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseExited
-       if (jTextField8.getText().equals("")) {
-            jTextField8.setText("Code postal");
-            repaint();
-            revalidate();
-        }
-    }//GEN-LAST:event_jTextField8MouseExited
-/**
- * 
- * @param evt 
- */
-    private void jTextField4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseExited
-        if (jTextField4.getText().equals("")) {
-            jTextField4.setText("Ville");
-            repaint();
-            revalidate();
-        }
-    }//GEN-LAST:event_jTextField4MouseExited
-/**
- * 
- * @param evt 
- */
-    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
+
+    /**
+     * Permet de rejoindre la fenêtre AO_Accueil par le menu (déconnecter)
+     *
+     * @param evt
+     */
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        A0_Accueil a0 = new A0_Accueil();
+        a0.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    /**
+     *
+     * @param evt
+     */
+    private void jTabbedPane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane1ComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1ComponentShown
+    /**
+     *
+     * @param evt
+     */
+    private void jPanel5ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel5ComponentShown
+        onglet = "creation patient";
+    }//GEN-LAST:event_jPanel5ComponentShown
+    /**
+     *
+     * @param evt
+     */
+    private void jPanel4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel4ComponentShown
+        onglet = "recherche patient";
+    }//GEN-LAST:event_jPanel4ComponentShown
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
         if (jTextField2.getText().equals("N°")) {
             jTextField2.setText("");
             repaint();
             revalidate();
         }
-    }//GEN-LAST:event_jTextField2MouseClicked
-/**
- * 
- * @param evt 
- */
-    private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
-       if (jTextField3.getText().equals("Rue, Avenue")) {
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        if (jTextField2.getText().equals("")) {
+            jTextField2.setText("N°");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField2FocusLost
+
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        if (jTextField3.getText().equals("Rue, Avenue")) {
             jTextField3.setText("");
             repaint();
             revalidate();
         }
-    }//GEN-LAST:event_jTextField3MouseClicked
-/**
- * 
- * @param evt 
- */
-    private void jTextField8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseClicked
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        if (jTextField3.getText().equals("")) {
+            jTextField3.setText("Rue, Avenue");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField3FocusLost
+
+    private void jTextField8FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusGained
         if (jTextField8.getText().equals("Code postal")) {
             jTextField8.setText("");
             repaint();
             revalidate();
         }
-    }//GEN-LAST:event_jTextField8MouseClicked
-/**
- * 
- * @param evt 
- */
-    private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
+    }//GEN-LAST:event_jTextField8FocusGained
+
+    private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
+        if (jTextField8.getText().equals("")) {
+            jTextField8.setText("Code postal");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField8FocusLost
+
+    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
         if (jTextField4.getText().equals("Ville")) {
             jTextField4.setText("");
             repaint();
             revalidate();
         }
-    }//GEN-LAST:event_jTextField4MouseClicked
-/**
- * Permet de rejoindre la fenêtre AO_Accueil par le menu (déconnecter)
- * @param evt 
- */
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-A0_Accueil a0 = new A0_Accueil();
-a0.setVisible(true);
-this.dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-/**
- * 
- * @param evt 
- */
-    private void jTabbedPane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane1ComponentShown
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTabbedPane1ComponentShown
-/**
- * 
- * @param evt 
- */
-    private void jPanel5ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel5ComponentShown
-       onglet = "creation patient";
-    }//GEN-LAST:event_jPanel5ComponentShown
-/**
- * 
- * @param evt 
- */
-    private void jPanel4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel4ComponentShown
-        onglet="recherche patient";
-    }//GEN-LAST:event_jPanel4ComponentShown
-   /**
-    * Fait le lien avec la page d'accueil. Une JOptionPane apparait pour rassurer l'utilisateur
-    * @param evt 
-    */
+    }//GEN-LAST:event_jTextField4FocusGained
+
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+        if (jTextField4.getText().equals("")) {
+            jTextField4.setText("Ville");
+            repaint();
+            revalidate();
+        }
+    }//GEN-LAST:event_jTextField4FocusLost
+    /**
+     * Fait le lien avec la page d'accueil. Une JOptionPane apparait pour
+     * rassurer l'utilisateur
+     *
+     * @param evt
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         A0_Accueil fenetre1 = new A0_Accueil();
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-    if (response == JOptionPane.YES_OPTION) {
-     fenetre1.setVisible(true);
-        this.dispose();
-    }
-        
-    }
-/**
- * 
- * @param evt 
- */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        
-        if(onglet.contains("creation patient")){
-            
-        float num;
-        Boolean chiffre = true;
-
-        try {
-            num = Float.valueOf(jTextField1.getText());
-
-        } catch (Exception e) {
-
-            chiffre = false;
-        }
-
-        if (jTextField1.getText().length() == 0) {
-            JOptionPane.showMessageDialog(jPanel1, "pas de numero de telephone entre", "erreur", JOptionPane.WARNING_MESSAGE);
-
-        } else if (jTextField1.getText().length() != 10) {
-            JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone doit contenir 10 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
-
-        } else if (chiffre == false) {
-            JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
-
-        } else {
-
-            telephone = jTextField1.getText();
-if(jRadioButton1.isSelected()){
-    sexe = jRadioButton1.getLabel();
-} else if (jRadioButton2.isSelected()){
-            sexe = jRadioButton2.getLabel();
-        }
-            
-            
-            nom = jTextField7.getText();
-            prenom = jTextField6.getText();
-            jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
-            String valMois = (jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
-            switch (valMois) {
-                case "Janvier":
-                    mois = 01;
-                    break;
-
-                case "Fevrier":
-                    mois = 02;
-                    break;
-
-                case "Mars":
-                    mois = 03;
-                    break;
-
-                case "Avril":
-                    mois = 04;
-                    break;
-
-                case "Mai":
-                    mois = 05;
-                    break;
-
-                case "Juin":
-                    mois = 06;
-                    break;
-
-                case "Juillet":
-                    mois = 07;
-                    break;
-
-                case "Aout":
-                    mois = 8;
-                    break;
-
-                case "Septembre":
-                    mois = 9;
-                    break;
-
-                case "Octobre":
-                    mois = 10;
-                    break;
-
-                case "Novembre":
-                    mois = 11;
-                    break;
-
-                case "Decembre":
-                    mois = 12;
-                    break;
-            }
-            annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
-
-            Date dateNaissance = new Date(jour, mois, annee);
-            numero = jTextField2.getText();
-            rue = jTextField3.getText();
-            codePostal = jTextField8.getText();
-            ville = jTextField4.getText();
-
-            Adresse adressePatient = new Adresse(numero, rue, codePostal, ville);
-
-            medecinTraitant = jTextField5.getText();
-
-            Locale locale = Locale.getDefault();
-            Calendar cal = Calendar.getInstance(locale);
-            long day;
-            long month;
-            long year;
-            day = cal.get(Calendar.DAY_OF_MONTH);
-            month = cal.get(Calendar.MONTH);
-            month = month + 1;
-            year = cal.get(Calendar.YEAR);
-            Date dateJour = new Date(day, month, year);
-
-            patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
-
-            System.out.println(patient.affichagePatient());
-
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.YES_OPTION) {
+            fenetre1.setVisible(true);
             this.dispose();
-            A12_DMA a12_dma = new A12_DMA(patient);
-            a12_dma.setVisible(true);
         }
+
     }
-    else if (onglet.contains("recherche patient")){
+
+    /**
+     *
+     * @param evt
+     */
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        if (onglet.contains("creation patient")) {
+
+            float num;
+            Boolean chiffre = true;
+
+            try {
+                num = Float.valueOf(jTextField1.getText());
+
+            } catch (Exception e) {
+
+                chiffre = false;
+            }
+
+            if (jTextField1.getText().length() == 0) {
+                JOptionPane.showMessageDialog(jPanel1, "pas de numero de telephone entre", "erreur", JOptionPane.WARNING_MESSAGE);
+
+            } else if (jTextField1.getText().length() != 10) {
+                JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone doit contenir 10 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+
+            } else if (chiffre == false) {
+                JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                telephone = jTextField1.getText();
+                if (jRadioButton1.isSelected()) {
+                    sexe = jRadioButton1.getLabel();
+                } else if (jRadioButton2.isSelected()) {
+                    sexe = jRadioButton2.getLabel();
+                }
+
+                nom = jTextField7.getText();
+                prenom = jTextField6.getText();
+                jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
+                String valMois = (jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
+                this.moisToDigit(valMois);
+                annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
+
+                Date dateNaissance = new Date(jour, mois, annee);
+
+                numero = jTextField2.getText();
+                rue = jTextField3.getText();
+                codePostal = jTextField8.getText();
+                ville = jTextField4.getText();
+
+                Adresse adressePatient = new Adresse(numero, rue, codePostal, ville);
+
+                medecinTraitant = jTextField5.getText();
+
+                patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
+
+                System.out.println(patient.affichagePatient());
+
+                this.dispose();
+                A12_DMA a12_dma = new A12_DMA(patient);
+                a12_dma.setVisible(true);
+            }
+        } else if (onglet.contains("recherche patient")) {
             System.out.println("ca marche");
             //rechercher patient dans base de données
+        }
     }
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -958,6 +831,63 @@ if(jRadioButton1.isSelected()){
             }
         });
     }
+
+    public long moisToDigit(String val) {
+
+        switch (val) {
+            case "Janvier":
+                mois = 1;
+                break;
+
+            case "Fevrier":
+                mois = 2;
+                break;
+
+            case "Mars":
+                mois = 3;
+                break;
+
+            case "Avril":
+                mois = 4;
+                break;
+
+            case "Mai":
+                mois = 5;
+                break;
+
+            case "Juin":
+                mois = 6;
+                break;
+
+            case "Juillet":
+                mois = 7;
+                break;
+
+            case "Août":
+                mois = 8;
+                break;
+
+            case "Septembre":
+                mois = 9;
+                break;
+
+            case "Octobre":
+                mois = 10;
+                break;
+
+            case "Novembre":
+                mois = 11;
+                break;
+
+            case "Décembre":
+                mois = 12;
+                break;
+
+        }
+return mois;
+    }
+
+    private Date date;
     private String onglet;
     private Patient patient;
     private String nom;

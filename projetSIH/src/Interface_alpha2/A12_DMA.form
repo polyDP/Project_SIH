@@ -158,7 +158,7 @@
             <Component class="javax.swing.JLabel" name="jLabel20">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="&quot;Patient : &quot;+patient.getNom()+patient.getPrenom()" type="code"/>
+                  <Connection code="&quot;Patient : &quot;+patient.getNom()+&quot; &quot;+patient.getPrenom()" type="code"/>
                 </Property>
               </Properties>
             </Component>
@@ -712,23 +712,26 @@
                       <Connection code="day" type="code"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBox2">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="12">
                         <StringItem index="0" value="Janvier"/>
-                        <StringItem index="1" value="F&#xe9;vrier"/>
-                        <StringItem index="2" value="Mars "/>
+                        <StringItem index="1" value="Fevrier"/>
+                        <StringItem index="2" value="Mars"/>
                         <StringItem index="3" value="Avril"/>
                         <StringItem index="4" value="Mai"/>
                         <StringItem index="5" value="Juin"/>
-                        <StringItem index="6" value="Juillet "/>
+                        <StringItem index="6" value="Juillet"/>
                         <StringItem index="7" value="Ao&#xfb;t"/>
                         <StringItem index="8" value="Septembre"/>
                         <StringItem index="9" value="Octobre"/>
-                        <StringItem index="10" value="Novembre "/>
-                        <StringItem index="11" value="D&#xe9;cembre "/>
+                        <StringItem index="10" value="Novembre"/>
+                        <StringItem index="11" value="D&#xe9;cembre"/>
                       </StringArray>
                     </Property>
                     <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -753,9 +756,12 @@
                       </StringArray>
                     </Property>
                     <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="year" type="code"/>
+                      <Connection code="yearIndex" type="code"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox3ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
                   <Properties>
@@ -771,6 +777,9 @@
                       <Connection code="new DefaultComboBoxModel(SIH.Services.values())" type="code"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox4ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel16">
                   <Properties>

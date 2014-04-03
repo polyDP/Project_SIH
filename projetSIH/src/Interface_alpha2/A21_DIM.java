@@ -8,6 +8,7 @@ package Interface_alpha2;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -185,18 +186,38 @@ this.addWindowListener( new WindowAdapter()
         jTabbedPane1.addTab("Log", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel5ComponentShown(evt);
+            }
+        });
 
         jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("Médecin");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
 
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Infirmier");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Secrétaire médicale");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ID du personnel: ");
@@ -207,8 +228,6 @@ this.addWindowListener( new WindowAdapter()
         jLabel5.setText("Nom:");
 
         jLabel6.setText("Prénom: ");
-
-        jTextField2.setText("jTextField2");
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Mot de passe: ");
@@ -222,10 +241,15 @@ this.addWindowListener( new WindowAdapter()
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Service:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "      ", "cardi", "géria" }));
+        jComboBox3.setModel(new DefaultComboBoxModel(SIH.Services.values()));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("OK");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -416,6 +440,39 @@ A0_Accueil a0 = new A0_Accueil();
 a0.setVisible(true);
 this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (onglet.contains("creation patient")) {
+            System.out.println("creation patient");
+            if (jRadioButton3.isSelected()) {
+                    personnel = jRadioButton3.getLabel();
+                    System.out.println(personnel);
+                } else if (jRadioButton1.isSelected()) {
+                    personnel = jRadioButton1.getLabel();
+                    System.out.println(personnel);
+                } else if (jRadioButton2.isSelected()){
+                    personnel = jRadioButton2.getLabel();
+                    System.out.println(personnel);
+                }
+            
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jPanel5ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel5ComponentShown
+        onglet="creation patient";
+    }//GEN-LAST:event_jPanel5ComponentShown
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 /**
  * Permet la déconnexion, avec une demande de confirmation de l'utilisateur
  * @param evt 
@@ -463,7 +520,8 @@ this.dispose();        // TODO add your handling code here:
             }
         });
     }
-
+private String onglet;
+private String personnel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Interface_alpha2;
 
 import SIH.Date;
@@ -16,45 +15,39 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Ludivine
  */
 public class A12_DMA extends javax.swing.JFrame {
 
-   /**
-    * 
-    * @param p 
-    */
+    /**
+     *
+     * @param p
+     */
     public A12_DMA(Patient p) {
         this.patient = p;
-        Locale locale = Locale.getDefault();
-        Calendar cal = Calendar.getInstance(locale);
-
-        day = cal.get(Calendar.DAY_OF_MONTH) - 1;
-        month = cal.get(Calendar.MONTH);
-        year = cal.get(Calendar.YEAR) - 2014;
-        Date dateJour = new Date(day, month, year);
+        //this.date = date;
+        this.dateJour();
+        System.out.println(this.dateJour());
+        
         initComponents();
-         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-this.addWindowListener( new WindowAdapter()
-		{
-			public void windowClosing(WindowEvent e)
-			{
-				JFrame frame = (JFrame)e.getSource();
-				int result = JOptionPane.showConfirmDialog(
-						null,
-						"Etes-vous sûr de vouloir quitter Asclépios ?",
-						"Quitter",
-						JOptionPane.YES_NO_OPTION);
-				if (result == JOptionPane.YES_OPTION){
-					
-					System.exit(0);
-				}
-				
-			}
-		});
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                JFrame frame = (JFrame) e.getSource();
+                int result = JOptionPane.showConfirmDialog(
+                        null,
+                        "Etes-vous sûr de vouloir quitter Asclépios ?",
+                        "Quitter",
+                        JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+
+                    System.exit(0);
+                }
+
+            }
+        });
     }
 
     /**
@@ -138,7 +131,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setLayout(new java.awt.GridLayout(0, 2));
 
-        jLabel20.setText("Patient : "+patient.getNom()+patient.getPrenom());
+        jLabel20.setText("Patient : "+patient.getNom()+" "+patient.getPrenom());
         jPanel9.add(jLabel20);
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
@@ -359,8 +352,13 @@ this.addWindowListener( new WindowAdapter()
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         jComboBox1.setSelectedIndex(day);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janvier", "Février", "Mars ", "Avril", "Mai", "Juin", "Juillet ", "Août", "Septembre", "Octobre", "Novembre ", "Décembre " }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" }));
         jComboBox2.setSelectedIndex(month);
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,12 +367,22 @@ this.addWindowListener( new WindowAdapter()
         });
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
-        jComboBox3.setSelectedIndex(year);
+        jComboBox3.setSelectedIndex(yearIndex);
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Service d'affectation:");
 
         jComboBox4.setModel(new DefaultComboBoxModel(SIH.Services.values()));
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("PH responsable:");
 
@@ -505,54 +513,76 @@ this.addWindowListener( new WindowAdapter()
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
- * permet le changement de mot de passe de l'utilisateur à partir du menu
- * @param evt 
- */
+     * permet le changement de mot de passe de l'utilisateur à partir du menu
+     *
+     * @param evt
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
         mdp.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-/**
- * permet de fermer un dossier et donc d'empêcher aux utilisateur d'accéder au patient concerné
- * @param evt 
- */
+    /**
+     * permet de fermer un dossier et donc d'empêcher aux utilisateur d'accéder
+     * au patient concerné
+     *
+     * @param evt
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir fermer le dossier?", "Confirmer",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-    if (response == JOptionPane.YES_OPTION) {
-    
-    }
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.YES_OPTION) {
+
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
-/**
- * retour vers la page d'accueil, déconnexion
- * @param evt 
- */
+    /**
+     * retour vers la page d'accueil, déconnexion
+     *
+     * @param evt
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-A0_Accueil a0 = new A0_Accueil();
-a0.setVisible(true);
-this.dispose();        // TODO add your handling code here:
+        A0_Accueil a0 = new A0_Accueil();
+        a0.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
+        String valMois = (jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
+        this.moisToDigit(valMois);
+        System.out.println(this.moisToDigit(valMois));
     }//GEN-LAST:event_jComboBox2ActionPerformed
-/**
- * Permet de revenir en arrière sur la page A11_DMA
- * @param evt 
- */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        jour = Long.parseLong(jComboBox1.getItemAt(jComboBox1.getSelectedIndex()).toString());
+        System.out.println(jour);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        annee = Long.parseLong(jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
+        System.out.println(annee);
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+    /**
+     * Permet de revenir en arrière sur la page A11_DMA
+     *
+     * @param evt
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         A11_DMA fenetre = new A11_DMA();
-    fenetre.setVisible(true);
-    this.dispose();
-}  
+        fenetre.setVisible(true);
+        this.dispose();
+    }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -579,15 +609,91 @@ this.dispose();        // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             Patient patient;
+
             public void run() {
                 new A12_DMA(patient).setVisible(true);
             }
         });
     }
-private int day;
-    private int month;
-    private int year;
+
+    private Date dateJour() {
+        Locale locale = Locale.getDefault();
+        Calendar cal = Calendar.getInstance(locale);
+        day = cal.get(Calendar.DAY_OF_MONTH);
+        month = cal.get(Calendar.MONTH);
+        month = month + 1;
+        year = cal.get(Calendar.YEAR);
+        yearIndex = year-2014;        
+        Date dateJour = new Date(day, month, year);
+        return dateJour;
+    }
+    
+     public long moisToDigit(String val) {
+        
+
+        switch (val) {
+            case "Janvier":
+                mois = 1;
+                break;
+
+            case "Fevrier":
+                mois = 2;
+                break;
+
+            case "Mars":
+                mois = 3;
+                break;
+
+            case "Avril":
+                mois = 4;
+                break;
+
+            case "Mai":
+                mois = 5;
+                break;
+
+            case "Juin":
+                mois = 6;
+                break;
+
+            case "Juillet":
+                mois = 7;
+                break;
+
+            case "Août":
+                mois = 8;
+                break;
+
+            case "Septembre":
+                mois = 9;
+                break;
+
+            case "Octobre":
+                mois = 10;
+                break;
+
+            case "Novembre":
+                mois = 11;
+                break;
+
+            case "Décembre":
+                mois = 12;
+                break;
+
+        }
+      return mois;
+
+    }
+
     private Patient patient;
+    private Date date;
+    private int year;
+    private int yearIndex;
+    private int month;
+    private int day;
+    private long jour;
+    private long mois;
+    private long annee;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
