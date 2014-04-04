@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Interface_alpha2;
 
+import SIH.Infirmiere;
+import SIH.MedecinPH;
+import SIH.PersonnelMedical;
+import SIH.Services;
+import SIH.Specialites;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -24,24 +27,22 @@ public class A21_DIM extends javax.swing.JFrame {
      */
     public A21_DIM() {
         initComponents();
-          setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-this.addWindowListener( new WindowAdapter()
-		{
-			public void windowClosing(WindowEvent e)
-			{
-				JFrame frame = (JFrame)e.getSource();
-				int result = JOptionPane.showConfirmDialog(
-						null,
-						"Etes-vous sûr de vouloir quitter Asclépios ?",
-						"Quitter",
-						JOptionPane.YES_NO_OPTION);
-				if (result == JOptionPane.YES_OPTION){
-					
-					System.exit(0);
-				}
-				
-			}
-		});
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                JFrame frame = (JFrame) e.getSource();
+                int result = JOptionPane.showConfirmDialog(
+                        null,
+                        "Etes-vous sûr de vouloir quitter Asclépios ?",
+                        "Quitter",
+                        JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+
+                    System.exit(0);
+                }
+
+            }
+        });
     }
 
     /**
@@ -222,12 +223,24 @@ this.addWindowListener( new WindowAdapter()
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ID du personnel: ");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("non cree");
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nom:");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("Prénom: ");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Mot de passe: ");
@@ -236,12 +249,22 @@ this.addWindowListener( new WindowAdapter()
 
         jLabel9.setText("Fonction/Spécialité:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "      ", "cardio", " " }));
+        jComboBox2.setModel(new DefaultComboBoxModel(SIH.Specialites.values()));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Service:");
 
         jComboBox3.setModel(new DefaultComboBoxModel(SIH.Services.values()));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("OK");
@@ -424,68 +447,135 @@ this.addWindowListener( new WindowAdapter()
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
- * changement de mot de passe
- * @param evt 
- */
+     * changement de mot de passe
+     *
+     * @param evt
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-       Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true); // TODO add your handling code here:
+        Changer_mdp mdp = new Changer_mdp();
+        mdp.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-/**
- * Permet la déconnexion, retour vers la première page du logiciel.
- * @param evt 
- */
+    /**
+     * Permet la déconnexion, retour vers la première page du logiciel.
+     *
+     * @param evt
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-A0_Accueil a0 = new A0_Accueil();
-a0.setVisible(true);
-this.dispose();        // TODO add your handling code here:
+        A0_Accueil a0 = new A0_Accueil();
+        a0.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (onglet.contains("creation patient")) {
-            System.out.println("creation patient");
             if (jRadioButton3.isSelected()) {
-                    personnel = jRadioButton3.getLabel();
-                    System.out.println(personnel);
-                } else if (jRadioButton1.isSelected()) {
-                    personnel = jRadioButton1.getLabel();
-                    System.out.println(personnel);
-                } else if (jRadioButton2.isSelected()){
-                    personnel = jRadioButton2.getLabel();
-                    System.out.println(personnel);
-                }
-            
+                nom = jTextField1.getText();
+                prenom = jTextField2.getText();
+                this.newId(nom, prenom);
+                jLabel3.setText(id);
+                personnel = jRadioButton3.getLabel();
+                specialite = (Specialites) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+                service = (Services) jComboBox3.getItemAt(jComboBox3.getSelectedIndex());
+                med = new MedecinPH(id, "lol", nom, prenom, personnel, specialite, service);               
+
+            } else if (jRadioButton1.isSelected()) {
+                nom = jTextField1.getText();
+                prenom = jTextField2.getText();
+                this.newId(nom, prenom);
+                jLabel3.setText(id);
+                personnel = jRadioButton3.getLabel();
+                
+                service = (Services) jComboBox3.getItemAt(jComboBox3.getSelectedIndex());
+                personnel = jRadioButton1.getLabel();
+                inf = new Infirmiere (id, "lol",nom,prenom,personnel,service);
+                System.out.println(personnel);
+            } else if (jRadioButton2.isSelected()) {
+                personnel = jRadioButton2.getLabel();
+                nom = jTextField1.getText();
+                prenom = jTextField2.getText();
+                this.newId(nom, prenom);
+                jLabel3.setText(id);
+                personnel = jRadioButton3.getLabel();
+                persMed = new PersonnelMedical(id,"lol",nom,prenom,personnel);
+                
+            }
+
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jPanel5ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel5ComponentShown
-        onglet="creation patient";
+        onglet = "creation patient";
     }//GEN-LAST:event_jPanel5ComponentShown
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
+        jComboBox2.show();
+        jLabel9.show();
+         jComboBox3.show();
+        jLabel10.show();
+        jPanel5.revalidate();
+        jPanel5.repaint();
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
+        jComboBox2.hide();
+        jLabel9.hide();
+         jComboBox3.show();
+        jLabel10.show();
+        jPanel5.revalidate();
+        jPanel5.repaint();
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
+        jComboBox2.hide();
+        jLabel9.hide();
+        jComboBox3.hide();
+        jLabel10.hide();
+        jPanel5.revalidate();
+        jPanel5.repaint();
     }//GEN-LAST:event_jRadioButton2ActionPerformed
-/**
- * Permet la déconnexion, avec une demande de confirmation de l'utilisateur
- * @param evt 
- */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        nom = jTextField1.getText();
+        System.out.println(nom);
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        prenom = jTextField2.getText();
+        System.out.println(prenom);
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        specialite = (Specialites) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        service = (Services) jComboBox3.getItemAt(jComboBox3.getSelectedIndex());
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+    /**
+     * Permet la déconnexion, avec une demande de confirmation de l'utilisateur
+     *
+     * @param evt
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         A0_Accueil fenetre2 = new A0_Accueil();
-      int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-    if (response == JOptionPane.YES_OPTION) {
-     fenetre2.setVisible(true);
-        this.dispose();
+        int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.YES_OPTION) {
+            fenetre2.setVisible(true);
+            this.dispose();
+        }
     }
-}  
+
+    private String newId(String nom, String prenom) {
+        id = nom + prenom.charAt(0);
+        
+        if (id.equals("base de donnees")) {
+            id = id + prenom.charAt(1);
+        }
+        return id;
+
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -517,11 +607,21 @@ this.dispose();        // TODO add your handling code here:
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new A21_DIM().setVisible(true);
+
             }
         });
     }
-private String onglet;
-private String personnel;
+
+    private String id;
+    private Services service;
+    private Specialites specialite;
+    private String prenom;
+    private String nom;
+    private PersonnelMedical persMed;
+    private Infirmiere inf;
+    private MedecinPH med;
+    private String onglet;
+    private String personnel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;

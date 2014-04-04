@@ -19,7 +19,7 @@ public class Test {
     public static void main(String[] args) {
         Services servMed1 = Services.gynecologie_obstetrique;
         Services servInf1 = Services.chirurgie;
-        MedecinPH med1 = new MedecinPH("8", "lol", "Labat", "paul", "gynéco", servMed1);
+        //MedecinPH med1 = new MedecinPH("8", "lol", "Labat", "paul", "gynéco", servMed1);
         Infirmiere inf1 = new Infirmiere("9", "XD", "Freby", "Rodolphe", "infirmiere", servInf1);
         Administratif adm1 = new Administratif("10", "mdr", "Reges", "Ombeline");
         

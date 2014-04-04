@@ -17,7 +17,8 @@ public class DMA {
     public static void main(String[] args) {
 
         Services servMed1 = Services.gynecologie_obstetrique;
-        MedecinPH med1 = new MedecinPH("8", "lol", "Labat", "paul", "gynéco", servMed1); //va chercher médecins dans la base de données
+        Specialites speMed1 = Specialites.Gynécologie_Obstétrique;
+        MedecinPH med1 = new MedecinPH("8", "lol", "Labat", "paul", "Medecin",speMed1, servMed1); //va chercher médecins dans la base de données
 
         //-------------------------------------------------CREATION DU PATIENT---------------------------------------------
         Date dateAdmPat1 = new Date(21, 02, 2014);     // date admission patient 1

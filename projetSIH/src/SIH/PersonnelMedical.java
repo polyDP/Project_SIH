@@ -51,19 +51,6 @@ public class PersonnelMedical extends Personnel {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.A9FBFCAF-6294-265B-745D-9B4FD2EC8892]
-    // </editor-fold> 
-    public String getLogin () {
-        return super.getLogin();
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.1BBD8B35-507F-071E-5A62-7313FE0883BB]
-    // </editor-fold> 
-    public void setLogin (String val) {
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.CE722D86-89AA-B97C-F945-0F2D5C0C4627]
     // </editor-fold> 
     public Services getServices () {
