@@ -7,9 +7,12 @@ package Interface_alpha2;
 
 import SIH.Adresse;
 import SIH.Date;
+import SIH.IPP;
 import SIH.Patient;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Calendar;
+import java.util.Locale;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -24,6 +27,7 @@ public class A11_DMA extends javax.swing.JFrame {
      */
     public A11_DMA() {
         this.date = date;
+        this.ipp = ipp;
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -784,6 +788,12 @@ public class A11_DMA extends javax.swing.JFrame {
                 medecinTraitant = jTextField5.getText();
 
                 patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
+                
+                ipp = new IPP(this.dateJour());
+                
+                patient.setIpp(ipp);
+                
+                
 
                 System.out.println(patient.affichagePatient());
 
@@ -886,7 +896,21 @@ public class A11_DMA extends javax.swing.JFrame {
         }
 return mois;
     }
-
+    
+    private Date dateJour() {
+        Locale locale = Locale.getDefault();
+        Calendar cal = Calendar.getInstance(locale);
+        day = cal.get(Calendar.DAY_OF_MONTH);
+        month = cal.get(Calendar.MONTH);
+        month = month + 1;
+        year = cal.get(Calendar.YEAR);      
+        Date dateJour = new Date(day, month, year);
+        return dateJour;
+    }
+    private int year;
+    private int month;
+    private int day;
+    private IPP ipp;
     private Date date;
     private String onglet;
     private Patient patient;

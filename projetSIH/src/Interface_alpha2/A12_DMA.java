@@ -197,7 +197,7 @@ public class A12_DMA extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("IPP:");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText(patient.getIpp().getIpp());
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nom:");

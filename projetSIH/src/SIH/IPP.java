@@ -20,16 +20,21 @@ public class IPP {
 
     private String numero;
     
-    public IPP(Date date){
-        this.date = date;
+    public IPP(){
+        
         this.compteur=0;
         this.numero="00000";
+    }
+    
+    public IPP(Date date){
+        this.date = date;
         final int nbDigits = 5;
         NumberFormat nbf = NumberFormat.getNumberInstance();
         nbf.setMinimumIntegerDigits(nbDigits);
         nbf.setGroupingUsed(false);
         nbf.setMaximumIntegerDigits(nbDigits);
         numero = nbf.format(compteur);
+        this.incrementerCompteur();
     }
     public void incrementerCompteur() {
         final int nbDigits = 5;
@@ -37,13 +42,13 @@ public class IPP {
         nbf.setMinimumIntegerDigits(nbDigits);
         nbf.setGroupingUsed(false);
         nbf.setMaximumIntegerDigits(nbDigits);
-        setCompteur(getCompteur() + 1);
-        setNumero(nbf.format(getCompteur()));
+        compteur = (compteur + 1);
+        numero = (nbf.format(compteur));
 
     }
     
     public String getIpp(){
-        return getDate().formatAnneeString2digit()+getNumero();
+        return date.formatAnneeString2digit()+numero;
     }
 
     /**
