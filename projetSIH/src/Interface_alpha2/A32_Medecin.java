@@ -278,7 +278,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel13.add(jTextField3);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Poids (en grammes) :");
+        jLabel3.setText("Poids (en kilogrammes) :");
         jPanel13.add(jLabel3);
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);

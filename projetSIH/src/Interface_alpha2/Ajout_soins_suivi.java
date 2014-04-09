@@ -72,8 +72,9 @@ this.addWindowListener( new WindowAdapter()
         jPanel13.setPreferredSize(new java.awt.Dimension(400, 300));
         jPanel13.setLayout(new java.awt.GridLayout(4, 4, 0, 70));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Taille (en cm) :");
+        jLabel2.setText("Température (en °C) :");
         jLabel2.setToolTipText("");
         jPanel13.add(jLabel2);
 
@@ -95,7 +96,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel13.add(jTextField3);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Poids (en g) :");
+        jLabel3.setText("Poids (en kg) :");
         jPanel13.add(jLabel3);
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
