@@ -361,7 +361,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel2">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Taille (en centim&#xe8;tres) :"/>
+                        <Property name="text" type="java.lang.String" value="Taille (en cm) :"/>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                     </Component>
@@ -389,7 +389,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel3">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Poids (en kilogrammes) :"/>
+                        <Property name="text" type="java.lang.String" value="Poids (en kg) :"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextField1">
@@ -411,7 +411,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel6">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Temp&#xe9;rature (en&#xb0;C) :"/>
+                        <Property name="text" type="java.lang.String" value="Temp&#xe9;rature (en &#xb0;C) :"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextField4">

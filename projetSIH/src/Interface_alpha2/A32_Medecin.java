@@ -256,7 +256,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel13.setLayout(new java.awt.GridLayout(3, 4, 10, 50));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Taille (en centimètres) :");
+        jLabel2.setText("Taille (en cm) :");
         jLabel2.setToolTipText("");
         jPanel13.add(jLabel2);
 
@@ -278,7 +278,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel13.add(jTextField3);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Poids (en kilogrammes) :");
+        jLabel3.setText("Poids (en kg) :");
         jPanel13.add(jLabel3);
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -292,7 +292,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel13.add(jTextField6);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Température (en°C) :");
+        jLabel6.setText("Température (en °C) :");
         jPanel13.add(jLabel6);
 
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
