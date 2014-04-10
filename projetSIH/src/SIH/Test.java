@@ -17,8 +17,8 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Services servMed1 = Services.Gynécologie_Obstétrique;
-        Services servInf1 = Services.Gynécologie_Obstétrique;
+        Services servMed1 = Services.Gynecologie_obstetrique;
+        Services servInf1 = Services.Gynecologie_obstetrique;
         Services servAdm1 = Services.Administration;
         //MedecinPH med1 = new MedecinPH("8", "lol", "Labat", "paul", "gynéco", servMed1);
         Infirmiere inf1 = new Infirmiere("9", "XD", "Freby", "Rodolphe", "infirmiere", servInf1);

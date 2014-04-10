@@ -36,7 +36,7 @@ public class GestionLits {
             }
             this.setLits(mLit);
             
-        } else if (s == Services.Gynécologie_Obstétrique) {
+        } else if (s == Services.Gynecologie_obstetrique) {
             mLit = new ArrayList();
             int nbChambres=200;
             int numDepart=400;
