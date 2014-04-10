@@ -6,8 +6,10 @@
 package Interface_alpha2;
 
 import SIH.Date;
+import SIH.MedecinPH;
 import SIH.NumeroSejour;
 import SIH.Patient;
+import SIH.Services;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Calendar;
@@ -392,6 +394,11 @@ public class A12_DMA extends javax.swing.JFrame {
         jLabel16.setText("PH responsable:");
 
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "pierre", "paul ", "jacques" }));
+        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox6ActionPerformed(evt);
+            }
+        });
 
         jLabel17.setText("Lit: ");
 
@@ -547,7 +554,7 @@ public class A12_DMA extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         A0_Accueil a0 = new A0_Accueil();
         a0.setVisible(true);
-        this.dispose();        // TODO add your handling code here:
+        this.dispose();        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     /**
      *
@@ -570,13 +577,22 @@ public class A12_DMA extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-        // TODO add your handling code here:
+        s=(Services) jComboBox4.getItemAt(jComboBox4.getSelectedIndex());
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         NumeroSejour numSej = new NumeroSejour(this.dateJour());
+        s=(Services) jComboBox4.getItemAt(jComboBox4.getSelectedIndex());
         
+        rep = JOptionPane.showConfirmDialog(jPanel6, "creation du sejour du patient : "+patient.getNom()+patient.getPrenom()+" \n    - numero sejour : " + numSej + "\n    - service : " + s + "\n    - medecin responsable : " +m.getNom()+m.getPrenom() + "\n    - lit: " + "lit ", "confirmation", JOptionPane.OK_CANCEL_OPTION);
+          if (rep == JOptionPane.YES_OPTION) {  
+              
+          }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
+        //DB
+    }//GEN-LAST:event_jComboBox6ActionPerformed
     /**
      * Permet de revenir en arrière sur la page A11_DMA
      *
@@ -694,7 +710,9 @@ public class A12_DMA extends javax.swing.JFrame {
       return mois;
 
     }
-
+     int rep;
+    private MedecinPH m;
+    private Services s;
     private Patient patient;
     private Date date;
     private int year;

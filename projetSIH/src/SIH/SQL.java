@@ -17,12 +17,28 @@ import javax.swing.JOptionPane;
 public class SQL {
 
     static ConnectionBD con;
+    private int err;
+
+    /**
+     * @return the err
+     */
+    public int getErr() {
+        return err;
+    }
+
+    /**
+     * @param aErr the err to set
+     */
+    public void setErr(int aErr) {
+        err = aErr;
+    }
 
     public SQL() throws SQLException, InstantiationException, IllegalAccessException {
 
         con = new ConnectionBD();
 
         con.connecter();
+        err=0;
 
     }
 
@@ -60,7 +76,7 @@ public class SQL {
             prepS.executeUpdate();
 
         } catch (SQLException e) {
-
+err =1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique avec ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
 
         }
@@ -87,7 +103,7 @@ public class SQL {
             prepS.executeUpdate();
 
         } catch (SQLException e) {
-
+err =1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique contenant ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -113,7 +129,7 @@ public class SQL {
             prepS.executeUpdate();
 
         } catch (SQLException e) {
-
+            err =1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique contenant ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -139,7 +155,7 @@ public class SQL {
             prepS.executeUpdate();
 
         } catch (SQLException e) {
-
+            err =1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique contenant ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -165,7 +181,7 @@ public class SQL {
             prepS.executeUpdate();
 
         } catch (SQLException e) {
-
+            err =1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique contenant ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
         }
     }

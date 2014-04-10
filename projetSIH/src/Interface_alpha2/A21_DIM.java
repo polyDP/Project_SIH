@@ -8,9 +8,14 @@ package Interface_alpha2;
 import SIH.Infirmiere;
 import SIH.MedecinPH;
 import SIH.PersonnelMedical;
+import SIH.SQL;
 import SIH.Services;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -191,7 +196,7 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("Médecin");
+        jRadioButton3.setText("PH");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton3ActionPerformed(evt);
@@ -209,7 +214,7 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Secrétaire médicale");
+        jRadioButton2.setText("Secretaire medicale");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
@@ -241,7 +246,7 @@ public class A21_DIM extends javax.swing.JFrame {
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Mot de passe: ");
 
-        jLabel8.setText("génération machine");
+        jLabel8.setText(motDePasse);
 
         jLabel9.setText("Service :");
 
@@ -265,11 +270,11 @@ public class A21_DIM extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
+                .addContainerGap(161, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jRadioButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jRadioButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRadioButton2))
@@ -289,7 +294,7 @@ public class A21_DIM extends javax.swing.JFrame {
                                 .addComponent(jTextField2)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                 .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,6 +452,8 @@ public class A21_DIM extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int rep;
+
         if (onglet.contains("creation patient")) {
             if (jRadioButton3.isSelected()) {
                 nom = jTextField1.getText();
@@ -455,19 +462,59 @@ public class A21_DIM extends javax.swing.JFrame {
                 jLabel3.setText(id);
                 personnel = jRadioButton3.getLabel();
                 service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
-                med = new MedecinPH(id, "lol", nom, prenom, personnel, service);               
+                motDePasse = this.StringMotDePasseAleatoire();
+                jLabel8.setText(motDePasse);
+
+                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + personnel + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                if (rep == JOptionPane.YES_OPTION) {
+                    med = new MedecinPH(id, motDePasse, nom, prenom, personnel, service);
+                    //SQL sql = null;
+                    try {
+                        sql = new SQL();
+
+                    } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+
+                        Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+
+                    }
+
+                    sql.ajouterMedecinPH(med);
+                    if (sql.getErr() != 1) {
+                        JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    }
+
+                }
 
             } else if (jRadioButton1.isSelected()) {
                 nom = jTextField1.getText();
                 prenom = jTextField2.getText();
                 this.newId(nom, prenom);
                 jLabel3.setText(id);
-                personnel = jRadioButton3.getLabel(); 
+                personnel = jRadioButton3.getLabel();
                 service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
                 personnel = jRadioButton1.getLabel();
-                inf = new Infirmiere (id, "lol",nom,prenom,personnel,service);
-                
-                System.out.println(personnel);
+                motDePasse = this.StringMotDePasseAleatoire();
+                jLabel8.setText(motDePasse);
+
+                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + personnel + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : "+id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+
+                if (rep == JOptionPane.YES_OPTION) {
+                    inf = new Infirmiere(id, motDePasse, nom, prenom, personnel, service);
+                    //SQL sql = null;
+                    try {
+                        sql = new SQL();
+
+                    } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+
+                        Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+
+                    }
+                    sql.ajouterInfirmiere(inf);
+                    if (sql.getErr() != 1) {
+                        JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+
             } else if (jRadioButton2.isSelected()) {
                 personnel = jRadioButton2.getLabel();
                 nom = jTextField1.getText();
@@ -475,9 +522,28 @@ public class A21_DIM extends javax.swing.JFrame {
                 this.newId(nom, prenom);
                 jLabel3.setText(id);
                 personnel = jRadioButton3.getLabel();
-                persMed = new PersonnelMedical(id,"lol",nom,prenom,personnel);
-                persMed.setServices(service.Administration);
-                
+                motDePasse = this.StringMotDePasseAleatoire();
+                jLabel8.setText(motDePasse);
+
+                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + personnel + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " +id+ "\n    - mot de passe : " + motDePasse, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                if (rep == JOptionPane.YES_OPTION) {
+                    persMed = new PersonnelMedical(id, motDePasse, nom, prenom, personnel);
+                    persMed.setServices(service.Administration);
+                    //SQL sql = null;
+                    try {
+                        sql = new SQL();
+
+                    } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+
+                        Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+
+                    }
+                    sql.ajouterPersonnelMedical(persMed);
+                    if (sql.getErr() !=1) {
+                        JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+
             }
 
         }
@@ -538,12 +604,21 @@ public class A21_DIM extends javax.swing.JFrame {
 
     private String newId(String nom, String prenom) {
         id = nom + prenom.charAt(0);
-        
+
         if (id.equals("base de donnees")) {
             id = id + prenom.charAt(1);
         }
         return id;
 
+    }
+
+    private String StringMotDePasseAleatoire() {
+        int len = 6;
+        StringBuilder sb = new StringBuilder(len);
+        for (int i = 0; i < len; i++) {
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        }
+        return sb.toString();
     }
 
     /**
@@ -581,11 +656,14 @@ public class A21_DIM extends javax.swing.JFrame {
             }
         });
     }
-
+    private SQL sql = null;
+    static Random rnd = new Random();
+    static final String AB = "0123456789abcdefghijklmnopqrstuvwxyz";
     private String id;
     private Services service;
     private String prenom;
     private String nom;
+    private String motDePasse;
     private PersonnelMedical persMed;
     private Infirmiere inf;
     private MedecinPH med;

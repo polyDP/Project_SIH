@@ -520,7 +520,7 @@ public class A11_DMA extends javax.swing.JFrame {
      * @param evt
      */
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        nom = jTextField7.getText();
+        nom = jTextField7.getText().toLowerCase();
         System.out.println(nom);
     }//GEN-LAST:event_jTextField7ActionPerformed
     /**
@@ -528,7 +528,7 @@ public class A11_DMA extends javax.swing.JFrame {
      * @param evt
      */
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        prenom = jTextField6.getText();
+        prenom = jTextField6.getText().toLowerCase();
         System.out.println(prenom);
     }//GEN-LAST:event_jTextField6ActionPerformed
     /**
@@ -580,7 +580,7 @@ public class A11_DMA extends javax.swing.JFrame {
      * @param evt
      */
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        rue = jTextField3.getText();
+        rue = jTextField3.getText().toLowerCase();
         System.out.println(rue);
     }//GEN-LAST:event_jTextField3ActionPerformed
     /**
@@ -596,7 +596,7 @@ public class A11_DMA extends javax.swing.JFrame {
      * @param evt
      */
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        ville = jTextField4.getText();
+        ville = jTextField4.getText().toLowerCase();
         System.out.println(ville);
     }//GEN-LAST:event_jTextField4ActionPerformed
     /**
@@ -604,7 +604,7 @@ public class A11_DMA extends javax.swing.JFrame {
      * @param evt
      */
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        medecinTraitant = jTextField5.getText();
+        medecinTraitant = jTextField5.getText().toLowerCase();
         System.out.println(medecinTraitant);
     }//GEN-LAST:event_jTextField5ActionPerformed
     /**
@@ -721,6 +721,7 @@ public class A11_DMA extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4FocusLost
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int rep;
         if (onglet.contains("creation patient")) {
 
             float num;
@@ -745,53 +746,87 @@ public class A11_DMA extends javax.swing.JFrame {
 
             } else {
 
-                telephone = jTextField1.getText();
-                if (jRadioButton1.isSelected()) {
-                    sexe = jRadioButton1.getLabel();
-                } else if (jRadioButton2.isSelected()) {
-                    sexe = jRadioButton2.getLabel();
-                }
-
-                nom = jTextField7.getText();
-                prenom = jTextField6.getText();
-                jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
-                String valMois = (jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
-                this.moisToDigit(valMois);
-                annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
-
-                Date dateNaissance = new Date(jour, mois, annee);
-
-                numero = jTextField2.getText();
-                rue = jTextField3.getText();
-                codePostal = jTextField8.getText();
-                ville = jTextField4.getText();
-
-                Adresse adressePatient = new Adresse(numero, rue, codePostal, ville);
-
-                medecinTraitant = jTextField5.getText();
-
-                patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
-
-                ipp = new IPP(this.dateJour());
-
-                patient.setIpp(ipp);
-
-                patient.setEtatDossier("Ouvert");
-
-                System.out.println(patient.affichagePatient());
-
-                SQL sql = null;
+                chiffre = true;
                 try {
-                    sql = new SQL();
-                } catch (SQLException | InstantiationException | IllegalAccessException ex) {
-                    Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+                    num = Float.valueOf(jTextField2.getText());
+                } catch (Exception e) {
+
+                    chiffre = false;
                 }
+                if (jTextField2.getText().length() == 0) {
+                    JOptionPane.showMessageDialog(jPanel1, "pas de numero de rue entre", "erreur", JOptionPane.WARNING_MESSAGE);
 
-                sql.ajouterPatientBD(patient);
+                } else if (chiffre == false) {
+                    JOptionPane.showMessageDialog(jPanel1, "le numéro de rue ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
 
-                this.dispose();
-                A12_DMA a12_dma = new A12_DMA(patient);
-                a12_dma.setVisible(true);
+                } else {
+                    chiffre = true;
+                    try {
+                        num = Float.valueOf(jTextField8.getText());
+                    } catch (Exception e) {
+
+                        chiffre = false;
+                    }
+                    if (jTextField8.getText().length() == 0) {
+                        JOptionPane.showMessageDialog(jPanel1, "pas de code postal entre", "erreur", JOptionPane.WARNING_MESSAGE);
+                    } else if (jTextField8.getText().length() != 5) {
+                        JOptionPane.showMessageDialog(jPanel1, "le code postal doit contenir 5 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+                    } else if (chiffre == false) {
+                        JOptionPane.showMessageDialog(jPanel1, "le code postal ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+
+                    } else {
+                        telephone = jTextField1.getText();
+
+                        if (jRadioButton1.isSelected()) {
+                            sexe = jRadioButton1.getLabel();
+                        } else if (jRadioButton2.isSelected()) {
+                            sexe = jRadioButton2.getLabel();
+                        }
+
+                        nom = jTextField7.getText().toLowerCase();
+                        prenom = jTextField6.getText().toLowerCase();
+                        jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
+                        String valMois = (jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
+                        this.moisToDigit(valMois);
+                        annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
+
+                        Date dateNaissance = new Date(jour, mois, annee);
+
+                        numero = jTextField2.getText().toLowerCase();
+                        rue = jTextField3.getText().toLowerCase();
+                        codePostal = jTextField8.getText();
+                        ville = jTextField4.getText().toLowerCase();
+
+                        Adresse adressePatient = new Adresse(numero, rue, codePostal, ville);
+
+                        medecinTraitant = jTextField5.getText();
+
+                        rep = JOptionPane.showConfirmDialog(jPanel5, "creation du patient : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - sexe : " + sexe + "\n    - telephone : " + telephone + "\n    - medecin traitant : " + medecinTraitant + "\n    - date de naissance : " + dateNaissance + "\n    - adresse : " + adressePatient.toString(), "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                        if (rep == JOptionPane.YES_OPTION) {
+                            patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
+
+                            ipp = new IPP(this.dateJour());
+
+                            patient.setIpp(ipp);
+
+                            patient.setEtatDossier("Ouvert");
+                            try {
+                                sql = new SQL();
+                            } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+                                Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+
+                            sql.ajouterPatientBD(patient);
+                            if (sql.getErr() != 1) {
+                                this.dispose();
+                                A12_DMA a12_dma = new A12_DMA(patient);
+                                a12_dma.setVisible(true);
+                            }
+
+                        }
+
+                    }
+                }
             }
         } else if (onglet.contains("recherche patient")) {
             System.out.println("ca marche");
@@ -916,7 +951,7 @@ public class A11_DMA extends javax.swing.JFrame {
         Date dateJour = new Date(day, month, year);
         return dateJour;
     }
-    private SQL sql;
+    private SQL sql = null;
     private int year;
     private int month;
     private int day;
