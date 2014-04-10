@@ -7,6 +7,7 @@ package SIH;
 
 import BasesDonnees.ConnectionBD;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -185,5 +186,46 @@ err =1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique contenant ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    
+    //Code pour connection
+    
+   /*private void seConnecter(Personnel p) {                                        
+        String requete = "SELECT * FROM personnel";
+        try {
+            boolean boucle = true;
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                if (result.getString("ID_PH").equals(p.getId())) {
+                    boucle = false;
+                    if (result.getString("Mdp_PH").equals(p.getMotDePasse())) {                      
+                        if (result.getString("Fonction_PH").equals("PH")) {
+                            AccueilMed med = new AccueilMed();
+                            med.nomMedecin.setText(result.getString(1));
+                            med.show();
+                        }
+                        if (result.getString("FONCTION").equals("Secrétaire")) {
+                            AccueilSecretaire sec = new AccueilSecretaire();
+                            sec.show();
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Mot de passe incorrect",
+                                "Erreur", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+            if (boucle) {
+                JOptionPane.showMessageDialog(null, "Identifiant incorrect",
+                        "Erreur", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Identification.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Identification.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }*/                                       
 
 }
