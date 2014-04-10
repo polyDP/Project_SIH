@@ -9,19 +9,19 @@ public class PersonnelMedical extends Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.DAD67ADF-951C-84C2-84D1-A80B8EB4A418]
     // </editor-fold> 
-    private String metier;
+    private String fonction;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.60FC8C18-C163-264A-DF4B-AEC488C28C93]
     // </editor-fold> 
-    private Services mServices;
+    private Services service;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.63548C80-246B-FB49-7A9D-A1DE6EB18685]
     // </editor-fold> 
-    public PersonnelMedical (String id, String motDePasse, String nom, String prenom ,String metier) {
-        super(id,motDePasse,nom,prenom);
-        this.metier = metier; 
+    public PersonnelMedical (String id, String motDePasse, String nom, String prenom,String fonction) {
+        super(id,motDePasse,nom,prenom,fonction);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -54,28 +54,28 @@ public class PersonnelMedical extends Personnel {
     // #[regen=yes,regenBody=yes,id=DCE.CE722D86-89AA-B97C-F945-0F2D5C0C4627]
     // </editor-fold> 
     public Services getServices () {
-        return mServices;
+        return service;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.92680015-3F49-E378-9B58-0390ACF3E6F8]
     // </editor-fold> 
     public void setServices (Services val) {
-        this.mServices = val;
+        this.service = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.C02777DB-57C7-7EF1-1130-583F212C585E]
     // </editor-fold> 
-    public String getMetier () {
-        return metier;
+    public String getFonction () {
+        return fonction;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.7CCEDF11-ADA7-2393-B78C-1E80210F4D39]
     // </editor-fold> 
     public void setMetier (String val) {
-        this.metier = val;
+        this.fonction = val;
     }
     public String getPrenom () {
         return super.getPrenom();

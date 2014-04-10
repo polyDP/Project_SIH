@@ -8,7 +8,7 @@ public class Lit {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.B108CD9C-DCE2-3BBE-8206-195F81ED3E87]
     // </editor-fold> 
-    private Services mServices;
+    private Services service;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.9FF7364D-EC71-383D-109B-EEA1AFCB61D6]
@@ -55,14 +55,14 @@ public class Lit {
     // #[regen=yes,regenBody=yes,id=DCE.D1FB75B6-C505-0ABF-40D8-FCF211F177ED]
     // </editor-fold> 
     public Services getServices() {
-        return mServices;
+        return service;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.F718A126-D648-8B8E-EB8C-5B3554414752]
     // </editor-fold> 
     public void setServices(Services val) {
-        this.mServices = val;
+        this.service = val;
     }
 
     /**

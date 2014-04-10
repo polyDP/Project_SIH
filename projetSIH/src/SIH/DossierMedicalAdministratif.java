@@ -158,8 +158,8 @@ public class DossierMedicalAdministratif {
     /**
      * @param service the service to set
      */
-    public void setService(Services service) {
-        this.service = service;
+    public void setService(Services val) {
+        this.service = val;
     }
 
 }

@@ -22,15 +22,18 @@ public abstract class Personnel {
     private String motDePasse;
     
     private String prenom;
+    
+    private String fonction;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.FE942F7E-6F9C-B783-910F-2682FAAB5394]
     // </editor-fold> 
-    public Personnel (String id, String motDePasse, String nom, String prenom) {
+    public Personnel (String id, String motDePasse, String nom, String prenom, String fonction) {
         this.id=id;
         this.motDePasse=motDePasse;
         this.nom=nom;
         this.prenom=prenom;
+        this.fonction=fonction;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -64,14 +67,14 @@ public abstract class Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.076F1609-777B-1D5E-A044-E418FD3A2CCF]
     // </editor-fold> 
-    public String getLogin () {
+    public String getMotDePasse () {
         return motDePasse;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.72E1E8CC-84CE-84A3-524D-C6C9908B59A4]
     // </editor-fold> 
-    public void setLogin (String val) {
+    public void setMotDePasse (String val) {
         this.motDePasse = val;
     }
     
@@ -81,6 +84,20 @@ public abstract class Personnel {
  
     public void setPrenom (String val) {
         this.prenom = val;
+    }
+
+    /**
+     * @return the fonction
+     */
+    public String getFonction() {
+        return fonction;
+    }
+
+    /**
+     * @param fonction the fonction to set
+     */
+    public void setFonction(String fonction) {
+        this.fonction = fonction;
     }
 }
 

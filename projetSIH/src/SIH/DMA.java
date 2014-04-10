@@ -16,14 +16,13 @@ public class DMA {
      */
     public static void main(String[] args) {
 
-        Services servMed1 = Services.gynecologie_obstetrique;
-        Specialites speMed1 = Specialites.Gynécologie_Obstétrique;
-        MedecinPH med1 = new MedecinPH("8", "lol", "Labat", "paul", "Medecin",speMed1, servMed1); //va chercher médecins dans la base de données
+        Services servMed1 = Services.Gynécologie_Obstétrique;
+        MedecinPH med1 = new MedecinPH("8", "lol", "Labat", "paul", "Medecin", servMed1); //va chercher médecins dans la base de données
 
         //-------------------------------------------------CREATION DU PATIENT---------------------------------------------
         Date dateAdmPat1 = new Date(21, 02, 2014);     // date admission patient 1
         Date dateNaisPat1 = new Date(15, 02, 1990);    // date naisssance patient1
-        Services servPat1 = Services.medecine;
+        Services servPat1 = Services.Chirurgie;
         //Lits litPat1 = new Lits(servPat1); // ajout d'un lit pour la patient1
         
         Adresse adressePat1 = new Adresse("numero","rue","codepostal","ville");

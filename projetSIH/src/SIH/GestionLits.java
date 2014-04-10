@@ -12,7 +12,7 @@ public class GestionLits {
     // </editor-fold> 
     private ArrayList<Lit> mLit;
 
-    private Services services;
+    private Services service;
 
     private Lit lit;
 
@@ -20,7 +20,7 @@ public class GestionLits {
     // #[regen=yes,id=DCE.C705E0D4-A90D-AF37-8C1B-7596774C3938]
     // </editor-fold> 
     public GestionLits(Services s) {
-        if (s == Services.chirurgie) {
+        if (s == Services.Chirurgie) {
             mLit = new ArrayList();
             int nbChambres=300;
             int numDepart=100;
@@ -36,7 +36,7 @@ public class GestionLits {
             }
             this.setLits(mLit);
             
-        } else if (s == Services.gynecologie_obstetrique) {
+        } else if (s == Services.Gynécologie_Obstétrique) {
             mLit = new ArrayList();
             int nbChambres=200;
             int numDepart=400;

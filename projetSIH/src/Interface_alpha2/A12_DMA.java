@@ -6,6 +6,7 @@
 package Interface_alpha2;
 
 import SIH.Date;
+import SIH.NumeroSejour;
 import SIH.Patient;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -29,7 +30,6 @@ public class A12_DMA extends javax.swing.JFrame {
         this.patient = p;
         //this.date = date;
         this.dateJour();
-        System.out.println(this.dateJour());
         
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -149,6 +149,11 @@ public class A12_DMA extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Ouverture dossier");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
@@ -567,6 +572,11 @@ public class A12_DMA extends javax.swing.JFrame {
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        NumeroSejour numSej = new NumeroSejour(this.dateJour());
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
     /**
      * Permet de revenir en arrière sur la page A11_DMA
      *

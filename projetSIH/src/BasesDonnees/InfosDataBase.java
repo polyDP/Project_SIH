@@ -14,6 +14,6 @@ public class InfosDataBase {
     public static String driver = "com.mysql.jdbc.Driver";
     public static String database = "jdbc:mysql://localhost:3306/SIH";
     public static String login = "root";
-    public static String password = "leadufour";
+    public static String password = "pierrafeu";
     
 }

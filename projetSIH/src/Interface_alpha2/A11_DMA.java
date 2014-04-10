@@ -9,10 +9,14 @@ import SIH.Adresse;
 import SIH.Date;
 import SIH.IPP;
 import SIH.Patient;
+import SIH.SQL;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -129,12 +133,12 @@ public class A11_DMA extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Ok");
-        jPanel2.add(jButton2);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton2);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Déconnexion");
@@ -715,29 +719,8 @@ public class A11_DMA extends javax.swing.JFrame {
             revalidate();
         }
     }//GEN-LAST:event_jTextField4FocusLost
-    /**
-     * Fait le lien avec la page d'accueil. Une JOptionPane apparait pour
-     * rassurer l'utilisateur
-     *
-     * @param evt
-     */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        A0_Accueil fenetre1 = new A0_Accueil();
-        int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (response == JOptionPane.YES_OPTION) {
-            fenetre1.setVisible(true);
-            this.dispose();
-        }
 
-    }
-
-    /**
-     *
-     * @param evt
-     */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (onglet.contains("creation patient")) {
 
             float num;
@@ -788,14 +771,23 @@ public class A11_DMA extends javax.swing.JFrame {
                 medecinTraitant = jTextField5.getText();
 
                 patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
-                
+
                 ipp = new IPP(this.dateJour());
-                
+
                 patient.setIpp(ipp);
-                
-                
+
+                patient.setEtatDossier("Ouvert");
 
                 System.out.println(patient.affichagePatient());
+
+                SQL sql = null;
+                try {
+                    sql = new SQL();
+                } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+                    Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                sql.ajouterPatientBD(patient);
 
                 this.dispose();
                 A12_DMA a12_dma = new A12_DMA(patient);
@@ -805,6 +797,23 @@ public class A11_DMA extends javax.swing.JFrame {
             System.out.println("ca marche");
             //rechercher patient dans base de données
         }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+    /**
+     * Fait le lien avec la page d'accueil. Une JOptionPane apparait pour
+     * rassurer l'utilisateur
+     *
+     * @param evt
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        A0_Accueil fenetre1 = new A0_Accueil();
+        int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.YES_OPTION) {
+            fenetre1.setVisible(true);
+            this.dispose();
+        }
+
     }
 
     /**
@@ -894,19 +903,20 @@ public class A11_DMA extends javax.swing.JFrame {
                 break;
 
         }
-return mois;
+        return mois;
     }
-    
+
     private Date dateJour() {
         Locale locale = Locale.getDefault();
         Calendar cal = Calendar.getInstance(locale);
         day = cal.get(Calendar.DAY_OF_MONTH);
         month = cal.get(Calendar.MONTH);
         month = month + 1;
-        year = cal.get(Calendar.YEAR);      
+        year = cal.get(Calendar.YEAR);
         Date dateJour = new Date(day, month, year);
         return dateJour;
     }
+    private SQL sql;
     private int year;
     private int month;
     private int day;

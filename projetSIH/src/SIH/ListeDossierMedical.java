@@ -38,7 +38,7 @@ public class ListeDossierMedical {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.0F987C5B-436D-9E0D-AB6D-BF0BF109C90F]
     // </editor-fold> 
-    public DossierMedical getDossierMedical(Services services) {
+    public DossierMedical getDossierMedical(Services service) {
         return mDossierMedical;
     }
 

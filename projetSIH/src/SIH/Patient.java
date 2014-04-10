@@ -75,6 +75,8 @@ public class Patient {
     
     private IPP ipp;
     
+    private String etatDossier;
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.057BF4F0-7F86-3D07-A63A-107C5971146E]
     // </editor-fold> 
@@ -339,6 +341,20 @@ public class Patient {
      */
     public void setIpp(IPP ipp) {
         this.ipp = ipp;
+    }
+
+    /**
+     * @return the etatDossier
+     */
+    public String getEtatDossier() {
+        return etatDossier;
+    }
+
+    /**
+     * @param etatDossier the etatDossier to set
+     */
+    public void setEtatDossier(String etatDossier) {
+        this.etatDossier = etatDossier;
     }
     
     

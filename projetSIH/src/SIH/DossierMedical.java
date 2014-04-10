@@ -30,7 +30,7 @@ public abstract class DossierMedical {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.84D5E2AE-8E5F-7871-F78B-849A1D6DF090]
     // </editor-fold> 
-    private Services mServices;
+    private Services service;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.5C0D6D31-C347-FCD0-2119-CC614AD97892]
@@ -71,14 +71,14 @@ public abstract class DossierMedical {
     // #[regen=yes,regenBody=yes,id=DCE.DC6BE0E5-F648-BC2E-5F18-90B7454D2E00]
     // </editor-fold> 
     public Services getServices () {
-        return mServices;
+        return service;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.84DB1696-C261-DA40-5633-7610D9510563]
     // </editor-fold> 
     public void setServices (Services val) {
-        this.mServices = val;
+        this.service = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

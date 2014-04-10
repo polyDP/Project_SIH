@@ -17,11 +17,12 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Services servMed1 = Services.gynecologie_obstetrique;
-        Services servInf1 = Services.chirurgie;
+        Services servMed1 = Services.Gynécologie_Obstétrique;
+        Services servInf1 = Services.Gynécologie_Obstétrique;
+        Services servAdm1 = Services.Administration;
         //MedecinPH med1 = new MedecinPH("8", "lol", "Labat", "paul", "gynéco", servMed1);
         Infirmiere inf1 = new Infirmiere("9", "XD", "Freby", "Rodolphe", "infirmiere", servInf1);
-        Administratif adm1 = new Administratif("10", "mdr", "Reges", "Ombeline");
+        Administratif adm1 = new Administratif("10", "mdr", "Reges", "Ombeline","administratif",servAdm1);
         
 
         //------------------------------Patients------------------------------//
@@ -32,9 +33,7 @@ public class Test {
         Date datePrest1Pat1 = new Date(20, 03, 2014);   // date prestation 1 patient1
         Date datePrest2Pat1 = new Date(22, 03, 2014);   // date prestation 2 patient1
 
-        Services servPat1 = Services.medecine;
-
-       
+            
                
 
         //litPat1.setGestionLit(gestLit); // mise en place de la gestion des lits pour le patient1
@@ -167,8 +166,8 @@ public class Test {
         
         
         //----------------------- pour le DIM -----------------------------
-        Dim dim1 = new Dim("id","motPasse","nom","prenom");
-        dim1.affficheMedecins();
+        //Dim dim1 = new Dim("id","motPasse","nom","prenom");
+        //dim1.affficheMedecins();
         
         
         Date dateSejour = new Date(2,3,2013);

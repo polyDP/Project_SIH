@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,8 +36,7 @@ public class ConnectionBD {
         } catch (SQLException e) {
             System.out.println("Impossible de se connecter à la base");
             System.out.println(e);
-            JOptionPane.showMessageDialog(null, "Impossible de se connecter à la base de données",
-                    "Erreur", JOptionPane.ERROR_MESSAGE);
+            
         }
     }
 

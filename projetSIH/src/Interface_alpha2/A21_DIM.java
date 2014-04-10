@@ -9,7 +9,6 @@ import SIH.Infirmiere;
 import SIH.MedecinPH;
 import SIH.PersonnelMedical;
 import SIH.Services;
-import SIH.Specialites;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.DefaultComboBoxModel;
@@ -80,8 +79,6 @@ public class A21_DIM extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox();
-        jLabel10 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
         jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -105,7 +102,6 @@ public class A21_DIM extends javax.swing.JFrame {
         setExtendedState(10);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -149,7 +145,7 @@ public class A21_DIM extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 532, Short.MAX_VALUE)
         );
 
         jPanel8.add(jPanel3, java.awt.BorderLayout.LINE_END);
@@ -179,9 +175,9 @@ public class A21_DIM extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
+                .addContainerGap(88, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Log", jPanel4);
@@ -247,22 +243,12 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jLabel8.setText("génération machine");
 
-        jLabel9.setText("Fonction/Spécialité:");
+        jLabel9.setText("Service :");
 
-        jComboBox2.setModel(new DefaultComboBoxModel(SIH.Specialites.values()));
+        jComboBox2.setModel(new DefaultComboBoxModel(SIH.Services.values()));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Service:");
-
-        jComboBox3.setModel(new DefaultComboBoxModel(SIH.Services.values()));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
             }
         });
 
@@ -279,7 +265,7 @@ public class A21_DIM extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(185, Short.MAX_VALUE)
+                .addContainerGap(156, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jRadioButton3)
@@ -289,7 +275,6 @@ public class A21_DIM extends javax.swing.JFrame {
                         .addComponent(jRadioButton2))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -303,14 +288,13 @@ public class A21_DIM extends javax.swing.JFrame {
                                 .addComponent(jTextField1)
                                 .addComponent(jTextField2)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(186, Short.MAX_VALUE))
+                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(195, Short.MAX_VALUE)
+                .addContainerGap(180, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton3)
                     .addComponent(jRadioButton1)
@@ -335,13 +319,9 @@ public class A21_DIM extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(" Création personnel", jPanel5);
@@ -379,7 +359,7 @@ public class A21_DIM extends javax.swing.JFrame {
                 .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(96, 96, 96))
         );
@@ -474,20 +454,19 @@ public class A21_DIM extends javax.swing.JFrame {
                 this.newId(nom, prenom);
                 jLabel3.setText(id);
                 personnel = jRadioButton3.getLabel();
-                specialite = (Specialites) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
-                service = (Services) jComboBox3.getItemAt(jComboBox3.getSelectedIndex());
-                med = new MedecinPH(id, "lol", nom, prenom, personnel, specialite, service);               
+                service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+                med = new MedecinPH(id, "lol", nom, prenom, personnel, service);               
 
             } else if (jRadioButton1.isSelected()) {
                 nom = jTextField1.getText();
                 prenom = jTextField2.getText();
                 this.newId(nom, prenom);
                 jLabel3.setText(id);
-                personnel = jRadioButton3.getLabel();
-                
-                service = (Services) jComboBox3.getItemAt(jComboBox3.getSelectedIndex());
+                personnel = jRadioButton3.getLabel(); 
+                service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
                 personnel = jRadioButton1.getLabel();
                 inf = new Infirmiere (id, "lol",nom,prenom,personnel,service);
+                
                 System.out.println(personnel);
             } else if (jRadioButton2.isSelected()) {
                 personnel = jRadioButton2.getLabel();
@@ -497,6 +476,7 @@ public class A21_DIM extends javax.swing.JFrame {
                 jLabel3.setText(id);
                 personnel = jRadioButton3.getLabel();
                 persMed = new PersonnelMedical(id,"lol",nom,prenom,personnel);
+                persMed.setServices(service.Administration);
                 
             }
 
@@ -510,17 +490,13 @@ public class A21_DIM extends javax.swing.JFrame {
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
         jComboBox2.show();
         jLabel9.show();
-         jComboBox3.show();
-        jLabel10.show();
         jPanel5.revalidate();
         jPanel5.repaint();
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        jComboBox2.hide();
-        jLabel9.hide();
-         jComboBox3.show();
-        jLabel10.show();
+        jComboBox2.show();
+        jLabel9.show();
         jPanel5.revalidate();
         jPanel5.repaint();
     }//GEN-LAST:event_jRadioButton1ActionPerformed
@@ -528,8 +504,6 @@ public class A21_DIM extends javax.swing.JFrame {
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         jComboBox2.hide();
         jLabel9.hide();
-        jComboBox3.hide();
-        jLabel10.hide();
         jPanel5.revalidate();
         jPanel5.repaint();
     }//GEN-LAST:event_jRadioButton2ActionPerformed
@@ -545,12 +519,8 @@ public class A21_DIM extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        specialite = (Specialites) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+        service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
     }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        service = (Services) jComboBox3.getItemAt(jComboBox3.getSelectedIndex());
-    }//GEN-LAST:event_jComboBox3ActionPerformed
     /**
      * Permet la déconnexion, avec une demande de confirmation de l'utilisateur
      *
@@ -614,7 +584,6 @@ public class A21_DIM extends javax.swing.JFrame {
 
     private String id;
     private Services service;
-    private Specialites specialite;
     private String prenom;
     private String nom;
     private PersonnelMedical persMed;
@@ -629,10 +598,8 @@ public class A21_DIM extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JComboBox jComboBox5;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

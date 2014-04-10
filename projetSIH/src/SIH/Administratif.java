@@ -5,12 +5,14 @@ package SIH;
 // #[regen=yes,id=DCE.A0E0220C-6018-B0D4-23CB-1BB0C36C13A3]
 // </editor-fold> 
 public class Administratif extends Personnel {
+     private Services service;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.2618785F-BBF9-4555-9F92-BA78131A7BAA]
     // </editor-fold> 
-    public Administratif (String id, String motDePasse, String nom, String prenom) {
-        super(id, motDePasse, nom, prenom);
+    public Administratif (String id, String motDePasse, String nom, String prenom, String fonction, Services service) {
+        super(id, motDePasse, nom, prenom,fonction);
+        this.service=service;
         
     }
 
@@ -43,27 +45,14 @@ public class Administratif extends Personnel {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.AC4A18AA-4556-C7B4-1EA8-49D901742856]
     // </editor-fold> 
-    public String getLogin () {
-        return super.getLogin();
+    public String getMotDePasse () {
+        return super.getMotDePasse();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.A7805449-7E24-A87D-5B88-674066C72CC0]
     // </editor-fold> 
-    public void setLogin (String val) {
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.B2390032-81A4-C480-446A-2D4D1FDF7D84]
-    // </editor-fold> 
-    public Services getServices () {
-        return null;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.6E500C3B-A02D-C945-733F-D525D9F584C8]
-    // </editor-fold> 
-    public void setServices (Services val) {
+    public void setMotDePasse (String val) {
     }
 
 }

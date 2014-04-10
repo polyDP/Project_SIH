@@ -5,16 +5,14 @@ package SIH;
 // </editor-fold> 
 public class MedecinPH extends PersonnelMedical {
 
-    private Services services;
-    private Specialites specialite;
+    private Services service;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.3C59CF4B-46AD-791D-5CB4-E08C44CD21A5]
     // </editor-fold> 
-    public MedecinPH(String id, String motDePasse, String nom, String prenom, String metier, Specialites specialite, Services services) {
-        super(id, motDePasse, nom, prenom, metier);
-        this.services = services;
-        this.specialite = specialite;
+    public MedecinPH(String id, String motDePasse, String nom, String prenom, String fonction, Services service) {
+        super(id, motDePasse, nom, prenom, fonction);
+        this.service = service;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -47,14 +45,14 @@ public class MedecinPH extends PersonnelMedical {
     // #[regen=yes,id=DCE.AF427A56-C13A-565B-9C15-5F07A4D6B504]
     // </editor-fold> 
     public Services getServices() {
-        return services;
+        return service;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F09CB15D-E4BD-F97E-C3C7-2C08C1DF0A04]
     // </editor-fold> 
     public void setServices(Services val) {
-        this.services = val;
+        this.service = val;
     }
 
     public String getPrenom() {
@@ -65,22 +63,7 @@ public class MedecinPH extends PersonnelMedical {
     }
 
     public String toString() {
-        return super.getNom() + " " + super.getPrenom() + " " + getMetier() + " " + services + " " + specialite;
+        return super.getNom() + " " + super.getPrenom() + " " + super.getFonction() + " " + service;
     }
 
-    /**
-     * @return the specialite
-     */
-    public Specialites getSpecialite() {
-        return specialite;
-    }
-
-    /**
-     * @param specialite the specialite to set
-     */
-    public void setSpecialite(Specialites specialite) {
-        this.specialite = specialite;
-    }
-    
-    
 }
