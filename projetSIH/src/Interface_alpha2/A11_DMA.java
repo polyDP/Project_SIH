@@ -823,7 +823,7 @@ public class A11_DMA extends javax.swing.JFrame {
                                     System.out.println("ipp apres dernier SQL" + ipp);
                                     patient.setIpp(ipp);
 
-                                    patient.setEtatDossier("Ouvert");
+                                    
 
                                     sql.ajouterPatientBD(patient);
                                     if (sql.getErr() != 1) {

@@ -288,7 +288,7 @@ public class A0_Accueil extends javax.swing.JFrame {
             
             A41_Infirmier a41_infirmier = new A41_Infirmier();
             a41_infirmier.setVisible(true);
-        } else if (sql.getErr() != 1 & sql.getConnexion().equals("Secretaire")) {
+        } else if (sql.getErr() != 1 & sql.getConnexion().equals("Secretaire medicale")) {
             this.dispose();
             
             A11_DMA a11_dma = new A11_DMA();

@@ -1,6 +1,6 @@
 package SIH;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.CB26DCDA-382B-90F9-B646-C47F73DA675B]
@@ -40,7 +40,7 @@ public class Patient {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0DCA7252-DF16-18B1-F2C8-B29785BA3996]
     // </editor-fold> 
-   private String sexe;
+    private String sexe;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.87877E4F-1673-5C59-434D-6BAFEA7858BF]
@@ -65,130 +65,125 @@ public class Patient {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.22F9C283-A0F1-9ED5-EC85-870408E0F52A]
     // </editor-fold> 
-   private Lit localisation;
+    private Lit localisation;
 
     private MedecinPH pHResponsable;
-    
+
     private ArrayList<Maladie> antecedents;
-    
+
     private Adresse adresse;
-    
+
     private IPP ipp;
-    
-    private String etatDossier;
-    
+
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.057BF4F0-7F86-3D07-A63A-107C5971146E]
     // </editor-fold> 
-    public Patient (String nom, String prenom, String telephone, String nomMedecinTraitant, String sexe, Date dateNaissance,Adresse adresse) {
-        this.nom=nom;
+    public Patient(String nom, String prenom, String telephone, String nomMedecinTraitant, String sexe, Date dateNaissance, Adresse adresse) {
+        this.nom = nom;
         this.prenom = prenom;
         this.telephone = telephone;
         this.nomMedecinTraitant = nomMedecinTraitant;
-        this.sexe=sexe;
+        this.sexe = sexe;
         this.dateNaissance = dateNaissance;
-        this.adresse=adresse;
-        
+        this.adresse = adresse;
+
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.B13A644E-8B04-A6F3-A633-6121376183DD]
     // </editor-fold> 
-    public String getAllergies () {
+    public String getAllergies() {
         return allergies;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.F9A022B2-953B-38B9-716E-0125EC112AC0]
     // </editor-fold> 
-    public void setAllergies (String val) {
+    public void setAllergies(String val) {
         this.allergies = val;
     }
-
-    
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.269C8905-8F26-58A0-C2E9-70980A679458]
     // </editor-fold> 
-    public Lit getLocalisation () {
+    public Lit getLocalisation() {
         return localisation;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.A39D5CD6-7498-0CE5-2585-CF4C1000E417]
     // </editor-fold> 
-    public void setLocalisation (Lit val) {
+    public void setLocalisation(Lit val) {
         this.localisation = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.6AF9DA82-4F23-852D-8242-24DA7CC330D1]
     // </editor-fold> 
-    public Date getDateAdmission () {
+    public Date getDateAdmission() {
         return dateAdmission;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.04AB8DF0-BDA9-01D9-6081-C426EC1DBB2A]
     // </editor-fold> 
-    public void setDate (Date val) {
+    public void setDate(Date val) {
         this.dateAdmission = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.CD9B4C7C-4867-37EE-07FF-98A8D8BBFA29]
     // </editor-fold> 
-    public Date getDateNaissance () {
+    public Date getDateNaissance() {
         return dateNaissance;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.E52B9E8A-1612-9BAB-BA4E-53B67C14BF3A]
     // </editor-fold> 
-    public void setDateNaissance (Date val) {
+    public void setDateNaissance(Date val) {
         this.dateNaissance = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.AB993BA4-5494-5218-3E68-6A6339F346DD]
     // </editor-fold> 
-    public Maladie getMaladie () {
+    public Maladie getMaladie() {
         return mMaladie;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.8FF96BB4-7DF9-5969-43FE-23A31DBDD487]
     // </editor-fold> 
-    public void setMaladie (Maladie val) {
+    public void setMaladie(Maladie val) {
         this.mMaladie = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.02C87013-1C8E-88A5-29F2-100299630378]
     // </editor-fold> 
-    public ArrayList<PrestationsEffectuees> getPrestationsEffectuees () {
+    public ArrayList<PrestationsEffectuees> getPrestationsEffectuees() {
         return prestationsEffectuees;
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.662AD0EF-9497-2EE3-DD5B-C0E02E297FF7]
     // </editor-fold> 
-    public void setPrestationsEffectuees (ArrayList<PrestationsEffectuees> val) {
+    public void setPrestationsEffectuees(ArrayList<PrestationsEffectuees> val) {
         this.prestationsEffectuees = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.DC77F7AD-8D4E-2158-C1C2-0D7E1F5C6241]
     // </editor-fold> 
-    public String getNom () {
+    public String getNom() {
         return nom;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.2D3F5B4D-089A-D3D1-CFF2-AE1614910FA6]
     // </editor-fold> 
-    public void setNom (String val) {
+    public void setNom(String val) {
         this.nom = val;
     }
 
@@ -202,116 +197,112 @@ public class Patient {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.5878B51F-E47B-B32E-27BD-94734EC0F0C8]
     // </editor-fold> 
-    public void setNomMedecinTraitant (String val) {
+    public void setNomMedecinTraitant(String val) {
         this.nomMedecinTraitant = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.42703460-5D37-422B-CB26-BBD76C193256]
     // </editor-fold> 
-    public String getPrenom () {
+    public String getPrenom() {
         return prenom;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.1BFDF451-7B45-6196-E21C-568EB8341A83]
     // </editor-fold> 
-    public void setPrenom (String val) {
+    public void setPrenom(String val) {
         this.prenom = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.9FA66D35-B313-4C80-43C3-BDDEAB274841]
     // </editor-fold> 
-    public String getRegimeAlimentaire () {
+    public String getRegimeAlimentaire() {
         return regimeAlimentaire;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.436DDAE6-823E-E61A-55A2-CC874668D155]
     // </editor-fold> 
-    public void setRegimeAlimentaire (String val) {
+    public void setRegimeAlimentaire(String val) {
         this.regimeAlimentaire = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.8F482D37-5867-AA10-B4F7-A156C85ECEFE]
     // </editor-fold> 
-    public String getSexe () {
+    public String getSexe() {
         return sexe;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.6C65A561-39EC-ACB9-3EAF-0FBCED8A5656]
     // </editor-fold> 
-    public void setSexe (String val) {
+    public void setSexe(String val) {
         this.sexe = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.2A61DF55-A73F-F3C6-54CA-687A60B56BCE]
     // </editor-fold> 
-    public String getTelephone () {
+    public String getTelephone() {
         return telephone;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.36F561FF-AE30-EC3A-6D51-D91981A72555]
     // </editor-fold> 
-    public void setTelephone (String val) {
+    public void setTelephone(String val) {
         this.telephone = val;
     }
-    
-   public String toString(){
-       return nom +" "+ prenom;
-   }
 
-    
+    public String toString() {
+        return nom + " " + prenom;
+    }
+
     public MedecinPH getPHResponsable() {
         return pHResponsable;
     }
 
-    
     public void setPHResponsable(MedecinPH pHResponsable) {
         this.pHResponsable = pHResponsable;
     }
 
-    public String affichagePatient(){
+    public String affichagePatient() {
         String aff = null;
         aff = " nom patient : " + nom + "\n";
         aff = aff + " prenom patient : " + prenom + "\n";
         aff = aff + " sexe patient : " + sexe + "\n";
-        aff= aff + "date naissance du patient : "+dateNaissance+"\n";
+        aff = aff + "date naissance du patient : " + dateNaissance + "\n";
         aff = aff + " numero telephone patient : " + telephone + "\n";
         aff = aff + " nom medecin traitant : " + nomMedecinTraitant + "\n";
         //aff = aff + " maladie patient : " + this.getMaladie().toString() + "\n";
         aff = aff + " antecedents patient : " + this.afficheAntecedants(this);
         return aff;
-        
+
     }
-    
-    public String afficheAntecedants(Patient p){
+
+    public String afficheAntecedants(Patient p) {
         antecedents = new ArrayList<>();
         String antecedent = " ";
-        
+
         // va chercher dans la base de données les antecedants du patient sous forme de maladie
-       // if (base de données non vide)
-        Date d = new Date(1992,05,21);
-        Maladie m = new Maladie("ceci","cela",d);
+        // if (base de données non vide)
+        Date d = new Date(1992, 05, 21);
+        Maladie m = new Maladie("ceci", "cela", d);
 
         antecedents.add(m);
-        
-        for(int i = 0; i< antecedents.size();i++){
-            antecedent = antecedent + "date : " + antecedents.get(i).getDateMaladie().toString() + " motif : " +antecedents.get(i).getMotifHospitalisation() + ", Diagnostique : " + antecedents.get(i).getDiagnostique();  
+
+        for (int i = 0; i < antecedents.size(); i++) {
+            antecedent = antecedent + "date : " + antecedents.get(i).getDateMaladie().toString() + " motif : " + antecedents.get(i).getMotifHospitalisation() + ", Diagnostique : " + antecedents.get(i).getDiagnostique();
         }
-        if (!antecedent.isEmpty()){
-        return antecedent;
+        if (!antecedent.isEmpty()) {
+            return antecedent;
         } else {
             return " le patient n'a pas d'antecedents";
         }
-        
-        
-        
+
     }
 
     /**
@@ -334,8 +325,6 @@ public class Patient {
     public IPP getIpp() {
         return ipp;
     }
-    
-    
 
     /**
      * @param ipp the ipp to set
@@ -343,21 +332,4 @@ public class Patient {
     public void setIpp(IPP ipp) {
         this.ipp = ipp;
     }
-
-    /**
-     * @return the etatDossier
-     */
-    public String getEtatDossier() {
-        return etatDossier;
-    }
-
-    /**
-     * @param etatDossier the etatDossier to set
-     */
-    public void setEtatDossier(String etatDossier) {
-        this.etatDossier = etatDossier;
-    }
-    
-    
 }
-

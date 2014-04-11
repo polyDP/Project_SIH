@@ -30,6 +30,15 @@ public class A21_DIM extends javax.swing.JFrame {
      * Creates new form Premiere_page_dma
      */
     public A21_DIM() {
+        try {
+            sql = new SQL();
+        } catch (SQLException ex) {
+            Logger.getLogger(A21_DIM.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(A21_DIM.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(A21_DIM.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -90,6 +99,9 @@ public class A21_DIM extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox4 = new javax.swing.JComboBox();
         jComboBox5 = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -335,35 +347,52 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jButton2.setText("Suppression");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Médecins" }));
+        jComboBox1.setModel(new DefaultComboBoxModel(sql.listeMedecinPH()));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Infirmiers" }));
+        jComboBox4.setModel(new DefaultComboBoxModel(sql.listeInfirmiere()));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "secrétaire médicale" }));
+        jComboBox5.setModel(new DefaultComboBoxModel(sql.listeSecretaire()));
+
+        jLabel1.setText("MedecinPH");
+
+        jLabel10.setText("Infirmiere");
+
+        jLabel11.setText("Secretaire");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(247, Short.MAX_VALUE)
+                .addContainerGap(139, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addGap(35, 35, 35)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox5, 0, 131, Short.MAX_VALUE))
                     .addComponent(jButton2))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(174, 174, 174)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(96, 96, 96))
@@ -678,6 +707,9 @@ public class A21_DIM extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JComboBox jComboBox5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

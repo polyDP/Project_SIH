@@ -34,7 +34,7 @@ public class SQL {
     public void ajouterPatientBD(Patient p) {
         try {
 
-            String requete = "INSERT INTO donnee_personnelle(IPP,Sexe,Nom_P,Prenom_P,Date_Naissance,Num_Tel,Numero_Adresse,Nom_Rue,Code_Postal,Ville,Med_T,Etat_Dossier)"
+            String requete = "INSERT INTO donnee_personnelle(IPP,Sexe,Nom_P,Prenom_P,Date_Naissance,Num_Tel,Numero_Adresse,Nom_Rue,Code_Postal,Ville,Med_T)"
                     + "Values (?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement prepS = con.creerPreparedStatement(requete);
 
@@ -59,8 +59,6 @@ public class SQL {
             prepS.setObject(10, p.getAdresse().getVille());
 
             prepS.setObject(11, p.getNomMedecinTraitant());
-
-            prepS.setObject(12, p.getEtatDossier());
 
             prepS.executeUpdate();
 
@@ -192,8 +190,8 @@ public class SQL {
                         if (result.getString("Fonction_PH").equals("PH") | result.getString("Fonction_PH").equals("Interne")) {
                             connexion ="PH";
                         }
-                        if (result.getString("Fonction_PH").equals("Secretaire")) {
-                           connexion="Secretaire";
+                        if (result.getString("Fonction_PH").equals("Secretaire medicale")) {
+                           connexion="Secretaire medicale";
                         }
                         if (result.getString("Fonction_PH").equals("Infirmier")) {
                             connexion="Infirmier";
@@ -312,6 +310,84 @@ public class SQL {
                     "Erreur", JOptionPane.ERROR_MESSAGE);
         }
         return listePatient;
+    }
+    
+    public Vector<String> listeMedecinPH(){
+        Vector<String> listeMedecinPH = new Vector<>();
+        String nomPrenomFonction;
+        
+        String requete = "SELECT * FROM personnel WHERE Fonction_PH = 'PH' OR Fonction_PH = 'Interne' ORDER BY Nom_PH";
+        try {  
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                
+           nomPrenomFonction = result.getString("Nom_PH");
+                
+           nomPrenomFonction = nomPrenomFonction +" "+ result.getString("Prenom_PH");
+           nomPrenomFonction = nomPrenomFonction +" "+ result.getString("Service_PH");
+           listeMedecinPH.add(nomPrenomFonction);
+                
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return listeMedecinPH;
+    }
+    
+    public Vector<String> listeInfirmiere(){
+        Vector<String> listeMedecinPH = new Vector<>();
+        String nomPrenomFonction;
+        
+        String requete = "SELECT * FROM personnel WHERE Fonction_PH = 'Infirmier' ORDER BY Nom_PH";
+        try {  
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                
+           nomPrenomFonction = result.getString("Nom_PH");
+                
+           nomPrenomFonction = nomPrenomFonction +" "+ result.getString("Prenom_PH");
+           nomPrenomFonction = nomPrenomFonction +" "+ result.getString("Service_PH");
+           listeMedecinPH.add(nomPrenomFonction);
+                
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return listeMedecinPH;
+    }
+    
+    public Vector<String> listeSecretaire(){
+        Vector<String> listeMedecinPH = new Vector<>();
+        String nomPrenomFonction;
+        
+        String requete = "SELECT * FROM personnel WHERE Fonction_PH = 'Secretaire medicale' ORDER BY Nom_PH";
+        try {  
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                
+           nomPrenomFonction = result.getString("Nom_PH");
+                
+           nomPrenomFonction = nomPrenomFonction +" "+ result.getString("Prenom_PH");
+           nomPrenomFonction = nomPrenomFonction +" "+ result.getString("Service_PH");
+           listeMedecinPH.add(nomPrenomFonction);
+                
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return listeMedecinPH;
     }
     
     /**

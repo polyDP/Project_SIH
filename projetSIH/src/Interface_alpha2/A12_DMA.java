@@ -9,6 +9,7 @@ import SIH.Date;
 import SIH.MedecinPH;
 import SIH.NumeroSejour;
 import SIH.Patient;
+import SIH.SejourPatient;
 import SIH.Services;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -34,10 +35,7 @@ public class A12_DMA extends javax.swing.JFrame {
             
             this.dateJour();
             initComponents();
-            jTabbedPane1.removeTabAt(1);
-            jPanel3.repaint();
-            jPanel3.revalidate();
-
+            
             setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             this.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
@@ -207,7 +205,7 @@ public class A12_DMA extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 591, Short.MAX_VALUE)
+            .addGap(0, 532, Short.MAX_VALUE)
         );
 
         jPanel8.add(jPanel3, java.awt.BorderLayout.LINE_END);
@@ -218,6 +216,11 @@ public class A12_DMA extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setPreferredSize(new java.awt.Dimension(591, 527));
+        jPanel5.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel5ComponentShown(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("IPP:");
@@ -338,6 +341,11 @@ public class A12_DMA extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setEnabled(false);
+        jPanel4.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel4ComponentShown(evt);
+            }
+        });
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "numéro séjour" }));
 
@@ -370,6 +378,11 @@ public class A12_DMA extends javax.swing.JFrame {
         jTabbedPane1.addTab("Historique", jPanel4);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel6ComponentShown(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -537,7 +550,7 @@ public class A12_DMA extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
         );
 
         pack();
@@ -600,10 +613,12 @@ public class A12_DMA extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         NumeroSejour numSej = new NumeroSejour(this.dateJour());
+        SejourPatient sejPat = new SejourPatient(this.patient,numSej);
         s = (Services) jComboBox4.getItemAt(jComboBox4.getSelectedIndex());
 
-        rep = JOptionPane.showConfirmDialog(jPanel6, "creation du sejour du patient : " + patient.getNom() + patient.getPrenom() + " \n    - numero sejour : " + numSej + "\n    - service : " + s + "\n    - medecin responsable : " + m.getNom() + m.getPrenom() + "\n    - lit: " + "lit ", "confirmation", JOptionPane.OK_CANCEL_OPTION);
+        rep = JOptionPane.showConfirmDialog(jPanel6, "voulez vous ouvrir le dossier et creer le sejour du patient : " + patient.getNom() + patient.getPrenom() + " \n    - numero sejour : " + numSej + "\n    - service : " + s + "\n    - medecin responsable : " + m.getNom() + m.getPrenom() + "\n    - lit: " + "lit ", "confirmation", JOptionPane.OK_CANCEL_OPTION);
         if (rep == JOptionPane.YES_OPTION) {
+            sejPat.ouvertureDossier();
 
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -611,6 +626,28 @@ public class A12_DMA extends javax.swing.JFrame {
     private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
         //DB
     }//GEN-LAST:event_jComboBox6ActionPerformed
+
+    private void jPanel6ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel6ComponentShown
+       jButton3.setVisible(false);
+       jButton2.setVisible(true);
+            jPanel2.repaint();
+            jPanel2.revalidate();
+            
+    }//GEN-LAST:event_jPanel6ComponentShown
+
+    private void jPanel5ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel5ComponentShown
+        jButton3.setVisible(false);
+        jButton2.setVisible(false);
+            jPanel2.repaint();
+            jPanel2.revalidate();
+    }//GEN-LAST:event_jPanel5ComponentShown
+
+    private void jPanel4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel4ComponentShown
+         jButton3.setVisible(true);
+        jButton2.setVisible(false);
+            jPanel2.repaint();
+            jPanel2.revalidate();
+    }//GEN-LAST:event_jPanel4ComponentShown
     /**
      * Permet de revenir en arrière sur la page A11_DMA
      *
@@ -728,6 +765,7 @@ public class A12_DMA extends javax.swing.JFrame {
         return mois;
 
     }
+    String onglet;
     int rep;
     private MedecinPH m;
     private Services s;
