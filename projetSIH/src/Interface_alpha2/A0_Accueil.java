@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Interface_alpha2;
+
+import SIH.SQL;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -163,6 +167,11 @@ public class A0_Accueil extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Connexion");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel10.add(jButton2);
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
@@ -238,18 +247,18 @@ public class A0_Accueil extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
- * 
- * @param evt 
- */
+     *
+     * @param evt
+     */
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        id = jTextField1.getText();
     }//GEN-LAST:event_jTextField1ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
+        motDePasse = jPasswordField1.getText();
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusGained
@@ -259,13 +268,42 @@ public class A0_Accueil extends javax.swing.JFrame {
             revalidate();
         }
     }//GEN-LAST:event_jPasswordField1FocusGained
-/**
- *  Permet de fermer la fenêtre et l'application dans le même geste
- * @param evt 
- */
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-    this.dispose();
-}
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        id = jTextField1.getText();
+        motDePasse = jPasswordField1.getText();
+        try {
+            sql = new SQL();
+        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        sql.seConnecterSIH(id, motDePasse);
+        if (sql.getErr() != 1 & sql.getConnexion().equals("PH")) {
+            this.dispose();
+            
+            A31_Medecin a31_medecin = new A31_Medecin();
+            a31_medecin.setVisible(true);
+        } else if (sql.getErr() != 1 & sql.getConnexion().equals("Infirmier")) {
+            this.dispose();
+            
+            A41_Infirmier a41_infirmier = new A41_Infirmier();
+            a41_infirmier.setVisible(true);
+        } else if (sql.getErr() != 1 & sql.getConnexion().equals("Secretaire")) {
+            this.dispose();
+            
+            A11_DMA a11_dma = new A11_DMA();
+            a11_dma.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+    /**
+     * Permet de fermer la fenêtre et l'application dans le même geste
+     *
+     * @param evt
+     */
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+        this.dispose();
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -300,7 +338,9 @@ public class A0_Accueil extends javax.swing.JFrame {
             }
         });
     }
-
+    private String motDePasse;
+    private String id;
+    private SQL sql = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

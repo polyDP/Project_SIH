@@ -17,6 +17,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -32,6 +33,12 @@ public class A11_DMA extends javax.swing.JFrame {
     public A11_DMA() {
         this.date = date;
         this.ipp = ipp;
+        try {
+            sql = new SQL();
+        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //sql.listePatient();
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -419,7 +426,12 @@ public class A11_DMA extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new DefaultComboBoxModel(sql.listePatient()));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Princetone_plainsboro.png"))); // NOI18N
 
@@ -723,117 +735,134 @@ public class A11_DMA extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int rep;
         if (onglet.contains("creation patient")) {
-
-            float num;
-            Boolean chiffre = true;
-
-            try {
-                num = Float.valueOf(jTextField1.getText());
-
-            } catch (Exception e) {
-
-                chiffre = false;
-            }
-
-            if (jTextField1.getText().length() == 0) {
-                JOptionPane.showMessageDialog(jPanel1, "pas de numero de telephone entre", "erreur", JOptionPane.WARNING_MESSAGE);
-
-            } else if (jTextField1.getText().length() != 10) {
-                JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone doit contenir 10 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
-
-            } else if (chiffre == false) {
-                JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
-
+            if (!jRadioButton1.isSelected() & !jRadioButton2.isSelected()) {
+                JOptionPane.showMessageDialog(jPanel1, "veuillez renseigner le sexe du patient", "erreur", JOptionPane.WARNING_MESSAGE);
             } else {
 
-                chiffre = true;
-                try {
-                    num = Float.valueOf(jTextField2.getText());
-                } catch (Exception e) {
-
-                    chiffre = false;
-                }
-                if (jTextField2.getText().length() == 0) {
-                    JOptionPane.showMessageDialog(jPanel1, "pas de numero de rue entre", "erreur", JOptionPane.WARNING_MESSAGE);
-
-                } else if (chiffre == false) {
-                    JOptionPane.showMessageDialog(jPanel1, "le numéro de rue ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
-
+                if (jTextField7.getText().length() == 0 | jTextField6.getText().length() == 0 | jTextField2.getText().length() == 0 | jTextField8.getText().length() == 0 | jTextField4.getText().length() == 0 | jTextField5.getText().length() == 0) {
+                    JOptionPane.showMessageDialog(jPanel1, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    chiffre = true;
+
+                    float num;
+                    Boolean chiffre = true;
+
                     try {
-                        num = Float.valueOf(jTextField8.getText());
+                        num = Float.valueOf(jTextField1.getText());
+
                     } catch (Exception e) {
 
                         chiffre = false;
                     }
-                    if (jTextField8.getText().length() == 0) {
-                        JOptionPane.showMessageDialog(jPanel1, "pas de code postal entre", "erreur", JOptionPane.WARNING_MESSAGE);
-                    } else if (jTextField8.getText().length() != 5) {
-                        JOptionPane.showMessageDialog(jPanel1, "le code postal doit contenir 5 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+
+                    if (jTextField1.getText().length() != 10) {
+                        JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone doit contenir 10 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+
                     } else if (chiffre == false) {
-                        JOptionPane.showMessageDialog(jPanel1, "le code postal ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
 
                     } else {
-                        telephone = jTextField1.getText();
 
-                        if (jRadioButton1.isSelected()) {
-                            sexe = jRadioButton1.getLabel();
-                        } else if (jRadioButton2.isSelected()) {
-                            sexe = jRadioButton2.getLabel();
+                        chiffre = true;
+                        try {
+                            num = Float.valueOf(jTextField2.getText());
+                        } catch (Exception e) {
+
+                            chiffre = false;
                         }
 
-                        nom = jTextField7.getText().toLowerCase();
-                        prenom = jTextField6.getText().toLowerCase();
-                        jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
-                        String valMois = (jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
-                        this.moisToDigit(valMois);
-                        annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
+                        if (chiffre == false) {
+                            JOptionPane.showMessageDialog(jPanel1, "le numéro de rue ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
 
-                        Date dateNaissance = new Date(jour, mois, annee);
-
-                        numero = jTextField2.getText().toLowerCase();
-                        rue = jTextField3.getText().toLowerCase();
-                        codePostal = jTextField8.getText();
-                        ville = jTextField4.getText().toLowerCase();
-
-                        Adresse adressePatient = new Adresse(numero, rue, codePostal, ville);
-
-                        medecinTraitant = jTextField5.getText();
-
-                        rep = JOptionPane.showConfirmDialog(jPanel5, "creation du patient : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - sexe : " + sexe + "\n    - telephone : " + telephone + "\n    - medecin traitant : " + medecinTraitant + "\n    - date de naissance : " + dateNaissance + "\n    - adresse : " + adressePatient.toString(), "confirmation", JOptionPane.OK_CANCEL_OPTION);
-                        if (rep == JOptionPane.YES_OPTION) {
-                            patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
-
-                            ipp = new IPP(this.dateJour());
-
-                            patient.setIpp(ipp);
-
-                            patient.setEtatDossier("Ouvert");
+                        } else {
+                            chiffre = true;
                             try {
-                                sql = new SQL();
-                            } catch (SQLException | InstantiationException | IllegalAccessException ex) {
-                                Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+                                num = Float.valueOf(jTextField8.getText());
+                            } catch (Exception e) {
+
+                                chiffre = false;
                             }
 
-                            sql.ajouterPatientBD(patient);
-                            if (sql.getErr() != 1) {
-                                this.dispose();
-                                A12_DMA a12_dma = new A12_DMA(patient);
-                                a12_dma.setVisible(true);
-                            }
+                            if (jTextField8.getText().length() != 5) {
+                                JOptionPane.showMessageDialog(jPanel1, "le code postal doit contenir 5 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+                            } else if (chiffre == false) {
+                                JOptionPane.showMessageDialog(jPanel1, "le code postal ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
 
+                            } else {
+                                telephone = jTextField1.getText();
+
+                                if (jRadioButton1.isSelected()) {
+                                    sexe = jRadioButton1.getLabel();
+                                } else if (jRadioButton2.isSelected()) {
+                                    sexe = jRadioButton2.getLabel();
+                                }
+
+                                nom = jTextField7.getText().toLowerCase();
+                                prenom = jTextField6.getText().toLowerCase();
+                                jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
+                                String valMois = (jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
+                                this.moisToDigit(valMois);
+                                annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
+
+                                Date dateNaissance = new Date(jour, mois, annee);
+
+                                numero = jTextField2.getText().toLowerCase();
+                                rue = jTextField3.getText().toLowerCase();
+                                codePostal = jTextField8.getText();
+                                ville = jTextField4.getText().toLowerCase();
+
+                                Adresse adressePatient = new Adresse(numero, rue, codePostal, ville);
+
+                                medecinTraitant = jTextField5.getText();
+
+                                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du patient : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - sexe : " + sexe + "\n    - telephone : " + telephone + "\n    - medecin traitant : " + medecinTraitant + "\n    - date de naissance : " + dateNaissance + "\n    - adresse : " + adressePatient.toString(), "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                                if (rep == JOptionPane.YES_OPTION) {
+                                    patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
+
+                                    ipp = new IPP(this.dateJour());
+
+                                    System.out.println("ipp apres dernier SQL" + ipp);
+                                    patient.setIpp(ipp);
+
+                                    patient.setEtatDossier("Ouvert");
+
+                                    sql.ajouterPatientBD(patient);
+                                    if (sql.getErr() != 1) {
+                                        this.dispose();
+                                        boolean n = true;
+                                        A12_DMA a12_dma = new A12_DMA(patient, n);
+                                        a12_dma.setVisible(true);
+                                    }
+
+                                }
+                            }
                         }
-
                     }
                 }
             }
+
         } else if (onglet.contains("recherche patient")) {
-            System.out.println("ca marche");
+            ;
+            this.dispose();
+            boolean n = false;
+            System.out.println(sql.rechercherPatient(nomRecherche, prenomRecherche).affichagePatient());
+            A12_DMA a12_dma = new A12_DMA(sql.rechercherPatient(nomRecherche, prenomRecherche), n);
+            a12_dma.setVisible(true);
             //rechercher patient dans base de données
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        String val;
+        val = jComboBox1.getSelectedItem().toString();
+        System.out.println(val);
+        String[] splited = val.split("\\s+");
+        nomRecherche = splited[0];
+        System.out.println(nomRecherche);
+        prenomRecherche = splited[1];
+        System.out.println(prenomRecherche);
+
+    }//GEN-LAST:event_jComboBox1ActionPerformed
     /**
      * Fait le lien avec la page d'accueil. Une JOptionPane apparait pour
      * rassurer l'utilisateur
@@ -971,6 +1000,8 @@ public class A11_DMA extends javax.swing.JFrame {
     private String ville;
     private String medecinTraitant;
     private String sexe;
+    private String nomRecherche;
+    private String prenomRecherche;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;

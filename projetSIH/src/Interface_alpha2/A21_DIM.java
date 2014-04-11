@@ -478,7 +478,7 @@ public class A21_DIM extends javax.swing.JFrame {
 
                     }
 
-                    sql.ajouterMedecinPH(med);
+                    sql.ajouterMedecinPHBD(med);
                     if (sql.getErr() != 1) {
                         JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -509,7 +509,7 @@ public class A21_DIM extends javax.swing.JFrame {
                         Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
 
                     }
-                    sql.ajouterInfirmiere(inf);
+                    sql.ajouterInfirmiereBD(inf);
                     if (sql.getErr() != 1) {
                         JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -538,7 +538,7 @@ public class A21_DIM extends javax.swing.JFrame {
                         Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
 
                     }
-                    sql.ajouterPersonnelMedical(persMed);
+                    sql.ajouterPersonnelMedicalBD(persMed);
                     if (sql.getErr() !=1) {
                         JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     }

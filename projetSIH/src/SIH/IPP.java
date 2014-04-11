@@ -3,52 +3,87 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package SIH;
 
+import Interface_alpha2.A11_DMA;
+import java.sql.SQLException;
 import java.text.NumberFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Baptiste-PC
  */
 public class IPP {
-    
-     private Date date;
+
+    private Date date;
 
     private int compteur;
 
     private String numero;
+
+    private String ippValue;
+
+    private SQL sql = null;
     
-    public IPP(){
-        
-        this.compteur=0;
-        this.numero="00000";
+    private String typeIPP;
+
+    public IPP() {
+
+        this.compteur = 0;
+        this.numero = "000000";
     }
-    
-    public IPP(Date date){
+
+    public IPP(Date date) {
         this.date = date;
-        final int nbDigits = 5;
-        NumberFormat nbf = NumberFormat.getNumberInstance();
-        nbf.setMinimumIntegerDigits(nbDigits);
-        nbf.setGroupingUsed(false);
-        nbf.setMaximumIntegerDigits(nbDigits);
-        numero = nbf.format(compteur);
-        this.incrementerCompteur();
+        this.compteur = 0;
+        try{
+        sql = new SQL();
+        }catch (SQLException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ippValue = sql.dernierIPP();
+        
+        int n = 6;
+        int length = ippValue.length();
+        numero = ippValue.substring(length - n, length);
+        
+        numero = this.incrementerIPP(numero);
+        
+        typeIPP="dateType";
+        
+        
     }
-    public void incrementerCompteur() {
-        final int nbDigits = 5;
-        NumberFormat nbf = NumberFormat.getNumberInstance();
-        nbf.setMinimumIntegerDigits(nbDigits);
-        nbf.setGroupingUsed(false);
-        nbf.setMaximumIntegerDigits(nbDigits);
-        compteur = (compteur + 1);
-        numero = (nbf.format(compteur));
+    
+    public IPP(String ipp){
+        ippValue = ipp;
+        typeIPP="stringType";
+        
+    }
+
+    public String incrementerIPP(String numero) {
+        long compteur ;
+        compteur = Integer.parseInt(numero);
+         final int nbdigits = 6;
+         NumberFormat nbf = NumberFormat.getNumberInstance();
+          nbf.setMinimumIntegerDigits(nbdigits);
+          nbf.setGroupingUsed(false);
+           nbf.setMaximumIntegerDigits(nbdigits);
+           
+           String sformatee = nbf.format(compteur+1);
+        return sformatee;
 
     }
-    
-    public String getIpp(){
-        return date.formatAnneeString2digit()+numero;
+
+    public String toString() {
+        String toString = null;
+        if (typeIPP.equals("dateType")){
+        toString= date.formatAnneeString2digit() + numero;
+        } else if (typeIPP.equals("stringType")){
+            toString=ippValue;
+        }
+        return toString;
     }
 
     /**
@@ -92,5 +127,9 @@ public class IPP {
     public void setNumero(String numero) {
         this.numero = numero;
     }
-    
+
+    public void stringToIPP(String ipp) {
+
+    }
+
 }

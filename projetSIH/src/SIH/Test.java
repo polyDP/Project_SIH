@@ -184,9 +184,9 @@ public class Test {
         System.out.println(numSej.getNumeroSejour());
         
         IPP ipp = new IPP(dateSejour);
-        System.out.println(ipp.getIpp());
-        ipp.incrementerCompteur();
-        System.out.println(ipp.getIpp());
+        System.out.println(ipp.toString());
+        //ipp.incrementerCompteur();
+        System.out.println(ipp.toString());
     }
 
 }

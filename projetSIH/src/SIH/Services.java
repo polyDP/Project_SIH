@@ -12,6 +12,7 @@ package SIH;
 public enum Services {
 
     Administration,
+    Anesthesie,
     Anesthesie_reanimation,
     Anatomo_pathologie,
     Cardiologie,

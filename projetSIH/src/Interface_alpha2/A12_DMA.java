@@ -28,28 +28,46 @@ public class A12_DMA extends javax.swing.JFrame {
      *
      * @param p
      */
-    public A12_DMA(Patient p) {
-        this.patient = p;
-        //this.date = date;
-        this.dateJour();
-        
-        initComponents();
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                JFrame frame = (JFrame) e.getSource();
-                int result = JOptionPane.showConfirmDialog(
-                        null,
-                        "Etes-vous sûr de vouloir quitter Asclépios ?",
-                        "Quitter",
-                        JOptionPane.YES_NO_OPTION);
-                if (result == JOptionPane.YES_OPTION) {
+    public A12_DMA(Patient p, boolean n) {
+        if (n) {
+            this.patient = p;
+            
+            this.dateJour();
+            initComponents();
+            jTabbedPane1.removeTabAt(1);
+            jPanel3.repaint();
+            jPanel3.revalidate();
 
-                    System.exit(0);
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            this.addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent e) {
+                    JFrame frame = (JFrame) e.getSource();
+                    int result = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir quitter Asclépios ?", "Quitter", JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.YES_OPTION) {
+                        System.exit(0);
+                    }
+
                 }
+            });
+        } else {
+            this.patient = p;
+            
+            this.dateJour();
 
-            }
-        });
+            initComponents();
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            this.addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent e) {
+                    JFrame frame = (JFrame) e.getSource();
+                    int result = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir quitter Asclépios ?", "Quitter", JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.YES_OPTION) {
+
+                        System.exit(0);
+                    }
+
+                }
+            });
+        }
     }
 
     /**
@@ -204,7 +222,7 @@ public class A12_DMA extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("IPP:");
 
-        jLabel3.setText(patient.getIpp().getIpp());
+        jLabel3.setText(patient.getIpp().toString());
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nom:");
@@ -554,7 +572,7 @@ public class A12_DMA extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         A0_Accueil a0 = new A0_Accueil();
         a0.setVisible(true);
-        this.dispose();        
+        this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     /**
      *
@@ -577,17 +595,17 @@ public class A12_DMA extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-        s=(Services) jComboBox4.getItemAt(jComboBox4.getSelectedIndex());
+        s = (Services) jComboBox4.getItemAt(jComboBox4.getSelectedIndex());
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         NumeroSejour numSej = new NumeroSejour(this.dateJour());
-        s=(Services) jComboBox4.getItemAt(jComboBox4.getSelectedIndex());
-        
-        rep = JOptionPane.showConfirmDialog(jPanel6, "creation du sejour du patient : "+patient.getNom()+patient.getPrenom()+" \n    - numero sejour : " + numSej + "\n    - service : " + s + "\n    - medecin responsable : " +m.getNom()+m.getPrenom() + "\n    - lit: " + "lit ", "confirmation", JOptionPane.OK_CANCEL_OPTION);
-          if (rep == JOptionPane.YES_OPTION) {  
-              
-          }
+        s = (Services) jComboBox4.getItemAt(jComboBox4.getSelectedIndex());
+
+        rep = JOptionPane.showConfirmDialog(jPanel6, "creation du sejour du patient : " + patient.getNom() + patient.getPrenom() + " \n    - numero sejour : " + numSej + "\n    - service : " + s + "\n    - medecin responsable : " + m.getNom() + m.getPrenom() + "\n    - lit: " + "lit ", "confirmation", JOptionPane.OK_CANCEL_OPTION);
+        if (rep == JOptionPane.YES_OPTION) {
+
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
@@ -635,9 +653,10 @@ public class A12_DMA extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             Patient patient;
+            Boolean n;
 
             public void run() {
-                new A12_DMA(patient).setVisible(true);
+                new A12_DMA(patient, n).setVisible(true);
             }
         });
     }
@@ -649,13 +668,12 @@ public class A12_DMA extends javax.swing.JFrame {
         month = cal.get(Calendar.MONTH);
         month = month + 1;
         year = cal.get(Calendar.YEAR);
-        yearIndex = year-2014;        
+        yearIndex = year - 2014;
         Date dateJour = new Date(day, month, year);
         return dateJour;
     }
-    
-     public long moisToDigit(String val) {
-        
+
+    public long moisToDigit(String val) {
 
         switch (val) {
             case "Janvier":
@@ -707,10 +725,10 @@ public class A12_DMA extends javax.swing.JFrame {
                 break;
 
         }
-      return mois;
+        return mois;
 
     }
-     int rep;
+    int rep;
     private MedecinPH m;
     private Services s;
     private Patient patient;

@@ -281,6 +281,7 @@ public class Patient {
         aff = " nom patient : " + nom + "\n";
         aff = aff + " prenom patient : " + prenom + "\n";
         aff = aff + " sexe patient : " + sexe + "\n";
+        aff= aff + "date naissance du patient : "+dateNaissance+"\n";
         aff = aff + " numero telephone patient : " + telephone + "\n";
         aff = aff + " nom medecin traitant : " + nomMedecinTraitant + "\n";
         //aff = aff + " maladie patient : " + this.getMaladie().toString() + "\n";

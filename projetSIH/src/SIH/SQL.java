@@ -9,6 +9,7 @@ import BasesDonnees.ConnectionBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,27 +20,14 @@ public class SQL {
 
     static ConnectionBD con;
     private int err;
-
-    /**
-     * @return the err
-     */
-    public int getErr() {
-        return err;
-    }
-
-    /**
-     * @param aErr the err to set
-     */
-    public void setErr(int aErr) {
-        err = aErr;
-    }
+    private String connexion;
 
     public SQL() throws SQLException, InstantiationException, IllegalAccessException {
 
         con = new ConnectionBD();
 
         con.connecter();
-        err=0;
+        err = 0;
 
     }
 
@@ -50,7 +38,7 @@ public class SQL {
                     + "Values (?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement prepS = con.creerPreparedStatement(requete);
 
-            prepS.setObject(1, p.getIpp().getIpp());
+            prepS.setObject(1, p.getIpp().toString());
 
             prepS.setObject(2, p.getSexe());
 
@@ -77,7 +65,7 @@ public class SQL {
             prepS.executeUpdate();
 
         } catch (SQLException e) {
-err =1;
+            err = 1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique avec ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
 
         }
@@ -91,7 +79,7 @@ err =1;
 
             prepS.setObject(1, numSej.getNumeroSejour());
 
-            prepS.setObject(2, p.getIpp().getIpp());
+            prepS.setObject(2, p.getIpp().toString());
 
             prepS.setObject(3, p.getDateAdmission().toString());
 
@@ -104,12 +92,12 @@ err =1;
             prepS.executeUpdate();
 
         } catch (SQLException e) {
-err =1;
+            err = 1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique contenant ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void ajouterMedecinPH(MedecinPH m) {
+    public void ajouterMedecinPHBD(MedecinPH m) {
         try {
             String requete = "INSERT INTO personnel(ID_PH,Nom_PH,Prenom_PH,Mdp_PH,Service,Fonction_PH)"
                     + "Values (?,?,?,?,?,?)";
@@ -130,12 +118,12 @@ err =1;
             prepS.executeUpdate();
 
         } catch (SQLException e) {
-            err =1;
+            err = 1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique contenant ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void ajouterInfirmiere(Infirmiere i) {
+    public void ajouterInfirmiereBD(Infirmiere i) {
         try {
             String requete = "INSERT INTO personnel(ID_PH,Nom_PH,Prenom_PH,Mdp_PH,Service,Fonction_PH)"
                     + "Values (?,?,?,?,?,?)";
@@ -156,12 +144,12 @@ err =1;
             prepS.executeUpdate();
 
         } catch (SQLException e) {
-            err =1;
+            err = 1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique contenant ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    public void ajouterPersonnelMedical(PersonnelMedical m) {
+
+    public void ajouterPersonnelMedicalBD(PersonnelMedical m) {
         try {
             String requete = "INSERT INTO personnel(ID_PH,Nom_PH,Prenom_PH,Mdp_PH,Service,Fonction_PH)"
                     + "Values (?,?,?,?,?,?)";
@@ -182,31 +170,33 @@ err =1;
             prepS.executeUpdate();
 
         } catch (SQLException e) {
-            err =1;
+            err = 1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique contenant ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    
-    //Code pour connection
-    
-   /*private void seConnecter(Personnel p) {                                        
+
+    public void seConnecterSIH(String id, String motDePasse) {
         String requete = "SELECT * FROM personnel";
+        
         try {
             boolean boucle = true;
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
             ResultSet result = con.resultatRequete(requete);
+            
             while (result.next()) {
-                if (result.getString("ID_PH").equals(p.getId())) {
+                
+                if (result.getString("ID_PH").equals(id)) {
+                   
                     boucle = false;
-                    if (result.getString("Mdp_PH").equals(p.getMotDePasse())) {                      
-                        if (result.getString("Fonction_PH").equals("PH")) {
-                            AccueilMed med = new AccueilMed();
-                            med.nomMedecin.setText(result.getString(1));
-                            med.show();
+                    if (result.getString("Mdp_PH").equals(motDePasse)) {
+                        if (result.getString("Fonction_PH").equals("PH") | result.getString("Fonction_PH").equals("Interne")) {
+                            connexion ="PH";
                         }
-                        if (result.getString("FONCTION").equals("Secrétaire")) {
-                            AccueilSecretaire sec = new AccueilSecretaire();
-                            sec.show();
+                        if (result.getString("Fonction_PH").equals("Secretaire")) {
+                           connexion="Secretaire";
+                        }
+                        if (result.getString("Fonction_PH").equals("Infirmier")) {
+                            connexion="Infirmier";
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "Mot de passe incorrect",
@@ -218,14 +208,138 @@ err =1;
                 JOptionPane.showMessageDialog(null, "Identifiant incorrect",
                         "Erreur", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (InstantiationException ex) {
-            Logger.getLogger(Identification.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(Identification.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException e) {
+            err = 1;
             JOptionPane.showMessageDialog(null, e,
                     "Erreur", JOptionPane.ERROR_MESSAGE);
         }
-    }*/                                       
+    }
+    
+    public String dernierIPP() {
+        String ippValue = null;
+        String requete = "SELECT MAX(IPP) FROM donnee_personnelle";
+        
+        try {
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                System.out.println(result.getString("MAX(IPP)"));
+           ippValue = result.getString("MAX(IPP)");
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return ippValue;
+    }
+    
+    public Patient rechercherPatient(String nom,String prenom){
+        
+        String ippValue=null;
+        String sexe=null;
+        String dateNaissance=null;
+        String numTel=null;
+        String numAdresse=null;
+        String nomRue=null;
+        String codePostal=null;
+        String ville=null;
+        String medecinTraitant=null;
+        int jour=0;
+        int mois=0;
+        int annee=0;       
+        
+        String requete = "SELECT * FROM donnee_personnelle WHERE Nom_P = '"+nom+"' AND Prenom_P = '"+prenom+"'";
+        
+        try {  
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                
+           ippValue = result.getString("IPP");
+               
+           sexe = result.getString("sexe");
+           dateNaissance = result.getString("Date_Naissance");
+                
+           numTel = result.getString("Num_Tel");
+           numAdresse = result.getString("Numero_Adresse");
+           nomRue = result.getString("Nom_Rue");
+           codePostal = result.getString("Code_Postal");
+           ville = result.getString("ville");
+           medecinTraitant = result.getString("Med_T");
+           
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        Adresse adresse = new Adresse(numAdresse,nomRue,codePostal,ville);
+        
+        jour = Integer.parseInt(dateNaissance.substring(0, 2));
+        mois = Integer.parseInt(dateNaissance.substring(3, 5));
+        annee= Integer.parseInt(dateNaissance.substring(6,10));
+        
+        Date date = new Date(jour,mois,annee);
+        
+        IPP ipp = new IPP(ippValue);
+        
+        Patient patient = new Patient(nom,prenom,numTel,medecinTraitant,sexe,date,adresse);
+        patient.setIpp(ipp);
+        return patient;
+    }
+    
+    public Vector<String> listePatient(){
+        Vector<String> listePatient = new Vector<>();
+        String nomPrenom;
+        String requete = "SELECT * FROM donnee_personnelle ORDER BY Nom_P";
+        try {  
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                
+           nomPrenom = result.getString("Nom_P");
+           nomPrenom = nomPrenom +" "+ result.getString("Prenom_P");
+           listePatient.add(nomPrenom);
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return listePatient;
+    }
+    
+    /**
+     * @return the err
+     */
+    public int getErr() {
+        return err;
+    }
+
+    /**
+     * @param err the err to set
+     */
+    public void setErr(int err) {
+        err = err;
+    }
+
+    /**
+     * @return the connexion
+     */
+    public String getConnexion() {
+        return connexion;
+    }
+
+    /**
+     * @param connexion the connexion to set
+     */
+    public void setConnexion(String connexion) {
+        this.connexion = connexion;
+    }
 
 }
