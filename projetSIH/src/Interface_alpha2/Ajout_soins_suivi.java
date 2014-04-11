@@ -57,6 +57,10 @@ this.addWindowListener( new WindowAdapter()
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -70,7 +74,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel13.setBackground(new java.awt.Color(205, 205, 205));
         jPanel13.setMinimumSize(new java.awt.Dimension(400, 300));
         jPanel13.setPreferredSize(new java.awt.Dimension(400, 300));
-        jPanel13.setLayout(new java.awt.GridLayout(4, 4, 0, 70));
+        jPanel13.setLayout(new java.awt.GridLayout(0, 4, 0, 40));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -124,6 +128,41 @@ this.addWindowListener( new WindowAdapter()
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel13.add(jTextField5);
 
+        jPanel2.setBackground(new java.awt.Color(205, 205, 205));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 28, Short.MAX_VALUE)
+        );
+
+        jPanel13.add(jPanel2);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Médicament:");
+        jPanel13.add(jLabel1);
+        jPanel13.add(jTextField4);
+
+        jPanel3.setBackground(new java.awt.Color(205, 205, 205));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 28, Short.MAX_VALUE)
+        );
+
+        jPanel13.add(jPanel3);
+
         jPanel1.setBackground(new java.awt.Color(205, 205, 205));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -134,7 +173,7 @@ this.addWindowListener( new WindowAdapter()
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 22, Short.MAX_VALUE)
+            .addGap(0, 28, Short.MAX_VALUE)
         );
 
         jPanel13.add(jPanel1);
@@ -235,6 +274,7 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -243,9 +283,12 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
