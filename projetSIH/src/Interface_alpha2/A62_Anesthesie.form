@@ -279,8 +279,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Visite d&apos;arriv&#xe9;e">
-                    <Property name="tabTitle" type="java.lang.String" value="Visite d&apos;arriv&#xe9;e"/>
+                  <JTabbedPaneConstraints tabName="Donn&#xe9;es Patient">
+                    <Property name="tabTitle" type="java.lang.String" value="Donn&#xe9;es Patient"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -300,20 +300,28 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="132" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabel9" pref="136" max="32767" attributes="0"/>
-                                  <Component id="jLabel10" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jLabel11" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="117" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel3" min="-2" pref="470" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jLabel9" max="32767" attributes="0"/>
+                                          <Component id="jLabel10" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="jLabel11" alignment="1" min="-2" pref="136" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextField10" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextField8" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField10" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField8" alignment="0" pref="222" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="141" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -321,6 +329,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabel3" min="-2" pref="108" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jTextField7" pref="30" max="32767" attributes="0"/>
                                   <Component id="jLabel9" max="32767" attributes="0"/>
@@ -365,6 +375,11 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextField8">
                     </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel3">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="jLabel3"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel15">
@@ -378,7 +393,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="132" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="jLabel14" alignment="1" pref="136" max="32767" attributes="0"/>
                                   <Component id="jLabel13" alignment="1" max="32767" attributes="0"/>
@@ -390,7 +405,7 @@
                                   <Component id="jTextField11" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTextField9" alignment="0" pref="222" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="141" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -683,48 +698,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="jPanel4">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Donn&#xe9;es Patient">
-                    <Property name="tabTitle" type="java.lang.String" value="Donn&#xe9;es Patient"/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="294" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="239" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel2">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel2"/>
-                  </Properties>
-                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
