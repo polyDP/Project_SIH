@@ -5,6 +5,7 @@
  */
 package Interface_alpha2;
 
+import SIH.PersonnelMedical;
 import SIH.SQL;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -272,6 +273,7 @@ public class A0_Accueil extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         id = jTextField1.getText();
         motDePasse = jPasswordField1.getText();
+        PersonnelMedical pm;
         try {
             sql = new SQL();
         } catch (SQLException | InstantiationException | IllegalAccessException ex) {
@@ -280,19 +282,25 @@ public class A0_Accueil extends javax.swing.JFrame {
         sql.seConnecterSIH(id, motDePasse);
         if (sql.getErr() != 1 & sql.getConnexion().equals("PH")) {
             this.dispose();
-            
+
             A31_Medecin a31_medecin = new A31_Medecin();
             a31_medecin.setVisible(true);
         } else if (sql.getErr() != 1 & sql.getConnexion().equals("Infirmier")) {
             this.dispose();
-            
+
             A41_Infirmier a41_infirmier = new A41_Infirmier();
             a41_infirmier.setVisible(true);
-        } else if (sql.getErr() != 1 & sql.getConnexion().equals("Secretaire medicale")) {
+        } else if (sql.getErr() != 1 & sql.getConnexion().equals("Secretaire")) {
             this.dispose();
-            
             A11_DMA a11_dma = new A11_DMA();
             a11_dma.setVisible(true);
+
+        }
+        if (sql.getErr() != 1 & sql.getConnexion().equals("DIM")) {
+            this.dispose();
+            A21_DIM a21_dim = new A21_DIM(sql.getPm());
+            a21_dim.setVisible(true);
+
         }
     }//GEN-LAST:event_jButton2ActionPerformed
     /**

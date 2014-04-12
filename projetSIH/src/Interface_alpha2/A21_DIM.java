@@ -29,7 +29,8 @@ public class A21_DIM extends javax.swing.JFrame {
     /**
      * Creates new form Premiere_page_dma
      */
-    public A21_DIM() {
+    public A21_DIM(PersonnelMedical pm) {
+        this.pm=pm;
         try {
             sql = new SQL();
         } catch (SQLException ex) {
@@ -129,7 +130,7 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Identifiant");
+        jLabel4.setText("identifiant : " +pm.getNom()+" "+ pm.getPrenom());
         jPanel9.add(jLabel4);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -489,15 +490,16 @@ public class A21_DIM extends javax.swing.JFrame {
                 prenom = jTextField2.getText();
                 this.newId(nom, prenom);
                 jLabel3.setText(id);
-                personnel = jRadioButton3.getLabel();
+                fonction = "PH";
                 service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
                 motDePasse = this.StringMotDePasseAleatoire();
                 jLabel8.setText(motDePasse);
 
-                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + personnel + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
                 if (rep == JOptionPane.YES_OPTION) {
-                    med = new MedecinPH(id, motDePasse, nom, prenom, personnel, service);
-                    //SQL sql = null;
+                    med = new MedecinPH(id, motDePasse, nom, prenom, fonction, service);
+                    System.out.println(med.getFonction());
+                   
                     try {
                         sql = new SQL();
 
@@ -508,6 +510,7 @@ public class A21_DIM extends javax.swing.JFrame {
                     }
 
                     sql.ajouterMedecinPHBD(med);
+                    
                     if (sql.getErr() != 1) {
                         JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -519,16 +522,16 @@ public class A21_DIM extends javax.swing.JFrame {
                 prenom = jTextField2.getText();
                 this.newId(nom, prenom);
                 jLabel3.setText(id);
-                personnel = jRadioButton3.getLabel();
+                fonction = "Infirmier";
                 service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
-                personnel = jRadioButton1.getLabel();
+                fonction = jRadioButton1.getLabel();
                 motDePasse = this.StringMotDePasseAleatoire();
                 jLabel8.setText(motDePasse);
 
-                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + personnel + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : "+id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : "+id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
 
                 if (rep == JOptionPane.YES_OPTION) {
-                    inf = new Infirmiere(id, motDePasse, nom, prenom, personnel, service);
+                    inf = new Infirmiere(id, motDePasse, nom, prenom, fonction, service);
                     //SQL sql = null;
                     try {
                         sql = new SQL();
@@ -545,18 +548,18 @@ public class A21_DIM extends javax.swing.JFrame {
                 }
 
             } else if (jRadioButton2.isSelected()) {
-                personnel = jRadioButton2.getLabel();
+               fonction = "Secretaire";
                 nom = jTextField1.getText();
                 prenom = jTextField2.getText();
                 this.newId(nom, prenom);
                 jLabel3.setText(id);
-                personnel = jRadioButton3.getLabel();
+                fonction = jRadioButton3.getLabel();
                 motDePasse = this.StringMotDePasseAleatoire();
                 jLabel8.setText(motDePasse);
 
-                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + personnel + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " +id+ "\n    - mot de passe : " + motDePasse, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " +id+ "\n    - mot de passe : " + motDePasse, "confirmation", JOptionPane.OK_CANCEL_OPTION);
                 if (rep == JOptionPane.YES_OPTION) {
-                    persMed = new PersonnelMedical(id, motDePasse, nom, prenom, personnel);
+                    persMed = new PersonnelMedical(id, motDePasse, nom, prenom, fonction);
                     persMed.setServices(service.Administration);
                     //SQL sql = null;
                     try {
@@ -680,11 +683,13 @@ public class A21_DIM extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new A21_DIM().setVisible(true);
+                
+                //new A21_DIM().setVisible(true);
 
             }
         });
     }
+    private PersonnelMedical pm;
     private SQL sql = null;
     static Random rnd = new Random();
     static final String AB = "0123456789abcdefghijklmnopqrstuvwxyz";
@@ -697,7 +702,7 @@ public class A21_DIM extends javax.swing.JFrame {
     private Infirmiere inf;
     private MedecinPH med;
     private String onglet;
-    private String personnel;
+    private String fonction;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;

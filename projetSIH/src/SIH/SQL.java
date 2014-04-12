@@ -21,6 +21,7 @@ public class SQL {
     static ConnectionBD con;
     private int err;
     private String connexion;
+    private PersonnelMedical pm;
 
     public SQL() throws SQLException, InstantiationException, IllegalAccessException {
 
@@ -97,7 +98,7 @@ public class SQL {
 
     public void ajouterMedecinPHBD(MedecinPH m) {
         try {
-            String requete = "INSERT INTO personnel(ID_PH,Nom_PH,Prenom_PH,Mdp_PH,Service,Fonction_PH)"
+            String requete = "INSERT INTO personnel(ID_PH,Nom_PH,Prenom_PH,Mdp_PH,Service_PH,Fonction_PH)"
                     + "Values (?,?,?,?,?,?)";
             PreparedStatement prepS = con.creerPreparedStatement(requete);
 
@@ -109,7 +110,7 @@ public class SQL {
 
             prepS.setObject(4, m.getMotDePasse());
 
-            prepS.setObject(5, m.getServices());
+            prepS.setObject(5, m.getServices().toString());
 
             prepS.setObject(6, m.getFonction());
 
@@ -123,7 +124,7 @@ public class SQL {
 
     public void ajouterInfirmiereBD(Infirmiere i) {
         try {
-            String requete = "INSERT INTO personnel(ID_PH,Nom_PH,Prenom_PH,Mdp_PH,Service,Fonction_PH)"
+            String requete = "INSERT INTO personnel(ID_PH,Nom_PH,Prenom_PH,Mdp_PH,Service_PH,Fonction_PH)"
                     + "Values (?,?,?,?,?,?)";
             PreparedStatement prepS = con.creerPreparedStatement(requete);
 
@@ -135,7 +136,7 @@ public class SQL {
 
             prepS.setObject(4, i.getMotDePasse());
 
-            prepS.setObject(5, i.getServices());
+            prepS.setObject(5, i.getServices().toString());
 
             prepS.setObject(6, i.getFonction());
 
@@ -149,7 +150,7 @@ public class SQL {
 
     public void ajouterPersonnelMedicalBD(PersonnelMedical m) {
         try {
-            String requete = "INSERT INTO personnel(ID_PH,Nom_PH,Prenom_PH,Mdp_PH,Service,Fonction_PH)"
+            String requete = "INSERT INTO personnel(ID_PH,Nom_PH,Prenom_PH,Mdp_PH,Service_PH,Fonction_PH)"
                     + "Values (?,?,?,?,?,?)";
             PreparedStatement prepS = con.creerPreparedStatement(requete);
 
@@ -161,7 +162,7 @@ public class SQL {
 
             prepS.setObject(4, m.getMotDePasse());
 
-            prepS.setObject(5, m.getServices());
+            prepS.setObject(5, m.getServices().toString());
 
             prepS.setObject(6, m.getFonction());
 
@@ -176,6 +177,7 @@ public class SQL {
     public void seConnecterSIH(String id, String motDePasse) {
         String requete = "SELECT * FROM personnel";
         
+        
         try {
             boolean boucle = true;
             PreparedStatement prepS = con.creerPreparedStatement(requete);
@@ -189,12 +191,20 @@ public class SQL {
                     if (result.getString("Mdp_PH").equals(motDePasse)) {
                         if (result.getString("Fonction_PH").equals("PH") | result.getString("Fonction_PH").equals("Interne")) {
                             connexion ="PH";
+                             pm=new PersonnelMedical(result.getString("ID_PH"),result.getString("Mdp_PH"),result.getString("Nom_PH"),result.getString("Prenom_PH"),result.getString("Fonction_PH"));
                         }
-                        if (result.getString("Fonction_PH").equals("Secretaire medicale")) {
+                        if (result.getString("Fonction_PH").equals("Secretaire")) {
                            connexion="Secretaire medicale";
+                            pm=new PersonnelMedical(result.getString("ID_PH"),result.getString("Mdp_PH"),result.getString("Nom_PH"),result.getString("Prenom_PH"),result.getString("Fonction_PH"));
                         }
                         if (result.getString("Fonction_PH").equals("Infirmier")) {
                             connexion="Infirmier";
+                             pm=new PersonnelMedical(result.getString("ID_PH"),result.getString("Mdp_PH"),result.getString("Nom_PH"),result.getString("Prenom_PH"),result.getString("Fonction_PH"));
+                        } 
+                        if (result.getString("Fonction_PH").equals("DIM")){
+                            connexion="DIM";
+                            pm=new PersonnelMedical(result.getString("ID_PH"),result.getString("Mdp_PH"),result.getString("Nom_PH"),result.getString("Prenom_PH"),result.getString("Fonction_PH"));
+                            
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "Mot de passe incorrect",
@@ -211,6 +221,8 @@ public class SQL {
             JOptionPane.showMessageDialog(null, e,
                     "Erreur", JOptionPane.ERROR_MESSAGE);
         }
+        
+        
     }
     
     public String dernierIPP() {
@@ -368,7 +380,7 @@ public class SQL {
         Vector<String> listeMedecinPH = new Vector<>();
         String nomPrenomFonction;
         
-        String requete = "SELECT * FROM personnel WHERE Fonction_PH = 'Secretaire medicale' ORDER BY Nom_PH";
+        String requete = "SELECT * FROM personnel WHERE Fonction_PH = 'Secretaire' ORDER BY Nom_PH";
         try {  
             PreparedStatement prepS = con.creerPreparedStatement(requete);
             ResultSet result = con.resultatRequete(requete);
@@ -416,6 +428,20 @@ public class SQL {
      */
     public void setConnexion(String connexion) {
         this.connexion = connexion;
+    }
+
+    /**
+     * @return the pm
+     */
+    public PersonnelMedical getPm() {
+        return pm;
+    }
+
+    /**
+     * @param pm the pm to set
+     */
+    public void setPm(PersonnelMedical pm) {
+        this.pm = pm;
     }
 
 }

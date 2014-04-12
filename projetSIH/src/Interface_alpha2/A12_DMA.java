@@ -140,7 +140,6 @@ public class A12_DMA extends javax.swing.JFrame {
         setExtendedState(10);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -550,7 +549,7 @@ public class A12_DMA extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -619,6 +618,8 @@ public class A12_DMA extends javax.swing.JFrame {
         rep = JOptionPane.showConfirmDialog(jPanel6, "voulez vous ouvrir le dossier et creer le sejour du patient : " + patient.getNom() + patient.getPrenom() + " \n    - numero sejour : " + numSej + "\n    - service : " + s + "\n    - medecin responsable : " + m.getNom() + m.getPrenom() + "\n    - lit: " + "lit ", "confirmation", JOptionPane.OK_CANCEL_OPTION);
         if (rep == JOptionPane.YES_OPTION) {
             sejPat.ouvertureDossier();
+            JOptionPane.showConfirmDialog(jPanel6, "Le dossier Administratif du patient est ouvert", "confirmation", JOptionPane.OK_OPTION);
+            
 
         }
     }//GEN-LAST:event_jButton2ActionPerformed

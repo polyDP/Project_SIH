@@ -68,7 +68,7 @@ public class PersonnelMedical extends Personnel {
     // #[regen=yes,regenBody=yes,id=DCE.C02777DB-57C7-7EF1-1130-583F212C585E]
     // </editor-fold> 
     public String getFonction () {
-        return fonction;
+        return super.getFonction();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
