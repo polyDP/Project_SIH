@@ -10,6 +10,7 @@ import SIH.SQL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -273,7 +274,10 @@ public class A0_Accueil extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         id = jTextField1.getText();
         motDePasse = jPasswordField1.getText();
-        PersonnelMedical pm;
+         if (jTextField1.getText().length() == 0 | jPasswordField1.getText().length() == 0 ) {
+                    JOptionPane.showMessageDialog(jPanel1, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
+         }
+         PersonnelMedical pm;
         try {
             sql = new SQL();
         } catch (SQLException | InstantiationException | IllegalAccessException ex) {
