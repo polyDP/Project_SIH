@@ -7,8 +7,13 @@
 package Interface_alpha2;
 
 import SIH.PersonnelMedical;
+import SIH.SQL;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -24,7 +29,23 @@ public class A31_Medecin extends javax.swing.JFrame {
      */
     public A31_Medecin(PersonnelMedical pm) {
         this.pm = pm;
+        try {
+            sql = new SQL();
+        } catch (SQLException ex) {
+            Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        comboPatientPH= new DefaultComboBoxModel(sql.listePatientParMedecin(pm.getServices()));
+        
+       
+        
+        
         initComponents();
+         jComboBox1.setModel(comboPatientPH);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 this.addWindowListener( new WindowAdapter()
 		{
@@ -110,6 +131,11 @@ this.addWindowListener( new WindowAdapter()
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Ok");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +204,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel4.setEnabled(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(591, 527));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(comboPatientPH);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -294,8 +320,24 @@ this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+       String val;
+        val = jComboBox1.getSelectedItem().toString();
+        System.out.println(val);
+        String[] splited = val.split("\\s+");
+        String nomRecherche = splited[0];
+        System.out.println(nomRecherche);
+        String prenomRecherche = splited[1];
+        System.out.println(prenomRecherche);
     }//GEN-LAST:event_jComboBox1ActionPerformed
+/**
+ * Aller à la page suivante en cliquant sur le bouton de validation
+ * @param evt 
+ */
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        A32_Medecin fenetre31 = new A32_Medecin(pm);
+    fenetre31.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 /**
  * retour à la page d'accueil à partir du bouton prévu à cet effet
  * @param evt 
@@ -309,15 +351,7 @@ this.dispose();        // TODO add your handling code here:
         this.dispose();
     }
 }  
-/**
- * Aller à la page suivante en cliquant sur le bouton de validation
- * @param evt 
- */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        A32_Medecin fenetre31 = new A32_Medecin(pm);
-    fenetre31.setVisible(true);
-    this.dispose();
-}
+
     /**
      * @param args the command line arguments
      */
@@ -352,6 +386,8 @@ this.dispose();        // TODO add your handling code here:
             }
         });
     }
+    private SQL sql;
+    private DefaultComboBoxModel comboPatientPH;
 private PersonnelMedical pm;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
