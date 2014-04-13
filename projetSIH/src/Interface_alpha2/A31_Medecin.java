@@ -6,6 +6,7 @@
 
 package Interface_alpha2;
 
+import SIH.Date;
 import SIH.PersonnelMedical;
 import SIH.SQL;
 import java.awt.event.WindowAdapter;
@@ -28,6 +29,7 @@ public class A31_Medecin extends javax.swing.JFrame {
      * Creates new form Premiere_page_dma
      */
     public A31_Medecin(PersonnelMedical pm) {
+        dateJour=dateJour.dateJour();
         this.pm = pm;
         try {
             sql = new SQL();
@@ -78,6 +80,8 @@ this.addWindowListener( new WindowAdapter()
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -114,7 +118,12 @@ this.addWindowListener( new WindowAdapter()
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel9.setLayout(new java.awt.GridLayout(0, 3));
+        jPanel9.add(jLabel3);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText(dateJour.toString());
+        jPanel9.add(jLabel2);
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -389,12 +398,15 @@ this.dispose();        // TODO add your handling code here:
     private SQL sql;
     private DefaultComboBoxModel comboPatientPH;
 private PersonnelMedical pm;
+private Date dateJour;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
