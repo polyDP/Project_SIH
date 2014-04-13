@@ -627,7 +627,9 @@
                 <Component class="javax.swing.JLabel" name="jLabel15">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="jLabel15"/>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="&quot;Nous ne pouvons pas voir les images des r&#xe9;sultats (imagerie, biologie) dans cette version du logiciel.\n Cette fonction sera impl&#xe9;ment&#xe9;e dans des versions ult&#xe9;rieures&quot;" type="code"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane5">

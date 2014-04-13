@@ -352,7 +352,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         });
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("jLabel15");
+        jLabel15.setText("Nous ne pouvons pas voir les images des résultats (imagerie, biologie) dans cette version du logiciel.\n Cette fonction sera implémentée dans des versions ultérieures");
 
         jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
