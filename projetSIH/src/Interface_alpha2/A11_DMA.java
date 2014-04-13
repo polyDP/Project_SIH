@@ -33,6 +33,7 @@ public class A11_DMA extends javax.swing.JFrame {
      */
     public A11_DMA(PersonnelMedical pm) {
         this.pm = pm;
+        dateJour = new Date();
         dateJour = dateJour.dateJour();
         try {
             sql = new SQL();
@@ -857,7 +858,15 @@ public class A11_DMA extends javax.swing.JFrame {
             ;
             this.dispose();
             boolean n = false;
-            System.out.println(sql.rechercherPatient(nomRecherche, prenomRecherche).affichagePatient());
+            String val;
+        val = jComboBox1.getSelectedItem().toString();
+        System.out.println(val);
+        String[] splited = val.split("\\s+");
+        nomRecherche = splited[0];
+        System.out.println(nomRecherche);
+        prenomRecherche = splited[1];
+        System.out.println(prenomRecherche);
+            
             A12_DMA a12_dma = new A12_DMA(sql.rechercherPatient(nomRecherche, prenomRecherche), n,pm);
             a12_dma.setVisible(true);
             //rechercher patient dans base de données

@@ -279,8 +279,7 @@ public class Patient {
         aff = aff + "date naissance du patient : " + dateNaissance + "\n";
         aff = aff + " numero telephone patient : " + telephone + "\n";
         aff = aff + " nom medecin traitant : " + nomMedecinTraitant + "\n";
-        //aff = aff + " maladie patient : " + this.getMaladie().toString() + "\n";
-        aff = aff + " antecedents patient : " + this.afficheAntecedants(this);
+        //aff = aff + " antecedents patient : " + this.afficheAntecedants(this);
         return aff;
 
     }
@@ -305,6 +304,12 @@ public class Patient {
             return " le patient n'a pas d'antecedents";
         }
 
+    }
+    
+    public String donneePatient(Patient p, SejourPatient sejPat){
+        String donnee = "Information Patient : \n"+p.affichagePatient();
+        donnee = donnee + sejPat.infosSejour();
+        return donnee;
     }
 
     /**

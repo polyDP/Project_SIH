@@ -6,9 +6,14 @@
 package Interface_alpha2;
 
 import SIH.Date;
-import SIH.PersonnelMedical;
+import SIH.MedecinPH;
+import SIH.Patient;
+import SIH.SQL;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -23,11 +28,25 @@ public class A32_Medecin extends javax.swing.JFrame {
      * fermer l'application avec la croix en demandant l'autorisation à
      * l'utilisateur
      */
-    public A32_Medecin(PersonnelMedical pm) {
-        this.pm = pm;
+    public A32_Medecin(MedecinPH medecin,Patient patient) {
+        this.medecin = medecin;
+        this.patient = patient;
+        dateJour = new Date();
         dateJour = dateJour.dateJour();
 
         initComponents();
+        
+        try {
+            sql = new SQL();
+            
+            jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, sql.numeroSejourPatient(patient.getIpp())).infosSejour());
+        } catch (SQLException ex) {
+            Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -176,7 +195,7 @@ public class A32_Medecin extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Patient");
+        jLabel4.setText("patient : "+patient.getNom()+ " "+patient.getPrenom());
         jPanel9.add(jLabel4);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -184,7 +203,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel9.add(jLabel30);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("identifiant : "+pm.getNom()+" "+pm.getPrenom());
+        jLabel1.setText("identifiant : "+medecin.getNom()+" "+medecin.getPrenom());
         jPanel9.add(jLabel1);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -976,7 +995,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        A31_Medecin fenetre31 = new A31_Medecin(pm);
+        A31_Medecin fenetre31 = new A31_Medecin(medecin);
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.YES_OPTION) {
@@ -1338,7 +1357,9 @@ public class A32_Medecin extends javax.swing.JFrame {
             }
         });
     }
-    private PersonnelMedical pm;
+    private SQL sql=null;
+    private Patient patient;
+    private MedecinPH medecin;
     private Date dateJour;
     private String taille;
     private String tension;

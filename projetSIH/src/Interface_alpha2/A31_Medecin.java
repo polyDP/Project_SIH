@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Interface_alpha2;
 
 import SIH.Date;
+import SIH.MedecinPH;
 import SIH.PersonnelMedical;
 import SIH.SQL;
 import java.awt.event.WindowAdapter;
@@ -18,7 +18,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Ludivine
@@ -28,9 +27,10 @@ public class A31_Medecin extends javax.swing.JFrame {
     /**
      * Creates new form Premiere_page_dma
      */
-    public A31_Medecin(PersonnelMedical pm) {
-        dateJour=dateJour.dateJour();
-        this.pm = pm;
+    public A31_Medecin(MedecinPH medecin) {
+        dateJour = new Date();
+        dateJour = dateJour.dateJour();
+        this.medecin = medecin;
         try {
             sql = new SQL();
         } catch (SQLException ex) {
@@ -40,32 +40,27 @@ public class A31_Medecin extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        comboPatientPH= new DefaultComboBoxModel(sql.listePatientParMedecin(pm.getServices()));
-        
-       
-        
-        
+
+        comboPatientPH = new DefaultComboBoxModel(sql.listePatientParMedecin(medecin.getServices()));
+
         initComponents();
-         jComboBox1.setModel(comboPatientPH);
+        jComboBox1.setModel(comboPatientPH);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-this.addWindowListener( new WindowAdapter()
-		{
-			public void windowClosing(WindowEvent e)
-			{
-				JFrame frame = (JFrame)e.getSource();
-				int result = JOptionPane.showConfirmDialog(
-						null,
-						"Etes-vous sûr de vouloir quitter Asclépios ?",
-						"Quitter",
-						JOptionPane.YES_NO_OPTION);
-				if (result == JOptionPane.YES_OPTION){
-					
-					System.exit(0);
-				}
-				
-			}
-		});
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                JFrame frame = (JFrame) e.getSource();
+                int result = JOptionPane.showConfirmDialog(
+                        null,
+                        "Etes-vous sûr de vouloir quitter Asclépios ?",
+                        "Quitter",
+                        JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+
+                    System.exit(0);
+                }
+
+            }
+        });
     }
 
     /**
@@ -127,7 +122,7 @@ this.addWindowListener( new WindowAdapter()
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("identifiant : "+pm.getNom()+" "+pm.getPrenom());
+        jLabel4.setText("identifiant : "+medecin.getNom()+" "+medecin.getPrenom());
         jPanel9.add(jLabel4);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -306,30 +301,32 @@ this.addWindowListener( new WindowAdapter()
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
- * changer le mot de passe à partir du menu
- * @param evt 
- */
+     * changer le mot de passe à partir du menu
+     *
+     * @param evt
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
         mdp.setVisible(true);
-        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if(JOptionPane.INFORMATION_MESSAGE==1){
+        JOptionPane.showConfirmDialog(jMenuBar1, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (JOptionPane.INFORMATION_MESSAGE == 1) {
             mdp.dispose();
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-/**
- * se déconnecter, revenir à la première page grâce au menu
- * @param evt 
- */
+    /**
+     * se déconnecter, revenir à la première page grâce au menu
+     *
+     * @param evt
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-A0_Accueil a0 = new A0_Accueil();
-a0.setVisible(true);
-this.dispose();        // TODO add your handling code here:
+        A0_Accueil a0 = new A0_Accueil();
+        a0.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-       String val;
+        String val;
         val = jComboBox1.getSelectedItem().toString();
         System.out.println(val);
         String[] splited = val.split("\\s+");
@@ -338,28 +335,40 @@ this.dispose();        // TODO add your handling code here:
         String prenomRecherche = splited[1];
         System.out.println(prenomRecherche);
     }//GEN-LAST:event_jComboBox1ActionPerformed
-/**
- * Aller à la page suivante en cliquant sur le bouton de validation
- * @param evt 
- */
+    /**
+     * Aller à la page suivante en cliquant sur le bouton de validation
+     *
+     * @param evt
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        A32_Medecin fenetre31 = new A32_Medecin(pm);
-    fenetre31.setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-/**
- * retour à la page d'accueil à partir du bouton prévu à cet effet
- * @param evt 
- */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        A0_Accueil fenetre3 = new A0_Accueil();
-      int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-    if (response == JOptionPane.YES_OPTION) {
-     fenetre3.setVisible(true);
+        String val;
+        val = jComboBox1.getSelectedItem().toString();
+        System.out.println(val);
+        String[] splited = val.split("\\s+");
+        String nomRecherche = splited[0];
+        System.out.println(nomRecherche);
+        String prenomRecherche = splited[1];
+        System.out.println(prenomRecherche);
+        
+        A32_Medecin fenetre31 = new A32_Medecin(medecin,sql.rechercherPatient(nomRecherche, prenomRecherche));
+        System.out.println(sql.rechercherPatient(nomRecherche, prenomRecherche).getNom());
+        fenetre31.setVisible(true);
         this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    /**
+     * retour à la page d'accueil à partir du bouton prévu à cet effet
+     *
+     * @param evt
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        A0_Accueil fenetre3 = new A0_Accueil();
+        int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.YES_OPTION) {
+            fenetre3.setVisible(true);
+            this.dispose();
+        }
     }
-}  
 
     /**
      * @param args the command line arguments
@@ -397,8 +406,9 @@ this.dispose();        // TODO add your handling code here:
     }
     private SQL sql;
     private DefaultComboBoxModel comboPatientPH;
-private PersonnelMedical pm;
-private Date dateJour;
+
+    private MedecinPH medecin;
+    private Date dateJour;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;

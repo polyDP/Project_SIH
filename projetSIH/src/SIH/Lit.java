@@ -21,13 +21,17 @@ public class Lit {
 
     private GestionLits gestLit;
 
+    private String lit;
+
+    private String typeLit;
+
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F236F082-73BF-D0C9-CAD4-EC50B8BF3164]
     // </editor-fold> 
     public Lit(int numero, String cote) {
         this.numero = numero;
         this.cote = cote;
-
+        typeLit = "intType";
     }
 
     public Lit(int numero, String cote, Patient p) {
@@ -35,6 +39,13 @@ public class Lit {
         this.numero = numero;
         this.cote = cote;
         this.patient = p;
+
+        typeLit = "intType";
+    }
+
+    public Lit(String lit) {
+        this.lit = lit;
+        typeLit = "StringType";
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -94,11 +105,18 @@ public class Lit {
     }
 
     public String afficherLit() {
-        return numero + cote +" " +patient;
+
+        return numero + cote + " " + patient;
     }
 
     public String idLit() {
-        return numero + cote;
-    }
+        String litId = null;
+        if (typeLit.equals("intType")) {
+            litId = numero + cote;
+        } else if (typeLit.equals("StringType")) {
+            litId = lit;
+        }
 
+        return litId;
+    }
 }

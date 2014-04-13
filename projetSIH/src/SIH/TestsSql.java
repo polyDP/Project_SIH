@@ -19,20 +19,23 @@ public class TestsSql {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        NumeroSejour numsej = new NumeroSejour("10050236");
+        System.out.println(numsej.getNumeroSejour());
         
         
         try {
             SQL sql = new SQL();
             Patient p = sql.rechercherPatient("Bano", "Delphine");
-            System.out.println(p.affichagePatient());
+            System.out.println(p.getIpp());
+            //System.out.println(p.affichagePatient());
             for(int i=0;i<100000000;i++){
-                //System.out.println(sql.listePatient().get(i));
+                //System.out.println(sql.listePatient());
+                //System.out.println(sql.rechercherPatient("Bano", "Delphine").getNom());
                 //sql.listeMedecinPH();
                 //System.out.println(sql.listeMedecinPH().get(i));
                 //System.out.println(sql.listeHistoriqueSejourPatient(p));
-                System.out.println(sql.listePatientParMedecin(Services.Pediatrie));
-                 //System.out.println(sql.infoHistoriqueSejourPatient(p));
+                //System.out.println(sql.listePatientParMedecin(Services.Pediatrie));
+                System.out.println(sql.infoHistoriqueSejourPatient(p,new NumeroSejour("10050236")));
                 //System.out.println(sql.listeInfirmiere().get(i));
                // System.out.println(sql.listeSecretaire().get(i));
                 //System.out.println(Services.Pediatrie.toString());

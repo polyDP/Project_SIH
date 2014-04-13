@@ -18,6 +18,15 @@ public class NumeroSejour {
     private int compteur;
 
     private String numero;
+    
+    private String numSej;
+    
+    private String typeNumSej;
+    
+    public NumeroSejour(String numSej){
+        this.numSej = numSej;
+        typeNumSej="StringType";
+    }
 
     public NumeroSejour(Date date) {
         this.date = date;
@@ -29,6 +38,7 @@ public class NumeroSejour {
         nbf.setGroupingUsed(false);
         nbf.setMaximumIntegerDigits(nbDigits);
         numero = nbf.format(compteur);
+        typeNumSej="DateType";
 
     }
 
@@ -86,7 +96,15 @@ public class NumeroSejour {
     }
     
     public String getNumeroSejour(){
-        return date.formatAnneeString2digit()+date.formatMoisString()+numero;
+        String numeroSejour=null;
+        
+        if(typeNumSej.equals("DateType")){
+          numeroSejour = date.formatAnneeString2digit()+date.formatMoisString()+numero;  
+        } else if(typeNumSej.equals("StringType")){
+          numeroSejour= numSej;
+            
+        }
+        return numeroSejour;
     }
 
 }
