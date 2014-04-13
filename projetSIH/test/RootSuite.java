@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-package images;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,8 +16,8 @@ import org.junit.runners.Suite;
  * @author Ludivine
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({})
-public class ImagesSuite {
+@Suite.SuiteClasses({projetsih.ProjetsihSuite.class, images.ImagesSuite.class, BasesDonnees.BasesDonneesSuite.class, SIH.SIHSuite.class, Interface_alpha2.Interface_alpha2Suite.class, Interface_alpha1.Interface_alpha1Suite.class})
+public class RootSuite {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
