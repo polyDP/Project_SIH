@@ -288,7 +288,7 @@ public class A0_Accueil extends javax.swing.JFrame {
         if (sql.getErr() != 1 && sql.getConnexion().equals("PH")) {
             this.dispose();
 
-            A31_Medecin a31_medecin = new A31_Medecin(sql.getPm());
+            A31_Medecin a31_medecin = new A31_Medecin(sql.getMedecinPH());
             a31_medecin.setVisible(true);
 
         } else if (sql.getErr() != 1 && sql.getConnexion().equals("Infirmier")) {

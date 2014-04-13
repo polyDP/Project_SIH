@@ -22,6 +22,7 @@ public class SQL {
     private int err;
     private String connexion;
     private PersonnelMedical pm;
+    private MedecinPH medecinPH;
 
     public SQL() throws SQLException, InstantiationException, IllegalAccessException {
 
@@ -82,7 +83,7 @@ public class SQL {
 
             prepS.setObject(3, p.getDateAdmission().toString());
 
-            prepS.setObject(4, s.name());
+            prepS.setObject(4, s.toString());
 
             prepS.setObject(5, m.getId());
 
@@ -178,6 +179,7 @@ public class SQL {
 
     public void seConnecterSIH(String id, String motDePasse) {
         String requete = "SELECT * FROM personnel";
+        Services service = null;
         try {
             boolean boucle = true;
             ResultSet result = con.resultatRequete(requete);
@@ -189,7 +191,7 @@ public class SQL {
                     if (result.getString("Mdp_PH").equals(motDePasse)) {
                         if (result.getString("Fonction_PH").equals("PH") | result.getString("Fonction_PH").equals("Interne")) {
                             connexion ="PH";
-                             pm=new PersonnelMedical(result.getString("ID_PH"),result.getString("Mdp_PH"),result.getString("Nom_PH"),result.getString("Prenom_PH"),result.getString("Fonction_PH"));
+                             medecinPH=new MedecinPH(result.getString("ID_PH"),result.getString("Nom_PH"),result.getString("Prenom_PH"),result.getString("Fonction_PH"),service.valueOf(result.getString("Service_PH")));
                         }
                         if (result.getString("Fonction_PH").equals("Secretaire")) {
                            connexion="Secretaire";
@@ -359,6 +361,31 @@ public class SQL {
         }
         return listePatient;
     }
+    
+    public Vector<String> listePatientParMedecin(Services s){
+        Vector<String> listePatientDuMedecin = new Vector<>();
+        String NomPrenomPatient;
+ 
+        String requete = "SELECT * FROM donnee_personnelle,nouveau_sejour,personnel WHERE donnee_personnelle.IPP = nouveau_sejour.IPP AND personnel.ID_PH = nouveau_sejour.PH_Resp AND personnel.Service_PH = nouveau_sejour.Service_P AND Service_P = '" + s.toString() + "' AND Etat_Dossier = 'Ouvert' ORDER BY Nom_P";
+        try {  
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                 
+           NomPrenomPatient = result.getString("Nom_P");
+           NomPrenomPatient = NomPrenomPatient +" "+ result.getString("Prenom_P");
+          
+           listePatientDuMedecin.add(NomPrenomPatient);
+                
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return listePatientDuMedecin;
+    }
+
     
     public Vector<String> listeMedecinPH(){
         Vector<String> listeMedecinPH = new Vector<>();
@@ -587,6 +614,20 @@ public class SQL {
      */
     public void setPm(PersonnelMedical pm) {
         this.pm = pm;
+    }
+
+    /**
+     * @return the medecinPH
+     */
+    public MedecinPH getMedecinPH() {
+        return medecinPH;
+    }
+
+    /**
+     * @param medecinPH the medecinPH to set
+     */
+    public void setMedecinPH(MedecinPH medecinPH) {
+        this.medecinPH = medecinPH;
     }
 
 }

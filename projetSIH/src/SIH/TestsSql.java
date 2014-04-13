@@ -26,11 +26,12 @@ public class TestsSql {
             SQL sql = new SQL();
             Patient p = sql.rechercherPatient("Bano", "Delphine");
             System.out.println(p.affichagePatient());
-            for(int i=0;i<5;i++){
-                System.out.println(sql.listePatient().get(i));
+            for(int i=0;i<100000000;i++){
+                //System.out.println(sql.listePatient().get(i));
                 //sql.listeMedecinPH();
                 //System.out.println(sql.listeMedecinPH().get(i));
-                System.out.println(sql.listeHistoriqueSejourPatient(p));
+                //System.out.println(sql.listeHistoriqueSejourPatient(p));
+                System.out.println(sql.listePatientParMedecin(Services.Pediatrie));
                  //System.out.println(sql.infoHistoriqueSejourPatient(p));
                 //System.out.println(sql.listeInfirmiere().get(i));
                // System.out.println(sql.listeSecretaire().get(i));
