@@ -31,22 +31,26 @@ public class HL7Message {
          }
          return m;
      } 
-     public String admin(Patient p){ //ajouter ici le séjour quand ce sera implémenté
-         String m = new String("MSH|^~\\&|Asclepios|Administration| IP|" + "numeros de séjour à ajouter"  + "|||ADT^A01|0001|P|2.3.1||||||8859/1||| ");
+     public String admin(Patient p, SejourPatient sp){ //ajouter ici le séjour quand ce sera implémenté
+         String m = new String("MSH|^~\\&|Asclepios|Administration| IP|" + sp.getNumSej().toString()  + "|||ADT^A01|0001|P|2.3.1||||||8859/1||| ");
           m = m + "EVN||"+ "200501231408" +"||||200501231408|";
-         m = m+"PID||||"+"ajouter le numéros de séjour"+ "|"+ p.getNom()+"^"+p.getPrenom()+"^^^^^L||"+"|" + this.SexeHL7(p)+"|||"+ p.getAdresse().getNumero()+
+         m = m+"PID||||"+sp.getNumSej().toString()+ "|"+ p.getNom()+"^"+p.getPrenom()+"^^^^^L||"+"|" + this.SexeHL7(p)+"|||"+ p.getAdresse().getNumero()+
                  p.getAdresse().getRue()+"^^"+ p.getAdresse().getVille()+"^^"+p.getAdresse().getCodePostal()+"^100|||||||251|||||||||||||" ;
-          m = m + "PV1||I|Service^" + p.getLocalisation().getNumero()+"^"+p.getLocalisation().getCote()+"||||"+ "007^DURAND^^^^DOCTEUR^L|001^WATSON^^^^DOCTEUR^L| 008^NOMDOCTEUR3^^^^DOCTEUR^L|MED|||||B6||NOMDOCTEUR4^^^^DOCTEUR^L||4444444F| |||||||||||||||||||||||||||||||A||"; 
-          m = m + "ZFU|||||DECET1|200501231408|";   
+          m = m + "PV1||I|" + sp.getServicePat()+"^" + p.getLocalisation().getNumero()+"^"+p.getLocalisation().getCote()+"||||"+ sp.getMedResp().getId() +"^"+sp.getMedResp().getNom()+
+                  "^^^"+sp.getMedResp().getFonction()+"^L|||MED|||||||||"+sp.getNumSej()+"| |||||||||||||||||||||||||||||||A||"; 
+          m = m + "ZFU|||||"+sp.getServicePat()+"|"+sp.getDateEntree().formatAnneeString2digit()+sp.getDateEntree().formatMoisString()+sp.getDateEntree().getJour()+"|";//il manque l'heure et la minute d'entrée
       return m;
      }
-     public String discharge(Patient P){
-         return "";
-     }
-     public String premiereVisite(Patient P){
-         return "";
-     }
-     
+     public String discharge(Patient p, SejourPatient sp){
+         String m = new String("MSH|^~\\&|Asclepios|Administration| IP|" + sp.getNumSej().toString()  + "|||ADT^A03|0001|P|2.3.1||||||8859/1||| ");
+          m = m + "EVN||"+ "200501231408" +"||||200501231408|";
+         m = m+"PID||||"+sp.getNumSej().toString()+ "|"+ p.getNom()+"^"+p.getPrenom()+"^^^^^L||"+"|" + this.SexeHL7(p)+"|||"+ p.getAdresse().getNumero()+
+                 p.getAdresse().getRue()+"^^"+ p.getAdresse().getVille()+"^^"+p.getAdresse().getCodePostal()+"^100|||||||251|||||||||||||" ;
+          m = m + "PV1||I|" + sp.getServicePat()+"^" + p.getLocalisation().getNumero()+"^"+p.getLocalisation().getCote()+"||||"+ sp.getMedResp().getId() +"^"+sp.getMedResp().getNom()+
+                  "^^^"+sp.getMedResp().getFonction()+"^L|||MED|||||||||"+sp.getNumSej()+"| |||||||||||||||||||||||||||||||A||"; 
+          m = m + "ZFU|||||"+sp.getServicePat()+"|"+sp.getDateEntree().formatAnneeString2digit()+sp.getDateEntree().formatMoisString()+sp.getDateEntree().getJour()+"|";//il manque l'heure et la minute d'entrée
+      return m;
+     }     
      public void afficher(HL7Message m){
          System.out.println(m.toString()); 
      }
