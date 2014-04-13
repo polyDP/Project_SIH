@@ -23,6 +23,10 @@ import javax.swing.JOptionPane;
  */
 public class A32_Medecin extends javax.swing.JFrame {
 
+    public Patient getPatient() {
+        return patient;
+    }
+
     /**
      * Creates new form Premiere_page_dma Appel à une méthode qui permet de
      * fermer l'application avec la croix en demandant l'autorisation à
@@ -186,7 +190,6 @@ public class A32_Medecin extends javax.swing.JFrame {
         setExtendedState(10);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setMaximumSize(new java.awt.Dimension(800, 600));
@@ -1027,8 +1030,15 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        tension = jFormattedTextField1.getText();
+        poids = jTextField1.getText();
+        glycemie = jTextField6.getText();
+        temperature = jTextField4.getText();
+        autres = jTextField5.getText();
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");
+        
+        
     }//GEN-LAST:event_jLabel19MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1398,6 +1408,8 @@ if(a1==true && a2==true && a3==true && a4==true){
     private String motif;
     private String diagnostic;
     private String antecedent;
+    private String medicament ; 
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

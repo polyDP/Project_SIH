@@ -6,6 +6,7 @@
 
 package Interface_alpha2;
 
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -247,21 +248,16 @@ this.dispose();
  * @param evt 
  */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        System.out.println(jFormattedTextField1.getText());
-        boolean a1 = false;
-        boolean a2 = false;
-        boolean a3 = false;
-
+        boolean a1 = true;
+        boolean a2 = true;
+        boolean a3 = true;
+       
         medicament = jTextField4.getText();
-        tension = jFormattedTextField1.getText();
         poids = jTextField1.getText();
         glycemie = jTextField6.getText();
         temperature = jTextField2.getText();
         autres = jTextField5.getText();
+        
         if (jCheckBox1.isSelected() == true) {
             prelevement = "oui";
         }
@@ -312,7 +308,16 @@ this.dispose();
 
         if (a1 == true && a2 == true && a3==true) {
             this.dispose();
+            
         }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+        System.out.println(jFormattedTextField1.getText());
+       
+        tension = jFormattedTextField1.getText();
+        
 
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
