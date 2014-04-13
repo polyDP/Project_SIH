@@ -185,11 +185,16 @@ public class A62_Anesthesie extends javax.swing.JFrame {
 
         jLabel11.setText("Régime alimentaire :");
 
+        jTextField7.setEditable(false);
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
             }
         });
+
+        jTextField10.setEditable(false);
+
+        jTextField8.setEditable(false);
 
         jLabel3.setText("jLabel3");
 
@@ -239,10 +244,15 @@ public class A62_Anesthesie extends javax.swing.JFrame {
 
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTextField9.setEditable(false);
+
         jLabel12.setText("Antécédents : ");
 
         jLabel13.setText("Diagnostic : ");
 
+        jTextField11.setEditable(false);
+
+        jTextField12.setEditable(false);
         jTextField12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField12ActionPerformed(evt);
@@ -495,12 +505,14 @@ public class A62_Anesthesie extends javax.swing.JFrame {
  */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
      Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true);
+    
+        if(!mdp.isVisible()){
+                mdp.setVisible(true);
         JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(JOptionPane.INFORMATION_MESSAGE==1){
             mdp.dispose();
         }
-
+        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
 

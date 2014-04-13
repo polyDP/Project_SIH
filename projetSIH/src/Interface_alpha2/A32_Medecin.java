@@ -947,10 +947,12 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true); 
+       if(!mdp.isVisible()){
+                mdp.setVisible(true);
         JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(JOptionPane.INFORMATION_MESSAGE==1){
             mdp.dispose();
+        }
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -992,8 +994,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");// TODO add your handling code here:
+       if(!fenetre.isVisible()){ fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");}
     }//GEN-LAST:event_jLabel19MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1003,8 +1005,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 2 heures - 4 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 2 heures - 4 heures");}
     }//GEN-LAST:event_jLabel21MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1014,8 +1016,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");}
     }//GEN-LAST:event_jLabel23MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1025,8 +1027,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 6 heures - 8 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 6 heures - 8 heures");}
     }//GEN-LAST:event_jLabel25MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1036,8 +1038,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 8 heures - 10 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 8 heures - 10 heures");}
     }//GEN-LAST:event_jLabel27MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1047,8 +1049,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 10 heures - 12 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 10 heures - 12 heures");}
     }//GEN-LAST:event_jLabel34MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1058,8 +1060,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 12 heures - 14 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 12 heures - 14 heures");}
     }//GEN-LAST:event_jLabel38MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1069,8 +1071,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 14 heures - 16 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 14 heures - 16 heures");}
     }//GEN-LAST:event_jLabel39MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1080,8 +1082,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");}
     }//GEN-LAST:event_jLabel43MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1091,8 +1093,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 18 heures - 20 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 18 heures - 20 heures");}
     }//GEN-LAST:event_jLabel40MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1102,8 +1104,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 20 heures - 22 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 20 heures - 22 heures");}
     }//GEN-LAST:event_jLabel41MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1113,8 +1115,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 22 heures - Minuit");// TODO add your handling code here:
+       if(!fenetre.isVisible()){ fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 22 heures - Minuit");}
     }//GEN-LAST:event_jLabel29MouseClicked
     /**
      * Permet de se déconnecter, retour sur la page d'accueil à partir du menu
