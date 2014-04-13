@@ -96,7 +96,6 @@ this.addWindowListener( new WindowAdapter()
         setExtendedState(10);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -223,11 +222,21 @@ this.addWindowListener( new WindowAdapter()
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Chargement");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Nom du fichier");
 
         jButton4.setText("Validation");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -327,7 +336,7 @@ this.addWindowListener( new WindowAdapter()
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -339,10 +348,12 @@ this.addWindowListener( new WindowAdapter()
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
        Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true); 
+       if(!mdp.isVisible()){
+                mdp.setVisible(true);
         JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(JOptionPane.INFORMATION_MESSAGE==1){
             mdp.dispose();
+        }
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -355,6 +366,16 @@ A0_Accueil a0 = new A0_Accueil();
 a0.setVisible(true);
 this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JOptionPane.showConfirmDialog(jPanel11, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+    JOptionPane.showMessageDialog(jPanel11, "les observations ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+
+    }//GEN-LAST:event_jButton4ActionPerformed
 /**
  * retour à  la page du service médicotechnique, sortie du dossier du patient
  * @param evt 

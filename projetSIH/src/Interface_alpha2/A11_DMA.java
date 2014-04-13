@@ -159,6 +159,11 @@ public class A11_DMA extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Déconnexion");
         jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -534,10 +539,12 @@ public class A11_DMA extends javax.swing.JFrame {
      */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true);
+       if(!mdp.isVisible()){
+                mdp.setVisible(true);
         JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(JOptionPane.INFORMATION_MESSAGE==1){
             mdp.dispose();
+        }
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -885,13 +892,8 @@ public class A11_DMA extends javax.swing.JFrame {
         System.out.println(prenomRecherche);
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
-    /**
-     * Fait le lien avec la page d'accueil. Une JOptionPane apparait pour
-     * rassurer l'utilisateur
-     *
-     * @param evt
-     */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         A0_Accueil fenetre1 = new A0_Accueil();
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -899,8 +901,17 @@ public class A11_DMA extends javax.swing.JFrame {
             fenetre1.setVisible(true);
             this.dispose();
         }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    /**
+     * Fait le lien avec la page d'accueil. Une JOptionPane apparait pour
+     * rassurer l'utilisateur
+     *
+     * @param evt
+     */
+   
+       
 
-    }
+    
 
     /**
      * @param args the command line arguments
