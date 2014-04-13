@@ -158,6 +158,11 @@ public class A11_DMA extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Déconnexion");
         jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -878,13 +883,8 @@ public class A11_DMA extends javax.swing.JFrame {
         System.out.println(prenomRecherche);
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
-    /**
-     * Fait le lien avec la page d'accueil. Une JOptionPane apparait pour
-     * rassurer l'utilisateur
-     *
-     * @param evt
-     */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         A0_Accueil fenetre1 = new A0_Accueil();
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -892,8 +892,17 @@ public class A11_DMA extends javax.swing.JFrame {
             fenetre1.setVisible(true);
             this.dispose();
         }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    /**
+     * Fait le lien avec la page d'accueil. Une JOptionPane apparait pour
+     * rassurer l'utilisateur
+     *
+     * @param evt
+     */
+   
+       
 
-    }
+    
 
     /**
      * @param args the command line arguments

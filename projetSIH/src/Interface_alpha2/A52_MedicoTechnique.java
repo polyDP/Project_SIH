@@ -232,6 +232,11 @@ this.addWindowListener( new WindowAdapter()
         jLabel2.setText("Nom du fichier");
 
         jButton4.setText("Validation");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -365,6 +370,12 @@ this.dispose();         // TODO add your handling code here:
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         JOptionPane.showConfirmDialog(jPanel11, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+    JOptionPane.showMessageDialog(jPanel11, "les observations ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+
+    }//GEN-LAST:event_jButton4ActionPerformed
 /**
  * retour à  la page du service médicotechnique, sortie du dossier du patient
  * @param evt 
