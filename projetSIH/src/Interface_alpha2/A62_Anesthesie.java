@@ -185,11 +185,16 @@ public class A62_Anesthesie extends javax.swing.JFrame {
 
         jLabel11.setText("Régime alimentaire :");
 
+        jTextField7.setEditable(false);
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
             }
         });
+
+        jTextField10.setEditable(false);
+
+        jTextField8.setEditable(false);
 
         jLabel3.setText("jLabel3");
 
@@ -239,10 +244,15 @@ public class A62_Anesthesie extends javax.swing.JFrame {
 
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTextField9.setEditable(false);
+
         jLabel12.setText("Antécédents : ");
 
         jLabel13.setText("Diagnostic : ");
 
+        jTextField11.setEditable(false);
+
+        jTextField12.setEditable(false);
         jTextField12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField12ActionPerformed(evt);
@@ -352,7 +362,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         });
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("jLabel15");
+        jLabel15.setText("Nous ne pouvons pas voir les images des résultats (imagerie, biologie) dans cette version du logiciel.\n Cette fonction sera implémentée dans des versions ultérieures");
 
         jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
@@ -495,12 +505,14 @@ public class A62_Anesthesie extends javax.swing.JFrame {
  */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
      Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true);
+    
+        if(!mdp.isVisible()){
+                mdp.setVisible(true);
         JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(JOptionPane.INFORMATION_MESSAGE==1){
             mdp.dispose();
         }
-
+        }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
 
@@ -534,7 +546,9 @@ this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+      {
+    JOptionPane.showMessageDialog(jPanel12, "le compte-rendu a bien été validé", "information", JOptionPane.WARNING_MESSAGE);
+}
     }//GEN-LAST:event_jButton3ActionPerformed
 /**
  * retour à la page d'accueil de l'anesthésiste

@@ -23,6 +23,10 @@ public class Date {
     // #[regen=yes,id=DCE.3E305776-E6EF-08F3-F0B0-AA9D9F452582]
     // </editor-fold> 
     private int jour;
+    
+    private String date;
+    
+    private String dateType;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.DFF8AA20-9D48-5929-07E0-212FED1A4199]
@@ -31,13 +35,18 @@ public class Date {
         this.annee = annee;
         this.mois = mois;
         this.jour = jour;
-        System.out.println(jour);
+        
+        dateType = "intType";
     }
     public Date(){
     annee = 0;
     mois=0;
     jour=0;
 }
+    public Date(String date){
+        dateType = "StringType";
+        this.date = date;
+    }
     
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -83,7 +92,14 @@ public class Date {
     }
 
     public String toString() {
-        return this.formatJourString() + "/" + this.formatMoisString() + "/" + this.formatAnneeString();
+        String dateToString=null;
+        if(dateType.equals("intType")){
+            
+        dateToString = this.formatJourString() + "/" + this.formatMoisString() + "/" + this.formatAnneeString();
+        } else if (dateType.equals("StringType")){
+            dateToString = date;
+        }
+        return dateToString;
     }
 
     public String formatAnneeString2digit() {

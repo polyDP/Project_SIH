@@ -383,25 +383,24 @@ this.addWindowListener( new WindowAdapter()
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(140, Short.MAX_VALUE)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField12)
-                            .addComponent(jTextField11)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)))
-                    .addComponent(jButton3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3)
+                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField12)
+                        .addComponent(jTextField11)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -411,10 +410,11 @@ this.addWindowListener( new WindowAdapter()
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jButton3))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jPanel5.add(jPanel15);
@@ -645,16 +645,16 @@ this.addWindowListener( new WindowAdapter()
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Prescriptions PH", jPanel6);
@@ -725,10 +725,12 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
          Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true);
+        if(!mdp.isVisible()){
+                mdp.setVisible(true);
         JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(JOptionPane.INFORMATION_MESSAGE==1){
             mdp.dispose();
+        }
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -752,8 +754,9 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");
-        fenetre.setVisible(true);
+        if(!fenetre.isVisible()){
+            fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");
+        fenetre.setVisible(true);}
     }//GEN-LAST:event_jLabel19MouseClicked
 /**
  * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
@@ -761,8 +764,8 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 2 heures - 4 heures");
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 2 heures - 4 heures");}
     }//GEN-LAST:event_jLabel21MouseClicked
 /**
  * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
@@ -770,8 +773,8 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
          Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");}
     }//GEN-LAST:event_jLabel23MouseClicked
 /**
  * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
@@ -779,8 +782,8 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);   
-        fenetre.setTitle("Ajout d'un soin: 6 heures - 8 heures");
+        if(!fenetre.isVisible()){fenetre.setVisible(true);   
+        fenetre.setTitle("Ajout d'un soin: 6 heures - 8 heures");}
     }//GEN-LAST:event_jLabel25MouseClicked
 /**
  * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
@@ -788,8 +791,8 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);
-            fenetre.setTitle("Ajout d'un soin: 8 heures - 10 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 8 heures - 10 heures");}
     }//GEN-LAST:event_jLabel27MouseClicked
 /**
  * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
@@ -797,8 +800,8 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);     
-        fenetre.setTitle("Ajout d'un soin: 10 heures - 12 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true);     
+        fenetre.setTitle("Ajout d'un soin: 10 heures - 12 heures");}
     }//GEN-LAST:event_jLabel34MouseClicked
 /**
  * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
@@ -806,8 +809,8 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true); 
-        fenetre.setTitle("Ajout d'un soin: 12 heures - 14 heures");// TODO add your handling code here:
+        if(!fenetre.isVisible()){fenetre.setVisible(true); 
+        fenetre.setTitle("Ajout d'un soin: 12 heures - 14 heures");}
     }//GEN-LAST:event_jLabel38MouseClicked
 /**
  * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
@@ -815,8 +818,8 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);  
-        fenetre.setTitle("Ajout d'un soin: 14 heures - 16 heures");// TODO add your handling code here:
+       if(!fenetre.isVisible()){ fenetre.setVisible(true);  
+        fenetre.setTitle("Ajout d'un soin: 14 heures - 16 heures");}
     }//GEN-LAST:event_jLabel39MouseClicked
 /**
  * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
@@ -824,8 +827,8 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true); 
-        fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");// TODO add your handling code here:
+       if(!fenetre.isVisible()){ fenetre.setVisible(true); 
+        fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");}
     }//GEN-LAST:event_jLabel43MouseClicked
 /**
  * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
@@ -833,8 +836,8 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);   
-        fenetre.setTitle("Ajout d'un soin: 18 heures - 20 heures");// TODO add your handling code here:
+       if(!fenetre.isVisible()){ fenetre.setVisible(true);   
+        fenetre.setTitle("Ajout d'un soin: 18 heures - 20 heures");}
     }//GEN-LAST:event_jLabel40MouseClicked
 /**
  * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
@@ -842,8 +845,8 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);      
-        fenetre.setTitle("Ajout d'un soin: 20 heures - 22 heures");// TODO add your handling code here:
+      if(!fenetre.isVisible()){  fenetre.setVisible(true);      
+        fenetre.setTitle("Ajout d'un soin: 20 heures - 22 heures");}
     }//GEN-LAST:event_jLabel41MouseClicked
 /**
  * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
@@ -851,8 +854,8 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
  Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);  
-        fenetre.setTitle("Ajout d'un soin: 22 heures - Minuit");// TODO add your handling code here:
+      if(!fenetre.isVisible()){  fenetre.setVisible(true);  
+        fenetre.setTitle("Ajout d'un soin: 22 heures - Minuit");}
     }//GEN-LAST:event_jLabel29MouseClicked
 /**
  * déconnexion, retour à la première page avec le menu
@@ -939,6 +942,9 @@ this.dispose();         // TODO add your handling code here:
             }
 
         }
+        if(a1==true && a2==true && a3==true && a4==true){
+    JOptionPane.showMessageDialog(jPanel1, "les données ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+}
     }//GEN-LAST:event_jButton3ActionPerformed
 /**
  * retour à la âge de l'infirmier avec demande de confirmation
