@@ -14,6 +14,11 @@ public class MedecinPH extends PersonnelMedical {
         super(id, motDePasse, nom, prenom, fonction);
         this.service = service;
     }
+    public MedecinPH(String id, String nom, String prenom, String fonction, Services service){
+        super(id,"", nom, prenom, fonction);
+        this.service = service;
+    }
+    
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.37FFD308-491E-FD2C-0BB2-5CAAAB93ECAC]

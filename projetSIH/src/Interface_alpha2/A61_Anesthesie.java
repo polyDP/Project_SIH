@@ -6,6 +6,7 @@
 
 package Interface_alpha2;
 
+import SIH.Date;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -22,6 +23,7 @@ public class A61_Anesthesie extends javax.swing.JFrame {
      * Creates new form Premiere_page_dma
      */
     public A61_Anesthesie() {
+        dateJour=dateJour.dateJour();
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener( new WindowAdapter()
@@ -55,6 +57,8 @@ public class A61_Anesthesie extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -94,7 +98,12 @@ public class A61_Anesthesie extends javax.swing.JFrame {
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel9.setLayout(new java.awt.GridLayout(0, 3));
+        jPanel9.add(jLabel3);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText(dateJour.toString());
+        jPanel9.add(jLabel2);
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -183,6 +192,7 @@ public class A61_Anesthesie extends javax.swing.JFrame {
 
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
+        jTextArea4.setText("cette fonction n'est pas encore implémentée \n elle le sera dans une prochaine version");
         jScrollPane4.setViewportView(jTextArea4);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -208,6 +218,7 @@ public class A61_Anesthesie extends javax.swing.JFrame {
 
         jTextArea5.setColumns(20);
         jTextArea5.setRows(5);
+        jTextArea5.setText("cette fonction n'est pas encore implémentée \n elle le sera dans une prochaine version");
         jScrollPane5.setViewportView(jTextArea5);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -295,7 +306,12 @@ public class A61_Anesthesie extends javax.swing.JFrame {
  */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
    Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true);      // TODO add your handling code here:
+        mdp.setVisible(true);
+        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if(JOptionPane.INFORMATION_MESSAGE==1){
+            mdp.dispose();
+        }
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 /**
  * retour à la page de connexion via le menu (existence d'un raccourci clavier)
@@ -362,13 +378,15 @@ this.dispose();         // TODO add your handling code here:
             }
         });
     }
-
+private Date dateJour;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

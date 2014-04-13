@@ -529,7 +529,7 @@ public class Creation_patient_dma extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Locale locale = Locale.getDefault();
+       /* Locale locale = Locale.getDefault();
         Calendar cal = Calendar.getInstance(locale);
         long day;
         long month;
@@ -544,6 +544,7 @@ public class Creation_patient_dma extends javax.swing.JFrame {
         Date dateNaissance = new Date(jour, mois, annee);
 
         //Patient patient = new Patient(nom,prenom,telephone,medecinTraitant,"allergies : a implementer","regime alimentaire : a implementer",sexe,dateJour,dateNaissance,lit);
+        */
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed

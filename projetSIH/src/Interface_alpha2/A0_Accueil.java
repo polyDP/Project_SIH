@@ -274,38 +274,44 @@ public class A0_Accueil extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         id = jTextField1.getText();
         motDePasse = jPasswordField1.getText();
-         if (jTextField1.getText().length() == 0 | jPasswordField1.getText().length() == 0 ) {
+        PersonnelMedical pm;
+        if (id.length() == 0 | motDePasse.length() == 0 ) {
                     JOptionPane.showMessageDialog(jPanel1, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
-         }
-         PersonnelMedical pm;
+         } else{
+
         try {
             sql = new SQL();
         } catch (SQLException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
         }
         sql.seConnecterSIH(id, motDePasse);
-        if (sql.getErr() != 1 & sql.getConnexion().equals("PH")) {
+        if (sql.getErr() != 1 && sql.getConnexion().equals("PH")) {
             this.dispose();
 
-            A31_Medecin a31_medecin = new A31_Medecin();
+            A31_Medecin a31_medecin = new A31_Medecin(sql.getPm());
             a31_medecin.setVisible(true);
-        } else if (sql.getErr() != 1 & sql.getConnexion().equals("Infirmier")) {
+
+        } else if (sql.getErr() != 1 && sql.getConnexion().equals("Infirmier")) {
             this.dispose();
 
-            A41_Infirmier a41_infirmier = new A41_Infirmier();
+            A41_Infirmier a41_infirmier = new A41_Infirmier(sql.getPm());
             a41_infirmier.setVisible(true);
-        } else if (sql.getErr() != 1 & sql.getConnexion().equals("Secretaire")) {
+
+        } else if (sql.getErr() != 1 && sql.getConnexion().equals("Secretaire")) {
             this.dispose();
-            A11_DMA a11_dma = new A11_DMA();
+            A11_DMA a11_dma = new A11_DMA(sql.getPm());
             a11_dma.setVisible(true);
 
-        }
-        if (sql.getErr() != 1 & sql.getConnexion().equals("DIM")) {
+        } 
+        if (sql.getErr() != 1 && sql.getConnexion().equals("DIM")) {
             this.dispose();
             A21_DIM a21_dim = new A21_DIM(sql.getPm());
             a21_dim.setVisible(true);
 
+        } else {
+            System.out.println("error");
         }
+                 }
     }//GEN-LAST:event_jButton2ActionPerformed
     /**
      * Permet de fermer la fenêtre et l'application dans le même geste

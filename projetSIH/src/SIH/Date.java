@@ -12,31 +12,38 @@ public class Date {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.464E1913-6ED6-3C1B-5947-BC3857D7851D]
     // </editor-fold> 
-    private long annee;
+    private int annee;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0E89D8A7-9D9F-E0F9-FE45-E0358A567E43]
     // </editor-fold> 
-    private long mois;
+    private int mois;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.3E305776-E6EF-08F3-F0B0-AA9D9F452582]
     // </editor-fold> 
-    private long jour;
+    private int jour;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.DFF8AA20-9D48-5929-07E0-212FED1A4199]
     // </editor-fold> 
-    public Date(long jour, long mois, long annee) {
+    public Date(int jour,int mois, int annee) {
         this.annee = annee;
         this.mois = mois;
         this.jour = jour;
+        System.out.println(jour);
     }
+    public Date(){
+    annee = 0;
+    mois=0;
+    jour=0;
+}
+    
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.54B460C6-AC3B-3E5D-63BC-A7D37D026AB9]
     // </editor-fold> 
-    public long getAnnee() {
+    public int getAnnee() {
         return annee;
     }
 
@@ -50,7 +57,7 @@ public class Date {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.0DECBFAC-C682-2A54-7200-50B5F9735F88]
     // </editor-fold> 
-    public long getJour() {
+    public int getJour() {
         return jour;
     }
 
@@ -64,14 +71,14 @@ public class Date {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.EC7918FF-9CFF-C04F-7B9A-B072F0975B40]
     // </editor-fold> 
-    public long getMois() {
+    public int getMois() {
         return mois;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.326ACF4E-62F4-542E-1D69-431282ECE339]
     // </editor-fold> 
-    public void setMois(long val) {
+    public void setMois(int val) {
         this.mois = val;
     }
 
@@ -124,8 +131,24 @@ public class Date {
         nbf.setMinimumIntegerDigits(nbDigits);
         nbf.setGroupingUsed(false);
         nbf.setMaximumIntegerDigits(nbDigits);
-        jour2 = nbf.format(mois);
+        jour2 = nbf.format(jour);
         return jour2;
+    }
+    
+    public Date dateJour(){
+        Locale locale = Locale.getDefault();
+        Calendar cal = Calendar.getInstance(locale);
+        
+        jour = cal.get(Calendar.DAY_OF_MONTH);
+        
+        mois = cal.get(Calendar.MONTH);
+        mois = mois + 1;
+        annee = cal.get(Calendar.YEAR);
+        
+        Date dj = new Date(jour, mois, annee);
+        
+        return dj;
+        
     }
 
    

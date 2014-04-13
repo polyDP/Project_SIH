@@ -57,6 +57,11 @@ public class ConnectionBD {
 
     public PreparedStatement creerPreparedStatement(String requete) throws SQLException {
         PreparedStatement stmt = connexion.prepareStatement(requete);
+        
         return stmt;
+    }
+    
+    public void fermerConnexionDataBase() throws SQLException{
+        connexion.close();
     }
 }

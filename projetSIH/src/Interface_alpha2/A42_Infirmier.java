@@ -6,6 +6,8 @@
 
 package Interface_alpha2;
 
+import SIH.Date;
+import SIH.PersonnelMedical;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -22,7 +24,9 @@ public class A42_Infirmier extends javax.swing.JFrame {
      * Creates new form Premiere_page_dma
      * 
      */
-    public A42_Infirmier() {
+    public A42_Infirmier(PersonnelMedical pm) {
+        dateJour=dateJour.dateJour();
+        this.pm = pm;
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 this.addWindowListener( new WindowAdapter()
@@ -57,10 +61,10 @@ this.addWindowListener( new WindowAdapter()
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -72,7 +76,7 @@ this.addWindowListener( new WindowAdapter()
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -95,6 +99,7 @@ this.addWindowListener( new WindowAdapter()
         jTextField11 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -153,15 +158,19 @@ this.addWindowListener( new WindowAdapter()
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new java.awt.GridLayout(0, 2));
+        jPanel9.setLayout(new java.awt.GridLayout(0, 3));
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Patient");
         jPanel9.add(jLabel4);
 
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText(dateJour.toString());
+        jPanel9.add(jLabel15);
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Identifiant");
+        jLabel1.setText("identifiant : "+pm.getNom()+" "+pm.getPrenom());
         jPanel9.add(jLabel1);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -171,10 +180,6 @@ this.addWindowListener( new WindowAdapter()
         jPanel8.add(jPanel1, java.awt.BorderLayout.LINE_START);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Ok");
-        jPanel2.add(jButton2);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Sortie du dossier");
@@ -224,7 +229,7 @@ this.addWindowListener( new WindowAdapter()
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -257,8 +262,14 @@ this.addWindowListener( new WindowAdapter()
         jLabel5.setToolTipText("");
         jPanel13.add(jLabel5);
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel13.add(jTextField3);
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jFormattedTextField1.setToolTipText("la tension doit etre au format ../.. \npar exemple 12/08");
+        jPanel13.add(jFormattedTextField1);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Poids (en kg) :");
@@ -360,21 +371,31 @@ this.addWindowListener( new WindowAdapter()
 
         jLabel14.setText("Motif d'hospitalisation :");
 
+        jButton3.setText("validation");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField12)
-                    .addComponent(jTextField11)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField12)
+                            .addComponent(jTextField11)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)))
+                    .addComponent(jButton3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
@@ -392,7 +413,8 @@ this.addWindowListener( new WindowAdapter()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3))
         );
 
         jPanel5.add(jPanel15);
@@ -582,7 +604,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 328, Short.MAX_VALUE)
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -597,7 +619,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 328, Short.MAX_VALUE)
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -635,7 +657,7 @@ this.addWindowListener( new WindowAdapter()
                 .addContainerGap(91, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Prescriptions", jPanel6);
+        jTabbedPane1.addTab("Prescriptions PH", jPanel6);
 
         jPanel8.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
@@ -688,7 +710,7 @@ this.addWindowListener( new WindowAdapter()
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 856, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -703,7 +725,12 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
          Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true);// TODO add your handling code here:
+        mdp.setVisible(true);
+        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if(JOptionPane.INFORMATION_MESSAGE==1){
+            mdp.dispose();
+        }
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 /**
  * 
@@ -836,12 +863,89 @@ A0_Accueil a0 = new A0_Accueil();
 a0.setVisible(true);
 this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        boolean a1 = false;
+        boolean a2 = false;
+        boolean a3 = false;
+        boolean a4 = false;
+        taille = jTextField2.getText();
+        tension = jFormattedTextField1.getText();
+        poids = jTextField1.getText();
+        glycemie = jTextField6.getText();
+        temperature = jTextField4.getText();
+        autres = jTextField5.getText();
+        traitement = jTextField7.getText();
+        allergie = jTextField10.getText();
+        regime = jTextField8.getText();
+        motif = jTextField12.getText();
+        diagnostic = jTextField11.getText();
+        antecedent = jTextField9.getText();
+
+        if (temperature.length() != 0) {
+            try {
+                if (Double.parseDouble(temperature) < 33 || Double.parseDouble(temperature) > 45) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    a1 = false;
+                } else {
+                    a1 = true;
+
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                a1 = false;
+            }
+        }
+        if (poids.length() != 0) {
+            try {
+                if (Double.parseDouble(poids) < 0 || Double.parseDouble(poids) > 1000) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+                    a2 = false;
+                } else {
+                    a2 = true;
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                a2 = false;
+
+            }
+        }
+        if (glycemie.length() != 0) {
+            try {
+                if (Double.parseDouble(glycemie) < 0.2 || Double.parseDouble(glycemie) > 20) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    a2 = false;
+                } else {
+                    a2 = true;
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        }
+        if (taille.length() != 0) {
+            try {
+                if (Integer.parseInt(taille) < 10 || Integer.parseInt(taille) > 3000) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    a4 = false;
+                } else {
+                    a4 = true;
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 /**
  * retour à la âge de l'infirmier avec demande de confirmation
  * @param evt 
  */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        A41_Infirmier fenetre41 = new A41_Infirmier();
+        A41_Infirmier fenetre41 = new A41_Infirmier(pm);
     int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     if (response == JOptionPane.YES_OPTION) {
@@ -879,23 +983,38 @@ this.dispose();         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new A42_Infirmier().setVisible(true);
+                //new A42_Infirmier().setVisible(true);
             }
         });
     }
-
+    private String taille;
+    private String tension;
+    private String poids;
+    private String glycemie;
+    private String temperature;
+    private String autres;
+    private String traitement;
+    private String allergie;
+    private String regime;
+    private String motif;
+    private String diagnostic;
+    private String antecedent;
+    private Date dateJour;
+PersonnelMedical pm;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -962,7 +1081,6 @@ this.dispose();         // TODO add your handling code here:
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;

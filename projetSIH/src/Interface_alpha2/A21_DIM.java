@@ -5,6 +5,7 @@
  */
 package Interface_alpha2;
 
+import SIH.Date;
 import SIH.Infirmiere;
 import SIH.MedecinPH;
 import SIH.PersonnelMedical;
@@ -30,7 +31,12 @@ public class A21_DIM extends javax.swing.JFrame {
      * Creates new form Premiere_page_dma
      */
     public A21_DIM(PersonnelMedical pm) {
-        this.pm=pm;
+        this.pm = pm;
+        dateJour=dateJour.dateJour();
+        comboServices = new DefaultComboBoxModel(service.values());
+        comboServices.insertElementAt(vide, 0);
+        comboServices.removeElement(service.Administration);
+
         try {
             sql = new SQL();
         } catch (SQLException ex) {
@@ -40,6 +46,15 @@ public class A21_DIM extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(A21_DIM.class.getName()).log(Level.SEVERE, null, ex);
         }
+        comboListePH = new DefaultComboBoxModel(sql.listeMedecinPH());
+        comboListePH.insertElementAt(vide, 0);
+
+        comboListeInf = new DefaultComboBoxModel(sql.listeInfirmiere());
+        comboListeInf.insertElementAt(vide, 0);
+
+        comboListeSecretaire = new DefaultComboBoxModel(sql.listeSecretaire());
+        comboListeSecretaire.insertElementAt(vide, 0);
+
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -71,6 +86,8 @@ public class A21_DIM extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -126,7 +143,12 @@ public class A21_DIM extends javax.swing.JFrame {
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel9.setLayout(new java.awt.GridLayout(0, 3));
+        jPanel9.add(jLabel13);
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText(dateJour.toString());
+        jPanel9.add(jLabel12);
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -144,6 +166,11 @@ public class A21_DIM extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Déconnexion");
         jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,7 +290,9 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jLabel9.setText("Service :");
 
-        jComboBox2.setModel(new DefaultComboBoxModel(SIH.Services.values()));
+        jComboBox2.setModel(comboServices
+        );
+        jComboBox2.setSelectedIndex(0);
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -347,12 +376,35 @@ public class A21_DIM extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton2.setText("Suppression");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setModel(new DefaultComboBoxModel(sql.listeMedecinPH()));
+        jComboBox1.setModel(comboListePH);
+        jComboBox1.setSelectedIndex(0);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
-        jComboBox4.setModel(new DefaultComboBoxModel(sql.listeInfirmiere()));
+        jComboBox4.setModel(comboListeInf);
+        jComboBox4.setSelectedIndex(0);
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
 
-        jComboBox5.setModel(new DefaultComboBoxModel(sql.listeSecretaire()));
+        jComboBox5.setModel(comboListeSecretaire);
+        jComboBox5.setSelectedIndex(0);
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("MedecinPH");
 
@@ -469,6 +521,11 @@ public class A21_DIM extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
         mdp.setVisible(true);
+        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if(JOptionPane.INFORMATION_MESSAGE==1){
+            mdp.dispose();
+        }
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
     /**
      * Permet la déconnexion, retour vers la première page du logiciel.
@@ -488,94 +545,116 @@ public class A21_DIM extends javax.swing.JFrame {
             if (jRadioButton3.isSelected()) {
                 nom = jTextField1.getText();
                 prenom = jTextField2.getText();
-                this.newId(nom, prenom);
+                
                 jLabel3.setText(id);
                 fonction = "PH";
-                service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
-                motDePasse = this.StringMotDePasseAleatoire();
+                
+                
                 jLabel8.setText(motDePasse);
+                if (nom.length() == 0 | prenom.length() == 0) {
+                    JOptionPane.showMessageDialog(jPanel5, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
+                } else if (jComboBox2.getSelectedIndex() == 0) {
+                    JOptionPane.showMessageDialog(jPanel5, "veuillez selectionner un service", "erreur", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    motDePasse = this.StringMotDePasseAleatoire();
+                    service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+                    this.newId(nom, prenom);
+                    rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                    if (rep == JOptionPane.YES_OPTION) {
+                        med = new MedecinPH(id, motDePasse, nom, prenom, fonction, service);
+                        System.out.println(med.getFonction());
 
-                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
-                if (rep == JOptionPane.YES_OPTION) {
-                    med = new MedecinPH(id, motDePasse, nom, prenom, fonction, service);
-                    System.out.println(med.getFonction());
-                   
-                    try {
-                        sql = new SQL();
+                        try {
+                            sql = new SQL();
 
-                    } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+                        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
 
-                        Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
 
+                        }
+
+                        sql.ajouterMedecinPHBD(med);
+
+                        if (sql.getErr() != 1) {
+                            JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                        }
                     }
-
-                    sql.ajouterMedecinPHBD(med);
-                    
-                    if (sql.getErr() != 1) {
-                        JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-                    }
-
                 }
 
             } else if (jRadioButton1.isSelected()) {
                 nom = jTextField1.getText();
                 prenom = jTextField2.getText();
-                this.newId(nom, prenom);
+                
                 jLabel3.setText(id);
                 fonction = "Infirmier";
-                service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+                
                 fonction = jRadioButton1.getLabel();
-                motDePasse = this.StringMotDePasseAleatoire();
+                
                 jLabel8.setText(motDePasse);
+                if (nom.length() == 0 | prenom.length() == 0) {
+                    JOptionPane.showMessageDialog(jPanel5, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
+                } else if (jComboBox2.getSelectedIndex() == 0) {
+                    JOptionPane.showMessageDialog(jPanel5, "veuillez selectionner un service", "erreur", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    motDePasse = this.StringMotDePasseAleatoire();
+                    this.newId(nom, prenom);
+                    service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+                    rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
 
-                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : "+id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                    if (rep == JOptionPane.YES_OPTION) {
+                        inf = new Infirmiere(id, motDePasse, nom, prenom, fonction, service);
+                        //SQL sql = null;
+                        try {
+                            sql = new SQL();
 
-                if (rep == JOptionPane.YES_OPTION) {
-                    inf = new Infirmiere(id, motDePasse, nom, prenom, fonction, service);
-                    //SQL sql = null;
-                    try {
-                        sql = new SQL();
+                        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
 
-                    } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+                            Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
 
-                        Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
-
-                    }
-                    sql.ajouterInfirmiereBD(inf);
-                    if (sql.getErr() != 1) {
-                        JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        sql.ajouterInfirmiereBD(inf);
+                        if (sql.getErr() != 1) {
+                            JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                        }
                     }
                 }
 
             } else if (jRadioButton2.isSelected()) {
-               fonction = "Secretaire";
+                fonction = "Secretaire";
                 nom = jTextField1.getText();
                 prenom = jTextField2.getText();
-                this.newId(nom, prenom);
+                
                 jLabel3.setText(id);
                 fonction = jRadioButton3.getLabel();
-                motDePasse = this.StringMotDePasseAleatoire();
+               
                 jLabel8.setText(motDePasse);
+                if (nom.length() == 0 | prenom.length() == 0) {
+                    JOptionPane.showMessageDialog(jPanel5, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
+                }else {
+                     motDePasse = this.StringMotDePasseAleatoire();
+                    this.newId(nom, prenom);
+                    rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                    if (rep == JOptionPane.YES_OPTION) {
+                        persMed = new PersonnelMedical(id, motDePasse, nom, prenom, fonction);
+                        persMed.setServices(service.Administration);
+                        
+                        try {
+                            sql = new SQL();
 
-                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " +id+ "\n    - mot de passe : " + motDePasse, "confirmation", JOptionPane.OK_CANCEL_OPTION);
-                if (rep == JOptionPane.YES_OPTION) {
-                    persMed = new PersonnelMedical(id, motDePasse, nom, prenom, fonction);
-                    persMed.setServices(service.Administration);
-                    //SQL sql = null;
-                    try {
-                        sql = new SQL();
+                        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
 
-                    } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+                            Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
 
-                        Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
-
-                    }
-                    sql.ajouterPersonnelMedicalBD(persMed);
-                    if (sql.getErr() !=1) {
-                        JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        sql.ajouterPersonnelMedicalBD(persMed);
+                        if (sql.getErr() != 1) {
+                            JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                        }
                     }
                 }
 
+            } else {
+                JOptionPane.showMessageDialog(jPanel5, "Veuillez sélectionner un personnel", "erreur", JOptionPane.WARNING_MESSAGE);
             }
 
         }
@@ -586,22 +665,24 @@ public class A21_DIM extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5ComponentShown
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        jComboBox2.show();
-        jLabel9.show();
+
+        jComboBox2.setVisible(true);
+        jLabel9.setVisible(true);
         jPanel5.revalidate();
         jPanel5.repaint();
+
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        jComboBox2.show();
-        jLabel9.show();
+        jComboBox2.setVisible(true);
+        jLabel9.setVisible(true);
         jPanel5.revalidate();
         jPanel5.repaint();
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        jComboBox2.hide();
-        jLabel9.hide();
+        jComboBox2.setVisible(false);
+        jLabel9.setVisible(false);
         jPanel5.revalidate();
         jPanel5.repaint();
     }//GEN-LAST:event_jRadioButton2ActionPerformed
@@ -617,23 +698,56 @@ public class A21_DIM extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+        if (jComboBox2.getSelectedIndex() != 0) {
+            service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
+        }
     }//GEN-LAST:event_jComboBox2ActionPerformed
-    /**
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        if (jComboBox5.getSelectedIndex() != 0) {
+            jComboBox4.setSelectedIndex(0);
+            jComboBox1.setSelectedIndex(0);
+            jPanel6.repaint();
+            jPanel6.revalidate();
+        }
+    }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        if (jComboBox4.getSelectedIndex() != 0) {
+            jComboBox1.setSelectedIndex(0);
+            jComboBox5.setSelectedIndex(0);
+            jPanel6.repaint();
+            jPanel6.revalidate();
+        }
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        if (jComboBox1.getSelectedIndex() != 0) {
+            jComboBox4.setSelectedIndex(0);
+            jComboBox5.setSelectedIndex(0);
+            jPanel6.repaint();
+            jPanel6.revalidate();
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JOptionPane.showConfirmDialog(jPanel6, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton2ActionPerformed
+ /**
      * Permet la déconnexion, avec une demande de confirmation de l'utilisateur
      *
      * @param evt
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        A0_Accueil fenetre2 = new A0_Accueil();
-        int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         A0_Accueil fenetre2 = new A0_Accueil();
+        int response = JOptionPane.showConfirmDialog(jPanel2, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.YES_OPTION) {
             fenetre2.setVisible(true);
             this.dispose();
         }
-    }
-
+    }//GEN-LAST:event_jButton1ActionPerformed
+   
     private String newId(String nom, String prenom) {
         id = nom + prenom.charAt(0);
 
@@ -683,12 +797,16 @@ public class A21_DIM extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
-                //new A21_DIM().setVisible(true);
 
+                //new A21_DIM().setVisible(true);
             }
         });
     }
+    private DefaultComboBoxModel comboListeSecretaire;
+    private DefaultComboBoxModel comboListeInf;
+    private DefaultComboBoxModel comboListePH;
+    private DefaultComboBoxModel comboServices;
+    private String vide = "";
     private PersonnelMedical pm;
     private SQL sql = null;
     static Random rnd = new Random();
@@ -703,6 +821,7 @@ public class A21_DIM extends javax.swing.JFrame {
     private MedecinPH med;
     private String onglet;
     private String fonction;
+    private Date dateJour;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
@@ -715,6 +834,8 @@ public class A21_DIM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

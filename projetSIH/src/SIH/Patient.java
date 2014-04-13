@@ -123,11 +123,13 @@ public class Patient {
     public Date getDateAdmission() {
         return dateAdmission;
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.04AB8DF0-BDA9-01D9-6081-C426EC1DBB2A]
     // </editor-fold> 
-    public void setDate(Date val) {
+    public void setDateAdmission(Date val) {
         this.dateAdmission = val;
     }
 

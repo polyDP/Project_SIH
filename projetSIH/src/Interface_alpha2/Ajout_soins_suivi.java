@@ -48,7 +48,7 @@ this.addWindowListener( new WindowAdapter()
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -67,22 +67,27 @@ this.addWindowListener( new WindowAdapter()
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("frame1");
-        setMaximumSize(new java.awt.Dimension(400, 300));
-        setMinimumSize(new java.awt.Dimension(400, 300));
+        setMaximumSize(new java.awt.Dimension(500, 400));
+        setMinimumSize(new java.awt.Dimension(500, 400));
+        setPreferredSize(new java.awt.Dimension(500, 400));
         setResizable(false);
 
         jPanel13.setBackground(new java.awt.Color(205, 205, 205));
         jPanel13.setMinimumSize(new java.awt.Dimension(400, 300));
         jPanel13.setPreferredSize(new java.awt.Dimension(400, 300));
-        jPanel13.setLayout(new java.awt.GridLayout(0, 4, 0, 40));
+        jPanel13.setLayout(new java.awt.GridLayout(0, 4, 0, 50));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Température (en °C) :");
         jLabel2.setToolTipText("");
         jPanel13.add(jLabel2);
 
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
         jPanel13.add(jTextField2);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -90,20 +95,31 @@ this.addWindowListener( new WindowAdapter()
         jLabel5.setToolTipText("");
         jPanel13.add(jLabel5);
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("../..");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jFormattedTextField1.setToolTipText("la tension doit etre au format ../.. \npar exemple 12/08");
+        jFormattedTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jFormattedTextField1ActionPerformed(evt);
             }
         });
-        jPanel13.add(jTextField3);
+        jPanel13.add(jFormattedTextField1);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Poids (en kg) :");
         jPanel13.add(jLabel3);
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jPanel13.add(jTextField1);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -111,6 +127,11 @@ this.addWindowListener( new WindowAdapter()
         jPanel13.add(jLabel7);
 
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
         jPanel13.add(jTextField6);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -138,7 +159,7 @@ this.addWindowListener( new WindowAdapter()
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         jPanel13.add(jPanel2);
@@ -158,7 +179,7 @@ this.addWindowListener( new WindowAdapter()
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         jPanel13.add(jPanel3);
@@ -173,7 +194,7 @@ this.addWindowListener( new WindowAdapter()
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         jPanel13.add(jPanel1);
@@ -213,13 +234,7 @@ this.addWindowListener( new WindowAdapter()
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/**
- * 
- * @param evt 
- */
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+
 /**
  * fermeture de la fenêtre
  * @param evt 
@@ -232,8 +247,122 @@ this.dispose();
  * @param evt 
  */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-this.dispose();        // TODO add your handling code here:
+this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+        System.out.println(jFormattedTextField1.getText());
+        boolean a1 = false;
+        boolean a2 = false;
+        boolean a3 = false;
+
+        medicament = jTextField4.getText();
+        tension = jFormattedTextField1.getText();
+        poids = jTextField1.getText();
+        glycemie = jTextField6.getText();
+        temperature = jTextField2.getText();
+        autres = jTextField5.getText();
+        if (jCheckBox1.isSelected() == true) {
+            prelevement = "oui";
+        }
+
+        if (jTextField2.getText().length() != 0) {
+            try {
+                if (Float.parseFloat(temperature) < 33 || Float.parseFloat(temperature) > 45) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    a1 = false;
+                } else {
+                    a1 = true;
+
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                a1 = false;
+            }
+        }
+        if (jTextField1.getText().length() != 0) {
+            try {
+                if (Integer.parseInt(poids) < 0 || Integer.parseInt(poids) > 1000) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+                    a2 = false;
+                } else {
+                    a2 = true;
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                a2 = false;
+
+            }
+        }
+        if (jTextField6.getText().length() != 0) {
+            try {
+                if (Float.parseFloat(glycemie) < 0.2 || Float.parseFloat(glycemie) > 20) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    a2 = false;
+                } else {
+                    a2 = true;
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        }
+
+        if (a1 == true && a2 == true && a3==true) {
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        temperature = jTextField2.getText();
+        if (jTextField2.getText().length() != 0) {
+            try {
+                if (Float.parseFloat(temperature) < 33 || Float.parseFloat(temperature) > 45) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        poids = jTextField1.getText();
+        if (jTextField1.getText().length() != 0) {
+            try {
+                if (Integer.parseInt(poids) < 0 || Integer.parseInt(poids) > 1000) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        }
+
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        glycemie = jTextField6.getText();
+        if (jTextField6.getText().length() != 0) {
+            try {
+                if (Float.parseFloat(glycemie) < 0.2 || Float.parseFloat(glycemie) > 20) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        }
+
+    }//GEN-LAST:event_jTextField6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,11 +398,19 @@ this.dispose();        // TODO add your handling code here:
             }
         });
     }
+private String medicament ; 
+private String tension ;   
+private String poids ;    
+private String glycemie ;
+private String temperature ; 
+private String autres ;  
+private String prelevement;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -287,7 +424,6 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;

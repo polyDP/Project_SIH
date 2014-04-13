@@ -77,10 +77,10 @@ public class Test {
         // ajoute des constantes par l'infirmiere
         
         Constantes consPat1 = new Constantes(pat1);
-        consPat1.setGlycemie(1.23);
+        consPat1.setGlycemie(45.3);
         consPat1.setPoids(85);
         consPat1.setTaille(159);
-        consPat1.setTension(14.2);
+        consPat1.setTension("14.2");
         
         ArrayList<Constantes> listeConstantes;
         listeConstantes = new ArrayList<Constantes>();
@@ -91,7 +91,7 @@ public class Test {
         consPat1.setGlycemie(1.50);
         consPat1.setPoids(86);
         consPat1.setTaille(159);
-        consPat1.setTension(13.2);
+        consPat1.setTension("13.2");
         
         listeConstantes.add(cons1Pat1);
         
