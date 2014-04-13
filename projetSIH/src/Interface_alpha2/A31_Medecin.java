@@ -6,6 +6,7 @@
 
 package Interface_alpha2;
 
+import SIH.PersonnelMedical;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -21,7 +22,8 @@ public class A31_Medecin extends javax.swing.JFrame {
     /**
      * Creates new form Premiere_page_dma
      */
-    public A31_Medecin() {
+    public A31_Medecin(PersonnelMedical pm) {
+        this.pm = pm;
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 this.addWindowListener( new WindowAdapter()
@@ -95,7 +97,7 @@ this.addWindowListener( new WindowAdapter()
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Identifiant");
+        jLabel4.setText("identifiant : "+pm.getNom()+" "+pm.getPrenom());
         jPanel9.add(jLabel4);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -147,8 +149,10 @@ this.addWindowListener( new WindowAdapter()
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTextArea4.setEditable(false);
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
+        jTextArea4.setText("cette fonction n'est pas encore implémentée \n elle le sera dans une prochaine version");
         jScrollPane4.setViewportView(jTextArea4);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -272,7 +276,12 @@ this.addWindowListener( new WindowAdapter()
  */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true);// TODO add your handling code here:
+        mdp.setVisible(true);
+        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if(JOptionPane.INFORMATION_MESSAGE==1){
+            mdp.dispose();
+        }
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 /**
  * se déconnecter, revenir à la première page grâce au menu
@@ -305,7 +314,7 @@ this.dispose();        // TODO add your handling code here:
  * @param evt 
  */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        A32_Medecin fenetre31 = new A32_Medecin();
+        A32_Medecin fenetre31 = new A32_Medecin(pm);
     fenetre31.setVisible(true);
     this.dispose();
 }
@@ -339,11 +348,11 @@ this.dispose();        // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new A31_Medecin().setVisible(true);
+                //new A31_Medecin().setVisible(true);
             }
         });
     }
-
+private PersonnelMedical pm;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;

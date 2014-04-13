@@ -70,10 +70,10 @@ public class SQL {
         }
     }
 
-    public void ajouterSejourPatientBD(Patient p, NumeroSejour numSej, Services s, MedecinPH m, Lit l) {
+    public void ajouterSejourPatientBD(Patient p, NumeroSejour numSej, Services s, MedecinPH m, String lit) {
         try {
-            String requete = "INSERT INTO nouveau_sejour(Num_Sejour,IPP,Date_Entree,Service_P,PH_Resp,Loca_P)"
-                    + "Values (?,?,?,?,?,?)";
+            String requete = "INSERT INTO nouveau_sejour(Num_Sejour,IPP,Date_Entree,Service_P,PH_Resp,Loca_P,Etat_Dossier)"
+                    + "Values (?,?,?,?,?,?,?)";
             PreparedStatement prepS = con.creerPreparedStatement(requete);
 
             prepS.setObject(1, numSej.getNumeroSejour());
@@ -86,7 +86,9 @@ public class SQL {
 
             prepS.setObject(5, m.getId());
 
-            prepS.setObject(6, l.idLit());
+            prepS.setObject(6, lit);
+            
+            prepS.setObject(7, "Ouvert");
 
             prepS.executeUpdate();
 
@@ -176,17 +178,13 @@ public class SQL {
 
     public void seConnecterSIH(String id, String motDePasse) {
         String requete = "SELECT * FROM personnel";
-        
-        
         try {
             boolean boucle = true;
-            PreparedStatement prepS = con.creerPreparedStatement(requete);
             ResultSet result = con.resultatRequete(requete);
             
             while (result.next()) {
                 
-                if (result.getString("ID_PH").equals(id)) {
-                   
+                if (result.getString("ID_PH").equals(id)) {                
                     boucle = false;
                     if (result.getString("Mdp_PH").equals(motDePasse)) {
                         if (result.getString("Fonction_PH").equals("PH") | result.getString("Fonction_PH").equals("Interne")) {
@@ -194,7 +192,7 @@ public class SQL {
                              pm=new PersonnelMedical(result.getString("ID_PH"),result.getString("Mdp_PH"),result.getString("Nom_PH"),result.getString("Prenom_PH"),result.getString("Fonction_PH"));
                         }
                         if (result.getString("Fonction_PH").equals("Secretaire")) {
-                           connexion="Secretaire medicale";
+                           connexion="Secretaire";
                             pm=new PersonnelMedical(result.getString("ID_PH"),result.getString("Mdp_PH"),result.getString("Nom_PH"),result.getString("Prenom_PH"),result.getString("Fonction_PH"));
                         }
                         if (result.getString("Fonction_PH").equals("Infirmier")) {
@@ -209,12 +207,17 @@ public class SQL {
                     } else {
                         JOptionPane.showMessageDialog(null, "Mot de passe incorrect",
                                 "Erreur", JOptionPane.ERROR_MESSAGE);
+                        err = 1;
                     }
+                } 
                 }
-            }
+            
             if (boucle) {
+                con.fermerConnexionDataBase();
                 JOptionPane.showMessageDialog(null, "Identifiant incorrect",
                         "Erreur", JOptionPane.ERROR_MESSAGE);
+                err = 1;
+                
             }
         } catch (SQLException e) {
             err = 1;
@@ -233,7 +236,6 @@ public class SQL {
             PreparedStatement prepS = con.creerPreparedStatement(requete);
             ResultSet result = con.resultatRequete(requete);
             while (result.next()) {
-                System.out.println(result.getString("MAX(IPP)"));
            ippValue = result.getString("MAX(IPP)");
             }
             
@@ -300,6 +302,40 @@ public class SQL {
         Patient patient = new Patient(nom,prenom,numTel,medecinTraitant,sexe,date,adresse);
         patient.setIpp(ipp);
         return patient;
+    }
+    
+     public MedecinPH rechercherMedecin(String nom,String prenom){
+        
+        String idPH=null;
+        Services service = null;
+        String fonction=null;
+               
+        
+        String requete = "SELECT * FROM personnel WHERE Nom_PH = '"+nom+"' AND Prenom_PH = '"+prenom+"'";
+        
+        try {  
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                
+           idPH = result.getString("ID_PH");
+               
+           service = service.valueOf(result.getString("Service_PH"));
+           fonction = result.getString("Fonction_PH");
+                
+           
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        MedecinPH medecin = new MedecinPH(idPH,nom,prenom,fonction,service);
+        
+        return medecin;
     }
     
     public Vector<String> listePatient(){
@@ -401,6 +437,115 @@ public class SQL {
         }
         return listeMedecinPH;
     }
+    
+    public Vector<String> listeHistoriqueSejourPatient(Patient p){
+        Vector<String> listeHistoriqueSejourPatient = new Vector<>();
+        String numSejEtatDossier;
+        
+        String requete = "SELECT nouveau_sejour.IPP,nouveau_sejour.Num_Sejour,Etat_Dossier FROM nouveau_sejour,donnee_personnelle WHERE donnee_personnelle.IPP = nouveau_sejour.IPP AND donnee_personnelle.IPP='"+p.getIpp().toString()+"'";
+        
+        try {  
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                
+           numSejEtatDossier = result.getString("Num_Sejour");
+                
+           numSejEtatDossier =  numSejEtatDossier + " " +result.getString("Etat_Dossier");
+           listeHistoriqueSejourPatient.add(numSejEtatDossier);
+                
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return listeHistoriqueSejourPatient;
+    }
+    public String infoHistoriqueSejourPatient(Patient p,String numSej ){
+        
+        String infoHistorique = null;
+        
+        String requete = "SELECT * FROM nouveau_sejour,donnee_personnelle,lettre_sortie,personnel WHERE donnee_personnelle.IPP = nouveau_sejour.IPP AND donnee_personnelle.IPP='"+p.getIpp().toString()+"'AND lettre_sortie.Num_Sejour = nouveau_sejour.Num_Sejour AND nouveau_sejour.Num_Sejour = '"+numSej+"' AND nouveau_sejour.PH_Resp = personnel.ID_PH";
+        
+        try {  
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                
+           infoHistorique = "Date d'entrée du patient : " + result.getString("Date_Entree");
+           infoHistorique =  infoHistorique + "\nservice d'hospitalisation du patient : " +result.getString("Service_P");
+                
+           infoHistorique =  infoHistorique + "\nPH responsable du patient : " +result.getString("Nom_PH")+" "+result.getString("Prenom_PH");
+          
+            infoHistorique =  infoHistorique + "\nLettre de sortie :\n" +result.getString("Lettre_Sortie");   
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return infoHistorique;
+    }
+    
+    public Vector<String> listeLitDispo(Services s){
+        Vector<String> listeLitDispo = new Vector<>();
+        String lits;
+        
+        String requete = "SELECT Nom_du_Lit, Service_L \n" +
+"	FROM lit \n" +
+"	WHERE Service_L='"+s.toString()+"' \n" +
+"	AND Nom_du_Lit NOT IN (SELECT nouveau_sejour.Loca_P \n" +
+"							FROM nouveau_sejour \n" +
+"							WHERE Service_P='" + s.toString() + "'\n" +
+"							AND Etat_dossier ='ouvert')";
+        try {  
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                
+           lits = result.getString("Nom_du_lit");
+           
+           listeLitDispo.add(lits);
+                
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return listeLitDispo;
+    } 
+    
+    public Vector<String> listePHparService(Services s){
+        Vector<String> listePHService = new Vector<>();
+        String NomPrenomPH;
+        
+        String requete = "SELECT * FROM personnel WHERE Service_PH='"+ s +"'AND Fonction_PH = 'PH' ORDER BY 'Nom_PH';";
+        try {  
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                
+           NomPrenomPH = result.getString("Nom_PH");
+           NomPrenomPH = NomPrenomPH +" "+ result.getString("Prenom_PH");
+           
+          listePHService.add(NomPrenomPH);
+                
+            }
+            
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return listePHService;
+    }
+
+
     
     /**
      * @return the err

@@ -19,17 +19,26 @@ public class TestsSql {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
+        
         try {
             SQL sql = new SQL();
+            Patient p = sql.rechercherPatient("Bano", "Delphine");
+            System.out.println(p.affichagePatient());
             for(int i=0;i<5;i++){
                 System.out.println(sql.listePatient().get(i));
                 //sql.listeMedecinPH();
-                System.out.println(sql.listeMedecinPH().get(i));
+                //System.out.println(sql.listeMedecinPH().get(i));
+                System.out.println(sql.listeHistoriqueSejourPatient(p));
+                 //System.out.println(sql.infoHistoriqueSejourPatient(p));
+                //System.out.println(sql.listeInfirmiere().get(i));
+               // System.out.println(sql.listeSecretaire().get(i));
+                //System.out.println(Services.Pediatrie.toString());
+                //System.out.println(sql.listeLitDispo(Services.Pediatrie));
                 
-                System.out.println(sql.listeInfirmiere().get(i));
-                System.out.println(sql.listeSecretaire().get(i));
             }
-            //sql.rechercherPatient("bat", "bour");
+            
         } catch (SQLException ex) {
             Logger.getLogger(TestsSql.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

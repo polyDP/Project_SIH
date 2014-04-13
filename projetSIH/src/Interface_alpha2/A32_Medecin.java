@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Interface_alpha2;
 
+import SIH.Date;
+import SIH.PersonnelMedical;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -19,29 +19,31 @@ import javax.swing.JOptionPane;
 public class A32_Medecin extends javax.swing.JFrame {
 
     /**
-     * Creates new form Premiere_page_dma
-     * Appel à une méthode qui permet de fermer l'application avec la croix en demandant l'autorisation à l'utilisateur
+     * Creates new form Premiere_page_dma Appel à une méthode qui permet de
+     * fermer l'application avec la croix en demandant l'autorisation à
+     * l'utilisateur
      */
-    public A32_Medecin() {
+    public A32_Medecin(PersonnelMedical pm) {
+        this.pm = pm;
+        dateJour = dateJour.dateJour();
+
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-this.addWindowListener( new WindowAdapter()
-		{
-			public void windowClosing(WindowEvent e)
-			{
-				JFrame frame = (JFrame)e.getSource();
-				int result = JOptionPane.showConfirmDialog(
-						null,
-						"Etes-vous sûr de vouloir quitter Asclépios, Avez-vous tout enregistré ?",
-						"Quitter",
-						JOptionPane.YES_NO_OPTION);
-				if (result == JOptionPane.YES_OPTION){
-					
-					System.exit(0);
-				}
-				
-			}
-		});
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                JFrame frame = (JFrame) e.getSource();
+                int result = JOptionPane.showConfirmDialog(
+                        null,
+                        "Etes-vous sûr de vouloir quitter Asclépios, Avez-vous tout enregistré ?",
+                        "Quitter",
+                        JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+
+                    System.exit(0);
+                }
+
+            }
+        });
     }
 
     /**
@@ -57,10 +59,10 @@ this.addWindowListener( new WindowAdapter()
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -72,7 +74,7 @@ this.addWindowListener( new WindowAdapter()
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -95,9 +97,11 @@ this.addWindowListener( new WindowAdapter()
         jTextField11 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
@@ -166,15 +170,19 @@ this.addWindowListener( new WindowAdapter()
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new java.awt.GridLayout(0, 2));
+        jPanel9.setLayout(new java.awt.GridLayout(0, 3));
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Patient");
         jPanel9.add(jLabel4);
 
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setText(dateJour.toString());
+        jPanel9.add(jLabel30);
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Identifiant");
+        jLabel1.setText("identifiant : "+pm.getNom()+" "+pm.getPrenom());
         jPanel9.add(jLabel1);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -184,15 +192,6 @@ this.addWindowListener( new WindowAdapter()
         jPanel8.add(jPanel1, java.awt.BorderLayout.LINE_START);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Ok");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton2);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Sortie du dossier");
@@ -216,7 +215,7 @@ this.addWindowListener( new WindowAdapter()
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
+            .addGap(0, 545, Short.MAX_VALUE)
         );
 
         jPanel8.add(jPanel3, java.awt.BorderLayout.LINE_END);
@@ -248,7 +247,7 @@ this.addWindowListener( new WindowAdapter()
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Données Patient", jPanel4);
@@ -278,14 +277,14 @@ this.addWindowListener( new WindowAdapter()
         jLabel5.setToolTipText("");
         jPanel13.add(jLabel5);
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("../..");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jPanel13.add(jTextField3);
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jFormattedTextField1.setToolTipText("la tension doit etre au format ../.. \npar exemple 12/08");
+        jPanel13.add(jFormattedTextField1);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Poids (en kg) :");
@@ -426,22 +425,32 @@ this.addWindowListener( new WindowAdapter()
 
         jLabel14.setText("Motif d'hospitalisation :");
 
+        jButton3.setText("Validation");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField12)
-                    .addComponent(jTextField11)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField12)
+                            .addComponent(jTextField11)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)))
+                    .addComponent(jButton3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,7 +467,9 @@ this.addWindowListener( new WindowAdapter()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel15);
@@ -472,21 +483,27 @@ this.addWindowListener( new WindowAdapter()
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
+        jButton2.setText("jButton2");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 24, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Prescriptions", jPanel6);
@@ -701,7 +718,7 @@ this.addWindowListener( new WindowAdapter()
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 35, Short.MAX_VALUE)
+            .addGap(0, 36, Short.MAX_VALUE)
         );
 
         jPanel10.add(jPanel17);
@@ -716,15 +733,25 @@ this.addWindowListener( new WindowAdapter()
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 35, Short.MAX_VALUE)
+            .addGap(0, 36, Short.MAX_VALUE)
         );
 
         jPanel10.add(jPanel18);
 
         jButton5.setText("Jour précédent");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel10.add(jButton5);
 
         jButton6.setText("Jour suivant");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel10.add(jButton6);
 
         jTabbedPane1.addTab("Suivi", jPanel10);
@@ -883,180 +910,254 @@ this.addWindowListener( new WindowAdapter()
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
- * changement du mot de passe à partir du menu
- * @param evt 
- */
+     * changement du mot de passe à partir du menu
+     *
+     * @param evt
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-     Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true);   // TODO add your handling code here:
+        Changer_mdp mdp = new Changer_mdp();
+        mdp.setVisible(true); 
+        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if(JOptionPane.INFORMATION_MESSAGE==1){
+            mdp.dispose();
+        }
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField12ActionPerformed
-/**
- * 
- * @param evt 
- */
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-/**
- * retour à la première page du médecin avec demande de confirmation
- * @param evt 
- */
+
+    /**
+     * retour à la première page du médecin avec demande de confirmation
+     *
+     * @param evt
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        A31_Medecin fenetre31 = new A31_Medecin();
-     int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-    if (response == JOptionPane.YES_OPTION) {
-     fenetre31.setVisible(true);
-        this.dispose();
-    }
+        A31_Medecin fenetre31 = new A31_Medecin(pm);
+        int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.YES_OPTION) {
+            fenetre31.setVisible(true);
+            this.dispose();
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
-         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
         fenetre.setVisible(true);
-fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");// TODO add your handling code here:
+        fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel19MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);      
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 2 heures - 4 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel21MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);   
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel23MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);   
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 6 heures - 8 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel25MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);   
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 8 heures - 10 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel27MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);  
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 10 heures - 12 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel34MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);   
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 12 heures - 14 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel38MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);  
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 14 heures - 16 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel39MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true); 
-         fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");// TODO add your handling code here:
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel43MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);  
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 18 heures - 20 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel40MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true); 
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 20 heures - 22 heures");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel41MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        fenetre.setVisible(true);  
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 22 heures - Minuit");// TODO add your handling code here:
     }//GEN-LAST:event_jLabel29MouseClicked
-/**
- * Permet de se déconnecter, retour sur la page d'accueil à partir du menu
- * @param evt 
- */
+    /**
+     * Permet de se déconnecter, retour sur la page d'accueil à partir du menu
+     *
+     * @param evt
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-A0_Accueil a0 = new A0_Accueil();
-a0.setVisible(true);
-this.dispose();         // TODO add your handling code here:
+        A0_Accueil a0 = new A0_Accueil();
+        a0.setVisible(true);
+        this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+        taille = jTextField2.getText();
+        if (taille.length() != 0) {
+            try {
+                if (Integer.parseInt(taille) < 10 || Integer.parseInt(taille) > 3000) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        }
+
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+              poids = jTextField1.getText();
+        if (poids.length() != 0) {
+            try {
+                if (Integer.parseInt(poids) < 0 || Integer.parseInt(poids) > 1000) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        }
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
+        glycemie = jTextField6.getText();
+        if (glycemie.length() != 0) {
+            try {
+                if (Float.parseFloat(glycemie) < 0.2 ||Float.parseFloat(glycemie) > 20) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        }
+
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
+        temperature = jTextField4.getText();
+        if (jTextField2.getText().length() != 0) {
+            try {
+                if (Float.parseFloat(temperature) < 33 || Float.parseFloat(temperature) > 45) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
@@ -1079,11 +1180,93 @@ this.dispose();         // TODO add your handling code here:
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-                                       
-   
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        boolean a1 = false;
+        boolean a2 = false;
+        boolean a3 = false;
+        boolean a4 = false;
+        taille = jTextField2.getText();
+        tension = jFormattedTextField1.getText();
+        poids = jTextField1.getText();
+        glycemie = jTextField6.getText();
+        temperature = jTextField4.getText();
+        autres = jTextField5.getText();
+        traitement = jTextField7.getText();
+        allergie = jTextField10.getText();
+        regime = jTextField8.getText();
+        motif = jTextField12.getText();
+        diagnostic = jTextField11.getText();
+        antecedent = jTextField9.getText();
+
+        if (temperature.length() != 0) {
+            try {
+                if (Double.parseDouble(temperature) < 33 || Double.parseDouble(temperature) > 45) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    a1 = false;
+                } else {
+                    a1 = true;
+
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                a1 = false;
+            }
+        }
+        if (poids.length() != 0) {
+            try {
+                if (Double.parseDouble(poids) < 0 || Double.parseDouble(poids) > 1000) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+                    a2 = false;
+                } else {
+                    a2 = true;
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                a2 = false;
+
+            }
+        }
+        if (glycemie.length() != 0) {
+            try {
+                if (Double.parseDouble(glycemie) < 0.2 || Double.parseDouble(glycemie) > 20) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    a2 = false;
+                } else {
+                    a2 = true;
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        }
+        if (taille.length() != 0) {
+            try {
+                if (Integer.parseInt(taille) < 10 || Integer.parseInt(taille) > 3000) {
+                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    a4 = false;
+                } else {
+                    a4 = true;
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        JOptionPane.showConfirmDialog(jPanel10, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        JOptionPane.showConfirmDialog(jPanel10, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1109,23 +1292,40 @@ this.dispose();         // TODO add your handling code here:
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(A32_Medecin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new A32_Medecin().setVisible(true);
+                //new A32_Medecin().setVisible(true);
             }
         });
     }
+    private PersonnelMedical pm;
+    private Date dateJour;
+    private String taille;
+    private String tension;
+    private String poids;
+    private String glycemie;
+    private String temperature;
+    private String autres;
+    private String traitement;
+    private String allergie;
+    private String regime;
+    private String motif;
+    private String diagnostic;
+    private String antecedent;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1149,6 +1349,7 @@ this.dispose();         // TODO add your handling code here:
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -1212,7 +1413,6 @@ this.dispose();         // TODO add your handling code here:
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;

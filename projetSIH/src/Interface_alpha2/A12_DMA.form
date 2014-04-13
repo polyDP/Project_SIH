@@ -165,7 +165,9 @@
                   <Color blue="ff" green="cc" red="99" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Identifiant"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="&quot;identifiant : &quot;+pm.getNom()+&quot; &quot;+pm.getPrenom()" type="code"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -562,12 +564,13 @@
               <SubComponents>
                 <Component class="javax.swing.JComboBox" name="jComboBox5">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="num&#xe9;ro s&#xe9;jour"/>
-                      </StringArray>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="comboHistorique" type="code"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox5ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
@@ -579,7 +582,7 @@
                     <Component class="javax.swing.JTextArea" name="jTextArea1">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="columns" type="int" value="20"/>
+                        <Property name="columns" type="int" value="10"/>
                         <Property name="rows" type="int" value="5"/>
                       </Properties>
                     </Component>
@@ -720,7 +723,7 @@
                       </StringArray>
                     </Property>
                     <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="day" type="code"/>
+                      <Connection code="dateJour.getJour()-1" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -746,7 +749,7 @@
                       </StringArray>
                     </Property>
                     <Property name="selectedIndex" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="month" type="code"/>
+                      <Connection code="dateJour.getMois()-1" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -785,7 +788,7 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox4">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new DefaultComboBoxModel(SIH.Services.values())" type="code"/>
+                      <Connection code="comboServices" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -799,12 +802,8 @@
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBox6">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="pierre"/>
-                        <StringItem index="1" value="paul "/>
-                        <StringItem index="2" value="jacques"/>
-                      </StringArray>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="comboPHService" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -826,13 +825,8 @@
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBox7">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="comboLits" type="code"/>
                     </Property>
                   </Properties>
                 </Component>

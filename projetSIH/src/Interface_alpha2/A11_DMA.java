@@ -9,6 +9,7 @@ import SIH.Adresse;
 import SIH.Date;
 import SIH.IPP;
 import SIH.Patient;
+import SIH.PersonnelMedical;
 import SIH.SQL;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -30,9 +31,8 @@ public class A11_DMA extends javax.swing.JFrame {
     /**
      * Creates new form Premiere_page_dma
      */
-    public A11_DMA() {
-        this.date = date;
-        this.ipp = ipp;
+    public A11_DMA(PersonnelMedical pm) {
+        this.pm = pm;
         try {
             sql = new SQL();
         } catch (SQLException | InstantiationException | IllegalAccessException ex) {
@@ -127,7 +127,7 @@ public class A11_DMA extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Identifiant");
+        jLabel4.setText("identifiant : "+pm.getNom()+" "+pm.getPrenom());
         jPanel9.add(jLabel4);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -526,6 +526,11 @@ public class A11_DMA extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
         mdp.setVisible(true);
+        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if(JOptionPane.INFORMATION_MESSAGE==1){
+            mdp.dispose();
+        }
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
     /**
      *
@@ -548,7 +553,7 @@ public class A11_DMA extends javax.swing.JFrame {
      * @param evt
      */
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
+        jour = Integer.parseInt(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
         System.out.println(jour);
     }//GEN-LAST:event_jComboBox2ActionPerformed
     /**
@@ -567,7 +572,7 @@ public class A11_DMA extends javax.swing.JFrame {
      * @param evt
      */
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-        annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
+        annee = Integer.parseInt(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
         System.out.println(annee);
     }//GEN-LAST:event_jComboBox4ActionPerformed
     /**
@@ -798,10 +803,10 @@ public class A11_DMA extends javax.swing.JFrame {
 
                                 nom = jTextField7.getText().toLowerCase();
                                 prenom = jTextField6.getText().toLowerCase();
-                                jour = Long.parseLong(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
+                                jour = Integer.parseInt(jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
                                 String valMois = (jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
                                 this.moisToDigit(valMois);
-                                annee = Long.parseLong(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
+                                annee = Integer.parseInt(jComboBox4.getItemAt(jComboBox4.getSelectedIndex()).toString());
 
                                 Date dateNaissance = new Date(jour, mois, annee);
 
@@ -829,7 +834,7 @@ public class A11_DMA extends javax.swing.JFrame {
                                     if (sql.getErr() != 1) {
                                         this.dispose();
                                         boolean n = true;
-                                        A12_DMA a12_dma = new A12_DMA(patient, n);
+                                        A12_DMA a12_dma = new A12_DMA(patient, n,pm);
                                         a12_dma.setVisible(true);
                                     }
 
@@ -845,7 +850,7 @@ public class A11_DMA extends javax.swing.JFrame {
             this.dispose();
             boolean n = false;
             System.out.println(sql.rechercherPatient(nomRecherche, prenomRecherche).affichagePatient());
-            A12_DMA a12_dma = new A12_DMA(sql.rechercherPatient(nomRecherche, prenomRecherche), n);
+            A12_DMA a12_dma = new A12_DMA(sql.rechercherPatient(nomRecherche, prenomRecherche), n,pm);
             a12_dma.setVisible(true);
             //rechercher patient dans base de données
         }
@@ -910,7 +915,7 @@ public class A11_DMA extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new A11_DMA().setVisible(true);
+                //new A11_DMA().setVisible(true);
             }
         });
     }
@@ -980,6 +985,7 @@ public class A11_DMA extends javax.swing.JFrame {
         Date dateJour = new Date(day, month, year);
         return dateJour;
     }
+    private PersonnelMedical pm;
     private SQL sql = null;
     private int year;
     private int month;
@@ -991,9 +997,9 @@ public class A11_DMA extends javax.swing.JFrame {
     private String nom;
     private String prenom;
     private String telephone;
-    private long jour;
-    private long mois;
-    private long annee;
+    private int jour;
+    private int mois;
+    private int annee;
     private String numero;
     private String rue;
     private String codePostal;

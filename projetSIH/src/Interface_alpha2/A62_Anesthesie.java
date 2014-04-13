@@ -479,7 +479,12 @@ public class A62_Anesthesie extends javax.swing.JFrame {
  */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
      Changer_mdp mdp = new Changer_mdp();
-        mdp.setVisible(true);    // TODO add your handling code here:
+        mdp.setVisible(true);
+        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if(JOptionPane.INFORMATION_MESSAGE==1){
+            mdp.dispose();
+        }
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
 
