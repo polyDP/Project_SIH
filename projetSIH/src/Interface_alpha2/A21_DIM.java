@@ -5,6 +5,7 @@
  */
 package Interface_alpha2;
 
+import SIH.Date;
 import SIH.Infirmiere;
 import SIH.MedecinPH;
 import SIH.PersonnelMedical;
@@ -31,6 +32,7 @@ public class A21_DIM extends javax.swing.JFrame {
      */
     public A21_DIM(PersonnelMedical pm) {
         this.pm = pm;
+        dateJour=dateJour.dateJour();
         comboServices = new DefaultComboBoxModel(service.values());
         comboServices.insertElementAt(vide, 0);
         comboServices.removeElement(service.Administration);
@@ -84,6 +86,8 @@ public class A21_DIM extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -139,7 +143,12 @@ public class A21_DIM extends javax.swing.JFrame {
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel9.setLayout(new java.awt.GridLayout(0, 3));
+        jPanel9.add(jLabel13);
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText(dateJour.toString());
+        jPanel9.add(jLabel12);
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -812,6 +821,7 @@ public class A21_DIM extends javax.swing.JFrame {
     private MedecinPH med;
     private String onglet;
     private String fonction;
+    private Date dateJour;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
@@ -824,6 +834,8 @@ public class A21_DIM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
