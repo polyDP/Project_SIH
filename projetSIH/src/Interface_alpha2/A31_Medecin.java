@@ -7,7 +7,6 @@ package Interface_alpha2;
 
 import SIH.Date;
 import SIH.MedecinPH;
-import SIH.PersonnelMedical;
 import SIH.SQL;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -80,7 +79,7 @@ public class A31_Medecin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -133,19 +132,13 @@ public class A31_Medecin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Ok");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("Ok");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jPanel2.add(jButton3);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Déconnexion");
@@ -307,12 +300,12 @@ public class A31_Medecin extends javax.swing.JFrame {
      */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
-       if(!mdp.isVisible()){
+      
                 mdp.setVisible(true);
         JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(JOptionPane.INFORMATION_MESSAGE==1){
             mdp.dispose();
-        }
+        
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -337,27 +330,24 @@ public class A31_Medecin extends javax.swing.JFrame {
         String prenomRecherche = splited[1];
         System.out.println(prenomRecherche);
     }//GEN-LAST:event_jComboBox1ActionPerformed
-    /**
-     * Aller à la page suivante en cliquant sur le bouton de validation
-     *
-     * @param evt
-     */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String val;
-        val = jComboBox1.getSelectedItem().toString();
-        System.out.println(val);
-        String[] splited = val.split("\\s+");
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         String val;
+      val = jComboBox1.getSelectedItem().toString();
+       System.out.println(val);
+      String[] splited = val.split("\\s+");
         String nomRecherche = splited[0];
-        System.out.println(nomRecherche);
-        String prenomRecherche = splited[1];
+       System.out.println(nomRecherche);
+       String prenomRecherche = splited[1];
         System.out.println(prenomRecherche);
         
-        A32_Medecin fenetre31 = new A32_Medecin(medecin,sql.rechercherPatient(nomRecherche, prenomRecherche));
+        A32_Medecin fenetre3 =  new A32_Medecin(medecin,sql.rechercherPatient(nomRecherche, prenomRecherche));
         System.out.println(sql.rechercherPatient(nomRecherche, prenomRecherche).getNom());
-        fenetre31.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-    /**
+      fenetre3.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+   /**
      * retour à la page d'accueil à partir du bouton prévu à cet effet
      *
      * @param evt
@@ -414,7 +404,7 @@ public class A31_Medecin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

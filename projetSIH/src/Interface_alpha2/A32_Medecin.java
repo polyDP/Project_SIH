@@ -184,10 +184,14 @@ public class A32_Medecin extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 204, 255));
         setBounds(new java.awt.Rectangle(200, 100, 0, 0));
         setExtendedState(10);
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setMaximumSize(new java.awt.Dimension(800, 600));
+        jPanel8.setMinimumSize(new java.awt.Dimension(500, 400));
+        jPanel8.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
@@ -236,7 +240,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 837, Short.MAX_VALUE)
+            .addGap(0, 532, Short.MAX_VALUE)
         );
 
         jPanel8.add(jPanel3, java.awt.BorderLayout.LINE_END);
@@ -259,9 +263,9 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -562,9 +566,9 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
@@ -573,11 +577,11 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(202, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
-                .addGap(41, 41, 41))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Observations", jPanel7);
@@ -766,7 +770,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 55, Short.MAX_VALUE)
+            .addGap(0, 35, Short.MAX_VALUE)
         );
 
         jPanel10.add(jPanel17);
@@ -781,7 +785,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 55, Short.MAX_VALUE)
+            .addGap(0, 35, Short.MAX_VALUE)
         );
 
         jPanel10.add(jPanel18);
@@ -822,12 +826,12 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jComboBox1, 0, 250, Short.MAX_VALUE)
                     .addComponent(jScrollPane5)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -895,9 +899,9 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -964,7 +968,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
         );
 
         pack();
@@ -976,12 +980,12 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
-       if(!mdp.isVisible()){
+      
                 mdp.setVisible(true);
         JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(JOptionPane.INFORMATION_MESSAGE==1){
             mdp.dispose();
-        }
+        
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -1023,8 +1027,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-       if(!fenetre.isVisible()){ fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");}
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");
     }//GEN-LAST:event_jLabel19MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1034,8 +1038,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 2 heures - 4 heures");}
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 2 heures - 4 heures");
     }//GEN-LAST:event_jLabel21MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1045,8 +1049,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");}
+       fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");
     }//GEN-LAST:event_jLabel23MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1056,8 +1060,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 6 heures - 8 heures");}
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 6 heures - 8 heures");
     }//GEN-LAST:event_jLabel25MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1067,8 +1071,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 8 heures - 10 heures");}
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 8 heures - 10 heures");
     }//GEN-LAST:event_jLabel27MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1078,8 +1082,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 10 heures - 12 heures");}
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 10 heures - 12 heures");
     }//GEN-LAST:event_jLabel34MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1089,8 +1093,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 12 heures - 14 heures");}
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 12 heures - 14 heures");
     }//GEN-LAST:event_jLabel38MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1100,8 +1104,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 14 heures - 16 heures");}
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 14 heures - 16 heures");
     }//GEN-LAST:event_jLabel39MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1111,8 +1115,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");}
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");
     }//GEN-LAST:event_jLabel43MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1122,8 +1126,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 18 heures - 20 heures");}
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 18 heures - 20 heures");
     }//GEN-LAST:event_jLabel40MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1133,8 +1137,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 20 heures - 22 heures");}
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 20 heures - 22 heures");
     }//GEN-LAST:event_jLabel41MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1144,8 +1148,8 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
-       if(!fenetre.isVisible()){ fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 22 heures - Minuit");}
+        fenetre.setVisible(true);
+        fenetre.setTitle("Ajout d'un soin: 22 heures - Minuit");
     }//GEN-LAST:event_jLabel29MouseClicked
     /**
      * Permet de se déconnecter, retour sur la page d'accueil à partir du menu
@@ -1318,29 +1322,29 @@ public class A32_Medecin extends javax.swing.JFrame {
 
         }
 if(a1==true && a2==true && a3==true && a4==true){
-    JOptionPane.showMessageDialog(jPanel1, "les données ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+    JOptionPane.showMessageDialog(jPanel13, "les données ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
 }
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        JOptionPane.showConfirmDialog(jPanel10, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        JOptionPane.showConfirmDialog(jPanel10, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      JOptionPane.showMessageDialog(jPanel1, "la prescription a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
+      JOptionPane.showMessageDialog(null, "la prescription a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        JOptionPane.showMessageDialog(jPanel1, "les observations ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "les observations ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        JOptionPane.showMessageDialog(jPanel1, "la lettre de sortie a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "la lettre de sortie a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
