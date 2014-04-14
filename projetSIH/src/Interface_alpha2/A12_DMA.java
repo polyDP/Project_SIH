@@ -5,11 +5,11 @@
  */
 package Interface_alpha2;
 
+import SIH.Administratif;
 import SIH.Date;
 import SIH.MedecinPH;
 import SIH.NumeroSejour;
 import SIH.Patient;
-import SIH.PersonnelMedical;
 import SIH.SQL;
 import SIH.SejourPatient;
 import SIH.Services;
@@ -32,8 +32,8 @@ public class A12_DMA extends javax.swing.JFrame {
      *
      * @param p
      */
-    public A12_DMA(Patient patient, boolean n, PersonnelMedical pm) {
-        this.pm = pm;
+    public A12_DMA(Patient patient, boolean n, Administratif adm) {
+        this.adm = adm;
         System.out.println("initialisation 1");
         dateJour = new Date();
         dateJour = dateJour.dateJour();
@@ -170,7 +170,6 @@ public class A12_DMA extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 204, 255));
         setBounds(new java.awt.Rectangle(200, 100, 0, 0));
         setExtendedState(10);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
@@ -189,7 +188,7 @@ public class A12_DMA extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("identifiant : "+pm.getNom()+" "+pm.getPrenom());
+        jLabel4.setText("identifiant : "+adm.getNom()+" "+adm.getPrenom());
         jPanel9.add(jLabel4);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -552,6 +551,11 @@ public class A12_DMA extends javax.swing.JFrame {
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Imprimer");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -560,6 +564,11 @@ public class A12_DMA extends javax.swing.JFrame {
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Tout sélectionner");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -578,6 +587,15 @@ public class A12_DMA extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Aide");
+        jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -604,7 +622,7 @@ public class A12_DMA extends javax.swing.JFrame {
         Changer_mdp mdp = new Changer_mdp();
         if (!mdp.isVisible()) {
             mdp.setVisible(true);
-            JOptionPane.showConfirmDialog(jMenuBar1, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
             if (JOptionPane.INFORMATION_MESSAGE == 1) {
                 mdp.dispose();
             }
@@ -624,7 +642,7 @@ public class A12_DMA extends javax.swing.JFrame {
             NumeroSejour numSej = sql.numeroSejourPatient(patient.getIpp());
             sql.fermerDossierMedicalAdministratifPatientBD(numSej);
             if (sql.getErr() != 1) {
-                JOptionPane.showMessageDialog(jPanel4, "le dossier a ete ferme",
+                JOptionPane.showMessageDialog(null, "le dossier a ete ferme",
                         "Information", JOptionPane.INFORMATION_MESSAGE);
                 jComboBox5.revalidate();
                 jComboBox5.repaint();
@@ -703,8 +721,8 @@ public class A12_DMA extends javax.swing.JFrame {
             sejPat.ouvertureDossier();
             patient.setDateAdmission(dateAdmission);
             sql.ajouterSejourPatientBD(patient, numSej, s, medecin, numLit);
-            JOptionPane.showConfirmDialog(jPanel6, "Le dossier Administratif du patient est ouvert", "confirmation", JOptionPane.OK_OPTION);
-            A11_DMA fenetre1 = new A11_DMA(pm);
+            JOptionPane.showConfirmDialog(null, "Le dossier Administratif du patient est ouvert", "confirmation", JOptionPane.OK_OPTION);
+            A11_DMA fenetre1 = new A11_DMA(adm);
             fenetre1.setVisible(true);
             this.dispose();
 
@@ -767,13 +785,25 @@ public class A12_DMA extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
+        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenu4MenuSelected
     /**
      * Permet de revenir en arrière sur la page A11_DMA
      *
      * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        A11_DMA fenetre = new A11_DMA(pm);
+        A11_DMA fenetre = new A11_DMA(adm);
         fenetre.setVisible(true);
         this.dispose();
     }
@@ -880,7 +910,7 @@ public class A12_DMA extends javax.swing.JFrame {
     private DefaultComboBoxModel comboLits;
     private DefaultComboBoxModel comboServices;
     private DefaultComboBoxModel comboHistorique;
-    private PersonnelMedical pm;
+    private Administratif adm;
     private String onglet;
     int rep;
     private MedecinPH medecin;

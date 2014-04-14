@@ -5,6 +5,7 @@
  */
 package Interface_alpha2;
 
+import SIH.Administratif;
 import SIH.Date;
 import SIH.Infirmiere;
 import SIH.MedecinPH;
@@ -30,8 +31,9 @@ public class A21_DIM extends javax.swing.JFrame {
     /**
      * Creates new form Premiere_page_dma
      */
-    public A21_DIM(PersonnelMedical pm) {
-        this.pm = pm;
+    public A21_DIM(Administratif adm) {
+        this.adm = adm;
+        dateJour = new Date();
         dateJour=dateJour.dateJour();
         comboServices = new DefaultComboBoxModel(service.values());
         comboServices.insertElementAt(vide, 0);
@@ -135,7 +137,6 @@ public class A21_DIM extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 204, 255));
         setBounds(new java.awt.Rectangle(200, 100, 0, 0));
         setExtendedState(10);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
@@ -152,7 +153,7 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("identifiant : " +pm.getNom()+" "+ pm.getPrenom());
+        jLabel4.setText("identifiant : " +adm.getNom()+" "+ adm.getPrenom());
         jPanel9.add(jLabel4);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -172,11 +173,6 @@ public class A21_DIM extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -470,6 +466,11 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Imprimer");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -478,6 +479,11 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Tout sélectionner");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -496,6 +502,15 @@ public class A21_DIM extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Aide");
+        jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -522,7 +537,7 @@ public class A21_DIM extends javax.swing.JFrame {
         Changer_mdp mdp = new Changer_mdp();
        if(!mdp.isVisible()){
                 mdp.setVisible(true);
-        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(JOptionPane.INFORMATION_MESSAGE==1){
             mdp.dispose();
         }
@@ -545,8 +560,8 @@ public class A21_DIM extends javax.swing.JFrame {
 
         if (onglet.contains("creation patient")) {
             if (jRadioButton3.isSelected()) {
-                nom = jTextField1.getText();
-                prenom = jTextField2.getText();
+                nom = jTextField1.getText().toLowerCase();
+                prenom = jTextField2.getText().toLowerCase();
                 
                 jLabel3.setText(id);
                 fonction = "PH";
@@ -554,14 +569,14 @@ public class A21_DIM extends javax.swing.JFrame {
                 
                 jLabel8.setText(motDePasse);
                 if (nom.length() == 0 | prenom.length() == 0) {
-                    JOptionPane.showMessageDialog(jPanel5, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
                 } else if (jComboBox2.getSelectedIndex() == 0) {
-                    JOptionPane.showMessageDialog(jPanel5, "veuillez selectionner un service", "erreur", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "veuillez selectionner un service", "erreur", JOptionPane.WARNING_MESSAGE);
                 } else {
                     motDePasse = this.StringMotDePasseAleatoire();
                     service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
                     this.newId(nom, prenom);
-                    rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                    rep = JOptionPane.showConfirmDialog(null, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
                     if (rep == JOptionPane.YES_OPTION) {
                         med = new MedecinPH(id, motDePasse, nom, prenom, fonction, service);
                         System.out.println(med.getFonction());
@@ -578,14 +593,14 @@ public class A21_DIM extends javax.swing.JFrame {
                         sql.ajouterMedecinPHBD(med);
 
                         if (sql.getErr() != 1) {
-                            JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showConfirmDialog(null, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
                 }
 
             } else if (jRadioButton1.isSelected()) {
-                nom = jTextField1.getText();
-                prenom = jTextField2.getText();
+                nom = jTextField1.getText().toLowerCase();
+                prenom = jTextField2.getText().toLowerCase();
                 
                 jLabel3.setText(id);
                 fonction = "Infirmier";
@@ -594,14 +609,14 @@ public class A21_DIM extends javax.swing.JFrame {
                 
                 jLabel8.setText(motDePasse);
                 if (nom.length() == 0 | prenom.length() == 0) {
-                    JOptionPane.showMessageDialog(jPanel5, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
                 } else if (jComboBox2.getSelectedIndex() == 0) {
-                    JOptionPane.showMessageDialog(jPanel5, "veuillez selectionner un service", "erreur", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "veuillez selectionner un service", "erreur", JOptionPane.WARNING_MESSAGE);
                 } else {
                     motDePasse = this.StringMotDePasseAleatoire();
                     this.newId(nom, prenom);
                     service = (Services) jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
-                    rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                    rep = JOptionPane.showConfirmDialog(null, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
 
                     if (rep == JOptionPane.YES_OPTION) {
                         inf = new Infirmiere(id, motDePasse, nom, prenom, fonction, service);
@@ -616,26 +631,26 @@ public class A21_DIM extends javax.swing.JFrame {
                         }
                         sql.ajouterInfirmiereBD(inf);
                         if (sql.getErr() != 1) {
-                            JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showConfirmDialog(null, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
                 }
 
             } else if (jRadioButton2.isSelected()) {
                 fonction = "Secretaire";
-                nom = jTextField1.getText();
-                prenom = jTextField2.getText();
+                nom = jTextField1.getText().toLowerCase();
+                prenom = jTextField2.getText().toLowerCase();
                 
                 jLabel3.setText(id);
                 fonction = jRadioButton3.getLabel();
                
                 jLabel8.setText(motDePasse);
                 if (nom.length() == 0 | prenom.length() == 0) {
-                    JOptionPane.showMessageDialog(jPanel5, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
                 }else {
                      motDePasse = this.StringMotDePasseAleatoire();
                     this.newId(nom, prenom);
-                    rep = JOptionPane.showConfirmDialog(jPanel5, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse, "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                    rep = JOptionPane.showConfirmDialog(null, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse, "confirmation", JOptionPane.OK_CANCEL_OPTION);
                     if (rep == JOptionPane.YES_OPTION) {
                         persMed = new PersonnelMedical(id, motDePasse, nom, prenom, fonction);
                         persMed.setServices(service.Administration);
@@ -650,13 +665,13 @@ public class A21_DIM extends javax.swing.JFrame {
                         }
                         sql.ajouterPersonnelMedicalBD(persMed);
                         if (sql.getErr() != 1) {
-                            JOptionPane.showConfirmDialog(jPanel5, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showConfirmDialog(null, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
                 }
 
             } else {
-                JOptionPane.showMessageDialog(jPanel5, "Veuillez sélectionner un personnel", "erreur", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Veuillez sélectionner un personnel", "erreur", JOptionPane.WARNING_MESSAGE);
             }
 
         }
@@ -690,12 +705,12 @@ public class A21_DIM extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        nom = jTextField1.getText();
+        nom = jTextField1.getText().toLowerCase();
         System.out.println(nom);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        prenom = jTextField2.getText();
+        prenom = jTextField2.getText().toLowerCase();
         System.out.println(prenom);
     }//GEN-LAST:event_jTextField2ActionPerformed
 
@@ -733,7 +748,7 @@ public class A21_DIM extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JOptionPane.showConfirmDialog(jPanel6, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
  /**
      * Permet la déconnexion, avec une demande de confirmation de l'utilisateur
@@ -742,13 +757,25 @@ public class A21_DIM extends javax.swing.JFrame {
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          A0_Accueil fenetre2 = new A0_Accueil();
-        int response = JOptionPane.showConfirmDialog(jPanel2, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
+        int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.YES_OPTION) {
             fenetre2.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
+        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenu4MenuSelected
    
     private String newId(String nom, String prenom) {
         id = nom + prenom.charAt(0);
@@ -809,7 +836,7 @@ public class A21_DIM extends javax.swing.JFrame {
     private DefaultComboBoxModel comboListePH;
     private DefaultComboBoxModel comboServices;
     private String vide = "";
-    private PersonnelMedical pm;
+    private Administratif adm;
     private SQL sql = null;
     static Random rnd = new Random();
     static final String AB = "0123456789abcdefghijklmnopqrstuvwxyz";

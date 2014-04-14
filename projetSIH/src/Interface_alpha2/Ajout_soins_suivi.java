@@ -10,6 +10,7 @@ package Interface_alpha2;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,11 +18,12 @@ import javax.swing.JOptionPane;
  * @author Ludivine
  */
 public class Ajout_soins_suivi extends javax.swing.JFrame {
-
+private JLabel label;
     /**
      * Creates new form Ajout_soins_suivi
      */
-    public Ajout_soins_suivi() {
+    public Ajout_soins_suivi(JLabel label) {
+        this.label = label;
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 this.addWindowListener( new WindowAdapter()
@@ -248,27 +250,44 @@ this.dispose();
  * @param evt 
  */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        boolean a1 = true;
+         boolean a1 = true;
         boolean a2 = true;
         boolean a3 = true;
-       
+        tension = jFormattedTextField1.getText();
         medicament = jTextField4.getText();
         poids = jTextField1.getText();
         glycemie = jTextField6.getText();
         temperature = jTextField2.getText();
         autres = jTextField5.getText();
+        medicament1="";
+    tension1="";
+    poids1="";
+    glycemie1="";
+    temperature1="";
+    autres1="";
+    prelevement1="";
         
-        if (jCheckBox1.isSelected() == true) {
-            prelevement = "oui";
+        if(medicament.length()!=0){
+            medicament1="M: "+medicament;
+        }
+        if(autres.length()!=0){
+            autres1="A: "+autres;
         }
 
-        if (jTextField2.getText().length() != 0) {
+        if (jCheckBox1.isSelected() == true) {
+            prelevement ="oui";
+            prelevement1 = "Pr: "+ prelevement;
+        } 
+       
+
+        if (temperature.length() != 0) {
             try {
                 if (Float.parseFloat(temperature) < 33 || Float.parseFloat(temperature) > 45) {
                     JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a1 = false;
                 } else {
                     a1 = true;
+                    temperature1="Tp: "+temperature;
 
                 }
             } catch (NumberFormatException e) {
@@ -276,7 +295,7 @@ this.dispose();
                 a1 = false;
             }
         }
-        if (jTextField1.getText().length() != 0) {
+        if (poids.length() != 0) {
             try {
                 if (Integer.parseInt(poids) < 0 || Integer.parseInt(poids) > 1000) {
                     JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -284,6 +303,8 @@ this.dispose();
                     a2 = false;
                 } else {
                     a2 = true;
+                    poids1="Pd: "+poids;
+                            
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -291,13 +312,14 @@ this.dispose();
 
             }
         }
-        if (jTextField6.getText().length() != 0) {
+        if (glycemie.length() != 0) {
             try {
                 if (Float.parseFloat(glycemie) < 0.2 || Float.parseFloat(glycemie) > 20) {
                     JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a2 = false;
                 } else {
                     a2 = true;
+                    glycemie1="G: "+glycemie;
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -305,12 +327,15 @@ this.dispose();
             }
 
         }
-
-        if (a1 == true && a2 == true && a3==true) {
-            this.dispose();
-            
+        if(!tension.equals("  /  ")){
+            tension1= "Ts: "+tension;
         }
-        
+
+        if (a1 == true && a2 == true && a3 == true) {
+
+           label.setText(medicament1 + " "  + poids1 + " " +  glycemie1 + " "  + autres1 + " "  + prelevement1 + " "  + temperature1 + " " + tension1);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
@@ -399,7 +424,7 @@ this.dispose();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ajout_soins_suivi().setVisible(true);
+                //new Ajout_soins_suivi(label).setVisible(true);
             }
         });
     }
@@ -410,6 +435,13 @@ private String glycemie ;
 private String temperature ; 
 private String autres ;  
 private String prelevement;
+private String medicament1;
+    private String tension1;
+    private String poids1;
+    private String glycemie1;
+    private String temperature1;
+    private String autres1;
+    private String prelevement1;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

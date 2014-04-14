@@ -39,7 +39,6 @@ public class NumeroSejour {
         typeNumSej="dateType";
         this.date = date;
         this.compteur=0;
-        //this.numero="0000";
         try {
             sql=new SQL();
         } catch (SQLException | InstantiationException | IllegalAccessException ex) {

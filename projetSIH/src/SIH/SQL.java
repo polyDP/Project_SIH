@@ -21,7 +21,8 @@ public class SQL {
     static ConnectionBD con;
     private int err;
     private String connexion;
-    private PersonnelMedical pm;
+    private Infirmiere infirmiere;
+    private Administratif administratif;
     private MedecinPH medecinPH;
 
     public SQL() throws SQLException, InstantiationException, IllegalAccessException {
@@ -189,23 +190,31 @@ public class SQL {
                 if (result.getString("ID_PH").equals(id)) {
                     boucle = false;
                     if (result.getString("Mdp_PH").equals(motDePasse)) {
-                        if (result.getString("Fonction_PH").equals("PH") | result.getString("Fonction_PH").equals("Interne")) {
+                        if (result.getString("Fonction_PH").equals("PH") || result.getString("Fonction_PH").equals("Interne")) {
                             connexion = "PH";
                             medecinPH = new MedecinPH(result.getString("ID_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
                         }
+                        if (result.getString("Fonction_PH").equals("PH")&& result.getString("Service_PH").equals(service.Anesthesie.toString())) {
+                            connexion = "Anesthesie";
+                             medecinPH = new MedecinPH(result.getString("ID_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
+                        }
+                        if (result.getString("Fonction_PH").equals("PH") && result.getString("Service_PH").equals(service.Imagerie.toString()) || result.getString("Fonction_PH").equals("PH")&&result.getString("Service_PH").equals(service.Biologie.toString())) {
+                            connexion = "MedicoTech";
+                             medecinPH = new MedecinPH(result.getString("ID_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
+                        }
                         if (result.getString("Fonction_PH").equals("Secretaire")) {
                             connexion = "Secretaire";
-                            pm = new PersonnelMedical(result.getString("ID_PH"), result.getString("Mdp_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"));
+                            administratif = new Administratif(result.getString("ID_PH"), result.getString("Mdp_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
                         }
                         if (result.getString("Fonction_PH").equals("Infirmier")) {
                             connexion = "Infirmier";
-                            pm = new PersonnelMedical(result.getString("ID_PH"), result.getString("Mdp_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"));
+                            infirmiere = new Infirmiere(result.getString("ID_PH"), result.getString("Mdp_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
                         }
                         if (result.getString("Fonction_PH").equals("DIM")) {
                             connexion = "DIM";
-                            pm = new PersonnelMedical(result.getString("ID_PH"), result.getString("Mdp_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"));
-
+                            administratif = new Administratif(result.getString("ID_PH"), result.getString("Mdp_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
                         }
+                        
                     } else {
                         JOptionPane.showMessageDialog(null, "Mot de passe incorrect",
                                 "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -360,16 +369,18 @@ public class SQL {
 
     public Vector<String> listePatient() {
         Vector<String> listePatient = new Vector<>();
-        String nomPrenom;
+        String nomPrenomDateNaissance;
         String requete = "SELECT * FROM donnee_personnelle ORDER BY Nom_P";
         try {
             PreparedStatement prepS = con.creerPreparedStatement(requete);
             ResultSet result = con.resultatRequete(requete);
             while (result.next()) {
 
-                nomPrenom = result.getString("Nom_P");
-                nomPrenom = nomPrenom + " " + result.getString("Prenom_P");
-                listePatient.add(nomPrenom);
+                nomPrenomDateNaissance = result.getString("Nom_P");
+                nomPrenomDateNaissance = nomPrenomDateNaissance + " " + result.getString("Prenom_P");
+                nomPrenomDateNaissance = nomPrenomDateNaissance + " " + result.getString("Date_Naissance");
+
+                listePatient.add(nomPrenomDateNaissance);
             }
 
         } catch (SQLException e) {
@@ -415,9 +426,8 @@ public class SQL {
             while (result.next()) {
 
                 nomPrenomFonction = result.getString("Nom_PH");
-
                 nomPrenomFonction = nomPrenomFonction + " " + result.getString("Prenom_PH");
-                nomPrenomFonction = nomPrenomFonction + " " + result.getString("Service_PH");
+                nomPrenomFonction = nomPrenomFonction + " - " + result.getString("Service_PH");
                 listeMedecinPH.add(nomPrenomFonction);
 
             }
@@ -441,9 +451,8 @@ public class SQL {
             while (result.next()) {
 
                 nomPrenomFonction = result.getString("Nom_PH");
-
                 nomPrenomFonction = nomPrenomFonction + " " + result.getString("Prenom_PH");
-                nomPrenomFonction = nomPrenomFonction + " " + result.getString("Service_PH");
+                nomPrenomFonction = nomPrenomFonction + " - " + result.getString("Service_PH");
                 listeMedecinPH.add(nomPrenomFonction);
 
             }
@@ -467,9 +476,8 @@ public class SQL {
             while (result.next()) {
 
                 nomPrenomFonction = result.getString("Nom_PH");
-
                 nomPrenomFonction = nomPrenomFonction + " " + result.getString("Prenom_PH");
-                nomPrenomFonction = nomPrenomFonction + " " + result.getString("Service_PH");
+                nomPrenomFonction = nomPrenomFonction + " - " + result.getString("Service_PH");
                 listeMedecinPH.add(nomPrenomFonction);
 
             }
@@ -551,7 +559,7 @@ public class SQL {
         try {
             lettreSortie.equalsIgnoreCase(null);
         } catch (NullPointerException npe) {
-            
+
             lettreSortie = "Pas de lettre de sortie";
         }
 
@@ -736,20 +744,6 @@ public class SQL {
     }
 
     /**
-     * @return the pm
-     */
-    public PersonnelMedical getPm() {
-        return pm;
-    }
-
-    /**
-     * @param pm the pm to set
-     */
-    public void setPm(PersonnelMedical pm) {
-        this.pm = pm;
-    }
-
-    /**
      * @return the medecinPH
      */
     public MedecinPH getMedecinPH() {
@@ -761,6 +755,34 @@ public class SQL {
      */
     public void setMedecinPH(MedecinPH medecinPH) {
         this.medecinPH = medecinPH;
+    }
+
+    /**
+     * @return the infirmiere
+     */
+    public Infirmiere getInfirmiere() {
+        return infirmiere;
+    }
+
+    /**
+     * @param infirmiere the infirmiere to set
+     */
+    public void setInfirmiere(Infirmiere infirmiere) {
+        this.infirmiere = infirmiere;
+    }
+
+    /**
+     * @return the administratif
+     */
+    public Administratif getAdministratif() {
+        return administratif;
+    }
+
+    /**
+     * @param administratif the administratif to set
+     */
+    public void setAdministratif(Administratif administratif) {
+        this.administratif = administratif;
     }
 
 }

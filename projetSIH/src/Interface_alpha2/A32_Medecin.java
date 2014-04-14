@@ -188,7 +188,6 @@ public class A32_Medecin extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 204, 255));
         setBounds(new java.awt.Rectangle(200, 100, 0, 0));
         setExtendedState(10);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -611,6 +610,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel18);
 
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel19.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel19.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -624,6 +625,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel20);
 
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel21.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -637,6 +640,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel22);
 
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel23.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -650,6 +655,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel24.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel24);
 
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel25.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel25.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -663,6 +670,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel26.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel26);
 
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel27.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel27.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -676,6 +685,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel32.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel32);
 
+        jLabel34.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel34.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel34.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel34.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -689,6 +700,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel28);
 
+        jLabel38.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel38.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel38.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -703,6 +716,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel37.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel37);
 
+        jLabel39.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel39.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel39.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel39.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -716,6 +731,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel33.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel33);
 
+        jLabel43.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel43.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel43.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel43.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -729,6 +746,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel42.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel42);
 
+        jLabel40.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel40.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel40.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel40.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -742,6 +761,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel35.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel35);
 
+        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel41.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel41.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel41.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -755,6 +776,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel36.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.add(jLabel36);
 
+        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel29.setToolTipText("Pr: prelevement" +"\n"+" Pd: poids"+" \n"+" Tp: température" +"\n"+" M: médicament" +"\n "+"A: autres"+ "\n"+ "G:glycemie" +"\n "+"Ts: tension");
         jLabel29.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -933,6 +956,11 @@ public class A32_Medecin extends javax.swing.JFrame {
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Imprimer");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -941,6 +969,11 @@ public class A32_Medecin extends javax.swing.JFrame {
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Tout sélectionner");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -959,6 +992,15 @@ public class A32_Medecin extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Aide");
+        jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -985,7 +1027,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         Changer_mdp mdp = new Changer_mdp();
       
                 mdp.setVisible(true);
-        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(JOptionPane.INFORMATION_MESSAGE==1){
             mdp.dispose();
         
@@ -1029,7 +1071,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel19);
         tension = jFormattedTextField1.getText();
         poids = jTextField1.getText();
         glycemie = jTextField6.getText();
@@ -1047,7 +1089,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel21);
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 2 heures - 4 heures");
     }//GEN-LAST:event_jLabel21MouseClicked
@@ -1058,7 +1100,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel23);
        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");
     }//GEN-LAST:event_jLabel23MouseClicked
@@ -1069,7 +1111,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel25);
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 6 heures - 8 heures");
     }//GEN-LAST:event_jLabel25MouseClicked
@@ -1080,7 +1122,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel27);
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 8 heures - 10 heures");
     }//GEN-LAST:event_jLabel27MouseClicked
@@ -1091,7 +1133,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel34);
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 10 heures - 12 heures");
     }//GEN-LAST:event_jLabel34MouseClicked
@@ -1102,7 +1144,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel38);
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 12 heures - 14 heures");
     }//GEN-LAST:event_jLabel38MouseClicked
@@ -1113,7 +1155,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel39);
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 14 heures - 16 heures");
     }//GEN-LAST:event_jLabel39MouseClicked
@@ -1124,7 +1166,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel43);
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");
     }//GEN-LAST:event_jLabel43MouseClicked
@@ -1135,7 +1177,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel40);
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 18 heures - 20 heures");
     }//GEN-LAST:event_jLabel40MouseClicked
@@ -1146,7 +1188,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel41);
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 20 heures - 22 heures");
     }//GEN-LAST:event_jLabel41MouseClicked
@@ -1157,7 +1199,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      * @param evt
      */
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
-        Ajout_soins_suivi fenetre = new Ajout_soins_suivi();
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel29);
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 22 heures - Minuit");
     }//GEN-LAST:event_jLabel29MouseClicked
@@ -1177,10 +1219,10 @@ public class A32_Medecin extends javax.swing.JFrame {
         if (taille.length() != 0) {
             try {
                 if (Integer.parseInt(taille) < 10 || Integer.parseInt(taille) > 3000) {
-                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
             }
 
@@ -1193,11 +1235,11 @@ public class A32_Medecin extends javax.swing.JFrame {
         if (poids.length() != 0) {
             try {
                 if (Integer.parseInt(poids) < 0 || Integer.parseInt(poids) > 1000) {
-                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
             }
         }
@@ -1209,11 +1251,11 @@ public class A32_Medecin extends javax.swing.JFrame {
         if (glycemie.length() != 0) {
             try {
                 if (Float.parseFloat(glycemie) < 0.2 ||Float.parseFloat(glycemie) > 20) {
-                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
             }
 
@@ -1226,11 +1268,11 @@ public class A32_Medecin extends javax.swing.JFrame {
         if (jTextField2.getText().length() != 0) {
             try {
                 if (Float.parseFloat(temperature) < 33 || Float.parseFloat(temperature) > 45) {
-                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
         }
 
@@ -1277,28 +1319,28 @@ public class A32_Medecin extends javax.swing.JFrame {
         if (temperature.length() != 0) {
             try {
                 if (Double.parseDouble(temperature) < 33 || Double.parseDouble(temperature) > 45) {
-                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a1 = false;
                 } else {
                     a1 = true;
 
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                 a1 = false;
             }
         }
         if (poids.length() != 0) {
             try {
                 if (Double.parseDouble(poids) < 0 || Double.parseDouble(poids) > 1000) {
-                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
                     a2 = false;
                 } else {
                     a2 = true;
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                 a2 = false;
 
             }
@@ -1306,13 +1348,13 @@ public class A32_Medecin extends javax.swing.JFrame {
         if (glycemie.length() != 0) {
             try {
                 if (Double.parseDouble(glycemie) < 0.2 || Double.parseDouble(glycemie) > 20) {
-                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a2 = false;
                 } else {
                     a2 = true;
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
             }
 
@@ -1320,19 +1362,19 @@ public class A32_Medecin extends javax.swing.JFrame {
         if (taille.length() != 0) {
             try {
                 if (Integer.parseInt(taille) < 10 || Integer.parseInt(taille) > 3000) {
-                    JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a4 = false;
                 } else {
                     a4 = true;
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showConfirmDialog(jPanel13, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
             }
 
         }
 if(a1==true && a2==true && a3==true && a4==true){
-    JOptionPane.showMessageDialog(jPanel13, "les données ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+    JOptionPane.showMessageDialog(null, "les données ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
 }
 
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -1356,6 +1398,18 @@ if(a1==true && a2==true && a3==true && a4==true){
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         JOptionPane.showMessageDialog(null, "la lettre de sortie a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+            JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+            JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
+            JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenu4MenuSelected
 
     /**
      * @param args the command line arguments
