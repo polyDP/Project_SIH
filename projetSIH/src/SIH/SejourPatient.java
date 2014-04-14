@@ -153,7 +153,7 @@ public class SejourPatient {
 
     public String infosSejour() {
         String infos = "Informations sejour : \n";
-        infos = infos + "Numero du sejour : " + numSej.getNumeroSejour()+"\n";
+        infos = infos + "Numero du sejour : " + numSej.toString()+"\n";
         infos = infos + "Date de l'entree : " + dateEntree.toString()+"\n";
         infos = infos + "Service : " + servicePat.toString()+"\n";
         infos = infos + "Numero du lit : " + lit.idLit()+"\n";
@@ -168,6 +168,20 @@ public class SejourPatient {
 
         infoHistorique = infoHistorique + "\nLettre de sortie :\n" + lettreSortie;
         return infoHistorique;
+    }
+
+    /**
+     * @return the lettreSortie
+     */
+    public String getLettreSortie() {
+        return lettreSortie;
+    }
+
+    /**
+     * @param lettreSortie the lettreSortie to set
+     */
+    public void setLettreSortie(String lettreSortie) {
+        this.lettreSortie = lettreSortie;
     }
 
 }

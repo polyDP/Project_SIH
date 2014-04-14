@@ -5,7 +5,10 @@
  */
 package SIH;
 
+import java.sql.SQLException;
 import java.text.NumberFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,33 +26,58 @@ public class NumeroSejour {
     
     private String typeNumSej;
     
-    public NumeroSejour(String numSej){
-        this.numSej = numSej;
-        typeNumSej="StringType";
+    private SQL sql;
+    
+    private String numSejourValue;
+    
+    public NumeroSejour(){
+        this.compteur = 0;
+        this.numero = "000000";
     }
-
-    public NumeroSejour(Date date) {
+    
+     public NumeroSejour(Date date) {
+        typeNumSej="dateType";
         this.date = date;
         this.compteur=0;
-        this.numero="0000";
-        final int nbDigits = 4;
-        NumberFormat nbf = NumberFormat.getNumberInstance();
-        nbf.setMinimumIntegerDigits(nbDigits);
-        nbf.setGroupingUsed(false);
-        nbf.setMaximumIntegerDigits(nbDigits);
-        numero = nbf.format(compteur);
-        typeNumSej="DateType";
+        //this.numero="0000";
+        try {
+            sql=new SQL();
+        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(NumeroSejour.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        numSejourValue = sql.dernierNumeroSejour();
+        
+        
+        int n = 5;
+        int length = numSejourValue.length();
+        
+        numero = numSejourValue.substring(length - n, length);
+        
+        numero = this.incrementerNumeroSejour(numero);
+        
+        typeNumSej="dateType";
 
     }
+     
+    public NumeroSejour(String numSej){
+        this.numSej = numSej;
+        typeNumSej="stringType";
+    }
 
-    public void incrementerCompteur() {
-        final int nbDigits = 4;
-        NumberFormat nbf = NumberFormat.getNumberInstance();
-        nbf.setMinimumIntegerDigits(nbDigits);
-        nbf.setGroupingUsed(false);
-        nbf.setMaximumIntegerDigits(nbDigits);
-        compteur++;
-        numero =nbf.format(compteur);
+   
+
+    public String incrementerNumeroSejour(String numero) {
+        long compteur ;
+        compteur = Integer.parseInt(numero);
+         final int nbdigits = 5;
+         NumberFormat nbf = NumberFormat.getNumberInstance();
+          nbf.setMinimumIntegerDigits(nbdigits);
+          nbf.setGroupingUsed(false);
+           nbf.setMaximumIntegerDigits(nbdigits);
+           
+           String sformatee = nbf.format(compteur+1);
+           
+        return sformatee;
 
     }
 
@@ -95,12 +123,13 @@ public class NumeroSejour {
         this.numero = numero;
     }
     
-    public String getNumeroSejour(){
+    public String toString(){
         String numeroSejour=null;
         
-        if(typeNumSej.equals("DateType")){
+        if(typeNumSej.equals("dateType")){
+            
           numeroSejour = date.formatAnneeString2digit()+date.formatMoisString()+numero;  
-        } else if(typeNumSej.equals("StringType")){
+        } else if(typeNumSej.equals("stringType")){
           numeroSejour= numSej;
             
         }

@@ -32,12 +32,12 @@ public class A12_DMA extends javax.swing.JFrame {
      *
      * @param p
      */
-    public A12_DMA(Patient p, boolean n, PersonnelMedical pm) {
+    public A12_DMA(Patient patient, boolean n, PersonnelMedical pm) {
         this.pm = pm;
-
+        System.out.println("initialisation 1");
         dateJour = new Date();
         dateJour = dateJour.dateJour();
-        System.out.println("datedujour"+dateJour.getAnnee());
+        System.out.println("datedujour" + dateJour.getAnnee());
         comboServices = new DefaultComboBoxModel(service.values());
         comboServices.insertElementAt(vide, 0);
         comboServices.removeElement(service.Administration);
@@ -50,11 +50,13 @@ public class A12_DMA extends javax.swing.JFrame {
         comboPHService = new DefaultComboBoxModel();
 
         yearIndex = (int) (dateJour.getAnnee() - 2014);
-        if (n) {
-            jTabbedPane1.getTabComponentAt(1).setVisible(false);
-            this.patient = p;
-
+        if (n == true) {
+            System.out.println("patient nouveau cree" + n);
+            this.patient = patient;
+            comboHistorique = new DefaultComboBoxModel();
             initComponents();
+            jTabbedPane1.remove(1);
+            this.patient = patient;
 
             setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             this.addWindowListener(new WindowAdapter() {
@@ -67,8 +69,9 @@ public class A12_DMA extends javax.swing.JFrame {
 
                 }
             });
-        } else {
-            this.patient = p;
+        } else if (n == false) {
+            System.out.println("patient recherche" + n);
+            this.patient = patient;
             try {
                 sql = new SQL();
             } catch (SQLException ex) {
@@ -599,12 +602,12 @@ public class A12_DMA extends javax.swing.JFrame {
      */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
-       if(!mdp.isVisible()){
-                mdp.setVisible(true);
-        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if(JOptionPane.INFORMATION_MESSAGE==1){
-            mdp.dispose();
-        }
+        if (!mdp.isVisible()) {
+            mdp.setVisible(true);
+            JOptionPane.showConfirmDialog(jMenuBar1, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (JOptionPane.INFORMATION_MESSAGE == 1) {
+                mdp.dispose();
+            }
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -618,7 +621,14 @@ public class A12_DMA extends javax.swing.JFrame {
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir fermer le dossier?", "Confirmer",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.YES_OPTION) {
-
+            NumeroSejour numSej = sql.numeroSejourPatient(patient.getIpp());
+            sql.fermerDossierMedicalAdministratifPatientBD(numSej);
+            if (sql.getErr() != 1) {
+                JOptionPane.showMessageDialog(jPanel4, "le dossier a ete ferme",
+                        "Information", JOptionPane.INFORMATION_MESSAGE);
+                jComboBox5.revalidate();
+                jComboBox5.repaint();
+            }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
     /**
@@ -681,22 +691,22 @@ public class A12_DMA extends javax.swing.JFrame {
         String valMois = (jComboBox2.getItemAt(jComboBox2.getSelectedIndex()).toString());
         mois = this.moisToDigit(valMois);
         annee = (int) Integer.parseInt(jComboBox3.getItemAt(jComboBox3.getSelectedIndex()).toString());
-        Date dateAdmission = new Date(jour,mois,annee);
+        Date dateAdmission = new Date(jour, mois, annee);
         s = (Services) jComboBox4.getItemAt(jComboBox4.getSelectedIndex());
         String nomPrenomPH = (String) jComboBox6.getItemAt(jComboBox6.getSelectedIndex());
         String nomPH = nomPrenomPH.substring(0, nomPrenomPH.indexOf(" "));
         String prenomPH = nomPrenomPH.substring(nomPrenomPH.indexOf(" ") + 1);
         medecin = sql.rechercherMedecin(nomPH, prenomPH);
         String numLit = (String) jComboBox7.getItemAt(jComboBox7.getSelectedIndex()).toString();
-        rep = JOptionPane.showConfirmDialog(jPanel6, "voulez vous ouvrir le dossier et creer le sejour du patient : " + patient.getNom()+" " + patient.getPrenom() + " \n    - numero sejour : " + numSej.getNumeroSejour() + "\n    - service : " + s + "\n    - medecin responsable : " + nomPH+" " + prenomPH + "\n    - lit: " + numLit , "confirmation", JOptionPane.OK_CANCEL_OPTION);
+        rep = JOptionPane.showConfirmDialog(jPanel6, "voulez vous ouvrir le dossier et creer le sejour du patient : " + patient.getNom() + " " + patient.getPrenom() + " \n    - numero sejour : " + numSej.toString() + "\n    - service : " + s + "\n    - medecin responsable : " + nomPH + " " + prenomPH + "\n    - lit: " + numLit, "confirmation", JOptionPane.OK_CANCEL_OPTION);
         if (rep == JOptionPane.YES_OPTION) {
             sejPat.ouvertureDossier();
             patient.setDateAdmission(dateAdmission);
             sql.ajouterSejourPatientBD(patient, numSej, s, medecin, numLit);
             JOptionPane.showConfirmDialog(jPanel6, "Le dossier Administratif du patient est ouvert", "confirmation", JOptionPane.OK_OPTION);
             A11_DMA fenetre1 = new A11_DMA(pm);
-        fenetre1.setVisible(true);
-        this.dispose();
+            fenetre1.setVisible(true);
+            this.dispose();
 
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -728,13 +738,25 @@ public class A12_DMA extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel4ComponentShown
 
     private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
-        numSej = (String) jComboBox5.getSelectedItem();
+        String numSej = (String) jComboBox5.getSelectedItem();
 
         numSej = numSej.substring(0, numSej.indexOf(" "));
         NumeroSejour numeroSejour = new NumeroSejour(numSej);
         try {
             sql = new SQL();
-            jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, numeroSejour).historiqueSejour());
+            SejourPatient sejPat = sql.infoHistoriqueSejourPatient(patient, numeroSejour);
+            jTextArea1.setText(sejPat.historiqueSejour());
+            if (!sejPat.isEtatDossier()){
+                jButton3.setVisible(false);
+            } else {
+                if(sejPat.getLettreSortie().equals("Pas de lettre de sortie")){
+                    JOptionPane.showMessageDialog(null, "le patient n'a pas encore de lettre de sortie, son dossier ne pourra pas etre ferme",
+                    "Information", JOptionPane.INFORMATION_MESSAGE);
+                jButton3.setVisible(false);
+                } else {
+                    jButton3.setVisible(true);
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -850,7 +872,7 @@ public class A12_DMA extends javax.swing.JFrame {
         return mois;
 
     }
-    private String numSej;
+
     private SQL sql;
     private String vide = "";
     private Services service;
@@ -870,7 +892,7 @@ public class A12_DMA extends javax.swing.JFrame {
     private int jour;
     private int mois;
     private int annee;
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;

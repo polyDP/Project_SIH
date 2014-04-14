@@ -37,7 +37,7 @@ public class SQL {
         try {
 
             String requete = "INSERT INTO donnee_personnelle(IPP,Sexe,Nom_P,Prenom_P,Date_Naissance,Num_Tel,Numero_Adresse,Nom_Rue,Code_Postal,Ville,Med_T)"
-                    + "Values (?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "Values (?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement prepS = con.creerPreparedStatement(requete);
 
             prepS.setObject(1, p.getIpp().toString());
@@ -77,7 +77,7 @@ public class SQL {
                     + "Values (?,?,?,?,?,?,?)";
             PreparedStatement prepS = con.creerPreparedStatement(requete);
 
-            prepS.setObject(1, numSej.getNumeroSejour());
+            prepS.setObject(1, numSej.toString());
 
             prepS.setObject(2, p.getIpp().toString());
 
@@ -246,6 +246,27 @@ public class SQL {
                     "Erreur", JOptionPane.ERROR_MESSAGE);
         }
         return ippValue;
+    }
+
+    public String dernierNumeroSejour() {
+        String numSejourValue = null;
+        String requete = "SELECT MAX(Num_Sejour) FROM nouveau_sejour";
+
+        try {
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+                numSejourValue = result.getString("MAX(Num_Sejour)");
+
+            }
+
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return numSejourValue;
     }
 
     public Patient rechercherPatient(String nom, String prenom) {
@@ -506,38 +527,82 @@ public class SQL {
         return numSej;
     }
 
+    public String getLettreSortiePatient(NumeroSejour numSej) {
+
+        String lettreSortie = null;
+
+        String requete = "SELECT Lettre_Sortie FROM nouveau_sejour,lettre_sortie,personnel\n"
+                + "WHERE lettre_sortie.Num_Sejour = nouveau_sejour.Num_Sejour \n"
+                + "AND nouveau_sejour.Num_Sejour ='" + numSej.toString() + "'";
+        try {
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+
+                lettreSortie = result.getString("Lettre_Sortie");
+
+            }
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+        try {
+            lettreSortie.equalsIgnoreCase(null);
+        } catch (NullPointerException npe) {
+            
+            lettreSortie = "Pas de lettre de sortie";
+        }
+
+        return lettreSortie;
+    }
+
+    public void fermerDossierMedicalAdministratifPatientBD(NumeroSejour numSej) {
+        try {
+            String requete = "UPDATE nouveau_sejour SET Etat_Dossier = ? WHERE Num_Sejour = ?";
+
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            prepS.setString(1, "ferme");
+            prepS.setObject(2, numSej.toString());
+            prepS.executeUpdate();
+            System.out.println();
+
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique contenant ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public SejourPatient infoHistoriqueSejourPatient(Patient p, NumeroSejour numSej) {
 
-        //NumeroSejour numeroSejour = null;
-        
         Date dateEntree = null;
         Services servicePat = null;
-        //String medResp = null;
         Lit lit = null;
         boolean etatDossier = false;
         String lettreSortie = null;
         MedecinPH medecin = null;
         Services service = null;
-        
-        String requete = "SELECT * FROM nouveau_sejour,donnee_personnelle,lettre_sortie,personnel WHERE donnee_personnelle.IPP = nouveau_sejour.IPP AND donnee_personnelle.IPP='" + p.getIpp()+ "'AND lettre_sortie.Num_Sejour = nouveau_sejour.Num_Sejour AND nouveau_sejour.Num_Sejour = '"+ numSej.getNumeroSejour() +"' AND personnel.ID_PH = nouveau_sejour.PH_Resp";
+
+        String requete = "SELECT * FROM nouveau_sejour,donnee_personnelle,personnel WHERE donnee_personnelle.IPP = nouveau_sejour.IPP AND donnee_personnelle.IPP='" + p.getIpp() + "' AND nouveau_sejour.Num_Sejour = '" + numSej.toString() + "' AND personnel.ID_PH = nouveau_sejour.PH_Resp";
 
         try {
 
             ResultSet result = con.resultatRequete(requete);
             while (result.next()) {
 
-                
                 dateEntree = new Date(result.getString("Date_Entree"));
+
                 servicePat = servicePat.valueOf(result.getString("Service_P"));
                 medecin = new MedecinPH(result.getString("ID_PH"), result.getString("Mdp_PH"), result.getString("Nom_PH"), result.getString("prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
-                
-                
+
+                lettreSortie = this.getLettreSortiePatient(numSej);
+
                 lit = new Lit(result.getString("Loca_P"));
                 System.out.println(lit.idLit());
                 if (result.getString("Etat_Dossier").equals("Ouvert")) {
                     etatDossier = true;
                 };
-                lettreSortie = result.getString("Lettre_Sortie");
 
             }
 
@@ -604,6 +669,42 @@ public class SQL {
                     "Erreur", JOptionPane.ERROR_MESSAGE);
         }
         return listePHService;
+    }
+
+    public void ajouterSoinsArrivee(Patient p, NumeroSejour ns, PersonnelMedical pm, Date dateJourCsteEnt, Constantes cste) {
+        try {
+
+            String requete = "INSERT INTO donnee_personnelle(IPP,Num_Sejour,Acteur_Csent,Date_Csent,Taille_Ent,Poids_Ent,Temp_Ent,Tension_Ent,Glycemie_Ent,Autre_Soins_Ent)"
+                    + "Values (?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+
+            prepS.setObject(1, p.getIpp().toString());
+
+            prepS.setObject(2, ns.toString());
+
+            prepS.setObject(3, pm.getId().toString());
+
+            prepS.setObject(4, dateJourCsteEnt.toString());
+
+            prepS.setObject(5, cste.getTaille());
+
+            prepS.setObject(6, cste.getPoids());
+
+            prepS.setObject(7, cste.getTemperature());
+
+            prepS.setObject(8, cste.getTension());
+
+            prepS.setObject(9, cste.getGlycemie());
+
+            prepS.setObject(10, cste.getAutreSoins());
+
+            prepS.executeUpdate();
+
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique avec ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
+
+        }
     }
 
     /**

@@ -20,7 +20,7 @@ public class TestsSql {
      */
     public static void main(String[] args) {
         NumeroSejour numsej = new NumeroSejour("10050236");
-        System.out.println(numsej.getNumeroSejour());
+        System.out.println(numsej.toString());
         
         
         try {
@@ -35,7 +35,7 @@ public class TestsSql {
                 //System.out.println(sql.listeMedecinPH().get(i));
                 //System.out.println(sql.listeHistoriqueSejourPatient(p));
                 //System.out.println(sql.listePatientParMedecin(Services.Pediatrie));
-                System.out.println(sql.infoHistoriqueSejourPatient(p,new NumeroSejour("10050236")));
+                //System.out.println(sql.infoHistoriqueSejourPatient(p,new NumeroSejour("10050236")));
                 //System.out.println(sql.listeInfirmiere().get(i));
                // System.out.println(sql.listeSecretaire().get(i));
                 //System.out.println(Services.Pediatrie.toString());

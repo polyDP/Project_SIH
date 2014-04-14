@@ -175,13 +175,13 @@ public class Test {
         System.out.println(numSej.getCompteur());
         System.out.println(numSej.getNumero());
         System.out.println(numSej.getDate());
-        numSej.incrementerCompteur();
-        System.out.println(numSej.getNumeroSejour());
+        //numSej.incrementerCompteur();
+        //System.out.println(numSej.getNumeroSejour());
         
-        System.out.println(numSej.getCompteur());
+        //System.out.println(numSej.getCompteur());
         System.out.println(numSej.getNumero());
         System.out.println(numSej.getDate());
-        System.out.println(numSej.getNumeroSejour());
+        //System.out.println(numSej.getNumeroSejour());
         
         IPP ipp = new IPP(dateSejour);
         System.out.println(ipp.toString());
