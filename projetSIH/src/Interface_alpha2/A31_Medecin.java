@@ -143,6 +143,11 @@ public class A31_Medecin extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Déconnexion");
         jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,25 +347,19 @@ public class A31_Medecin extends javax.swing.JFrame {
         System.out.println(prenomRecherche);
         
         A32_Medecin fenetre3 =  new A32_Medecin(medecin,sql.rechercherPatient(nomRecherche, prenomRecherche));
-        System.out.println(sql.rechercherPatient(nomRecherche, prenomRecherche).getNom());
       fenetre3.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-   /**
-     * retour à la page d'accueil à partir du bouton prévu à cet effet
-     *
-     * @param evt
-     */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        A0_Accueil fenetre3 = new A0_Accueil();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       A0_Accueil fenetre3 = new A0_Accueil();
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.YES_OPTION) {
             fenetre3.setVisible(true);
             this.dispose();
         }
-    }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

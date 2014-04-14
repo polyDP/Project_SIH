@@ -5,17 +5,15 @@
  */
 package Interface_alpha2;
 
+import SIH.Administratif;
 import SIH.Adresse;
 import SIH.Date;
 import SIH.IPP;
 import SIH.Patient;
-import SIH.PersonnelMedical;
 import SIH.SQL;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -31,8 +29,8 @@ public class A11_DMA extends javax.swing.JFrame {
     /**
      * Creates new form Premiere_page_dma
      */
-    public A11_DMA(PersonnelMedical pm) {
-        this.pm = pm;
+    public A11_DMA(Administratif adm) {
+        this.adm = adm;
         dateJour = new Date();
         dateJour = dateJour.dateJour();
         try {
@@ -136,7 +134,7 @@ public class A11_DMA extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("identifiant : "+pm.getNom()+" "+pm.getPrenom());
+        jLabel4.setText("identifiant : "+adm.getNom()+" "+adm.getPrenom());
         jPanel9.add(jLabel4);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -838,8 +836,8 @@ public class A11_DMA extends javax.swing.JFrame {
                                 rep = JOptionPane.showConfirmDialog(jPanel5, "creation du patient : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - sexe : " + sexe + "\n    - telephone : " + telephone + "\n    - medecin traitant : " + medecinTraitant + "\n    - date de naissance : " + dateNaissance + "\n    - adresse : " + adressePatient.toString(), "confirmation", JOptionPane.OK_CANCEL_OPTION);
                                 if (rep == JOptionPane.YES_OPTION) {
                                     patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
-
-                                    ipp = new IPP(this.dateJour());
+                                    
+                                    ipp = new IPP(dateJour);
 
                                     System.out.println("ipp apres dernier SQL" + ipp);
                                     patient.setIpp(ipp);
@@ -850,7 +848,7 @@ public class A11_DMA extends javax.swing.JFrame {
                                     if (sql.getErr() != 1) {
                                         this.dispose();
                                         boolean n = true;
-                                        A12_DMA a12_dma = new A12_DMA(patient, n,pm);
+                                        A12_DMA a12_dma = new A12_DMA(patient, n,adm);
                                         a12_dma.setVisible(true);
                                     }
 
@@ -874,7 +872,7 @@ public class A11_DMA extends javax.swing.JFrame {
         prenomRecherche = splited[1];
         System.out.println(prenomRecherche);
             
-            A12_DMA a12_dma = new A12_DMA(sql.rechercherPatient(nomRecherche, prenomRecherche), n,pm);
+            A12_DMA a12_dma = new A12_DMA(sql.rechercherPatient(nomRecherche, prenomRecherche), n,adm);
             a12_dma.setVisible(true);
             //rechercher patient dans base de données
         }
@@ -884,7 +882,6 @@ public class A11_DMA extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         String val;
         val = jComboBox1.getSelectedItem().toString();
-        System.out.println(val);
         String[] splited = val.split("\\s+");
         nomRecherche = splited[0];
         System.out.println(nomRecherche);
@@ -1003,17 +1000,7 @@ public class A11_DMA extends javax.swing.JFrame {
         return mois;
     }
 
-    private Date dateJour() {
-        Locale locale = Locale.getDefault();
-        Calendar cal = Calendar.getInstance(locale);
-        day = cal.get(Calendar.DAY_OF_MONTH);
-        month = cal.get(Calendar.MONTH);
-        month = month + 1;
-        year = cal.get(Calendar.YEAR);
-        Date dateJour = new Date(day, month, year);
-        return dateJour;
-    }
-    private PersonnelMedical pm;
+    private Administratif adm;
     private SQL sql = null;
     private int year;
     private int month;

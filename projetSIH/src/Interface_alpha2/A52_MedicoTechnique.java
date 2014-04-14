@@ -7,6 +7,8 @@
 package Interface_alpha2;
 
 import SIH.Date;
+import SIH.MedecinPH;
+import SIH.Patient;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -22,8 +24,11 @@ public class A52_MedicoTechnique extends javax.swing.JFrame {
     /**
      * Creates new form Premiere_page_dma
      */
-    public A52_MedicoTechnique() {
+    public A52_MedicoTechnique(Patient patient, MedecinPH medecin) {
+        dateJour = new Date();
         dateJour=dateJour.dateJour();
+        this.patient = patient;
+        this.medecin = medecin;
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 this.addWindowListener( new WindowAdapter()
@@ -55,6 +60,7 @@ this.addWindowListener( new WindowAdapter()
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel3 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -63,7 +69,6 @@ this.addWindowListener( new WindowAdapter()
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -89,6 +94,19 @@ this.addWindowListener( new WindowAdapter()
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 532, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DM patient Médicotech");
         setBackground(new java.awt.Color(153, 204, 255));
@@ -106,7 +124,7 @@ this.addWindowListener( new WindowAdapter()
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Patient");
+        jLabel4.setText("identifiant : "+patient.getNom()+" "+patient.getPrenom());
         jPanel9.add(jLabel4);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -114,7 +132,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel9.add(jLabel3);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Identifiant");
+        jLabel1.setText("identifiant : "+medecin.getNom()+" "+medecin.getPrenom());
         jPanel9.add(jLabel1);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -128,29 +146,14 @@ this.addWindowListener( new WindowAdapter()
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Sortie du dossier");
         jButton1.setToolTipText("");
-        jPanel2.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton1);
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
-        );
-
-        jPanel8.add(jPanel3, java.awt.BorderLayout.LINE_END);
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -170,7 +173,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
+                .addContainerGap(233, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(112, 112, 112))
         );
@@ -196,9 +199,9 @@ this.addWindowListener( new WindowAdapter()
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
+                .addContainerGap(152, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +246,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
+                .addContainerGap(115, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -255,7 +258,7 @@ this.addWindowListener( new WindowAdapter()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
@@ -376,18 +379,16 @@ this.dispose();         // TODO add your handling code here:
     JOptionPane.showMessageDialog(jPanel11, "les observations ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
 
     }//GEN-LAST:event_jButton4ActionPerformed
-/**
- * retour à  la page du service médicotechnique, sortie du dossier du patient
- * @param evt 
- */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        A51_MedicoTechnique fenetre51 = new A51_MedicoTechnique();
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      A51_MedicoTechnique fenetre51 = new A51_MedicoTechnique( medecin);
      int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     if (response == JOptionPane.YES_OPTION) {
      fenetre51.setVisible(true);
         this.dispose();
-    }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 }
     /**
      * @param args the command line arguments
@@ -419,10 +420,12 @@ this.dispose();         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new A52_MedicoTechnique().setVisible(true);
+                //new A52_MedicoTechnique(MedecinPH medecin).setVisible(true);
             }
         });
     }
+    private Patient patient;
+    private MedecinPH medecin;
 private Date dateJour;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

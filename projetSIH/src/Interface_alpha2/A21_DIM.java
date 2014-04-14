@@ -5,6 +5,7 @@
  */
 package Interface_alpha2;
 
+import SIH.Administratif;
 import SIH.Date;
 import SIH.Infirmiere;
 import SIH.MedecinPH;
@@ -30,8 +31,9 @@ public class A21_DIM extends javax.swing.JFrame {
     /**
      * Creates new form Premiere_page_dma
      */
-    public A21_DIM(PersonnelMedical pm) {
-        this.pm = pm;
+    public A21_DIM(Administratif adm) {
+        this.adm = adm;
+        dateJour = new Date();
         dateJour=dateJour.dateJour();
         comboServices = new DefaultComboBoxModel(service.values());
         comboServices.insertElementAt(vide, 0);
@@ -152,7 +154,7 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("identifiant : " +pm.getNom()+" "+ pm.getPrenom());
+        jLabel4.setText("identifiant : " +adm.getNom()+" "+ adm.getPrenom());
         jPanel9.add(jLabel4);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -172,11 +174,6 @@ public class A21_DIM extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -545,8 +542,8 @@ public class A21_DIM extends javax.swing.JFrame {
 
         if (onglet.contains("creation patient")) {
             if (jRadioButton3.isSelected()) {
-                nom = jTextField1.getText();
-                prenom = jTextField2.getText();
+                nom = jTextField1.getText().toLowerCase();
+                prenom = jTextField2.getText().toLowerCase();
                 
                 jLabel3.setText(id);
                 fonction = "PH";
@@ -584,8 +581,8 @@ public class A21_DIM extends javax.swing.JFrame {
                 }
 
             } else if (jRadioButton1.isSelected()) {
-                nom = jTextField1.getText();
-                prenom = jTextField2.getText();
+                nom = jTextField1.getText().toLowerCase();
+                prenom = jTextField2.getText().toLowerCase();
                 
                 jLabel3.setText(id);
                 fonction = "Infirmier";
@@ -623,8 +620,8 @@ public class A21_DIM extends javax.swing.JFrame {
 
             } else if (jRadioButton2.isSelected()) {
                 fonction = "Secretaire";
-                nom = jTextField1.getText();
-                prenom = jTextField2.getText();
+                nom = jTextField1.getText().toLowerCase();
+                prenom = jTextField2.getText().toLowerCase();
                 
                 jLabel3.setText(id);
                 fonction = jRadioButton3.getLabel();
@@ -690,12 +687,12 @@ public class A21_DIM extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        nom = jTextField1.getText();
+        nom = jTextField1.getText().toLowerCase();
         System.out.println(nom);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        prenom = jTextField2.getText();
+        prenom = jTextField2.getText().toLowerCase();
         System.out.println(prenom);
     }//GEN-LAST:event_jTextField2ActionPerformed
 
@@ -809,7 +806,7 @@ public class A21_DIM extends javax.swing.JFrame {
     private DefaultComboBoxModel comboListePH;
     private DefaultComboBoxModel comboServices;
     private String vide = "";
-    private PersonnelMedical pm;
+    private Administratif adm;
     private SQL sql = null;
     static Random rnd = new Random();
     static final String AB = "0123456789abcdefghijklmnopqrstuvwxyz";

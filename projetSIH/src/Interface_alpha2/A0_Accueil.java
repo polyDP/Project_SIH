@@ -275,43 +275,55 @@ public class A0_Accueil extends javax.swing.JFrame {
         id = jTextField1.getText();
         motDePasse = jPasswordField1.getText();
         PersonnelMedical pm;
-        if (id.length() == 0 | motDePasse.length() == 0 ) {
-                    JOptionPane.showMessageDialog(jPanel1, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
-         } else{
-
-        try {
-            sql = new SQL();
-        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        sql.seConnecterSIH(id, motDePasse);
-        if (sql.getErr() != 1 && sql.getConnexion().equals("PH")) {
-            this.dispose();
-
-            A31_Medecin a31_medecin = new A31_Medecin(sql.getMedecinPH());
-            a31_medecin.setVisible(true);
-
-        } else if (sql.getErr() != 1 && sql.getConnexion().equals("Infirmier")) {
-            this.dispose();
-
-            A41_Infirmier a41_infirmier = new A41_Infirmier(sql.getPm());
-            a41_infirmier.setVisible(true);
-
-        } else if (sql.getErr() != 1 && sql.getConnexion().equals("Secretaire")) {
-            this.dispose();
-            A11_DMA a11_dma = new A11_DMA(sql.getPm());
-            a11_dma.setVisible(true);
-
-        } 
-        if (sql.getErr() != 1 && sql.getConnexion().equals("DIM")) {
-            this.dispose();
-            A21_DIM a21_dim = new A21_DIM(sql.getPm());
-            a21_dim.setVisible(true);
-
+        if (id.length() == 0 | motDePasse.length() == 0) {
+            JOptionPane.showMessageDialog(jPanel1, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
         } else {
-            System.out.println("error");
+
+            try {
+                sql = new SQL();
+            } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+                Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            sql.seConnecterSIH(id, motDePasse);
+            if (sql.getErr() != 1 && sql.getConnexion().equals("PH")) {
+                this.dispose();
+
+                A31_Medecin a31_medecin = new A31_Medecin(sql.getMedecinPH());
+                a31_medecin.setVisible(true);
+
+            } else if (sql.getErr() != 1 && sql.getConnexion().equals("Infirmier")) {
+                this.dispose();
+
+                A41_Infirmier a41_infirmier = new A41_Infirmier(sql.getInfirmiere());
+                a41_infirmier.setVisible(true);
+
+            } else if (sql.getErr() != 1 && sql.getConnexion().equals("Secretaire")) {
+                this.dispose();
+                A11_DMA a11_dma = new A11_DMA(sql.getAdministratif());
+                a11_dma.setVisible(true);
+
+            } else if (sql.getErr() != 1 && sql.getConnexion().equals("DIM")) {
+                this.dispose();
+                A21_DIM a21_dim = new A21_DIM(sql.getAdministratif());
+                a21_dim.setVisible(true);
+
+            } else if (sql.getErr() != 1 && sql.getConnexion().equals("Secretaire")) {
+                this.dispose();
+                A11_DMA a11_dma = new A11_DMA(sql.getAdministratif());
+                a11_dma.setVisible(true);
+
+            }else if (sql.getErr() != 1 && sql.getConnexion().equals("MedicoTech")) {
+                this.dispose();
+                A51_MedicoTechnique a51_medicoTech = new A51_MedicoTechnique(sql.getMedecinPH());
+                a51_medicoTech.setVisible(true);
+
+            } else if (sql.getErr() != 1 && sql.getConnexion().equals("Anesthesie")) {
+                this.dispose();
+                A61_Anesthesie a61_Anesthesie = new A61_Anesthesie(sql.getMedecinPH());
+                a61_Anesthesie.setVisible(true);
+
+            }
         }
-                 }
     }//GEN-LAST:event_jButton2ActionPerformed
     /**
      * Permet de fermer la fenêtre et l'application dans le même geste

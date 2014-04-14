@@ -6,8 +6,9 @@
 
 package Interface_alpha2;
 
+import SIH.Administratif;
 import SIH.Date;
-import SIH.PersonnelMedical;
+import SIH.Infirmiere;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -23,8 +24,9 @@ public class A41_Infirmier extends javax.swing.JFrame {
     /**
      * Creates new form Premiere_page_dma
      */
-    public A41_Infirmier(PersonnelMedical pm) {
-        this.pm = pm;
+    public A41_Infirmier(Infirmiere inf) {
+       this.inf = inf;
+        dateJour = new Date();
         dateJour=dateJour.dateJour();
         initComponents();
          setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -106,7 +108,7 @@ public class A41_Infirmier extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("identifiant : "+pm.getNom()+" "+pm.getPrenom());
+        jLabel4.setText("identifiant : "+inf.getNom()+" "+inf.getPrenom());
         jPanel9.add(jLabel4);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -304,7 +306,7 @@ this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        A42_Infirmier fenetre21 = new A42_Infirmier(pm);
+        A42_Infirmier fenetre21 = new A42_Infirmier(inf);
     fenetre21.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -360,7 +362,7 @@ this.dispose();         // TODO add your handling code here:
             }
         });
     }
-PersonnelMedical pm;
+private Infirmiere inf;
 private Date dateJour;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

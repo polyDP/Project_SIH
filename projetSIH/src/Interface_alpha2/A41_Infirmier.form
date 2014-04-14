@@ -169,7 +169,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="&quot;identifiant : &quot;+pm.getNom()+&quot; &quot;+pm.getPrenom()" type="code"/>
+                  <Connection code="&quot;identifiant : &quot;+inf.getNom()+&quot; &quot;+inf.getPrenom()" type="code"/>
                 </Property>
               </Properties>
             </Component>

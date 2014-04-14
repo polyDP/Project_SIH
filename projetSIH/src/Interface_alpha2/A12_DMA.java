@@ -5,11 +5,11 @@
  */
 package Interface_alpha2;
 
+import SIH.Administratif;
 import SIH.Date;
 import SIH.MedecinPH;
 import SIH.NumeroSejour;
 import SIH.Patient;
-import SIH.PersonnelMedical;
 import SIH.SQL;
 import SIH.SejourPatient;
 import SIH.Services;
@@ -32,8 +32,8 @@ public class A12_DMA extends javax.swing.JFrame {
      *
      * @param p
      */
-    public A12_DMA(Patient patient, boolean n, PersonnelMedical pm) {
-        this.pm = pm;
+    public A12_DMA(Patient patient, boolean n, Administratif adm) {
+        this.adm = adm;
         System.out.println("initialisation 1");
         dateJour = new Date();
         dateJour = dateJour.dateJour();
@@ -189,7 +189,7 @@ public class A12_DMA extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("identifiant : "+pm.getNom()+" "+pm.getPrenom());
+        jLabel4.setText("identifiant : "+adm.getNom()+" "+adm.getPrenom());
         jPanel9.add(jLabel4);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -704,7 +704,7 @@ public class A12_DMA extends javax.swing.JFrame {
             patient.setDateAdmission(dateAdmission);
             sql.ajouterSejourPatientBD(patient, numSej, s, medecin, numLit);
             JOptionPane.showConfirmDialog(jPanel6, "Le dossier Administratif du patient est ouvert", "confirmation", JOptionPane.OK_OPTION);
-            A11_DMA fenetre1 = new A11_DMA(pm);
+            A11_DMA fenetre1 = new A11_DMA(adm);
             fenetre1.setVisible(true);
             this.dispose();
 
@@ -773,7 +773,7 @@ public class A12_DMA extends javax.swing.JFrame {
      * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        A11_DMA fenetre = new A11_DMA(pm);
+        A11_DMA fenetre = new A11_DMA(adm);
         fenetre.setVisible(true);
         this.dispose();
     }
@@ -880,7 +880,7 @@ public class A12_DMA extends javax.swing.JFrame {
     private DefaultComboBoxModel comboLits;
     private DefaultComboBoxModel comboServices;
     private DefaultComboBoxModel comboHistorique;
-    private PersonnelMedical pm;
+    private Administratif adm;
     private String onglet;
     int rep;
     private MedecinPH medecin;

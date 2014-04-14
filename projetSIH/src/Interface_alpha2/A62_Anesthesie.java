@@ -7,6 +7,8 @@
 package Interface_alpha2;
 
 import SIH.Date;
+import SIH.MedecinPH;
+import SIH.Patient;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -22,8 +24,11 @@ public class A62_Anesthesie extends javax.swing.JFrame {
     /**
      * Creates new form Premiere_page_dma
      */
-    public A62_Anesthesie() {
+    public A62_Anesthesie(Patient patient, MedecinPH medecin) {
+        dateJour = new Date();
         dateJour=dateJour.dateJour();
+        this.medecin = medecin;
+        this.patient = patient;
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener( new WindowAdapter()
@@ -123,7 +128,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Patient");
+        jLabel4.setText("identifiant : "+patient.getNom()+" "+patient.getPrenom());
         jPanel9.add(jLabel4);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -131,7 +136,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jPanel9.add(jLabel2);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Identifiant");
+        jLabel1.setText("identifiant : "+medecin.getNom()+" "+medecin.getPrenom());
         jPanel9.add(jLabel1);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -145,12 +150,12 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Sortie du dossier");
         jButton1.setToolTipText("");
-        jPanel2.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton1);
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -554,15 +559,17 @@ this.dispose();        // TODO add your handling code here:
  * retour à la page d'accueil de l'anesthésiste
  * @param evt 
  */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        A61_Anesthesie fenetre6 = new A61_Anesthesie();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       A61_Anesthesie fenetre6 = new A61_Anesthesie(medecin);
       int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     if (response == JOptionPane.YES_OPTION) {
      fenetre6.setVisible(true);
         this.dispose();
     }
-}
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -593,10 +600,12 @@ this.dispose();        // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new A62_Anesthesie().setVisible(true);
+               // new A62_Anesthesie().setVisible(true);
             }
         });
     }
+    private Patient patient;
+    private MedecinPH medecin;
 private Date dateJour;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

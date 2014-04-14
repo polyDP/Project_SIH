@@ -7,6 +7,7 @@
 package Interface_alpha2;
 
 import SIH.Date;
+import SIH.Infirmiere;
 import SIH.PersonnelMedical;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -24,9 +25,9 @@ public class A42_Infirmier extends javax.swing.JFrame {
      * Creates new form Premiere_page_dma
      * 
      */
-    public A42_Infirmier(PersonnelMedical pm) {
+    public A42_Infirmier(Infirmiere inf) {
         dateJour=dateJour.dateJour();
-        this.pm = pm;
+        this.inf = inf;
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 this.addWindowListener( new WindowAdapter()
@@ -170,7 +171,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel9.add(jLabel15);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("identifiant : "+pm.getNom()+" "+pm.getPrenom());
+        jLabel1.setText("identifiant : "+inf.getNom()+" "+inf.getPrenom());
         jPanel9.add(jLabel1);
 
         jPanel8.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -951,7 +952,7 @@ this.dispose();         // TODO add your handling code here:
  * @param evt 
  */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        A41_Infirmier fenetre41 = new A41_Infirmier(pm);
+        A41_Infirmier fenetre41 = new A41_Infirmier(inf);
     int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     if (response == JOptionPane.YES_OPTION) {
@@ -1006,7 +1007,7 @@ this.dispose();         // TODO add your handling code here:
     private String diagnostic;
     private String antecedent;
     private Date dateJour;
-PersonnelMedical pm;
+private Infirmiere inf;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
