@@ -31,9 +31,10 @@ public class HL7Message {
          }
          return m;
      } 
-     public String admin(Patient p, SejourPatient sp){ //ajouter ici le séjour quand ce sera implémenté
+     public String admin(Patient p, SejourPatient sp){ 
          String m = new String("MSH|^~\\&|Asclepios|Administration| IP|" + sp.getNumSej().toString()  + "|||ADT^A01|0001|P|2.3.1||||||8859/1||| ");
-          m = m + "EVN||"+ "200501231408" +"||||200501231408|";
+          m = m + "EVN||" //+dateSyst.getAnnee()+dateSyst.getMois()+dateSyst.getJour()+dateSyst.getHeure()+dateSyst.getMinute()
+         +"||||";//dateSyst.getAnnee()+dateSyst.getMois()+dateSyst.getJour()+dateSyst.getHeure()+dateSyst.getMinute()
          m = m+"PID||||"+sp.getNumSej().toString()+ "|"+ p.getNom()+"^"+p.getPrenom()+"^^^^^L||"+"|" + this.SexeHL7(p)+"|||"+ p.getAdresse().getNumero()+
                  p.getAdresse().getRue()+"^^"+ p.getAdresse().getVille()+"^^"+p.getAdresse().getCodePostal()+"^100|||||||251|||||||||||||" ;
           m = m + "PV1||I|" + sp.getServicePat()+"^" + p.getLocalisation().getNumero()+"^"+p.getLocalisation().getCote()+"||||"+ sp.getMedResp().getId() +"^"+sp.getMedResp().getNom()+
@@ -43,7 +44,8 @@ public class HL7Message {
      }
      public String discharge(Patient p, SejourPatient sp){
          String m = new String("MSH|^~\\&|Asclepios|Administration| IP|" + sp.getNumSej().toString()  + "|||ADT^A03|0001|P|2.3.1||||||8859/1||| ");
-          m = m + "EVN||"+ "200501231408" +"||||200501231408|";
+          m = m + "EVN||" //+dateSyst.getAnnee()+dateSyst.getMois()+dateSyst.getJour()+dateSyst.getHeure()+dateSyst.getMinute()
+         +"||||";//dateSyst.getAnnee()+dateSyst.getMois()+dateSyst.getJour()+dateSyst.getHeure()+dateSyst.getMinute()
          m = m+"PID||||"+sp.getNumSej().toString()+ "|"+ p.getNom()+"^"+p.getPrenom()+"^^^^^L||"+"|" + this.SexeHL7(p)+"|||"+ p.getAdresse().getNumero()+
                  p.getAdresse().getRue()+"^^"+ p.getAdresse().getVille()+"^^"+p.getAdresse().getCodePostal()+"^100|||||||251|||||||||||||" ;
           m = m + "PV1||I|" + sp.getServicePat()+"^" + p.getLocalisation().getNumero()+"^"+p.getLocalisation().getCote()+"||||"+ sp.getMedResp().getId() +"^"+sp.getMedResp().getNom()+
