@@ -276,7 +276,7 @@ public class A0_Accueil extends javax.swing.JFrame {
         motDePasse = jPasswordField1.getText();
         PersonnelMedical pm;
         if (id.length() == 0 | motDePasse.length() == 0) {
-            JOptionPane.showMessageDialog(jPanel1, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
         } else {
 
             try {

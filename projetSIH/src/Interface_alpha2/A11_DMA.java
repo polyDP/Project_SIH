@@ -117,7 +117,6 @@ public class A11_DMA extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 204, 255));
         setBounds(new java.awt.Rectangle(200, 100, 0, 0));
         setExtendedState(10);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
@@ -487,6 +486,11 @@ public class A11_DMA extends javax.swing.JFrame {
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Imprimer");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -495,6 +499,11 @@ public class A11_DMA extends javax.swing.JFrame {
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Tout sélectionner");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -513,6 +522,15 @@ public class A11_DMA extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Aide");
+        jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -539,7 +557,7 @@ public class A11_DMA extends javax.swing.JFrame {
         Changer_mdp mdp = new Changer_mdp();
        if(!mdp.isVisible()){
                 mdp.setVisible(true);
-        JOptionPane.showConfirmDialog (jMenuBar1, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if(JOptionPane.INFORMATION_MESSAGE==1){
             mdp.dispose();
         }
@@ -755,11 +773,11 @@ public class A11_DMA extends javax.swing.JFrame {
         int rep;
         if (onglet.contains("creation patient")) {
             if (!jRadioButton1.isSelected() & !jRadioButton2.isSelected()) {
-                JOptionPane.showMessageDialog(jPanel1, "veuillez renseigner le sexe du patient", "erreur", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "veuillez renseigner le sexe du patient", "erreur", JOptionPane.WARNING_MESSAGE);
             } else {
 
                 if (jTextField7.getText().length() == 0 | jTextField6.getText().length() == 0 | jTextField2.getText().length() == 0 | jTextField8.getText().length() == 0 | jTextField4.getText().length() == 0 | jTextField5.getText().length() == 0) {
-                    JOptionPane.showMessageDialog(jPanel1, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
                 } else {
 
                     float num;
@@ -774,10 +792,10 @@ public class A11_DMA extends javax.swing.JFrame {
                     }
 
                     if (jTextField1.getText().length() != 10) {
-                        JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone doit contenir 10 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "le numéro de telephone doit contenir 10 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
 
                     } else if (chiffre == false) {
-                        JOptionPane.showMessageDialog(jPanel1, "le numéro de telephone ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "le numéro de telephone ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
 
                     } else {
 
@@ -790,7 +808,7 @@ public class A11_DMA extends javax.swing.JFrame {
                         }
 
                         if (chiffre == false) {
-                            JOptionPane.showMessageDialog(jPanel1, "le numéro de rue ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "le numéro de rue ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
 
                         } else {
                             chiffre = true;
@@ -802,9 +820,9 @@ public class A11_DMA extends javax.swing.JFrame {
                             }
 
                             if (jTextField8.getText().length() != 5) {
-                                JOptionPane.showMessageDialog(jPanel1, "le code postal doit contenir 5 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "le code postal doit contenir 5 chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
                             } else if (chiffre == false) {
-                                JOptionPane.showMessageDialog(jPanel1, "le code postal ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "le code postal ne doit contenir que des chiffres", "erreur", JOptionPane.WARNING_MESSAGE);
 
                             } else {
                                 telephone = jTextField1.getText();
@@ -833,7 +851,7 @@ public class A11_DMA extends javax.swing.JFrame {
 
                                 medecinTraitant = jTextField5.getText();
 
-                                rep = JOptionPane.showConfirmDialog(jPanel5, "creation du patient : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - sexe : " + sexe + "\n    - telephone : " + telephone + "\n    - medecin traitant : " + medecinTraitant + "\n    - date de naissance : " + dateNaissance + "\n    - adresse : " + adressePatient.toString(), "confirmation", JOptionPane.OK_CANCEL_OPTION);
+                                rep = JOptionPane.showConfirmDialog(null, "creation du patient : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - sexe : " + sexe + "\n    - telephone : " + telephone + "\n    - medecin traitant : " + medecinTraitant + "\n    - date de naissance : " + dateNaissance + "\n    - adresse : " + adressePatient.toString(), "confirmation", JOptionPane.OK_CANCEL_OPTION);
                                 if (rep == JOptionPane.YES_OPTION) {
                                     patient = new Patient(nom, prenom, telephone, medecinTraitant, sexe, dateNaissance, adressePatient);
                                     
@@ -899,6 +917,18 @@ public class A11_DMA extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+     JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
+       JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenu4MenuSelected
     /**
      * Fait le lien avec la page d'accueil. Une JOptionPane apparait pour
      * rassurer l'utilisateur
