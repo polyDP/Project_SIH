@@ -40,8 +40,13 @@ public class Constantes {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.8AF6EEA5-3FAB-3ADD-7261-297189E5CF14]
     // </editor-fold> 
-    public Constantes (Patient p) {
-        this.patient=p;
+    public Constantes (int taille,double poids,String tension,double glycemie,double temperature,String autreSoins) {
+        this.taille = taille;
+        this.poids = poids;
+        this.tension = tension;
+        this.glycemie = glycemie;
+        this.temperature= temperature;
+        this.autreSoins=autreSoins;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -170,6 +175,8 @@ public class Constantes {
     public void setMedicamentAdministre(String medicamentAdministre) {
         this.medicamentAdministre = medicamentAdministre;
     }
+    
+    
 
 }
 

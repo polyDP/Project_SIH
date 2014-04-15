@@ -76,24 +76,24 @@ public class Test {
         //--------------------------------------------------------------------//
         // ajoute des constantes par l'infirmiere
         
-        Constantes consPat1 = new Constantes(pat1);
-        consPat1.setGlycemie(45.3);
-        consPat1.setPoids(85);
-        consPat1.setTaille(159);
-        consPat1.setTension("14.2");
+        //Constantes consPat1 = new Constantes(pat1);
+        //consPat1.setGlycemie(45.3);
+        //consPat1.setPoids(85);
+        //consPat1.setTaille(159);
+        //consPat1.setTension("14.2");
         
-        ArrayList<Constantes> listeConstantes;
-        listeConstantes = new ArrayList<Constantes>();
+       // ArrayList<Constantes> listeConstantes;
+        //listeConstantes = new ArrayList<Constantes>();
         
-        listeConstantes.add(consPat1);
+       // listeConstantes.add(consPat1);
         
-        Constantes cons1Pat1 = new Constantes(pat1);
-        consPat1.setGlycemie(1.50);
-        consPat1.setPoids(86);
-        consPat1.setTaille(159);
-        consPat1.setTension("13.2");
+        //Constantes cons1Pat1 = new Constantes(pat1);
+        //consPat1.setGlycemie(1.50);
+        //consPat1.setPoids(86);
+       // consPat1.setTaille(159);
+       // consPat1.setTension("13.2");
         
-        listeConstantes.add(cons1Pat1);
+       // listeConstantes.add(cons1Pat1);
         
         //---------------------------------------------------------------------//   
         // lors de la réalisation d'un acte par une infirmiere ou medecin
