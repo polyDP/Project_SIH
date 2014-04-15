@@ -40,7 +40,7 @@ public class A31_Medecin extends javax.swing.JFrame {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        comboPatientPH = new DefaultComboBoxModel(sql.listePatientParMedecin(medecin.getServices()));
+        comboPatientPH = new DefaultComboBoxModel(sql.listePatientParService(medecin.getServices()));
 
         initComponents();
         jComboBox1.setModel(comboPatientPH);
@@ -148,11 +148,6 @@ public class A31_Medecin extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -175,6 +170,11 @@ public class A31_Medecin extends javax.swing.JFrame {
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel6ComponentShown(evt);
+            }
+        });
 
         jTextArea4.setEditable(false);
         jTextArea4.setColumns(20);
@@ -204,6 +204,11 @@ public class A31_Medecin extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setEnabled(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(591, 527));
+        jPanel4.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel4ComponentShown(evt);
+            }
+        });
 
         jComboBox1.setModel(comboPatientPH);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -360,9 +365,9 @@ public class A31_Medecin extends javax.swing.JFrame {
        System.out.println(val);
       String[] splited = val.split("\\s+");
         String nomRecherche = splited[0];
-       System.out.println(nomRecherche);
+       
        String prenomRecherche = splited[1];
-        System.out.println(prenomRecherche);
+        
         
         A32_Medecin fenetre3 =  new A32_Medecin(medecin,sql.rechercherPatient(nomRecherche, prenomRecherche));
       fenetre3.setVisible(true);
@@ -390,6 +395,14 @@ public class A31_Medecin extends javax.swing.JFrame {
     private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
     JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenu4MenuSelected
+
+    private void jPanel6ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel6ComponentShown
+        jButton3.setVisible(false);
+    }//GEN-LAST:event_jPanel6ComponentShown
+
+    private void jPanel4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel4ComponentShown
+        jButton3.setVisible(true);
+    }//GEN-LAST:event_jPanel4ComponentShown
 
     /**
      * @param args the command line arguments

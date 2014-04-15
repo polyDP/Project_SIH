@@ -162,11 +162,6 @@ public class A11_DMA extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -437,7 +432,7 @@ public class A11_DMA extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new DefaultComboBoxModel(sql.listePatient()));
+        jComboBox1.setModel(new DefaultComboBoxModel(sql.listePatient(false)));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);

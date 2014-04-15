@@ -3,17 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Interface_alpha2;
 
+import SIH.Constantes;
 import SIH.Date;
 import SIH.Infirmiere;
-import SIH.PersonnelMedical;
+import SIH.NumeroSejour;
+import SIH.Patient;
+import SIH.SQL;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -23,30 +27,92 @@ public class A42_Infirmier extends javax.swing.JFrame {
 
     /**
      * Creates new form Premiere_page_dma
-     * 
+     *
      */
-    public A42_Infirmier(Infirmiere inf) {
-        dateJour=dateJour.dateJour();
+    public A42_Infirmier(Infirmiere inf, Patient patient) {
+
+        dateJour = new Date();
+        dateJour = dateJour.dateJour();
+        this.patient = patient;
         this.inf = inf;
         initComponents();
+        try {
+            sql = new SQL();
+
+            jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, sql.numeroSejourPatient(patient.getIpp())).infosSejour());
+            numSej = sql.numeroSejourPatient(patient.getIpp());
+            constantes = sql.getConstantesInitialesPatientSejour(patient.getIpp(), numSej);
+
+        
+        if (constantes.getTaille() != 0) {
+            jTextField2.setText((taille.valueOf(constantes.getTaille())));
+            jTextField2.setEditable(false);
+        } else {
+            jTextField2.setText("");
+            jTextField2.setEditable(true);
+        }
+        if (constantes.getTension().equals(" / ")) {
+
+            jFormattedTextField1.setText(tension.valueOf(constantes.getTension()));
+            jFormattedTextField1.setEditable(false);
+        } else {
+            jFormattedTextField1.setText("");
+            jFormattedTextField1.setEditable(true);
+        }
+        if (constantes.getPoids() != 0.0) {
+            jTextField1.setText(poids.valueOf(constantes.getPoids()));
+            jTextField1.setEditable(false);
+        } else {
+
+            jTextField1.setText("");
+            jTextField1.setEditable(true);
+        }
+        if (constantes.getGlycemie() != 0.0) {
+            jTextField6.setText(glycemie.valueOf(constantes.getGlycemie()));
+            jTextField6.setEditable(false);
+        } else {
+
+            jTextField6.setText("");
+            jTextField6.setEditable(true);
+        }
+        if (constantes.getTemperature() != 0.0) {
+            jTextField4.setText(temperature.valueOf(constantes.getTemperature()));
+            jTextField4.setEditable(false);
+        } else {
+
+            jTextField4.setText("");
+            jTextField4.setEditable(true);
+        }
+        if (constantes.getAutreSoins().equals(null)) {
+            jTextField5.setText(constantes.getAutreSoins());
+            jTextField5.setEditable(false);
+        } else {
+
+            jTextField5.setText("");
+            jTextField5.setEditable(true);
+        }
+        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
+
+        } catch (NullPointerException e){
+            
+        }
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-this.addWindowListener( new WindowAdapter()
-		{
-			public void windowClosing(WindowEvent e)
-			{
-				JFrame frame = (JFrame)e.getSource();
-				int result = JOptionPane.showConfirmDialog(
-						null,
-						"Etes-vous sûr de vouloir quitter Asclépios, Avez-vous tout enregistré ?",
-						"Quitter",
-						JOptionPane.YES_NO_OPTION);
-				if (result == JOptionPane.YES_OPTION){
-					
-					System.exit(0);
-				}
-				
-			}
-		});
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                JFrame frame = (JFrame) e.getSource();
+                int result = JOptionPane.showConfirmDialog(
+                        null,
+                        "Etes-vous sûr de vouloir quitter Asclépios, Avez-vous tout enregistré ?",
+                        "Quitter",
+                        JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+
+                    System.exit(0);
+                }
+
+            }
+        });
     }
 
     /**
@@ -161,7 +227,7 @@ this.addWindowListener( new WindowAdapter()
 
         jLabel4.setBackground(new java.awt.Color(153, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Patient");
+        jLabel4.setText("patient : "+patient.getNom()+ " "+patient.getPrenom());
         jPanel9.add(jLabel4);
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -184,11 +250,6 @@ this.addWindowListener( new WindowAdapter()
         jButton1.setText("Sortie du dossier");
         jButton1.setToolTipText("");
         jPanel2.add(jButton1);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -762,158 +823,207 @@ this.addWindowListener( new WindowAdapter()
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
- * Changement de mot de passe à partir du menu
- * @param evt 
- */
+     * Changement de mot de passe à partir du menu
+     *
+     * @param evt
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-         Changer_mdp mdp = new Changer_mdp();
-        if(!mdp.isVisible()){
-                mdp.setVisible(true);
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if(JOptionPane.INFORMATION_MESSAGE==1){
-            mdp.dispose();
-        }
+        Changer_mdp mdp = new Changer_mdp();
+        if (!mdp.isVisible()) {
+            mdp.setVisible(true);
+            JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (JOptionPane.INFORMATION_MESSAGE == 1) {
+                mdp.dispose();
+            }
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField12ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel19);
-        if(!fenetre.isVisible()){
+        if (!fenetre.isVisible()) {
             fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");
-        fenetre.setVisible(true);}
+            fenetre.setVisible(true);
+        }
     }//GEN-LAST:event_jLabel19MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-       Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel21);
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 2 heures - 4 heures");}
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel21);
+        if (!fenetre.isVisible()) {
+            fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 2 heures - 4 heures");
+        }
     }//GEN-LAST:event_jLabel21MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
-         Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel23);
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-        fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");}
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel23);
+        if (!fenetre.isVisible()) {
+            fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");
+        }
     }//GEN-LAST:event_jLabel23MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel25);
-        if(!fenetre.isVisible()){fenetre.setVisible(true);   
-        fenetre.setTitle("Ajout d'un soin: 6 heures - 8 heures");}
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel25);
+        if (!fenetre.isVisible()) {
+            fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 6 heures - 8 heures");
+        }
     }//GEN-LAST:event_jLabel25MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel27);
-        if(!fenetre.isVisible()){fenetre.setVisible(true);
-            fenetre.setTitle("Ajout d'un soin: 8 heures - 10 heures");}
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel27);
+        if (!fenetre.isVisible()) {
+            fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 8 heures - 10 heures");
+        }
     }//GEN-LAST:event_jLabel27MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel34);
-        if(!fenetre.isVisible()){fenetre.setVisible(true);     
-        fenetre.setTitle("Ajout d'un soin: 10 heures - 12 heures");}
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel34);
+        if (!fenetre.isVisible()) {
+            fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 10 heures - 12 heures");
+        }
     }//GEN-LAST:event_jLabel34MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel38);
-        if(!fenetre.isVisible()){fenetre.setVisible(true); 
-        fenetre.setTitle("Ajout d'un soin: 12 heures - 14 heures");}
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel38);
+        if (!fenetre.isVisible()) {
+            fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 12 heures - 14 heures");
+        }
     }//GEN-LAST:event_jLabel38MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel39);
-       if(!fenetre.isVisible()){ fenetre.setVisible(true);  
-        fenetre.setTitle("Ajout d'un soin: 14 heures - 16 heures");}
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel39);
+        if (!fenetre.isVisible()) {
+            fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 14 heures - 16 heures");
+        }
     }//GEN-LAST:event_jLabel39MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel43);
-       if(!fenetre.isVisible()){ fenetre.setVisible(true); 
-        fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");}
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel43);
+        if (!fenetre.isVisible()) {
+            fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 16 heures - 18 heures");
+        }
     }//GEN-LAST:event_jLabel43MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel40);
-       if(!fenetre.isVisible()){ fenetre.setVisible(true);   
-        fenetre.setTitle("Ajout d'un soin: 18 heures - 20 heures");}
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel40);
+        if (!fenetre.isVisible()) {
+            fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 18 heures - 20 heures");
+        }
     }//GEN-LAST:event_jLabel40MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel41);
-      if(!fenetre.isVisible()){  fenetre.setVisible(true);      
-        fenetre.setTitle("Ajout d'un soin: 20 heures - 22 heures");}
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel41);
+        if (!fenetre.isVisible()) {
+            fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 20 heures - 22 heures");
+        }
     }//GEN-LAST:event_jLabel41MouseClicked
-/**
- * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom ajout d'un soin + heure pour ne pas se tromper
- * @param evt 
- */
+    /**
+     * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
+     * ajout d'un soin + heure pour ne pas se tromper
+     *
+     * @param evt
+     */
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
- Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel29);
-      if(!fenetre.isVisible()){  fenetre.setVisible(true);  
-        fenetre.setTitle("Ajout d'un soin: 22 heures - Minuit");}
+        Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel29);
+        if (!fenetre.isVisible()) {
+            fenetre.setVisible(true);
+            fenetre.setTitle("Ajout d'un soin: 22 heures - Minuit");
+        }
     }//GEN-LAST:event_jLabel29MouseClicked
-/**
- * déconnexion, retour à la première page avec le menu
- * @param evt 
- */
+    /**
+     * déconnexion, retour à la première page avec le menu
+     *
+     * @param evt
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-A0_Accueil a0 = new A0_Accueil();
-a0.setVisible(true);
-this.dispose();         // TODO add your handling code here:
+        A0_Accueil a0 = new A0_Accueil();
+        a0.setVisible(true);
+        this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        boolean a1 = false;
-        boolean a2 = false;
-        boolean a3 = false;
-        boolean a4 = false;
+        boolean a1 = true;
+        boolean a2 = true;
+        boolean a3 = true;
+        boolean a4 = true;
         taille = jTextField2.getText();
         tension = jFormattedTextField1.getText();
         poids = jTextField1.getText();
@@ -933,7 +1043,9 @@ this.dispose();         // TODO add your handling code here:
                     JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a1 = false;
                 } else {
+
                     a1 = true;
+                    temperatureD = Double.parseDouble(temperature);
 
                 }
             } catch (NumberFormatException e) {
@@ -948,7 +1060,9 @@ this.dispose();         // TODO add your handling code here:
 
                     a2 = false;
                 } else {
+
                     a2 = true;
+                    poidsD = Double.parseDouble(poids);
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -962,7 +1076,9 @@ this.dispose();         // TODO add your handling code here:
                     JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a2 = false;
                 } else {
+
                     a2 = true;
+                    glycemieD = Double.parseDouble(glycemie);
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -976,7 +1092,9 @@ this.dispose();         // TODO add your handling code here:
                     JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a4 = false;
                 } else {
+
                     a4 = true;
+                    tailleI = Integer.parseInt(taille);
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -984,35 +1102,33 @@ this.dispose();         // TODO add your handling code here:
             }
 
         }
-        if(a1==true && a2==true && a3==true && a4==true){
-    JOptionPane.showMessageDialog(null, "les données ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
-}
+        if (a1 == true && a2 == true && a3 == true && a4 == true) {
+            constantes = new Constantes(tailleI, poidsD, tension, glycemieD, temperatureD, autres);
+            if (!jFormattedTextField1.isEditable() || !jTextField2.isEditable() || !jTextField4.isEditable() || !jTextField5.isEditable() || !jTextField6.isEditable()||!actualiser) {
+                sql.ajouterSoinsArriveeMiseAJour(patient, numSej, inf, dateJour, constantes);
+            } else {
+                sql.ajouterSoinsArrivee(patient, numSej, inf, dateJour, constantes);
+                actualiser= true;
+            }
+        }
+        if (sql.getErr() != 1) {
+            JOptionPane.showMessageDialog(null, "les données ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
-       JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenu4MenuSelected
-/**
- * retour à la âge de l'infirmier avec demande de confirmation
- * @param evt 
- */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        A41_Infirmier fenetre41 = new A41_Infirmier(inf);
-    int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-    if (response == JOptionPane.YES_OPTION) {
-     fenetre41.setVisible(true);
-        this.dispose();
-    }
-}
+
+
     /**
      * @param args the command line arguments
      */
@@ -1047,12 +1163,21 @@ this.dispose();         // TODO add your handling code here:
             }
         });
     }
+   private NumeroSejour numSej;
+   private Constantes constantes;
+    private SQL sql = null;
+    private Patient patient;
     private String taille;
     private String tension;
     private String poids;
     private String glycemie;
     private String temperature;
     private String autres;
+    private int tailleI;
+    private boolean actualiser = false;
+    private double poidsD;
+    private double glycemieD;
+    private double temperatureD;
     private String traitement;
     private String allergie;
     private String regime;
@@ -1060,7 +1185,7 @@ this.dispose();         // TODO add your handling code here:
     private String diagnostic;
     private String antecedent;
     private Date dateJour;
-private Infirmiere inf;
+    private Infirmiere inf;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;

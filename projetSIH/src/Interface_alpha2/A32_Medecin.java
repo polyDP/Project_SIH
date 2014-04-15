@@ -5,17 +5,21 @@
  */
 package Interface_alpha2;
 
+import SIH.Constantes;
 import SIH.Date;
 import SIH.MedecinPH;
+import SIH.NumeroSejour;
 import SIH.Patient;
 import SIH.SQL;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import static org.eclipse.persistence.jaxb.TypeMappingInfo.ElementScope.Local;
 
 /**
  *
@@ -32,25 +36,78 @@ public class A32_Medecin extends javax.swing.JFrame {
      * fermer l'application avec la croix en demandant l'autorisation à
      * l'utilisateur
      */
-    public A32_Medecin(MedecinPH medecin,Patient patient) {
+    public A32_Medecin(MedecinPH medecin, Patient patient) {
         this.medecin = medecin;
         this.patient = patient;
         dateJour = new Date();
         dateJour = dateJour.dateJour();
+        Calendar calendrier = Calendar.getInstance();
+        dateHeureJour = dateJour+ " " + calendrier.getTime().toString().substring(12, 19);
+        
 
         initComponents();
-        
+
         try {
             sql = new SQL();
-            
+
             jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, sql.numeroSejourPatient(patient.getIpp())).infosSejour());
-        } catch (SQLException ex) {
+            numSej = sql.numeroSejourPatient(patient.getIpp());
+            constantes = sql.getConstantesInitialesPatientSejour(patient.getIpp(), numSej);
+
+            if (constantes.getTaille() != 0) {
+                jTextField2.setText((taille.valueOf(constantes.getTaille())));
+                jTextField2.setEditable(false);
+            } else {
+                jTextField2.setText("");
+                jTextField2.setEditable(true);
+            }
+            if (constantes.getTension().equals(" / ")) {
+
+                jFormattedTextField1.setText(tension.valueOf(constantes.getTension()));
+                jFormattedTextField1.setEditable(false);
+            } else {
+                jFormattedTextField1.setText("");
+                jFormattedTextField1.setEditable(true);
+            }
+            if (constantes.getPoids() != 0.0) {
+                jTextField1.setText(poids.valueOf(constantes.getPoids()));
+                jTextField1.setEditable(false);
+            } else {
+
+                jTextField1.setText("");
+                jTextField1.setEditable(true);
+            }
+            if (constantes.getGlycemie() != 0.0) {
+                jTextField6.setText(glycemie.valueOf(constantes.getGlycemie()));
+                jTextField6.setEditable(false);
+            } else {
+
+                jTextField6.setText("");
+                jTextField6.setEditable(true);
+            }
+            if (constantes.getTemperature() != 0.0) {
+                jTextField4.setText(temperature.valueOf(constantes.getTemperature()));
+                jTextField4.setEditable(false);
+            } else {
+
+                jTextField4.setText("");
+                jTextField4.setEditable(true);
+            }
+            if (constantes.getAutreSoins().equals(null)) {
+                jTextField5.setText(constantes.getAutreSoins());
+                jTextField5.setEditable(false);
+            } else {
+
+                jTextField5.setText("");
+                jTextField5.setEditable(true);
+            }
+        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
+
+        } catch (NullPointerException e) {
+
         }
+
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -1025,12 +1082,12 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
-      
-                mdp.setVisible(true);
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if(JOptionPane.INFORMATION_MESSAGE==1){
+
+        mdp.setVisible(true);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (JOptionPane.INFORMATION_MESSAGE == 1) {
             mdp.dispose();
-        
+
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -1079,8 +1136,8 @@ public class A32_Medecin extends javax.swing.JFrame {
         autres = jTextField5.getText();
         fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: Minuit - 2 heures");
-        
-        
+
+
     }//GEN-LAST:event_jLabel19MouseClicked
     /**
      * Permet d'ouvrir la page d'ajout d'un soin, cette page ayant pour nom
@@ -1101,7 +1158,7 @@ public class A32_Medecin extends javax.swing.JFrame {
      */
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         Ajout_soins_suivi fenetre = new Ajout_soins_suivi(jLabel23);
-       fenetre.setVisible(true);
+        fenetre.setVisible(true);
         fenetre.setTitle("Ajout d'un soin: 4 heures - 6 heures");
     }//GEN-LAST:event_jLabel23MouseClicked
     /**
@@ -1231,7 +1288,7 @@ public class A32_Medecin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-              poids = jTextField1.getText();
+        poids = jTextField1.getText();
         if (poids.length() != 0) {
             try {
                 if (Integer.parseInt(poids) < 0 || Integer.parseInt(poids) > 1000) {
@@ -1250,7 +1307,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         glycemie = jTextField6.getText();
         if (glycemie.length() != 0) {
             try {
-                if (Float.parseFloat(glycemie) < 0.2 ||Float.parseFloat(glycemie) > 20) {
+                if (Float.parseFloat(glycemie) < 0.2 || Float.parseFloat(glycemie) > 20) {
                     JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
                 }
@@ -1299,10 +1356,10 @@ public class A32_Medecin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        boolean a1 = false;
-        boolean a2 = false;
-        boolean a3 = false;
-        boolean a4 = false;
+        boolean a1 = true;
+        boolean a2 = true;
+        boolean a3 = true;
+        boolean a4 = true;
         taille = jTextField2.getText();
         tension = jFormattedTextField1.getText();
         poids = jTextField1.getText();
@@ -1322,7 +1379,9 @@ public class A32_Medecin extends javax.swing.JFrame {
                     JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la température doit être comprise entre 33 et 45 °C  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a1 = false;
                 } else {
+
                     a1 = true;
+                    temperatureD = Double.parseDouble(temperature);
 
                 }
             } catch (NumberFormatException e) {
@@ -1337,7 +1396,9 @@ public class A32_Medecin extends javax.swing.JFrame {
 
                     a2 = false;
                 } else {
+
                     a2 = true;
+                    poidsD = Double.parseDouble(poids);
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; le poids doit être comprise entre 0 et 1000 kg  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -1351,7 +1412,9 @@ public class A32_Medecin extends javax.swing.JFrame {
                     JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a2 = false;
                 } else {
+
                     a2 = true;
+                    glycemieD = Double.parseDouble(glycemie);
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la glycemie doit être comprise entre 0,2 et 20 g/L  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -1365,7 +1428,9 @@ public class A32_Medecin extends javax.swing.JFrame {
                     JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a4 = false;
                 } else {
+
                     a4 = true;
+                    tailleI = Integer.parseInt(taille);
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -1373,9 +1438,19 @@ public class A32_Medecin extends javax.swing.JFrame {
             }
 
         }
-if(a1==true && a2==true && a3==true && a4==true){
-    JOptionPane.showMessageDialog(null, "les données ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
-}
+        if (a1 == true && a2 == true && a3 == true && a4 == true) {
+            constantes = new Constantes(tailleI, poidsD, tension, glycemieD, temperatureD, autres);
+            if (!jFormattedTextField1.isEditable() || !jTextField2.isEditable() || !jTextField4.isEditable() || !jTextField5.isEditable() || !jTextField6.isEditable() || !actualiser) {
+                sql.ajouterSoinsArriveeMiseAJour(patient, numSej, medecin, dateJour, constantes);
+            } else {
+                sql.ajouterSoinsArrivee(patient, numSej, medecin, dateJour, constantes);
+                actualiser = true;
+            }
+        }
+        if (sql.getErr() != 1) {
+            JOptionPane.showMessageDialog(null, "les données ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+        }
+
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -1388,7 +1463,11 @@ if(a1==true && a2==true && a3==true && a4==true){
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      JOptionPane.showMessageDialog(null, "la prescription a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
+        sql.ajouterObservationPH(patient, numSej, medecin, dateHeureJour, jTextArea2.getText());
+        if (sql.getErr() != 1) {
+             JOptionPane.showMessageDialog(null, "la prescription a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
+        }
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1396,19 +1475,23 @@ if(a1==true && a2==true && a3==true && a4==true){
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        JOptionPane.showMessageDialog(null, "la lettre de sortie a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
+        sql.ajouterLettreSortie(patient, numSej, medecin, dateJour, jTextArea5.getText());
+        if (sql.getErr() != 1) {
+            JOptionPane.showMessageDialog(null, "la lettre de sortie a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-            JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-            JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
-            JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenu4MenuSelected
 
     /**
@@ -1446,7 +1529,9 @@ if(a1==true && a2==true && a3==true && a4==true){
             }
         });
     }
-    private SQL sql=null;
+    private NumeroSejour numSej;
+    private Constantes constantes;
+    private SQL sql = null;
     private Patient patient;
     private MedecinPH medecin;
     private Date dateJour;
@@ -1456,13 +1541,19 @@ if(a1==true && a2==true && a3==true && a4==true){
     private String glycemie;
     private String temperature;
     private String autres;
+    private int tailleI;
+    private boolean actualiser;
+    private double poidsD;
+    private double glycemieD;
+    private double temperatureD;
+    private String dateHeureJour;
     private String traitement;
     private String allergie;
     private String regime;
     private String motif;
     private String diagnostic;
     private String antecedent;
-    private String medicament ; 
+    private String medicament;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

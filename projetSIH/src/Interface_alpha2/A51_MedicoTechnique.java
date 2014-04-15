@@ -43,7 +43,7 @@ public class A51_MedicoTechnique extends javax.swing.JFrame {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-         comboPatientMedicoTech = new DefaultComboBoxModel(sql.listePatient());
+         comboPatientMedicoTech = new DefaultComboBoxModel(sql.listePatient(true));
 
         initComponents();
         jComboBox1.setModel( comboPatientMedicoTech);
@@ -184,6 +184,11 @@ public class A51_MedicoTechnique extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setEnabled(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(591, 527));
+        jPanel4.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel4ComponentShown(evt);
+            }
+        });
 
         jComboBox1.setModel(comboPatientMedicoTech);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -218,6 +223,11 @@ public class A51_MedicoTechnique extends javax.swing.JFrame {
         jTabbedPane1.addTab("Recherche patient", jPanel4);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel6ComponentShown(evt);
+            }
+        });
 
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
@@ -244,6 +254,11 @@ public class A51_MedicoTechnique extends javax.swing.JFrame {
         jTabbedPane1.addTab("Pense-bête", jPanel6);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel5ComponentShown(evt);
+            }
+        });
 
         jTextArea5.setColumns(20);
         jTextArea5.setRows(5);
@@ -420,6 +435,18 @@ this.dispose();         // TODO add your handling code here:
     private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
         JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenu4MenuSelected
+
+    private void jPanel6ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel6ComponentShown
+        jButton2.setVisible(false);
+    }//GEN-LAST:event_jPanel6ComponentShown
+
+    private void jPanel5ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel5ComponentShown
+        jButton2.setVisible(false);
+    }//GEN-LAST:event_jPanel5ComponentShown
+
+    private void jPanel4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel4ComponentShown
+        jButton2.setVisible(true);
+    }//GEN-LAST:event_jPanel4ComponentShown
 
     /**
      * @param args the command line arguments

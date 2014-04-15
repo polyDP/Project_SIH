@@ -34,10 +34,10 @@ public class A12_DMA extends javax.swing.JFrame {
      */
     public A12_DMA(Patient patient, boolean n, Administratif adm) {
         this.adm = adm;
-        System.out.println("initialisation 1");
+       
         dateJour = new Date();
         dateJour = dateJour.dateJour();
-        System.out.println("datedujour" + dateJour.getAnnee());
+       
         comboServices = new DefaultComboBoxModel(service.values());
         comboServices.insertElementAt(vide, 0);
         comboServices.removeElement(service.Administration);
@@ -70,7 +70,7 @@ public class A12_DMA extends javax.swing.JFrame {
                 }
             });
         } else if (n == false) {
-            System.out.println("patient recherche" + n);
+            
             this.patient = patient;
             try {
                 sql = new SQL();
@@ -464,11 +464,6 @@ public class A12_DMA extends javax.swing.JFrame {
         jLabel16.setText("PH responsable:");
 
         jComboBox6.setModel(comboPHService);
-        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox6ActionPerformed(evt);
-            }
-        });
 
         jLabel17.setText("Lit: ");
 
@@ -728,10 +723,6 @@ public class A12_DMA extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
-        //DB
-    }//GEN-LAST:event_jComboBox6ActionPerformed
 
     private void jPanel6ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel6ComponentShown
         jButton3.setVisible(false);
