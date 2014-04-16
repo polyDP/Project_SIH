@@ -37,7 +37,7 @@ public class A52_MedicoTechnique extends javax.swing.JFrame {
         try {
             sql = new SQL();
             
-            jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, sql.numeroSejourPatient(patient.getIpp())).infosSejour());
+            jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, sql.rechercherNumeroSejourPatient(patient.getIpp())).infosSejour());
         } catch (SQLException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
         }

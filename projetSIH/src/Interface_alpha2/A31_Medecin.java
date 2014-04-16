@@ -40,7 +40,7 @@ public class A31_Medecin extends javax.swing.JFrame {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        comboPatientPH = new DefaultComboBoxModel(sql.listePatientParService(medecin.getServices()));
+        comboPatientPH = new DefaultComboBoxModel(sql.listePatientParService(medecin.getService()));
 
         initComponents();
         jComboBox1.setModel(comboPatientPH);

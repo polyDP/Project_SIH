@@ -37,7 +37,7 @@ public class A41_Infirmier extends javax.swing.JFrame {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        comboPatientInf = new DefaultComboBoxModel(sql.listePatientParService(inf.getServices()));
+        comboPatientInf = new DefaultComboBoxModel(sql.listePatientParService(inf.getService()));
         initComponents();
         jComboBox1.setModel(comboPatientInf);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

@@ -16,6 +16,8 @@ public class Test {
     /**
      * @param args the command line arguments
      */
+    
+    /**
     public static void main(String[] args) {
         Services servMed1 = Services.Gynecologie_obstetrique;
         Services servInf1 = Services.Gynecologie_obstetrique;
@@ -147,7 +149,7 @@ public class Test {
         dosMedAdm1.setLettreSortie(lettreSortieMed1Pat1);
         
         */
-        
+        /**
         //--------------------Dossier Medical-------------------//
         //--------------------------------------------------------------------//
         
@@ -188,5 +190,5 @@ public class Test {
         //ipp.incrementerCompteur();
         System.out.println(ipp.toString());
     }
-
+*/
 }

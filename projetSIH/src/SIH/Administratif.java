@@ -1,59 +1,86 @@
 package SIH;
 
-
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.A0E0220C-6018-B0D4-23CB-1BB0C36C13A3]
-// </editor-fold> 
 public class Administratif extends Personnel {
-     private Services service;
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.2618785F-BBF9-4555-9F92-BA78131A7BAA]
-    // </editor-fold> 
-    public Administratif (String id, String motDePasse, String nom, String prenom, String fonction, Services service) {
-        super(id, motDePasse, nom, prenom,fonction);
-        this.service=service;
-        
+    private Services service;
+
+    private String fonction;
+    
+    private String motDePasse;
+
+    public Administratif(String id, String nom, String prenom) {
+        super(id, nom, prenom);
+        this.service = service.Administration;
+        this.fonction = "Secretaire";
     }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.34B79D4C-E548-4935-7BCF-70D7236E071F]
-    // </editor-fold> 
-    public String getNom () {
-       return super.getNom();
+public Administratif(String id,String motDePasse, String nom, String prenom) {
+        super(id, nom, prenom);
+        this.service = service.Administration;
+        this.fonction = "Secretaire";
+        this.motDePasse = motDePasse;
     }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.B9AA1794-F801-87D2-05AA-C7EC0F8B9BFB]
-    // </editor-fold> 
-    public void setNom (String val) {
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.F9AACC7A-88B3-F5BC-640D-9FB02EBDD508]
-    // </editor-fold> 
-    public String getId () {
+    /**
+     * @return the id
+     */
+    public String getId() {
         return super.getId();
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.9079FF6C-A42F-40D8-C43B-92189FBDB951]
-    // </editor-fold> 
-    public void setId (String val) {
+
+    /**
+     * @return the nom
+     */
+    public String getNom() {
+        return super.getNom();
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.AC4A18AA-4556-C7B4-1EA8-49D901742856]
-    // </editor-fold> 
-    public String getMotDePasse () {
-        return super.getMotDePasse();
+    /**
+     * @return the prenom
+     */
+    public String getPrenom() {
+        return super.getPrenom();
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.A7805449-7E24-A87D-5B88-674066C72CC0]
-    // </editor-fold> 
-    public void setMotDePasse (String val) {
+    /**
+     * @return the service
+     */
+    public Services getService() {
+        return service;
+    }
+
+    /**
+     * @param service the service to set
+     */
+    public void setService(Services service) {
+        this.service = service;
+    }
+
+    /**
+     * @return the fonction
+     */
+    public String getFonction() {
+        return fonction;
+    }
+
+    /**
+     * @param fonction the fonction to set
+     */
+    public void setFonction(String fonction) {
+        this.fonction = fonction;
+    }
+
+    /**
+     * @return the motDePasse
+     */
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    /**
+     * @param motDePasse the motDePasse to set
+     */
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
     }
 
 }
-

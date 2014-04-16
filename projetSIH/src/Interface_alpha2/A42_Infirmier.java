@@ -40,8 +40,8 @@ public class A42_Infirmier extends javax.swing.JFrame {
         try {
             sql = new SQL();
 
-            jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, sql.numeroSejourPatient(patient.getIpp())).infosSejour());
-            numSej = sql.numeroSejourPatient(patient.getIpp());
+            jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, sql.rechercherNumeroSejourPatient(patient.getIpp())).infosSejour());
+            numSej = sql.rechercherNumeroSejourPatient(patient.getIpp());
             constantes = sql.getConstantesInitialesPatientSejour(patient, numSej);
             patient = sql.afficherTherapeutique(patient, numSej);
             comboListePrescriptions = new DefaultComboBoxModel(sql.listePrescriptionsMedecinPH(patient, numSej));

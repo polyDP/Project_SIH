@@ -49,7 +49,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         initComponents();
         try {
             sql = new SQL();
-            numeroSejour = sql.numeroSejourPatient(patient.getIpp());
+            numeroSejour = sql.rechercherNumeroSejourPatient(patient.getIpp());
 
             jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, numeroSejour).infosSejour());
 

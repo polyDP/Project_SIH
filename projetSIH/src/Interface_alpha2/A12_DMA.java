@@ -634,7 +634,7 @@ public class A12_DMA extends javax.swing.JFrame {
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir fermer le dossier?", "Confirmer",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.YES_OPTION) {
-            NumeroSejour numSej = sql.numeroSejourPatient(patient.getIpp());
+            NumeroSejour numSej = sql.rechercherNumeroSejourPatient(patient.getIpp());
             sql.fermerDossierMedicalAdministratifPatientBD(numSej,adm);
             if (sql.getErr() != 1) {
                 JOptionPane.showMessageDialog(null, "le dossier a ete ferme",

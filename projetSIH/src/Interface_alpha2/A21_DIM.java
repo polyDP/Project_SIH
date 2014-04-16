@@ -587,7 +587,7 @@ public class A21_DIM extends javax.swing.JFrame {
                     this.newId(nom, prenom);
                     rep = JOptionPane.showConfirmDialog(null, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
                     if (rep == JOptionPane.YES_OPTION) {
-                        med = new MedecinPH(id, motDePasse, nom, prenom, fonction, service);
+                        med = new MedecinPH(id, nom, motDePasse, prenom, service);
                         System.out.println(med.getFonction());
 
                         try {
@@ -628,7 +628,7 @@ public class A21_DIM extends javax.swing.JFrame {
                     rep = JOptionPane.showConfirmDialog(null, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse + "\n    - service : " + service, "confirmation", JOptionPane.OK_CANCEL_OPTION);
 
                     if (rep == JOptionPane.YES_OPTION) {
-                        inf = new Infirmiere(id, motDePasse, nom, prenom, fonction, service);
+                        inf = new Infirmiere(id,motDePasse, nom, prenom, service);
                         //SQL sql = null;
                         try {
                             sql = new SQL();
@@ -646,7 +646,7 @@ public class A21_DIM extends javax.swing.JFrame {
                 }
 
             } else if (jRadioButton2.isSelected()) {
-                fonction = "Secretaire";
+                
                 nom = jTextField1.getText().toLowerCase();
                 prenom = jTextField2.getText().toLowerCase();
 
@@ -661,8 +661,7 @@ public class A21_DIM extends javax.swing.JFrame {
                     this.newId(nom, prenom);
                     rep = JOptionPane.showConfirmDialog(null, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse, "confirmation", JOptionPane.OK_CANCEL_OPTION);
                     if (rep == JOptionPane.YES_OPTION) {
-                        persMed = new PersonnelMedical(id, motDePasse, nom, prenom, fonction);
-                        persMed.setServices(service.Administration);
+                        adm = new Administratif(id,motDePasse, nom, prenom);
 
                         try {
                             sql = new SQL();
@@ -672,7 +671,7 @@ public class A21_DIM extends javax.swing.JFrame {
                             Logger.getLogger(A11_DMA.class.getName()).log(Level.SEVERE, null, ex);
 
                         }
-                        sql.ajouterPersonnelMedicalBD(persMed);
+                        sql.ajouterAdministratifBD(adm);
                         if (sql.getErr() != 1) {
                             JOptionPane.showConfirmDialog(null, "personnel cree \n attention le mot de passe : " + motDePasse + "\nsera utilisé par le personnel pour se loguer, veuiller ne pas le perdre", "information", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                         }

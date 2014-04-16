@@ -14,7 +14,7 @@ public class DMA {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    /**public static void main(String[] args) {
 
         Services servMed1 = Services.Gynecologie_obstetrique;
         MedecinPH med1 = new MedecinPH("8", "lol", "Labat", "paul", "Medecin", servMed1); //va chercher médecins dans la base de données
@@ -86,7 +86,7 @@ public class DMA {
         System.out.println("from Dossier Medical Administratif RECAPITULATIF patient : \n" + pat1.affichagePatient());
         
         
-         
+        
     }
-
+ **/
 }
