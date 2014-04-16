@@ -6,8 +6,6 @@
 package SIH;
 
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,6 +19,13 @@ public class TestsSql {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        //IPP ipp = new IPP();
+        Date date = new Date();
+        date = date.dateJour();
+        IPP ipp = new IPP(date);
+        System.out.println(ipp.toString());
+        //System.out.println(ipp.incrementerIPP("14000000"));
         //NumeroSejour numsej = new NumeroSejour("10050236");
         //System.out.println(numsej.toString());
 

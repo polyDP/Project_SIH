@@ -79,7 +79,10 @@ public class Adresse {
     public void setVille(String ville) {
         this.ville = ville;
     }
-    
+    /**
+     * retourne un affichage formaté de l'adresse
+     * @return 
+     */
     public String toString(){
         return numero +" " +rue+", "+codePostal+" "+ville;
     }

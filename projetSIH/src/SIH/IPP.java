@@ -32,9 +32,12 @@ public class IPP {
     public IPP() {
 
         this.compteur = 0;
-        this.numero = "000000";
+        this.numero = "0000000";
     }
-
+/**
+ * constructeur du l'ipp en fonction de la date
+ * @param date 
+ */
     public IPP(Date date) {
         this.date = date;
         this.compteur = 0;
@@ -45,7 +48,7 @@ public class IPP {
         }
         ippValue = sql.dernierIPP();
         
-        int n = 6;
+        int n = 7;
         int length = ippValue.length();
         numero = ippValue.substring(length - n, length);
         
@@ -61,11 +64,15 @@ public class IPP {
         typeIPP="stringType";
         
     }
-
+/**
+ * methode qui incremente l'ipp en fonction du masque de 7 digit
+ * @param numero
+ * @return 
+ */
     public String incrementerIPP(String numero) {
         long compteur ;
         compteur = Integer.parseInt(numero);
-         final int nbdigits = 6;
+         final int nbdigits = 7;
          NumberFormat nbf = NumberFormat.getNumberInstance();
           nbf.setMinimumIntegerDigits(nbdigits);
           nbf.setGroupingUsed(false);
@@ -75,7 +82,10 @@ public class IPP {
         return sformatee;
 
     }
-
+/**
+ * renvoie un affichage formate de l'ipp de type String
+ * @return 
+ */
     public String toString() {
         String toString = null;
         if (typeIPP.equals("dateType")){

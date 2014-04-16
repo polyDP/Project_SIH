@@ -525,6 +525,41 @@ public class SQL {
 
         }
     }
+    /**
+     requete sql pour ajouter les CR des anesthesistes
+     * @param p
+     * @param ns
+     * @param pm
+     * @param dateJourHeureObs
+     * @param observation 
+     */
+        public void ajouterCrAnest(Patient p, NumeroSejour ns, PersonnelMedical pm, String dateJourHeureObs, String observation) {
+        try {
+
+            String requete = "INSERT INTO anesthesie(IPP,Num_Sejour,Anesthesiste,Date_Heure_Anest,Obs_Anest)"
+                    + "Values (?,?,?,?,?)";
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+
+            prepS.setObject(1, p.getIpp().toString());
+
+            prepS.setObject(2, ns.toString());
+
+            prepS.setObject(3, pm.getId());
+
+            prepS.setObject(4, dateJourHeureObs);
+
+            prepS.setObject(5, observation);
+
+            prepS.executeUpdate();
+
+            sqlToLog.ajouterOperationPatientBDlog(p, pm);
+
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique avec ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
 
     /**
      * requete SQL pour ajouter les premieres information du patient traitment
@@ -598,7 +633,7 @@ public class SQL {
      * @param numSej
      * @param adm
      */
-    public void fermerDossierMedicalAdministratifPatientBD(NumeroSejour numSej, Administratif adm) {
+    public void fermerDossierMedicalAdministratifPatientBD(Patient p,NumeroSejour numSej, Administratif adm) {
         try {
             String requete = "UPDATE nouveau_sejour SET Etat_Dossier = ? WHERE Num_Sejour = ?";
 
@@ -606,7 +641,7 @@ public class SQL {
             prepS.setString(1, "ferme");
             prepS.setObject(2, numSej.toString());
             prepS.executeUpdate();
-            sqlToLog.fermerSejourPatientBDlog(null, adm);
+            sqlToLog.fermerSejourPatientBDlog(p, adm);
 
         } catch (SQLException e) {
             err = 1;
@@ -667,11 +702,9 @@ public class SQL {
 
         Adresse adresse = new Adresse(numAdresse, nomRue, codePostal, ville);
 
-        jour = Integer.parseInt(dateNaissance.substring(0, 2));
-        mois = Integer.parseInt(dateNaissance.substring(3, 5));
-        annee = Integer.parseInt(dateNaissance.substring(6, 10));
+        
 
-        Date date = new Date(jour, mois, annee);
+        Date date = new Date(dateNaissance);
 
         IPP ipp = new IPP(ippValue);
 
@@ -1317,11 +1350,34 @@ public class SQL {
  * @param dateHeurPrescri
  * @return 
  */
-    public String getObservationsPatient(Patient p, NumeroSejour numSej, String dateHeurPrescri) {
+    public String getObservationsPatient(Patient p, NumeroSejour numSej, String dateHeurObs) {
 
         String prescription = null;
 
-        String requete = "SELECT * FROM obs_ph, personnel WHERE IPP = '" + p.getIpp().toString() + "'  AND Num_Sejour = '" + numSej.toString() + "' AND PH_Resp = ID_PH AND Date_Heure_Obs = '" + dateHeurPrescri + "'";
+        String requete = "SELECT * FROM anesthesie, personnel WHERE IPP = '" + p.getIpp().toString() + "'  AND Num_Sejour = '" + numSej.toString() + "' AND PH_Resp = ID_PH AND Date_Heure_Anest = '" + dateHeurObs + "'";
+
+        try {
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+
+                prescription = result.getString("Obs_anest");
+
+            }
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+        return prescription;
+    }
+    
+    public String getCompteRenduAnesthesie(Patient p, NumeroSejour numSej, String dateHeurCR) {
+
+        String prescription = null;
+
+        String requete = "SELECT * FROM obs_ph, personnel WHERE IPP = '" + p.getIpp().toString() + "'  AND Num_Sejour = '" + numSej.toString() + "' AND PH_Resp = ID_PH AND Date_Heure_Obs = '" + dateHeurCR + "'";
 
         try {
             ResultSet result = con.resultatRequete(requete);

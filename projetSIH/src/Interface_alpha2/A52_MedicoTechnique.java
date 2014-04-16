@@ -8,13 +8,16 @@ package Interface_alpha2;
 
 import SIH.Date;
 import SIH.MedecinPH;
+import SIH.NumeroSejour;
 import SIH.Patient;
 import SIH.SQL;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -36,10 +39,20 @@ public class A52_MedicoTechnique extends javax.swing.JFrame {
         initComponents();
         try {
             sql = new SQL();
-            
+
             jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, sql.rechercherNumeroSejourPatient(patient.getIpp())).infosSejour());
+            numSej = sql.rechercherNumeroSejourPatient(patient.getIpp());
+
+            comboListeObservations = new DefaultComboBoxModel(sql.listeObservationsMedecinPH(patient, numSej));
+            comboListeObservations.insertElementAt("Observations ", 0);
+            jComboBox1.setModel(comboListeObservations);
+            jComboBox1.setSelectedIndex(0);
+            
+            
         } catch (SQLException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException e) {
+
         }
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 this.addWindowListener( new WindowAdapter()
@@ -87,6 +100,7 @@ this.addWindowListener( new WindowAdapter()
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
+        jComboBox1 = new javax.swing.JComboBox();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
@@ -204,21 +218,33 @@ this.addWindowListener( new WindowAdapter()
         jTextArea4.setRows(5);
         jScrollPane4.setViewportView(jTextArea4);
 
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
+                .addContainerGap(102, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(248, 248, 248)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(96, Short.MAX_VALUE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Observations PH", jPanel7);
@@ -404,7 +430,12 @@ this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+Calendar calendrier = Calendar.getInstance();
+        String heure = calendrier.get(Calendar.HOUR_OF_DAY) + ":" + calendrier.get(Calendar.MINUTE) + ":" + calendrier.get(Calendar.SECOND);
+
+        dateHeureJour = dateJour + " " + heure;
+
+        sql.ajouterCrAnest(patient, numeroSejour, medecin, dateHeureJour, jTextArea3.getText());        
     JOptionPane.showMessageDialog(null, "les observations ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
 
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -429,6 +460,27 @@ this.dispose();         // TODO add your handling code here:
     private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
         JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenu4MenuSelected
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        if (jComboBox1.getSelectedIndex() != 0) {
+            String val;
+            val = jComboBox1.getSelectedItem().toString();
+            String[] splited = val.split("\\s");
+            String dateObs = splited[0];
+            String heureObs = splited[1];
+
+            String dateHeureObs = dateObs + " " + heureObs;
+            jTextArea4.setText(sql.getObservationsPatient(patient, numeroSejour, dateHeureObs));
+            jTextArea4.repaint();
+            jTextArea4.revalidate();
+
+            jTextArea4.setEditable(false);
+            jButton4.setVisible(false);
+        } else {
+            jTextArea4.setEditable(true);
+            jButton4.setVisible(true);
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
     
 
     /**
@@ -465,15 +517,20 @@ this.dispose();         // TODO add your handling code here:
             }
         });
     }
+    private DefaultComboBoxModel comboListeObservations;
+    private NumeroSejour numSej;;
     private SQL sql = null;
     private Patient patient;
     private MedecinPH medecin;
 private Date dateJour;
+ private String dateHeureJour;
+  private NumeroSejour numeroSejour;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;

@@ -42,8 +42,9 @@ public class A62_Anesthesie extends javax.swing.JFrame {
 
             jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, sql.rechercherNumeroSejourPatient(patient.getIpp())).infosSejour());
             numSej = sql.rechercherNumeroSejourPatient(patient.getIpp());
+            
             comboListePrescriptions = new DefaultComboBoxModel(sql.listePrescriptionsMedecinPH(patient, numSej));
-
+            comboListeObservations.insertElementAt("Prescriptions ", 0);
             jComboBox2.setModel(comboListePrescriptions);
             jComboBox2.setSelectedIndex(0);
 
@@ -51,8 +52,12 @@ public class A62_Anesthesie extends javax.swing.JFrame {
             comboListeObservations.insertElementAt("Observations ", 0);
             jComboBox3.setModel(comboListeObservations);
             jComboBox3.setSelectedIndex(0);
+            
+            
         } catch (SQLException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException e) {
+
         }
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -337,7 +342,6 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -616,10 +620,14 @@ public class A62_Anesthesie extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      //sql.ajouterObservationAnesthesie(patient, numSej, medecin, dateJour, jTextArea5.getText());
-        // if(sql.getErr()!=1){
-        // JOptionPane.showMessageDialog(null, "la lettre de sortie a bien été validée", "information", JOptionPane.WARNING_MESSAGE); 
-        // }
+      Calendar calendrier = Calendar.getInstance();
+        String heure = calendrier.get(Calendar.HOUR_OF_DAY) + ":" + calendrier.get(Calendar.MINUTE) + ":" + calendrier.get(Calendar.SECOND);
+
+        dateHeureJour = dateJour + " " + heure;
+        sql.ajouterCrAnest(patient, numSej, medecin, dateHeureJour, jTextArea5.getText());
+         if(sql.getErr()!=1){
+         JOptionPane.showMessageDialog(null, "la lettre de sortie a bien été validée", "information", JOptionPane.WARNING_MESSAGE); 
+         }
     }//GEN-LAST:event_jButton3ActionPerformed
     /**
      * retour à la page d'accueil de l'anesthésiste
@@ -645,18 +653,24 @@ public class A62_Anesthesie extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu4MenuSelected
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        String val;
-        val = jComboBox1.getSelectedItem().toString();
-        String[] splited = val.split("\\s");
-        String datePrescri = splited[0];
-        String heurePrescri = splited[1];
+         if (jComboBox3.getSelectedIndex() != 0) {
+            String val;
+            val = jComboBox3.getSelectedItem().toString();
+            String[] splited = val.split("\\s");
+            String dateObs = splited[0];
+            String heureObs = splited[1];
 
-        String dateHeurePrescri = datePrescri + " " + heurePrescri;
-        jTextArea2.setText(sql.getPrescriptionsPatient(patient, numSej, dateHeurePrescri));
-        jTextArea2.repaint();
-        jTextArea2.revalidate();
+            String dateHeureObs = dateObs + " " + heureObs;
+            jTextArea4.setText(sql.getObservationsPatient(patient, numSej, dateHeureObs));
+            jTextArea4.repaint();
+            jTextArea4.revalidate();
 
-        jTextArea2.setEditable(false);
+            jTextArea4.setEditable(false);
+            
+        } else {
+            jTextArea4.setEditable(true);
+            
+        }
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed

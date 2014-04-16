@@ -1,33 +1,19 @@
 package SIH;
 
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.B9361F9C-6E4A-7FD8-D92A-0D9064D13916]
-// </editor-fold> 
 public class Lit {
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.B108CD9C-DCE2-3BBE-8206-195F81ED3E87]
-    // </editor-fold> 
     private Services service;
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.9FF7364D-EC71-383D-109B-EEA1AFCB61D6]
-    // </editor-fold> 
     private Patient patient;
 
     private String cote;
 
     private int numero;
 
-    private GestionLits gestLit;
-
     private String lit;
 
     private String typeLit;
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.F236F082-73BF-D0C9-CAD4-EC50B8BF3164]
-    // </editor-fold> 
     public Lit(int numero, String cote) {
         this.numero = numero;
         this.cote = cote;
@@ -47,33 +33,47 @@ public class Lit {
         this.lit = lit;
         typeLit = "StringType";
     }
+/**
+ * renvoie une string avec un lit sous la forme numero+cote du lit
+ * @return 
+ */
+    public String idLit() {
+        String litId = null;
+        if (typeLit.equals("intType")) {
+            litId = numero + cote;
+        } else if (typeLit.equals("StringType")) {
+            litId = lit;
+        }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.BC66F62C-1708-6432-CD78-5E6AA1578B06]
-    // </editor-fold> 
-    public Patient getPatients() {
-        return patient;
+        return litId;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.E731DABF-E864-DBB9-2C18-F397E53AA0D9]
-    // </editor-fold> 
-    public void setPatients(Patient val) {
-        this.patient = val;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.D1FB75B6-C505-0ABF-40D8-FCF211F177ED]
-    // </editor-fold> 
-    public Services getServices() {
+    /**
+     * @return the service
+     */
+    public Services getService() {
         return service;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.F718A126-D648-8B8E-EB8C-5B3554414752]
-    // </editor-fold> 
-    public void setServices(Services val) {
-        this.service = val;
+    /**
+     * @param service the service to set
+     */
+    public void setService(Services service) {
+        this.service = service;
+    }
+
+    /**
+     * @return the patient
+     */
+    public Patient getPatient() {
+        return patient;
+    }
+
+    /**
+     * @param patient the patient to set
+     */
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     /**
@@ -104,19 +104,31 @@ public class Lit {
         this.numero = numero;
     }
 
-    public String afficherLit() {
-
-        return numero + cote + " " + patient;
+    /**
+     * @return the lit
+     */
+    public String getLit() {
+        return lit;
     }
 
-    public String idLit() {
-        String litId = null;
-        if (typeLit.equals("intType")) {
-            litId = numero + cote;
-        } else if (typeLit.equals("StringType")) {
-            litId = lit;
-        }
+    /**
+     * @param lit the lit to set
+     */
+    public void setLit(String lit) {
+        this.lit = lit;
+    }
 
-        return litId;
+    /**
+     * @return the typeLit
+     */
+    public String getTypeLit() {
+        return typeLit;
+    }
+
+    /**
+     * @param typeLit the typeLit to set
+     */
+    public void setTypeLit(String typeLit) {
+        this.typeLit = typeLit;
     }
 }

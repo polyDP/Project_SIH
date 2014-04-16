@@ -34,10 +34,10 @@ public class A12_DMA extends javax.swing.JFrame {
      */
     public A12_DMA(Patient patient, boolean n, Administratif adm) {
         this.adm = adm;
-       
+
         dateJour = new Date();
         dateJour = dateJour.dateJour();
-       
+
         comboServices = new DefaultComboBoxModel(service.values());
         comboServices.insertElementAt(vide, 0);
         comboServices.removeElement(service.Administration);
@@ -51,9 +51,9 @@ public class A12_DMA extends javax.swing.JFrame {
 
         yearIndex = (int) (dateJour.getAnnee() - 2014);
         if (n == true) {
-            System.out.println("patient nouveau cree" + n);
+           
             this.patient = patient;
-            comboHistorique = new DefaultComboBoxModel();
+
             initComponents();
             jTabbedPane1.remove(1);
             this.patient = patient;
@@ -70,10 +70,11 @@ public class A12_DMA extends javax.swing.JFrame {
                 }
             });
         } else if (n == false) {
-            
+
             this.patient = patient;
             try {
                 sql = new SQL();
+                
             } catch (SQLException ex) {
                 Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
             } catch (InstantiationException ex) {
@@ -82,7 +83,7 @@ public class A12_DMA extends javax.swing.JFrame {
                 Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
             }
             comboHistorique = new DefaultComboBoxModel(sql.listeHistoriqueSejourPatient(patient));
-
+            comboHistorique.insertElementAt(vide, 0);
             initComponents();
             setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             this.addWindowListener(new WindowAdapter() {
@@ -635,7 +636,7 @@ public class A12_DMA extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.YES_OPTION) {
             NumeroSejour numSej = sql.rechercherNumeroSejourPatient(patient.getIpp());
-            sql.fermerDossierMedicalAdministratifPatientBD(numSej,adm);
+            sql.fermerDossierMedicalAdministratifPatientBD(patient, numSej, adm);
             if (sql.getErr() != 1) {
                 JOptionPane.showMessageDialog(null, "le dossier a ete ferme",
                         "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -715,7 +716,7 @@ public class A12_DMA extends javax.swing.JFrame {
         if (rep == JOptionPane.YES_OPTION) {
             sejPat.ouvertureDossier();
             patient.setDateAdmission(dateAdmission);
-            sql.ajouterSejourPatientBD(patient, numSej, s, medecin, numLit,adm);
+            sql.ajouterSejourPatientBD(patient, numSej, s, medecin, numLit, adm);
             JOptionPane.showConfirmDialog(null, "Le dossier Administratif du patient est ouvert", "confirmation", JOptionPane.OK_OPTION);
             A11_DMA fenetre1 = new A11_DMA(adm);
             fenetre1.setVisible(true);
@@ -755,13 +756,13 @@ public class A12_DMA extends javax.swing.JFrame {
             sql = new SQL();
             SejourPatient sejPat = sql.infoHistoriqueSejourPatient(patient, numeroSejour);
             jTextArea1.setText(sejPat.historiqueSejour());
-            if (!sejPat.isEtatDossier()){
+            if (!sejPat.isEtatDossier()) {
                 jButton3.setVisible(false);
             } else {
-                if(sejPat.getLettreSortie().equals("Pas de lettre de sortie")){
+                if (sejPat.getLettreSortie().equals("Pas de lettre de sortie")) {
                     JOptionPane.showMessageDialog(null, "le patient n'a pas encore de lettre de sortie, son dossier ne pourra pas etre ferme",
-                    "Information", JOptionPane.INFORMATION_MESSAGE);
-                jButton3.setVisible(false);
+                            "Information", JOptionPane.INFORMATION_MESSAGE);
+                    jButton3.setVisible(false);
                 } else {
                     jButton3.setVisible(true);
                 }
@@ -778,15 +779,15 @@ public class A12_DMA extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenu4MenuSelected
     /**
      * Permet de revenir en arrière sur la page A11_DMA
@@ -903,7 +904,7 @@ public class A12_DMA extends javax.swing.JFrame {
     private DefaultComboBoxModel comboHistorique;
     private Administratif adm;
     private String onglet;
-   private int rep;
+    private int rep;
     private MedecinPH medecin;
     private Services s;
     private Patient patient;

@@ -25,6 +25,12 @@ public class SqlToLog {
     private MedecinPH medecinPH;
     private String dateHeureJour;
 
+    /**
+     * classe permettant d'ajouter des logs a la base de donnee
+     * @throws SQLException
+     * @throws InstantiationException
+     * @throws IllegalAccessException 
+     */
     public SqlToLog() throws SQLException, InstantiationException, IllegalAccessException {
         Date dateJour = new Date();
         dateJour = dateJour.dateJour();
@@ -36,7 +42,10 @@ public class SqlToLog {
         err = 0;
 
     }
-
+/**
+ *  requete log lors de la connexion d'un personnel
+ * @param p 
+ */
     public void connexionPersonnel(Personnel p) {
         try {
 
