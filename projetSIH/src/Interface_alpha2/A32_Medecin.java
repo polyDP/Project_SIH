@@ -17,9 +17,9 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import static org.eclipse.persistence.jaxb.TypeMappingInfo.ElementScope.Local;
 
 /**
  *
@@ -35,6 +35,9 @@ public class A32_Medecin extends javax.swing.JFrame {
      * Creates new form Premiere_page_dma Appel à une méthode qui permet de
      * fermer l'application avec la croix en demandant l'autorisation à
      * l'utilisateur
+     *
+     * @param medecin
+     * @param patient
      */
     public A32_Medecin(MedecinPH medecin, Patient patient) {
         this.medecin = medecin;
@@ -42,17 +45,26 @@ public class A32_Medecin extends javax.swing.JFrame {
         dateJour = new Date();
         dateJour = dateJour.dateJour();
         Calendar calendrier = Calendar.getInstance();
-        dateHeureJour = dateJour+ " " + calendrier.getTime().toString().substring(12, 19);
-        
-
+        dateHeureJour = dateJour + " " + calendrier.get(Calendar.HOUR_OF_DAY) + ":" + calendrier.get(Calendar.MINUTE) + ":" + calendrier.get(Calendar.SECOND);
         initComponents();
-
         try {
             sql = new SQL();
+            numeroSejour = sql.numeroSejourPatient(patient.getIpp());
 
-            jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, sql.numeroSejourPatient(patient.getIpp())).infosSejour());
-            numSej = sql.numeroSejourPatient(patient.getIpp());
-            constantes = sql.getConstantesInitialesPatientSejour(patient.getIpp(), numSej);
+            jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, numeroSejour).infosSejour());
+
+            constantes = sql.getConstantesInitialesPatientSejour(patient, numeroSejour);
+            patient = sql.afficherTherapeutique(patient, numeroSejour);
+
+            comboListePrescriptions = new DefaultComboBoxModel(sql.listePrescriptionsMedecinPH(patient, numeroSejour));
+            comboListePrescriptions.insertElementAt("prescription a effectuer", 0);
+            jComboBox2.setModel(comboListePrescriptions);
+            jComboBox2.setSelectedIndex(0);
+
+            comboListeObservations = new DefaultComboBoxModel(sql.listeObservationsMedecinPH(patient, numeroSejour));
+            comboListeObservations.insertElementAt("Observations ", 0);
+            jComboBox3.setModel(comboListeObservations);
+            jComboBox3.setSelectedIndex(0);
 
             if (constantes.getTaille() != 0) {
                 jTextField2.setText((taille.valueOf(constantes.getTaille())));
@@ -93,7 +105,7 @@ public class A32_Medecin extends javax.swing.JFrame {
                 jTextField4.setText("");
                 jTextField4.setEditable(true);
             }
-            if (constantes.getAutreSoins().equals(null)) {
+            if (!constantes.getAutreSoins().isEmpty()) {
                 jTextField5.setText(constantes.getAutreSoins());
                 jTextField5.setEditable(false);
             } else {
@@ -101,6 +113,39 @@ public class A32_Medecin extends javax.swing.JFrame {
                 jTextField5.setText("");
                 jTextField5.setEditable(true);
             }
+            if (!patient.getAllergies().isEmpty()) {
+                jTextField10.setText(patient.getAllergies());
+                jTextField10.setEditable(false);
+            } else {
+                jTextField10.setText("");
+                jTextField10.setEditable(true);
+            }
+
+            if (!patient.getTraitmentPersonnel().isEmpty()) {
+                jTextField7.setText(patient.getTraitmentPersonnel());
+                jTextField7.setEditable(false);
+            } else {
+                jTextField7.setText("");
+                jTextField7.setEditable(true);
+            }
+
+            if (!patient.getRegimeAlimentaire().isEmpty()) {
+                jTextField8.setText(patient.getRegimeAlimentaire());
+                jTextField8.setEditable(false);
+
+            } else {
+                jTextField8.setText("");
+                jTextField8.setEditable(true);
+            }
+            if (!sql.getLettreSortiePatient(numeroSejour).isEmpty()) {
+                jTextArea5.setText(sql.getLettreSortiePatient(numeroSejour));
+                jTextArea5.setEditable(false);
+                jButton7.setVisible(false);
+            } else {
+                jTextArea5.setText("");
+                jTextArea5.setEditable(true);
+            }
+
         } catch (SQLException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -183,10 +228,12 @@ public class A32_Medecin extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
+        jComboBox3 = new javax.swing.JComboBox();
         jPanel10 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -466,7 +513,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -475,10 +522,10 @@ public class A32_Medecin extends javax.swing.JFrame {
                     .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel14);
@@ -563,6 +610,14 @@ public class A32_Medecin extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setPreferredSize(new java.awt.Dimension(500, 400));
+        jPanel6.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                jPanel6ComponentHidden(evt);
+            }
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel6ComponentShown(evt);
+            }
+        });
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -578,6 +633,12 @@ public class A32_Medecin extends javax.swing.JFrame {
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel31.setText("Pensez à mettre vos prescriptions à jour régulièrement");
 
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -591,17 +652,23 @@ public class A32_Medecin extends javax.swing.JFrame {
                         .addComponent(jButton2))
                     .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(92, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(jLabel31)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Prescriptions", jPanel6);
@@ -620,25 +687,37 @@ public class A32_Medecin extends javax.swing.JFrame {
             }
         });
 
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(237, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(238, 238, 238))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(238, 238, 238))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1360,6 +1439,9 @@ public class A32_Medecin extends javax.swing.JFrame {
         boolean a2 = true;
         boolean a3 = true;
         boolean a4 = true;
+        boolean a5 = true;
+        boolean a6 = true;
+        boolean a7 = true;
         taille = jTextField2.getText();
         tension = jFormattedTextField1.getText();
         poids = jTextField1.getText();
@@ -1424,7 +1506,7 @@ public class A32_Medecin extends javax.swing.JFrame {
         }
         if (taille.length() != 0) {
             try {
-                if (Integer.parseInt(taille) < 10 || Integer.parseInt(taille) > 3000) {
+                if (Integer.parseInt(taille) < 10 || Integer.parseInt(taille) > 300) {
                     JOptionPane.showConfirmDialog(null, "ce n'est pas le bon format; la taille doit être comprise entre 10 et 300 cm  ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
                     a4 = false;
                 } else {
@@ -1438,17 +1520,74 @@ public class A32_Medecin extends javax.swing.JFrame {
             }
 
         }
-        if (a1 == true && a2 == true && a3 == true && a4 == true) {
-            constantes = new Constantes(tailleI, poidsD, tension, glycemieD, temperatureD, autres);
-            if (!jFormattedTextField1.isEditable() || !jTextField2.isEditable() || !jTextField4.isEditable() || !jTextField5.isEditable() || !jTextField6.isEditable() || !actualiser) {
-                sql.ajouterSoinsArriveeMiseAJour(patient, numSej, medecin, dateJour, constantes);
-            } else {
-                sql.ajouterSoinsArrivee(patient, numSej, medecin, dateJour, constantes);
-                actualiser = true;
-            }
+        if (!taille.isEmpty() || !poids.isEmpty() || !temperature.isEmpty() || !glycemie.isEmpty() || !taille.isEmpty() || !autres.isEmpty()) {
+            a7 = true;
+        } else {
+            a7 = false;
+
         }
-        if (sql.getErr() != 1) {
-            JOptionPane.showMessageDialog(null, "les données ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+
+        if (!allergie.isEmpty() || !regime.isEmpty() || !traitement.isEmpty()) {
+            a5 = true;
+        } else {
+            a5 = false;
+
+        }
+        if (!motif.isEmpty() || !diagnostic.isEmpty() || !antecedent.isEmpty()) {
+            a6 = true;
+        } else {
+            a6 = false;
+
+        }
+        System.out.println(a1);
+        System.out.println(a2);
+        System.out.println(a3);
+        System.out.println(a4);
+        System.out.println(a5);
+        System.out.println(a6);
+
+        //if (taille.isEmpty() || poids.isEmpty() || tension.isEmpty() || glycemie.isEmpty() && temperature.isEmpty() && autres.isEmpty() &&   motif.isEmpty() && diagnostic.isEmpty() && antecedent.isEmpty()) {
+        patient.setAllergies(allergie);
+        patient.setRegimeAlimentaire(regime);
+        patient.setTraitmentPersonnel(traitement);
+
+        if (a1 == true && a2 == true && a3 == true && a4 == true && a7 == true) {
+            constantes = new Constantes(tailleI, poidsD, tension, glycemieD, temperatureD, autres);
+            if (!jFormattedTextField1.isEditable() || !jTextField2.isEditable() || !jTextField4.isEditable() || !jTextField5.isEditable() || !jTextField6.isEditable() || !jTextField1.isEditable()) {
+                sql.ajouterSoinsArriveeMiseAJour(patient, numeroSejour, medecin, dateJour, constantes);
+                if (sql.getErr() != 1) {
+                JOptionPane.showMessageDialog(null, "les constantes ont bien été actualisees", "information", JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                sql.ajouterSoinsArrivee(patient, numeroSejour, medecin, dateJour, constantes);
+                if (sql.getErr() != 1) {
+                JOptionPane.showMessageDialog(null, "les constantes ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+
+        }
+        if (a5 == true) {
+
+            if (!jTextField7.isEditable() || !jTextField10.isEditable() || !jTextField8.isEditable()) {
+                sql.ajouterTherapeutiqueMiseAJour(patient, numeroSejour);
+                if (sql.getErr() != 1) {
+                JOptionPane.showMessageDialog(null, "la thérapeutique été validée", "information", JOptionPane.WARNING_MESSAGE);
+            }
+
+            } else {
+
+                sql.ajouterTherapeutique(patient, numeroSejour);
+                if (sql.getErr() != 1) {
+                JOptionPane.showMessageDialog(null, "la thérapeutique été actualise", "information", JOptionPane.WARNING_MESSAGE);
+            }
+            }
+            
+            if (a6 == true) {
+
+            }
+        } else {
+
+            JOptionPane.showMessageDialog(null, "un des champs n'est pas valide, veuillez remplir au moins un champ des 3 groupes", "information", JOptionPane.WARNING_MESSAGE);
         }
 
 
@@ -1463,21 +1602,34 @@ public class A32_Medecin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        sql.ajouterObservationPH(patient, numSej, medecin, dateHeureJour, jTextArea2.getText());
+        Calendar calendrier = Calendar.getInstance();
+        String heure = calendrier.get(Calendar.HOUR_OF_DAY) + ":" + calendrier.get(Calendar.MINUTE) + ":" + calendrier.get(Calendar.SECOND);
+
+        dateHeureJour = dateJour + " " + heure;
+
+        sql.ajouterPrescriptionPH(patient, numeroSejour, medecin, dateHeureJour, jTextArea2.getText());
         if (sql.getErr() != 1) {
-             JOptionPane.showMessageDialog(null, "la prescription a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "la prescription a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
         }
-       
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        JOptionPane.showMessageDialog(null, "les observations ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+        Calendar calendrier = Calendar.getInstance();
+        String heure = calendrier.get(Calendar.HOUR_OF_DAY) + ":" + calendrier.get(Calendar.MINUTE) + ":" + calendrier.get(Calendar.SECOND);
+
+        dateHeureJour = dateJour + " " + heure;
+
+        sql.ajouterObservationPH(patient, numeroSejour, medecin, dateHeureJour, jTextArea4.getText());
+        if (sql.getErr() != 1) {
+            JOptionPane.showMessageDialog(null, "les observations ont bien été validées", "information", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        sql.ajouterLettreSortie(patient, numSej, medecin, dateJour, jTextArea5.getText());
+        sql.ajouterLettreSortie(patient, numeroSejour, medecin, dateJour, jTextArea5.getText());
         if (sql.getErr() != 1) {
-            JOptionPane.showMessageDialog(null, "la lettre de sortie a bien été validée", "information", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "la lettre de sortie a bien été validée, elle ne pourra plus etre modifiee", "information", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -1493,6 +1645,66 @@ public class A32_Medecin extends javax.swing.JFrame {
     private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
         JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenu4MenuSelected
+
+    private void jPanel6ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel6ComponentHidden
+        comboListePrescriptions = new DefaultComboBoxModel(sql.listePrescriptionsMedecinPH(patient, numeroSejour));
+        comboListePrescriptions.insertElementAt("prescription du moment", 0);
+        jComboBox2.setModel(comboListePrescriptions);
+        if (!jTextArea2.getText().isEmpty()) {
+            JOptionPane.showConfirmDialog(null, "avez vous validé votre prescription ?", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jPanel6ComponentHidden
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        if (jComboBox2.getSelectedIndex() != 0) {
+            String val;
+            val = jComboBox2.getSelectedItem().toString();
+            String[] splited = val.split("\\s");
+            String datePrescri = splited[0];
+            String heurePrescri = splited[1];
+
+            String dateHeurePrescri = datePrescri + " " + heurePrescri;
+            jTextArea2.setText(sql.getPrescriptionsPatient(patient, numeroSejour, dateHeurePrescri));
+            jTextArea2.repaint();
+            jTextArea2.revalidate();
+
+            jTextArea2.setEditable(false);
+            jButton2.setVisible(false);
+
+        } else {
+            jTextArea2.setEditable(true);
+            jButton2.setVisible(true);
+        }
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jPanel6ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel6ComponentShown
+
+        comboListePrescriptions = new DefaultComboBoxModel(sql.listePrescriptionsMedecinPH(patient, numeroSejour));
+        comboListePrescriptions.insertElementAt("prescription du moment", 0);
+        jComboBox2.setModel(comboListePrescriptions);
+        jComboBox2.setSelectedIndex(0);
+    }//GEN-LAST:event_jPanel6ComponentShown
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        if (jComboBox3.getSelectedIndex() != 0) {
+            String val;
+            val = jComboBox3.getSelectedItem().toString();
+            String[] splited = val.split("\\s");
+            String dateObs = splited[0];
+            String heureObs = splited[1];
+
+            String dateHeureObs = dateObs + " " + heureObs;
+            jTextArea4.setText(sql.getObservationsPatient(patient, numeroSejour, dateHeureObs));
+            jTextArea4.repaint();
+            jTextArea4.revalidate();
+
+            jTextArea4.setEditable(false);
+            jButton4.setVisible(false);
+        } else {
+            jTextArea4.setEditable(true);
+            jButton4.setVisible(true);
+        }
+    }//GEN-LAST:event_jComboBox3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1529,7 +1741,9 @@ public class A32_Medecin extends javax.swing.JFrame {
             }
         });
     }
-    private NumeroSejour numSej;
+    private DefaultComboBoxModel comboListeObservations;
+    private DefaultComboBoxModel comboListePrescriptions;
+    private NumeroSejour numeroSejour;
     private Constantes constantes;
     private SQL sql = null;
     private Patient patient;
@@ -1542,7 +1756,7 @@ public class A32_Medecin extends javax.swing.JFrame {
     private String temperature;
     private String autres;
     private int tailleI;
-    private boolean actualiser;
+    //private boolean actualiserConstantesIni = false;
     private double poidsD;
     private double glycemieD;
     private double temperatureD;
@@ -1566,6 +1780,8 @@ public class A32_Medecin extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

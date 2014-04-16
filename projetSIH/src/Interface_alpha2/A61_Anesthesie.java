@@ -32,6 +32,7 @@ public class A61_Anesthesie extends javax.swing.JFrame {
         dateJour = dateJour.dateJour();
         try {
             sql = new SQL();
+            comboPatientAnesthesie = new DefaultComboBoxModel(sql.listePatientAnesthesie());
         } catch (SQLException ex) {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -40,7 +41,7 @@ public class A61_Anesthesie extends javax.swing.JFrame {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        comboPatientAnesthesie = new DefaultComboBoxModel(sql.listePatientAnesthesie());
+        
 
         initComponents();
         jComboBox1.setModel(comboPatientAnesthesie);
@@ -408,7 +409,7 @@ public class A61_Anesthesie extends javax.swing.JFrame {
        String prenomRecherche = splited[1];
         System.out.println(prenomRecherche);
         
-       A62_Anesthesie fenetre3 =  new A62_Anesthesie(sql.rechercherPatient(nomRecherche, prenomRecherche),medecin);
+       A62_Anesthesie fenetre3 =  new A62_Anesthesie(sql.rechercherPatient(nomRecherche, prenomRecherche,medecin),medecin);
         
       fenetre3.setVisible(true);
        this.dispose();

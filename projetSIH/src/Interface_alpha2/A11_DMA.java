@@ -175,7 +175,7 @@ public class A11_DMA extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
+            .addGap(0, 518, Short.MAX_VALUE)
         );
 
         jPanel8.add(jPanel3, java.awt.BorderLayout.LINE_END);
@@ -383,7 +383,7 @@ public class A11_DMA extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
+                .addContainerGap(149, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2))
@@ -419,7 +419,7 @@ public class A11_DMA extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Création patient", jPanel5);
@@ -455,11 +455,11 @@ public class A11_DMA extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(159, Short.MAX_VALUE)
+                .addContainerGap(152, Short.MAX_VALUE)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addComponent(jLabel1)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Recherche patient", jPanel4);
@@ -852,12 +852,12 @@ public class A11_DMA extends javax.swing.JFrame {
                                     
                                     ipp = new IPP(dateJour);
 
-                                    System.out.println("ipp apres dernier SQL" + ipp);
+                                   
                                     patient.setIpp(ipp);
 
                                     
 
-                                    sql.ajouterPatientBD(patient);
+                                    sql.ajouterPatientBD(patient,adm);
                                     if (sql.getErr() != 1) {
                                         this.dispose();
                                         boolean n = true;
@@ -885,7 +885,7 @@ public class A11_DMA extends javax.swing.JFrame {
         prenomRecherche = splited[1];
         System.out.println(prenomRecherche);
             
-            A12_DMA a12_dma = new A12_DMA(sql.rechercherPatient(nomRecherche, prenomRecherche), n,adm);
+            A12_DMA a12_dma = new A12_DMA(sql.rechercherPatient(nomRecherche, prenomRecherche,adm), n,adm);
             a12_dma.setVisible(true);
             //rechercher patient dans base de données
         }

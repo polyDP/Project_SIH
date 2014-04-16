@@ -635,7 +635,7 @@ public class A12_DMA extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.YES_OPTION) {
             NumeroSejour numSej = sql.numeroSejourPatient(patient.getIpp());
-            sql.fermerDossierMedicalAdministratifPatientBD(numSej);
+            sql.fermerDossierMedicalAdministratifPatientBD(numSej,adm);
             if (sql.getErr() != 1) {
                 JOptionPane.showMessageDialog(null, "le dossier a ete ferme",
                         "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -715,7 +715,7 @@ public class A12_DMA extends javax.swing.JFrame {
         if (rep == JOptionPane.YES_OPTION) {
             sejPat.ouvertureDossier();
             patient.setDateAdmission(dateAdmission);
-            sql.ajouterSejourPatientBD(patient, numSej, s, medecin, numLit);
+            sql.ajouterSejourPatientBD(patient, numSej, s, medecin, numLit,adm);
             JOptionPane.showConfirmDialog(null, "Le dossier Administratif du patient est ouvert", "confirmation", JOptionPane.OK_OPTION);
             A11_DMA fenetre1 = new A11_DMA(adm);
             fenetre1.setVisible(true);
@@ -903,7 +903,7 @@ public class A12_DMA extends javax.swing.JFrame {
     private DefaultComboBoxModel comboHistorique;
     private Administratif adm;
     private String onglet;
-    int rep;
+   private int rep;
     private MedecinPH medecin;
     private Services s;
     private Patient patient;

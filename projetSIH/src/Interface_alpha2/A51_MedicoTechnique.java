@@ -408,8 +408,8 @@ this.dispose();         // TODO add your handling code here:
        String prenomRecherche = splited[1];
         System.out.println(prenomRecherche);
         
-        A52_MedicoTechnique fenetre3 =  new A52_MedicoTechnique(sql.rechercherPatient(nomRecherche, prenomRecherche),medecin);
-        System.out.println(sql.rechercherPatient(nomRecherche, prenomRecherche).getNom());
+        A52_MedicoTechnique fenetre3 =  new A52_MedicoTechnique(sql.rechercherPatient(nomRecherche, prenomRecherche,medecin),medecin);
+       
       fenetre3.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

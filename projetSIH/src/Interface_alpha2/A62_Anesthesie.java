@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Interface_alpha2;
 
 import SIH.Date;
@@ -17,9 +16,9 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -32,39 +31,45 @@ public class A62_Anesthesie extends javax.swing.JFrame {
      */
     public A62_Anesthesie(Patient patient, MedecinPH medecin) {
         dateJour = new Date();
-        dateJour=dateJour.dateJour();
+        dateJour = dateJour.dateJour();
         this.medecin = medecin;
         this.patient = patient;
         Calendar calendrier = Calendar.getInstance();
-        dateHeureJour = dateJour+ " " + calendrier.getTime().toString().substring(12, 19);
+        dateHeureJour = dateJour + " " + calendrier.getTime().toString().substring(12, 19);
         initComponents();
         try {
             sql = new SQL();
 
             jTextArea1.setText(sql.infoHistoriqueSejourPatient(patient, sql.numeroSejourPatient(patient.getIpp())).infosSejour());
             numSej = sql.numeroSejourPatient(patient.getIpp());
-        }
-            catch (SQLException | InstantiationException | IllegalAccessException ex) {
+            comboListePrescriptions = new DefaultComboBoxModel(sql.listePrescriptionsMedecinPH(patient, numSej));
+
+            jComboBox2.setModel(comboListePrescriptions);
+            jComboBox2.setSelectedIndex(0);
+
+            comboListeObservations = new DefaultComboBoxModel(sql.listeObservationsMedecinPH(patient, numSej));
+            comboListeObservations.insertElementAt("Observations ", 0);
+            jComboBox3.setModel(comboListeObservations);
+            jComboBox3.setSelectedIndex(0);
+        } catch (SQLException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
         }
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        this.addWindowListener( new WindowAdapter()
-		{
-			public void windowClosing(WindowEvent e)
-			{
-				JFrame frame = (JFrame)e.getSource();
-				int result = JOptionPane.showConfirmDialog(
-						null,
-						"Etes-vous sûr de vouloir quitter Asclépios ?",
-						"Quitter",
-						JOptionPane.YES_NO_OPTION);
-				if (result == JOptionPane.YES_OPTION){
-					
-					System.exit(0);
-				}
-				
-			}
-		});
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                JFrame frame = (JFrame) e.getSource();
+                int result = JOptionPane.showConfirmDialog(
+                        null,
+                        "Etes-vous sûr de vouloir quitter Asclépios ?",
+                        "Quitter",
+                        JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION) {
+
+                    System.exit(0);
+                }
+
+            }
+        });
     }
 
     /**
@@ -107,9 +112,11 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jComboBox2 = new javax.swing.JComboBox();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
+        jComboBox3 = new javax.swing.JComboBox();
         jPanel11 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
@@ -330,21 +337,34 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
+                .addContainerGap(127, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(268, 268, 268))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(230, Short.MAX_VALUE)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Prescriptions PH", jPanel6);
@@ -356,19 +376,31 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         jTextArea4.setRows(5);
         jScrollPane4.setViewportView(jTextArea4);
 
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
+                .addContainerGap(127, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(271, 271, 271))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(211, Short.MAX_VALUE)
+                .addContainerGap(133, Short.MAX_VALUE)
+                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(211, Short.MAX_VALUE))
         );
@@ -537,37 +569,38 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 /**
- * changement du mot de passe via le menu
- * @param evt 
- */
+     * changement du mot de passe via le menu
+     *
+     * @param evt
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-     Changer_mdp mdp = new Changer_mdp();
-    
-        if(!mdp.isVisible()){
-                mdp.setVisible(true);
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if(JOptionPane.INFORMATION_MESSAGE==1){
-            mdp.dispose();
-        }
+        Changer_mdp mdp = new Changer_mdp();
+
+        if (!mdp.isVisible()) {
+            mdp.setVisible(true);
+            JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (JOptionPane.INFORMATION_MESSAGE == 1) {
+                mdp.dispose();
+            }
         }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-
-/**
- * déconnexion, retour à la page d'accueil via le menu
- * @param evt 
- */
+    /**
+     * déconnexion, retour à la page d'accueil via le menu
+     *
+     * @param evt
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-A0_Accueil a0 = new A0_Accueil();
-a0.setVisible(true);
-this.dispose();        // TODO add your handling code here:
+        A0_Accueil a0 = new A0_Accueil();
+        a0.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-    JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -584,33 +617,65 @@ this.dispose();        // TODO add your handling code here:
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
       //sql.ajouterObservationAnesthesie(patient, numSej, medecin, dateJour, jTextArea5.getText());
-       // if(sql.getErr()!=1){
-          // JOptionPane.showMessageDialog(null, "la lettre de sortie a bien été validée", "information", JOptionPane.WARNING_MESSAGE); 
-       // }
+        // if(sql.getErr()!=1){
+        // JOptionPane.showMessageDialog(null, "la lettre de sortie a bien été validée", "information", JOptionPane.WARNING_MESSAGE); 
+        // }
     }//GEN-LAST:event_jButton3ActionPerformed
-/**
- * retour à la page d'accueil de l'anesthésiste
- * @param evt 
- */
+    /**
+     * retour à la page d'accueil de l'anesthésiste
+     *
+     * @param evt
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       A61_Anesthesie fenetre6 = new A61_Anesthesie(medecin);
-      int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-    if (response == JOptionPane.YES_OPTION) {
-     fenetre6.setVisible(true);
-        this.dispose();
-    }
+        A61_Anesthesie fenetre6 = new A61_Anesthesie(medecin);
+        int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr d'avoir tout validé?", "Confirmer",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.YES_OPTION) {
+            fenetre6.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
-       JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenu4MenuSelected
 
-    
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        String val;
+        val = jComboBox1.getSelectedItem().toString();
+        String[] splited = val.split("\\s");
+        String datePrescri = splited[0];
+        String heurePrescri = splited[1];
+
+        String dateHeurePrescri = datePrescri + " " + heurePrescri;
+        jTextArea2.setText(sql.getPrescriptionsPatient(patient, numSej, dateHeurePrescri));
+        jTextArea2.repaint();
+        jTextArea2.revalidate();
+
+        jTextArea2.setEditable(false);
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        if (jComboBox3.getSelectedIndex() != 0) {
+            String val;
+            val = jComboBox3.getSelectedItem().toString();
+            String[] splited = val.split("\\s");
+            String datePrescri = splited[0];
+            String heurePrescri = splited[1];
+
+            String dateHeurePrescri = datePrescri + " " + heurePrescri;
+            jTextArea4.setText(sql.getPrescriptionsPatient(patient, numSej, dateHeurePrescri));
+            jTextArea4.repaint();
+            jTextArea4.revalidate();
+
+            jTextArea4.setEditable(false);
+        }
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -641,21 +706,25 @@ this.dispose();        // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new A62_Anesthesie().setVisible(true);
+                // new A62_Anesthesie().setVisible(true);
             }
         });
     }
+    private DefaultComboBoxModel comboListePrescriptions;
+    private DefaultComboBoxModel comboListeObservations;
     private SQL sql = null;
     private Patient patient;
     private MedecinPH medecin;
     private NumeroSejour numSej;
-private Date dateJour;
-private String dateHeureJour;
+    private Date dateJour;
+    private String dateHeureJour;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -6,6 +6,8 @@
 package SIH;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,16 +21,18 @@ public class TestsSql {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        NumeroSejour numsej = new NumeroSejour("10050236");
-        System.out.println(numsej.toString());
-        
-        
+        //NumeroSejour numsej = new NumeroSejour("10050236");
+        //System.out.println(numsej.toString());
+
         try {
             SQL sql = new SQL();
-            Patient p = sql.rechercherPatient("Bano", "Delphine");
-            System.out.println(p.getIpp());
+            //Patient patient = sql.rechercherPatient("Bano", "Delphine");
+           // NumeroSejour numSej = sql.numeroSejourPatient(patient.getIpp());
+           // sql.afficherTherapeutique(patient, numSej);
+            //System.out.println(patient.getTraitmentPersonnel());
+            
             //System.out.println(p.affichagePatient());
-            for(int i=0;i<100000000;i++){
+            for (int i = 0; i < 10; i++) {
                 //System.out.println(sql.listePatient());
                 //System.out.println(sql.rechercherPatient("Bano", "Delphine").getNom());
                 //sql.listeMedecinPH();
@@ -37,12 +41,13 @@ public class TestsSql {
                 //System.out.println(sql.listePatientParMedecin(Services.Pediatrie));
                 //System.out.println(sql.infoHistoriqueSejourPatient(p,new NumeroSejour("10050236")));
                 //System.out.println(sql.listeInfirmiere().get(i));
-               // System.out.println(sql.listeSecretaire().get(i));
+                // System.out.println(sql.listeSecretaire().get(i));
                 //System.out.println(Services.Pediatrie.toString());
                 //System.out.println(sql.listeLitDispo(Services.Pediatrie));
-                
+              //  System.out.println(sql.listePrescriptionsMedecinPH(patient, numSej));
+
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(TestsSql.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -50,14 +55,10 @@ public class TestsSql {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(TestsSql.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         //Date date = new Date(25, 03, 1995);
         //IPP ipp = new IPP(date);
-
         //System.out.println("ipp apres dernier SQL :" + ipp.toString());
-        
-        
     }
-    
 
 }

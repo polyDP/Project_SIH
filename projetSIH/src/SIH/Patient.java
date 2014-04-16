@@ -74,6 +74,8 @@ public class Patient {
     private Adresse adresse;
 
     private IPP ipp;
+    
+    private String traitmentPersonnel;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.057BF4F0-7F86-3D07-A63A-107C5971146E]
@@ -338,5 +340,19 @@ public class Patient {
      */
     public void setIpp(IPP ipp) {
         this.ipp = ipp;
+    }
+
+    /**
+     * @return the traitmentPersonnel
+     */
+    public String getTraitmentPersonnel() {
+        return traitmentPersonnel;
+    }
+
+    /**
+     * @param traitmentPersonnel the traitmentPersonnel to set
+     */
+    public void setTraitmentPersonnel(String traitmentPersonnel) {
+        this.traitmentPersonnel = traitmentPersonnel;
     }
 }

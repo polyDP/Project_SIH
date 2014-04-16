@@ -345,7 +345,7 @@ public class A41_Infirmier extends javax.swing.JFrame {
         String nomRecherche = splited[0];
         String prenomRecherche = splited[1];
 
-        A42_Infirmier fenetre42 = new A42_Infirmier(inf, sql.rechercherPatient(nomRecherche, prenomRecherche));
+        A42_Infirmier fenetre42 = new A42_Infirmier(inf, sql.rechercherPatient(nomRecherche, prenomRecherche,inf));
         fenetre42.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

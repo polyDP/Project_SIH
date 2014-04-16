@@ -59,8 +59,9 @@ public class NumeroSejour {
     }
      
     public NumeroSejour(String numSej){
-        this.numSej = numSej;
         typeNumSej="stringType";
+        this.numSej = numSej;
+        
     }
 
    

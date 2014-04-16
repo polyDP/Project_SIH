@@ -9,6 +9,7 @@ import BasesDonnees.ConnectionBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 
@@ -24,6 +25,7 @@ public class SQL {
     private Infirmiere infirmiere;
     private Administratif administratif;
     private MedecinPH medecinPH;
+    private SqlToLog sqlToLog;
 
     public SQL() throws SQLException, InstantiationException, IllegalAccessException {
 
@@ -31,10 +33,11 @@ public class SQL {
 
         con.connecter();
         err = 0;
+        sqlToLog = new SqlToLog();
 
     }
 
-    public void ajouterPatientBD(Patient p) {
+    public void ajouterPatientBD(Patient p, Administratif adm) {
         try {
 
             String requete = "INSERT INTO donnee_personnelle(IPP,Sexe,Nom_P,Prenom_P,Date_Naissance,Num_Tel,Numero_Adresse,Nom_Rue,Code_Postal,Ville,Med_T)"
@@ -65,6 +68,8 @@ public class SQL {
 
             prepS.executeUpdate();
 
+            sqlToLog.ajouterPatientBDlog(p, adm);
+
         } catch (SQLException e) {
             err = 1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique avec ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
@@ -72,7 +77,7 @@ public class SQL {
         }
     }
 
-    public void ajouterSejourPatientBD(Patient p, NumeroSejour numSej, Services s, MedecinPH m, String lit) {
+    public void ajouterSejourPatientBD(Patient p, NumeroSejour numSej, Services s, MedecinPH m, String lit, Administratif adm) {
         try {
             String requete = "INSERT INTO nouveau_sejour(Num_Sejour,IPP,Date_Entree,Service_P,PH_Resp,Loca_P,Etat_Dossier)"
                     + "Values (?,?,?,?,?,?,?)";
@@ -93,6 +98,7 @@ public class SQL {
             prepS.setObject(7, "Ouvert");
 
             prepS.executeUpdate();
+            sqlToLog.ajouterSejourPatientBDlog(p, adm);
 
         } catch (SQLException e) {
             err = 1;
@@ -193,26 +199,33 @@ public class SQL {
                         if (result.getString("Fonction_PH").equals("PH") || result.getString("Fonction_PH").equals("Interne")) {
                             connexion = "PH";
                             medecinPH = new MedecinPH(result.getString("ID_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
+                            sqlToLog.connexionPersonnel(medecinPH);
                         }
                         if (result.getString("Fonction_PH").equals("PH") && result.getString("Service_PH").equals(service.Anesthesie.toString())) {
                             connexion = "Anesthesie";
                             medecinPH = new MedecinPH(result.getString("ID_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
+                            sqlToLog.connexionPersonnel(medecinPH);
                         }
                         if (result.getString("Fonction_PH").equals("PH") && result.getString("Service_PH").equals(service.Imagerie.toString()) || result.getString("Fonction_PH").equals("PH") && result.getString("Service_PH").equals(service.Biologie.toString())) {
+
                             connexion = "MedicoTech";
                             medecinPH = new MedecinPH(result.getString("ID_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
+                            sqlToLog.connexionPersonnel(medecinPH);
                         }
                         if (result.getString("Fonction_PH").equals("Secretaire")) {
                             connexion = "Secretaire";
                             administratif = new Administratif(result.getString("ID_PH"), result.getString("Mdp_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
+                            sqlToLog.connexionPersonnel(administratif);
                         }
                         if (result.getString("Fonction_PH").equals("Infirmier")) {
                             connexion = "Infirmier";
                             infirmiere = new Infirmiere(result.getString("ID_PH"), result.getString("Mdp_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
+                            sqlToLog.connexionPersonnel(infirmiere);
                         }
                         if (result.getString("Fonction_PH").equals("DIM")) {
                             connexion = "DIM";
                             administratif = new Administratif(result.getString("ID_PH"), result.getString("Mdp_PH"), result.getString("Nom_PH"), result.getString("Prenom_PH"), result.getString("Fonction_PH"), service.valueOf(result.getString("Service_PH")));
+                            sqlToLog.connexionPersonnel(administratif);
                         }
 
                     } else {
@@ -278,7 +291,7 @@ public class SQL {
         return numSejourValue;
     }
 
-    public Patient rechercherPatient(String nom, String prenom) {
+    public Patient rechercherPatient(String nom, String prenom, Personnel personnel) {
 
         String ippValue = null;
         String sexe = null;
@@ -332,6 +345,7 @@ public class SQL {
 
         Patient patient = new Patient(nom, prenom, numTel, medecinTraitant, sexe, date, adresse);
         patient.setIpp(ipp);
+        sqlToLog.RecherchePatientBDlog(patient, personnel);
         return patient;
     }
 
@@ -612,6 +626,7 @@ public class SQL {
 
         try {
             lettreSortie.equalsIgnoreCase(null);
+
         } catch (NullPointerException npe) {
 
             lettreSortie = "Pas de lettre de sortie";
@@ -620,7 +635,7 @@ public class SQL {
         return lettreSortie;
     }
 
-    public void fermerDossierMedicalAdministratifPatientBD(NumeroSejour numSej) {
+    public void fermerDossierMedicalAdministratifPatientBD(NumeroSejour numSej, Administratif adm) {
         try {
             String requete = "UPDATE nouveau_sejour SET Etat_Dossier = ? WHERE Num_Sejour = ?";
 
@@ -628,7 +643,7 @@ public class SQL {
             prepS.setString(1, "ferme");
             prepS.setObject(2, numSej.toString());
             prepS.executeUpdate();
-            System.out.println();
+            sqlToLog.fermerSejourPatientBDlog(null, adm);
 
         } catch (SQLException e) {
             err = 1;
@@ -646,7 +661,7 @@ public class SQL {
         MedecinPH medecin = null;
         Services service = null;
 
-        String requete = "SELECT * FROM nouveau_sejour,donnee_personnelle,personnel WHERE donnee_personnelle.IPP = nouveau_sejour.IPP AND donnee_personnelle.IPP='" + p.getIpp() + "' AND nouveau_sejour.Num_Sejour = '" + numSej.toString() + "' AND personnel.ID_PH = nouveau_sejour.PH_Resp";
+        String requete = "SELECT * FROM nouveau_sejour,donnee_personnelle,personnel WHERE donnee_personnelle.IPP = nouveau_sejour.IPP AND donnee_personnelle.IPP='" + p.getIpp().toString() + "' AND nouveau_sejour.Num_Sejour = '" + numSej.toString() + "' AND personnel.ID_PH = nouveau_sejour.PH_Resp";
 
         try {
 
@@ -674,7 +689,7 @@ public class SQL {
                     "Erreur", JOptionPane.ERROR_MESSAGE);
         }
         SejourPatient sejPat = new SejourPatient(p, numSej, dateEntree, servicePat, medecin, lit, etatDossier, lettreSortie);
-        System.out.println(sejPat.getMedResp());
+
         return sejPat;
     }
 
@@ -761,6 +776,7 @@ public class SQL {
             prepS.setObject(10, cste.getAutreSoins());
 
             prepS.executeUpdate();
+            sqlToLog.premiereConstantesMedecinPatientBDlog(p, pm);
 
         } catch (SQLException e) {
             err = 1;
@@ -773,7 +789,7 @@ public class SQL {
         try {
 
             String requete = "UPDATE cste_ent SET Acteur_Csent = ? , Date_Csent = ? , Taille_Ent = ? , Poids_Ent = ? , Temp_Ent = ? , Tension_Ent = ? , Glycemie_Ent = ? , Autre_Soins_Ent = ? WHERE Num_Sejour = ? AND IPP = ?";
-            
+
             PreparedStatement prepS = con.creerPreparedStatement(requete);
 
             prepS.setObject(1, pm.getId());
@@ -797,6 +813,7 @@ public class SQL {
             prepS.setObject(10, p.getIpp().toString());
 
             prepS.executeUpdate();
+            sqlToLog.premiereConstantesMedecinPatientBDlog(p, pm);
 
         } catch (SQLException e) {
             err = 1;
@@ -805,10 +822,10 @@ public class SQL {
         }
     }
 
-    public Constantes getConstantesInitialesPatientSejour(IPP ipp, NumeroSejour numSej) {
+    public Constantes getConstantesInitialesPatientSejour(Patient p, NumeroSejour numSej) {
         Constantes constantes;
         constantes = null;
-        String requete = "SELECT * FROM cste_ent WHERE IPP = '" + ipp.toString() + "' AND Num_Sejour = '" + numSej.toString() + "'";
+        String requete = "SELECT * FROM cste_ent WHERE IPP = '" + p.getIpp().toString() + "' AND Num_Sejour = '" + numSej.toString() + "'";
 
         try {
             PreparedStatement prepS = con.creerPreparedStatement(requete);
@@ -830,7 +847,7 @@ public class SQL {
         }
         return constantes;
     }
-    
+
     public void ajouterLettreSortie(Patient p, NumeroSejour ns, PersonnelMedical pm, Date dateJourCsteEnt, String lettre) {
         try {
 
@@ -849,6 +866,7 @@ public class SQL {
             prepS.setObject(5, lettre);
 
             prepS.executeUpdate();
+            sqlToLog.ajouterLettreSortiePatientBDlog(p, pm);
 
         } catch (SQLException e) {
             err = 1;
@@ -882,11 +900,91 @@ public class SQL {
 
         }
     }
-    
+
+    public void ajouterPrescriptionPH(Patient p, NumeroSejour ns, PersonnelMedical pm, String dateJourHeurePresc, String prescription) {
+        try {
+
+            String requete = "INSERT INTO prescription(IPP,Num_Sejour,Med_Prescri,Date_Heure_Prescri,Champs_prescription)"
+                    + "Values (?,?,?,?,?)";
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+
+            prepS.setObject(1, p.getIpp().toString());
+
+            prepS.setObject(2, ns.toString());
+
+            prepS.setObject(3, pm.getId());
+
+            prepS.setObject(4, dateJourHeurePresc);
+
+            prepS.setObject(5, prescription);
+
+            prepS.executeUpdate();
+
+            sqlToLog.ajouterPrescriptionPatientBDlog(p, pm);
+
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique avec ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
+
+    public Vector<String> listePrescriptionsMedecinPH(Patient p, NumeroSejour numSej) {
+        Vector<String> listePrescriptionMedecinPH = new Vector<>();
+        String dateNomPrenomService;
+
+        String requete = "SELECT * FROM prescription, personnel WHERE IPP = '" + p.getIpp().toString() + "'  AND Num_Sejour = '" + numSej.toString() + "' AND Med_Prescri = ID_PH";
+        try {
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+
+                dateNomPrenomService = result.getString("Date_Heure_Prescri");
+                dateNomPrenomService = dateNomPrenomService + " " + result.getString("Nom_PH");
+                dateNomPrenomService = dateNomPrenomService + " " + result.getString("Prenom_PH");
+                dateNomPrenomService = dateNomPrenomService + " - " + result.getString("Service_PH");
+                listePrescriptionMedecinPH.add(dateNomPrenomService);
+
+            }
+
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return listePrescriptionMedecinPH;
+    }
+
+    public Vector<String> listeObservationsMedecinPH(Patient p, NumeroSejour numSej) {
+        Vector<String> listePrescriptionMedecinPH = new Vector<>();
+        String dateNomPrenomService;
+
+        String requete = "SELECT * FROM obs_ph, personnel WHERE IPP = '" + p.getIpp().toString() + "'  AND Num_Sejour = '" + numSej.toString() + "' AND PH_Resp = ID_PH";
+        try {
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+
+                dateNomPrenomService = result.getString("Date_Heure_Obs");
+                dateNomPrenomService = dateNomPrenomService + " " + result.getString("Nom_PH");
+                dateNomPrenomService = dateNomPrenomService + " " + result.getString("Prenom_PH");
+                dateNomPrenomService = dateNomPrenomService + " - " + result.getString("Service_PH");
+                listePrescriptionMedecinPH.add(dateNomPrenomService);
+
+            }
+
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        return listePrescriptionMedecinPH;
+    }
+
     public void ajouterObservationPH(Patient p, NumeroSejour ns, PersonnelMedical pm, String dateJourHeureObs, String observation) {
         try {
 
-            String requete = "INSERT INTO prescripation(IPP,Num_Sejour,Med_Prescri,Date_Heure_Prescri,Champs_prescription)"
+            String requete = "INSERT INTO obs_ph(IPP,Num_Sejour,PH_Resp,Date_Heure_Obs,Observations)"
                     + "Values (?,?,?,?,?)";
             PreparedStatement prepS = con.creerPreparedStatement(requete);
 
@@ -902,12 +1000,174 @@ public class SQL {
 
             prepS.executeUpdate();
 
+            sqlToLog.ajouterOperationPatientBDlog(p, pm);
+
         } catch (SQLException e) {
             err = 1;
             JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique avec ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
 
         }
     }
+
+    public String getPrescriptionsPatient(Patient p, NumeroSejour numSej, String dateHeurPrescri) {
+
+        String prescription = null;
+
+        String requete = "SELECT * FROM prescription, personnel WHERE IPP = '" + p.getIpp().toString() + "'  AND Num_Sejour = '" + numSej.toString() + "' AND Med_Prescri = ID_PH AND Date_Heure_Prescri = '" + dateHeurPrescri + "'";
+
+        try {
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+
+                prescription = result.getString("Champs_prescription");
+
+            }
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+        return prescription;
+    }
+
+    public ArrayList<String> getLogBD() {
+
+        ArrayList<String> listeLog;
+        listeLog = new ArrayList<>();
+        String log;
+
+        String requete = "SELECT * FROM tracer";
+
+        try {
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+
+                log = "ID du log : " + result.getString("ID_log") + "\n";
+                log = log + "Date et Heure : " + result.getString("Date_heure") + "\n";
+                log = log + "Action : " + result.getString("Methode") + "\n";
+                log = log + "ID du PH : " + result.getString("ID_PH") + "\n";
+                log = log + "patient : " + result.getString("IPP") + "\n          -----          \n";
+                
+                listeLog.add(log);
+            }
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+        return listeLog;
+    }
+
+    public void ajouterTherapeutique(Patient p, NumeroSejour ns) {
+        try {
+
+            String requete = "INSERT INTO therapeutique(IPP,Num_Sejour,Ttmt_Perso,Allergie,Regime_Alimentaire)"
+                    + "Values (?,?,?,?,?)";
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+
+            prepS.setObject(1, p.getIpp().toString());
+
+            prepS.setObject(2, ns.toString());
+
+            prepS.setObject(3, p.getTraitmentPersonnel());
+
+            prepS.setObject(4, p.getAllergies());
+
+            prepS.setObject(5, p.getRegimeAlimentaire());
+
+            prepS.executeUpdate();
+
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique avec ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
+
+    public void ajouterTherapeutiqueMiseAJour(Patient p, NumeroSejour ns) {
+        try {
+
+            String requete = "UPDATE therapeutique SET Ttmt_Perso = ? , Allergie = ? , Regime_Alimentaire = ? WHERE Num_Sejour = ? AND IPP = ?";
+
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+
+            prepS.setObject(1, p.getTraitmentPersonnel());
+
+            prepS.setObject(2, p.getAllergies());
+
+            prepS.setObject(3, p.getRegimeAlimentaire());
+
+            prepS.setObject(4, ns.toString());
+
+            prepS.setObject(5, p.getIpp().toString());
+
+            prepS.executeUpdate();
+
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e + "\n Une erreur est survenue lors de l'ajout à la base de donnees, contactez un responsable technique avec ce message d'erreur", "Erreur Bases de données", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
+
+    public Patient afficherTherapeutique(Patient p, NumeroSejour ns) {
+
+        String ttmtPerso = null;
+        String allergie = null;
+        String regimeAl = null;
+
+        String requete = "SELECT * FROM donnee_personnelle, nouveau_sejour, therapeutique WHERE donnee_personnelle.IPP = nouveau_sejour.IPP AND donnee_personnelle.IPP = therapeutique.IPP AND nouveau_sejour.Num_Sejour='" + ns.toString() + "'";
+
+        try {
+            PreparedStatement prepS = con.creerPreparedStatement(requete);
+
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+
+                ttmtPerso = result.getString("Ttmt_Perso");
+                allergie = result.getString("Allergie");
+                regimeAl = result.getString("Regime_Alimentaire");
+                p.setAllergies(allergie);
+                p.setRegimeAlimentaire(regimeAl);
+                p.setTraitmentPersonnel(ttmtPerso);
+            }
+
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return p;
+    }
+
+    public String getObservationsPatient(Patient p, NumeroSejour numSej, String dateHeurPrescri) {
+
+        String prescription = null;
+
+        String requete = "SELECT * FROM obs_ph, personnel WHERE IPP = '" + p.getIpp().toString() + "'  AND Num_Sejour = '" + numSej.toString() + "' AND PH_Resp = ID_PH AND Date_Heure_Obs = '" + dateHeurPrescri + "'";
+
+        try {
+            ResultSet result = con.resultatRequete(requete);
+            while (result.next()) {
+
+                prescription = result.getString("Observations");
+
+            }
+        } catch (SQLException e) {
+            err = 1;
+            JOptionPane.showMessageDialog(null, e,
+                    "Erreur", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+        return prescription;
+    }
+
     /**
      * @return the err
      */

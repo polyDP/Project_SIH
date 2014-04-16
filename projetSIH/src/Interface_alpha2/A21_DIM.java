@@ -34,13 +34,12 @@ public class A21_DIM extends javax.swing.JFrame {
     public A21_DIM(Administratif adm) {
         this.adm = adm;
         dateJour = new Date();
-        dateJour=dateJour.dateJour();
-        comboServices = new DefaultComboBoxModel(service.values());
-        comboServices.insertElementAt(vide, 0);
-        comboServices.removeElement(service.Administration);
+        dateJour = dateJour.dateJour();
 
+        initComponents();
         try {
             sql = new SQL();
+
         } catch (SQLException ex) {
             Logger.getLogger(A21_DIM.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -48,16 +47,36 @@ public class A21_DIM extends javax.swing.JFrame {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(A21_DIM.class.getName()).log(Level.SEVERE, null, ex);
         }
-        comboListePH = new DefaultComboBoxModel(sql.listeMedecinPH());
-        comboListePH.insertElementAt(vide, 0);
+        try {
+            comboListePH = new DefaultComboBoxModel(sql.listeMedecinPH());
+            comboListePH.insertElementAt(vide, 0);
+            jComboBox1.setModel(comboListePH);
+            jComboBox1.setSelectedIndex(0);
 
-        comboListeInf = new DefaultComboBoxModel(sql.listeInfirmiere());
-        comboListeInf.insertElementAt(vide, 0);
+            comboListeInf = new DefaultComboBoxModel(sql.listeInfirmiere());
+            comboListeInf.insertElementAt(vide, 0);
+            jComboBox4.setModel(comboListeInf);
+            jComboBox4.setSelectedIndex(0);
 
-        comboListeSecretaire = new DefaultComboBoxModel(sql.listeSecretaire());
-        comboListeSecretaire.insertElementAt(vide, 0);
+            comboListeSecretaire = new DefaultComboBoxModel(sql.listeSecretaire());
+            comboListeSecretaire.insertElementAt(vide, 0);
+            jComboBox5.setModel(comboListeSecretaire);
+            jComboBox5.setSelectedIndex(0);
+            
+            comboServices = new DefaultComboBoxModel(service.values());
+            comboServices.insertElementAt(vide, 0);
+            comboServices.removeElement(service.Administration);
+            jComboBox2.setModel(comboServices);
+            jComboBox2.setSelectedIndex(0);
+            
+            for(int i =0;i<sql.getLogBD().size();i++){
+            jTextArea1.append(sql.getLogBD().get(i));
+            }
 
-        initComponents();
+        } catch (NullPointerException e) {
+
+        }
+
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -286,9 +305,6 @@ public class A21_DIM extends javax.swing.JFrame {
 
         jLabel9.setText("Service :");
 
-        jComboBox2.setModel(comboServices
-        );
-        jComboBox2.setSelectedIndex(0);
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -378,24 +394,18 @@ public class A21_DIM extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(comboListePH);
-        jComboBox1.setSelectedIndex(0);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
-        jComboBox4.setModel(comboListeInf);
-        jComboBox4.setSelectedIndex(0);
         jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox4ActionPerformed(evt);
             }
         });
 
-        jComboBox5.setModel(comboListeSecretaire);
-        jComboBox5.setSelectedIndex(0);
         jComboBox5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox5ActionPerformed(evt);
@@ -535,12 +545,12 @@ public class A21_DIM extends javax.swing.JFrame {
      */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Changer_mdp mdp = new Changer_mdp();
-       if(!mdp.isVisible()){
-                mdp.setVisible(true);
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if(JOptionPane.INFORMATION_MESSAGE==1){
-            mdp.dispose();
-        }
+        if (!mdp.isVisible()) {
+            mdp.setVisible(true);
+            JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (JOptionPane.INFORMATION_MESSAGE == 1) {
+                mdp.dispose();
+            }
         }
 
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -562,11 +572,10 @@ public class A21_DIM extends javax.swing.JFrame {
             if (jRadioButton3.isSelected()) {
                 nom = jTextField1.getText().toLowerCase();
                 prenom = jTextField2.getText().toLowerCase();
-                
+
                 jLabel3.setText(id);
                 fonction = "PH";
-                
-                
+
                 jLabel8.setText(motDePasse);
                 if (nom.length() == 0 | prenom.length() == 0) {
                     JOptionPane.showMessageDialog(null, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
@@ -601,12 +610,12 @@ public class A21_DIM extends javax.swing.JFrame {
             } else if (jRadioButton1.isSelected()) {
                 nom = jTextField1.getText().toLowerCase();
                 prenom = jTextField2.getText().toLowerCase();
-                
+
                 jLabel3.setText(id);
                 fonction = "Infirmier";
-                
+
                 fonction = jRadioButton1.getLabel();
-                
+
                 jLabel8.setText(motDePasse);
                 if (nom.length() == 0 | prenom.length() == 0) {
                     JOptionPane.showMessageDialog(null, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
@@ -640,21 +649,21 @@ public class A21_DIM extends javax.swing.JFrame {
                 fonction = "Secretaire";
                 nom = jTextField1.getText().toLowerCase();
                 prenom = jTextField2.getText().toLowerCase();
-                
+
                 jLabel3.setText(id);
                 fonction = jRadioButton3.getLabel();
-               
+
                 jLabel8.setText(motDePasse);
                 if (nom.length() == 0 | prenom.length() == 0) {
                     JOptionPane.showMessageDialog(null, "l'un des champ n'est pas renseigné", "erreur", JOptionPane.WARNING_MESSAGE);
-                }else {
-                     motDePasse = this.StringMotDePasseAleatoire();
+                } else {
+                    motDePasse = this.StringMotDePasseAleatoire();
                     this.newId(nom, prenom);
                     rep = JOptionPane.showConfirmDialog(null, "creation du " + fonction + " : \n    - nom : " + nom + "\n    - prenom : " + prenom + "\n    - identifiant : " + id + "\n    - mot de passe : " + motDePasse, "confirmation", JOptionPane.OK_CANCEL_OPTION);
                     if (rep == JOptionPane.YES_OPTION) {
                         persMed = new PersonnelMedical(id, motDePasse, nom, prenom, fonction);
                         persMed.setServices(service.Administration);
-                        
+
                         try {
                             sql = new SQL();
 
@@ -750,13 +759,13 @@ public class A21_DIM extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         JOptionPane.showConfirmDialog(null, " la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
- /**
+    /**
      * Permet la déconnexion, avec une demande de confirmation de l'utilisateur
      *
      * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         A0_Accueil fenetre2 = new A0_Accueil();
+        A0_Accueil fenetre2 = new A0_Accueil();
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.YES_OPTION) {
@@ -766,17 +775,17 @@ public class A21_DIM extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
-        JOptionPane.showConfirmDialog (null, "la fonction n’est pas encore implémentée dans cette version "," information ",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showConfirmDialog(null, "la fonction n’est pas encore implémentée dans cette version ", " information ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenu4MenuSelected
-   
+
     private String newId(String nom, String prenom) {
         id = nom + prenom.charAt(0);
 
