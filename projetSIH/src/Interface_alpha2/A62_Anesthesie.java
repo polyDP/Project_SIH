@@ -44,7 +44,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
             numSej = sql.rechercherNumeroSejourPatient(patient.getIpp());
             
             comboListePrescriptions = new DefaultComboBoxModel(sql.listePrescriptionsMedecinPH(patient, numSej));
-            comboListeObservations.insertElementAt("Prescriptions ", 0);
+            comboListePrescriptions.insertElementAt("Prescripation ", 0);
             jComboBox2.setModel(comboListePrescriptions);
             jComboBox2.setSelectedIndex(0);
 
@@ -626,7 +626,7 @@ public class A62_Anesthesie extends javax.swing.JFrame {
         dateHeureJour = dateJour + " " + heure;
         sql.ajouterCrAnest(patient, numSej, medecin, dateHeureJour, jTextArea5.getText());
          if(sql.getErr()!=1){
-         JOptionPane.showMessageDialog(null, "la lettre de sortie a bien été validée", "information", JOptionPane.WARNING_MESSAGE); 
+         JOptionPane.showMessageDialog(null, "le compte rendu a bien été validé", "information", JOptionPane.WARNING_MESSAGE); 
          }
     }//GEN-LAST:event_jButton3ActionPerformed
     /**
@@ -653,23 +653,22 @@ public class A62_Anesthesie extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu4MenuSelected
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-         if (jComboBox3.getSelectedIndex() != 0) {
+         if (jComboBox2.getSelectedIndex() != 0) {
             String val;
-            val = jComboBox3.getSelectedItem().toString();
+            val = jComboBox2.getSelectedItem().toString();
             String[] splited = val.split("\\s");
             String dateObs = splited[0];
             String heureObs = splited[1];
 
             String dateHeureObs = dateObs + " " + heureObs;
-            jTextArea4.setText(sql.getObservationsPatient(patient, numSej, dateHeureObs));
-            jTextArea4.repaint();
-            jTextArea4.revalidate();
+            jTextArea2.setText(sql.getObservationsPatient(patient, numSej, dateHeureObs));
+            jTextArea2.repaint();
+            jTextArea2.revalidate();
 
-            jTextArea4.setEditable(false);
+            jTextArea2.setEditable(false);
             
         } else {
-            jTextArea4.setEditable(true);
-            
+           
         }
     }//GEN-LAST:event_jComboBox2ActionPerformed
 

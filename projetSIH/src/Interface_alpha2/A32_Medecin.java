@@ -67,7 +67,7 @@ public class A32_Medecin extends javax.swing.JFrame {
             jComboBox3.setSelectedIndex(0);
             
              comboListeCrAnest = new DefaultComboBoxModel(sql.listeObservationsMedecinPH(patient, numeroSejour));
-            comboListeCrAnest.insertElementAt("Observations ", 0);
+            comboListeCrAnest.insertElementAt("Compte rendu anesthesiste ", 0);
             jComboBox4.setModel(comboListeObservations);
             jComboBox4.setSelectedIndex(0);
 

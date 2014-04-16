@@ -45,7 +45,7 @@ public class A42_Infirmier extends javax.swing.JFrame {
             constantes = sql.getConstantesInitialesPatientSejour(patient, numSej);
             patient = sql.afficherTherapeutique(patient, numSej);
             comboListePrescriptions = new DefaultComboBoxModel(sql.listePrescriptionsMedecinPH(patient, numSej));
-            
+            comboListePrescriptions.insertElementAt("Prescriptions ", 0);
             jComboBox1.setModel(comboListePrescriptions);
             jComboBox1.setSelectedIndex(0);
             
@@ -762,6 +762,7 @@ public class A42_Infirmier extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
@@ -1246,6 +1247,7 @@ public class A42_Infirmier extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu4MenuSelected
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        if (jComboBox1.getSelectedIndex() != 0) {
         String val;
         val = jComboBox1.getSelectedItem().toString();
         String[] splited = val.split("\\s");
@@ -1259,7 +1261,9 @@ public class A42_Infirmier extends javax.swing.JFrame {
        
             jTextArea2.setEditable(false);
            
-        
+        } else {
+            
+        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

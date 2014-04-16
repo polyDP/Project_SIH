@@ -143,21 +143,16 @@ public class A61_Anesthesie extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton2);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Déconnexion");
         jButton1.setToolTipText("");
-        jPanel2.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton1);
 
         jPanel8.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
@@ -438,21 +433,17 @@ public class A61_Anesthesie extends javax.swing.JFrame {
     private void jPanel4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel4ComponentShown
         jButton2.setVisible(true);
     }//GEN-LAST:event_jPanel4ComponentShown
-    /**
-     * retour à la page accueil, déconnexion avec un message de demande de
-     * confirmation
-     *
-     * @param evt
-     */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        A0_Accueil fenetre6 = new A0_Accueil();
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        A0_Accueil fenetre3 = new A0_Accueil();
         int response = JOptionPane.showConfirmDialog(null, "Etes-vous sûr de vouloir vous déconnecter?", "Confirmer",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.YES_OPTION) {
-            fenetre6.setVisible(true);
+            fenetre3.setVisible(true);
             this.dispose();
         }
-    }
+    }//GEN-LAST:event_jButton1ActionPerformed
+   
 
     /**
      * @param args the command line arguments

@@ -475,10 +475,9 @@ Calendar calendrier = Calendar.getInstance();
             jTextArea4.revalidate();
 
             jTextArea4.setEditable(false);
-            jButton4.setVisible(false);
+            
         } else {
-            jTextArea4.setEditable(true);
-            jButton4.setVisible(true);
+            
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
     

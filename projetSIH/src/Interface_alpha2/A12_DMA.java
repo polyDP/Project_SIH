@@ -72,19 +72,23 @@ public class A12_DMA extends javax.swing.JFrame {
         } else if (n == false) {
 
             this.patient = patient;
+             initComponents();
             try {
                 sql = new SQL();
-                
+                comboHistorique = new DefaultComboBoxModel(sql.listeHistoriqueSejourPatient(patient));
+            comboHistorique.insertElementAt(vide, 0);
+            jComboBox5.setModel(comboHistorique);
             } catch (SQLException ex) {
                 Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
             } catch (InstantiationException ex) {
                 Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IllegalAccessException ex) {
                 Logger.getLogger(A12_DMA.class.getName()).log(Level.SEVERE, null, ex);
+            } catch(NullPointerException npe){
+                
             }
-            comboHistorique = new DefaultComboBoxModel(sql.listeHistoriqueSejourPatient(patient));
-            comboHistorique.insertElementAt(vide, 0);
-            initComponents();
+            
+           
             setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             this.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
@@ -382,7 +386,6 @@ public class A12_DMA extends javax.swing.JFrame {
             }
         });
 
-        jComboBox5.setModel(comboHistorique);
         jComboBox5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox5ActionPerformed(evt);
